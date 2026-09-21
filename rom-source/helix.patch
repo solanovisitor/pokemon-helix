@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index 37249891fad5563553c17316adf4ce2bf6bd89e9..ce3287b95eba16a4a96de21e9f469890adbfccad 100644
+index 37249891fa..ce3287b95e 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -157,6 +157,8 @@ else
@@ -12,7 +12,7 @@ index 37249891fad5563553c17316adf4ce2bf6bd89e9..ce3287b95eba16a4a96de21e9f469890
  	override CPPFLAGS += -DRELEASE
  	ifeq ($(USE_LTO_ON_RELEASE),1)
 diff --git a/data/event_scripts.s b/data/event_scripts.s
-index bc9688b6ac093ead52ec47fb31cab0f6644ce0b2..20440031243bfd389a63a4d3579915087906b5b6 100644
+index bc9688b6ac..2044003124 100644
 --- a/data/event_scripts.s
 +++ b/data/event_scripts.s
 @@ -2,6 +2,10 @@
@@ -48,7 +48,7 @@ index bc9688b6ac093ead52ec47fb31cab0f6644ce0b2..20440031243bfd389a63a4d357991508
  	.include "data/scripts/wild_encounter.inc"
 +	.include "data/scripts/helix_lab_items.inc"
 diff --git a/data/layouts/layouts.json b/data/layouts/layouts.json
-index 2b25587ac142c0fcd0b90755a3347ee16e785857..ac012d647c99bcc2bf3e2d776c590247c93543be 100644
+index 2b25587ac1..ac012d647c 100644
 --- a/data/layouts/layouts.json
 +++ b/data/layouts/layouts.json
 @@ -9323,6 +9323,58 @@
@@ -111,7 +111,7 @@ index 2b25587ac142c0fcd0b90755a3347ee16e785857..ac012d647c99bcc2bf3e2d776c590247
    ]
  }
 diff --git a/data/maps/LittlerootTown/map.json b/data/maps/LittlerootTown/map.json
-index 1e91f8cf95e04ec5bc22ab5f514e490b72a4914b..7a3be72d549b7db41cba5f3cc7d9500672af5d40 100644
+index 1e91f8cf95..7a3be72d54 100644
 --- a/data/maps/LittlerootTown/map.json
 +++ b/data/maps/LittlerootTown/map.json
 @@ -53,13 +53,14 @@
@@ -155,7 +155,7 @@ index 1e91f8cf95e04ec5bc22ab5f514e490b72a4914b..7a3be72d549b7db41cba5f3cc7d95006
    ],
    "warp_events": [
 diff --git a/data/maps/LittlerootTown/scripts.inc b/data/maps/LittlerootTown/scripts.inc
-index 6a2c6af41bb1d1a4d27cb2b74fbe655b53641cf9..b90ac75cd871f8e5a4f4ccdc7c00e711ca710582 100644
+index 6a2c6af41b..b90ac75cd8 100644
 --- a/data/maps/LittlerootTown/scripts.inc
 +++ b/data/maps/LittlerootTown/scripts.inc
 @@ -246,19 +246,670 @@ LittlerootTown_EventScript_FatMan::
@@ -860,7 +860,7 @@ index 6a2c6af41bb1d1a4d27cb2b74fbe655b53641cf9..b90ac75cd871f8e5a4f4ccdc7c00e711
  	.string "Let's go to my LAB.$"
 -
 diff --git a/data/maps/OldaleTown/map.json b/data/maps/OldaleTown/map.json
-index 1c43428af083405f7105f2296457ddb4512934d5..5637fbfa9939b6d433e85be44f37e1edeb828403 100644
+index 1c43428af0..5637fbfa99 100644
 --- a/data/maps/OldaleTown/map.json
 +++ b/data/maps/OldaleTown/map.json
 @@ -85,6 +85,32 @@
@@ -897,7 +897,7 @@ index 1c43428af083405f7105f2296457ddb4512934d5..5637fbfa9939b6d433e85be44f37e1ed
    ],
    "warp_events": [
 diff --git a/data/maps/OldaleTown/scripts.inc b/data/maps/OldaleTown/scripts.inc
-index a127cd07be552db51a505664d6f5fe06c3e9474b..57ffcfcb10e18c50789f52b9e555f4620e8afb56 100644
+index a127cd07be..57ffcfcb10 100644
 --- a/data/maps/OldaleTown/scripts.inc
 +++ b/data/maps/OldaleTown/scripts.inc
 @@ -395,3 +395,294 @@ OldaleTown_Text_TownSign:
@@ -1196,7 +1196,7 @@ index a127cd07be552db51a505664d6f5fe06c3e9474b..57ffcfcb10e18c50789f52b9e555f462
 +	.string "The markers remember your notes.$"
 +#endif
 diff --git a/data/maps/OldaleTown_House1/map.json b/data/maps/OldaleTown_House1/map.json
-index 39b599ecc46695293d5234a5d5f2c07bc59d1589..196bf7793d4be5f0d4c3452075f874d8711b0fb4 100644
+index 39b599ecc4..196bf7793d 100644
 --- a/data/maps/OldaleTown_House1/map.json
 +++ b/data/maps/OldaleTown_House1/map.json
 @@ -20,13 +20,26 @@
@@ -1230,7 +1230,7 @@ index 39b599ecc46695293d5234a5d5f2c07bc59d1589..196bf7793d4be5f0d4c3452075f874d8
    ],
    "warp_events": [
 diff --git a/data/maps/OldaleTown_House1/scripts.inc b/data/maps/OldaleTown_House1/scripts.inc
-index 5211f583edabb724004aa2b0e2a683eb512aa178..2f281524e4b332d3134474ca18d7a28cf9798e6a 100644
+index 5211f583ed..2f281524e4 100644
 --- a/data/maps/OldaleTown_House1/scripts.inc
 +++ b/data/maps/OldaleTown_House1/scripts.inc
 @@ -2,6 +2,9 @@ OldaleTown_House1_MapScripts::
@@ -1682,7 +1682,7 @@ index 5211f583edabb724004aa2b0e2a683eb512aa178..2f281524e4b332d3134474ca18d7a28c
 +	.string "The HELIX laboratory is at the back.\n"
 +	.string "Go in and revisit your project?$"
 diff --git a/data/maps/OldaleTown_Mart/scripts.inc b/data/maps/OldaleTown_Mart/scripts.inc
-index 1e1aacbb104be8bb3cb5936e5afb92d8f1f4e689..0eacc54fb3a9ab2843eedb48d6eb69aa73c014a2 100644
+index 1e1aacbb10..0eacc54fb3 100644
 --- a/data/maps/OldaleTown_Mart/scripts.inc
 +++ b/data/maps/OldaleTown_Mart/scripts.inc
 @@ -57,8 +57,8 @@ OldaleTown_Mart_Text_PokeBallsAreSoldOut:
@@ -1697,7 +1697,7 @@ index 1e1aacbb104be8bb3cb5936e5afb92d8f1f4e689..0eacc54fb3a9ab2843eedb48d6eb69aa
  OldaleTown_Mart_Text_RestoreHPWithPotion:
  	.string "If a POKéMON gets hurt and loses its HP\n"
 diff --git a/data/maps/Route101/map.json b/data/maps/Route101/map.json
-index 4fcd98d9ac3322878aae7a31ab89a1daf25fe254..8d28445528495d64b337e221eb750cf534cfb37f 100644
+index 4fcd98d9ac..8d28445528 100644
 --- a/data/maps/Route101/map.json
 +++ b/data/maps/Route101/map.json
 @@ -105,6 +105,19 @@
@@ -1721,7 +1721,7 @@ index 4fcd98d9ac3322878aae7a31ab89a1daf25fe254..8d28445528495d64b337e221eb750cf5
    ],
    "warp_events": [],
 diff --git a/data/maps/Route101/scripts.inc b/data/maps/Route101/scripts.inc
-index 3cc5209df678361be9d923f1628f7ba5efe7069a..2b31e45cba03673ad38a02cc82c134424cdaade2 100644
+index 3cc5209df6..2b31e45cba 100644
 --- a/data/maps/Route101/scripts.inc
 +++ b/data/maps/Route101/scripts.inc
 @@ -296,3 +296,57 @@ Route101_Text_RouteSign:
@@ -1783,7 +1783,7 @@ index 3cc5209df678361be9d923f1628f7ba5efe7069a..2b31e45cba03673ad38a02cc82c13442
 +	.string "MIRA in OLDALE is mapping\n"
 +	.string "where the signal goes.$"
 diff --git a/data/maps/Route103/map.json b/data/maps/Route103/map.json
-index e3bd33542d2a20a85114b965c6715812ff007d7d..f40be5d5f16312e7a6142fde975198d3206b9704 100644
+index e3bd33542d..f40be5d5f1 100644
 --- a/data/maps/Route103/map.json
 +++ b/data/maps/Route103/map.json
 @@ -286,6 +286,45 @@
@@ -1833,7 +1833,7 @@ index e3bd33542d2a20a85114b965c6715812ff007d7d..f40be5d5f16312e7a6142fde975198d3
    ],
    "warp_events": [
 diff --git a/data/maps/Route103/scripts.inc b/data/maps/Route103/scripts.inc
-index 941d464c37e00f14a3163bb39a5c82c89a911291..550d0b5cbf2740cd9fedb5a2f4d11ac3f1e6e8e5 100644
+index 941d464c37..550d0b5cbf 100644
 --- a/data/maps/Route103/scripts.inc
 +++ b/data/maps/Route103/scripts.inc
 @@ -351,3 +351,354 @@ Route103_Text_RouteSign:
@@ -2192,7 +2192,7 @@ index 941d464c37e00f14a3163bb39a5c82c89a911291..550d0b5cbf2740cd9fedb5a2f4d11ac3
 +	.string "OLDALE's northwest house first.$"
 +#endif
 diff --git a/data/maps/map_groups.json b/data/maps/map_groups.json
-index d6320f485b9f48724f0ccfc1429974812c4b22f0..fd06ad5e87e4818f73b189ffeff0f9c79e490990 100644
+index d6320f485b..fd06ad5e87 100644
 --- a/data/maps/map_groups.json
 +++ b/data/maps/map_groups.json
 @@ -74,7 +74,8 @@
@@ -2228,10 +2228,10 @@ index d6320f485b9f48724f0ccfc1429974812c4b22f0..fd06ad5e87e4818f73b189ffeff0f9c7
    ]
  }
 diff --git a/data/specials.inc b/data/specials.inc
-index 3492bf3b66b57ddda8891101e0e5b89d8e95e635..2da71d4c3bbdf7f6cd575ed463561ea1f29aa8f1 100644
+index 3492bf3b66..1e018e4144 100644
 --- a/data/specials.inc
 +++ b/data/specials.inc
-@@ -638,3 +638,78 @@ gSpecials::
+@@ -638,3 +638,79 @@ gSpecials::
  	def_special UpdateTrainerCardPhotoIcons
  	def_special StickerManGetBragFlags
  	def_special CheckAddCoins
@@ -2310,8 +2310,9 @@ index 3492bf3b66b57ddda8891101e0e5b89d8e95e635..2da71d4c3bbdf7f6cd575ed463561ea1
 +	def_special ShowHelixLabItemsMenu
 +	def_special ClearHelixLabItemsPreview
 +	def_special StartHelixLabSimulation
++	def_special StartHelixLabNativeSimulation
 diff --git a/data/text/birch_speech.inc b/data/text/birch_speech.inc
-index 7a9ea6a611857d307eb537999b6d25311e972f30..a8fe80f0bbe94fd9e23011d182c8eb7123f135bb 100644
+index 7a9ea6a611..a8fe80f0bb 100644
 --- a/data/text/birch_speech.inc
 +++ b/data/text/birch_speech.inc
 @@ -1,10 +1,16 @@
@@ -2388,7 +2389,7 @@ index 7a9ea6a611857d307eb537999b6d25311e972f30..a8fe80f0bbe94fd9e23011d182c8eb71
 +#endif
 \ No newline at end of file
 diff --git a/include/constants/event_objects.h b/include/constants/event_objects.h
-index af305e850ea1d784e5b07beecfb2810469b9be51..8ad3d4b860ef9c8425eec4bd961ceb437ab1df1c 100644
+index af305e850e..8ad3d4b860 100644
 --- a/include/constants/event_objects.h
 +++ b/include/constants/event_objects.h
 @@ -413,6 +413,7 @@ enum
@@ -2408,7 +2409,7 @@ index af305e850ea1d784e5b07beecfb2810469b9be51..8ad3d4b860ef9c8425eec4bd961ceb43
  #define OBJ_EVENT_PAL_TAG_WHITE                   (OBJ_EVENT_PAL_TAG_NONE - 1)
  #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 diff --git a/include/constants/items.h b/include/constants/items.h
-index bf4522306bea70779738e27f10c542a6440b5e14..1c0e934404a9709711b6e785036a98a383974bd1 100644
+index bf4522306b..1c0e934404 100644
 --- a/include/constants/items.h
 +++ b/include/constants/items.h
 @@ -1052,6 +1052,9 @@ enum __attribute__((packed)) Item
@@ -2422,7 +2423,7 @@ index bf4522306bea70779738e27f10c542a6440b5e14..1c0e934404a9709711b6e785036a98a3
      ITEM_FIELD_ARROW = ITEMS_COUNT,
  };
 diff --git a/include/constants/opponents.h b/include/constants/opponents.h
-index 0724da54864312626d54eea485b11dacf8f0f73f..35b2422d6d4f88653cf9c534a31f54741324e705 100644
+index 0724da5486..35b2422d6d 100644
 --- a/include/constants/opponents.h
 +++ b/include/constants/opponents.h
 @@ -864,7 +864,8 @@
@@ -2436,7 +2437,7 @@ index 0724da54864312626d54eea485b11dacf8f0f73f..35b2422d6d4f88653cf9c534a31f5474
  
  #if IS_FRLG
 diff --git a/include/constants/script_menu.h b/include/constants/script_menu.h
-index 87724f26b40cf46707cee54a1c8a6970297293c4..9c61678d3ee47b194cd385925b1f9cc9e9ea8f4e 100644
+index 87724f26b4..9c61678d3e 100644
 --- a/include/constants/script_menu.h
 +++ b/include/constants/script_menu.h
 @@ -169,6 +169,17 @@ enum
@@ -2458,7 +2459,7 @@ index 87724f26b40cf46707cee54a1c8a6970297293c4..9c61678d3ee47b194cd385925b1f9cc9
  
  #define MULTI_NONE 255
 diff --git a/include/constants/species.h b/include/constants/species.h
-index bf5122e13ff4beb871550ad284bfbf45e3dfed2b..dc19fff84db2d4e0dff3bff373b984f0c57d2273 100644
+index bf5122e13f..dc19fff84d 100644
 --- a/include/constants/species.h
 +++ b/include/constants/species.h
 @@ -1692,6 +1692,17 @@ enum __attribute__((packed)) Species
@@ -2480,7 +2481,7 @@ index bf5122e13ff4beb871550ad284bfbf45e3dfed2b..dc19fff84db2d4e0dff3bff373b984f0
  
      SPECIES_EGG = SPECIES_CUSTOM_END,
 diff --git a/include/constants/vars.h b/include/constants/vars.h
-index 7992ae09a426bd3966e12f00fde30121925a6bef..2e9478c18f0d179091a612aa8fbe194e988e034d 100644
+index 7992ae09a4..2e9478c18f 100644
 --- a/include/constants/vars.h
 +++ b/include/constants/vars.h
 @@ -266,15 +266,15 @@
@@ -2507,7 +2508,7 @@ index 7992ae09a426bd3966e12f00fde30121925a6bef..2e9478c18f0d179091a612aa8fbe194e
  #define VARS_END                                         0x40FF
  #define VARS_COUNT                                       (VARS_END - VARS_START + 1)
 diff --git a/include/global.h b/include/global.h
-index 6e29f721a374ce9c518d213266f95203e9adaa8a..8d40831efc129954e64232360b438c202e309d76 100644
+index 6e29f721a3..dd054a194b 100644
 --- a/include/global.h
 +++ b/include/global.h
 @@ -26,6 +26,7 @@
@@ -2518,17 +2519,23 @@ index 6e29f721a374ce9c518d213266f95203e9adaa8a..8d40831efc129954e64232360b438c20
  
  // Prevent cross-jump optimization.
  #define BLOCK_CROSS_JUMP asm("");
-@@ -272,6 +273,8 @@ struct SaveBlock3
+@@ -272,6 +273,14 @@ struct SaveBlock3
  #if APRICORN_TREE_COUNT > 0
      u8 apricornTrees[NUM_APRICORN_TREE_BYTES];
  #endif
 +    // Append only: old fields retain offsets. Sector tails have a separate CRC.
 +    struct HelixUniversalStore helixUniversal;
++    // V18: local display preference only; sector tails need their own integrity.
++    struct {
++        u16 signature;
++        u8 language;
++        u8 complement;
++    } helixLanguage;
  }; /* max size 1624 bytes */
  
  extern struct SaveBlock3 *gSaveBlock3Ptr;
 diff --git a/include/pokemon.h b/include/pokemon.h
-index 4a8de5689efdafb386a5c1629571761aa32f717c..f1c6707d99c1e6e29e2da37aee77b69cedc5273c 100644
+index 4a8de5689e..f1c6707d99 100644
 --- a/include/pokemon.h
 +++ b/include/pokemon.h
 @@ -125,6 +125,7 @@ enum MonData {
@@ -2540,7 +2547,7 @@ index 4a8de5689efdafb386a5c1629571761aa32f717c..f1c6707d99c1e6e29e2da37aee77b69c
  
  #define BLOCK_AI_DYNAMAX 15 // Used as dynamax level value by the AI to indicate this mon shouldn't dynamax
 diff --git a/src/battle_main.c b/src/battle_main.c
-index 4729c542d0e3ed56765000a2e38cc822357d0dea..6d262e1403364f5230ff648bcb15d71e4dd55dc6 100644
+index 4729c542d0..6d262e1403 100644
 --- a/src/battle_main.c
 +++ b/src/battle_main.c
 @@ -1,4 +1,7 @@
@@ -2574,7 +2581,7 @@ index 4729c542d0e3ed56765000a2e38cc822357d0dea..6d262e1403364f5230ff648bcb15d71e
                                    | BATTLE_TYPE_RECORDED_LINK
                                    | BATTLE_TYPE_FIRST_BATTLE
 diff --git a/src/battle_script_commands.c b/src/battle_script_commands.c
-index 48be86e156b18678cc0d28a12e7f591f35eacf2e..e7c6b46d7d5d3a6ace5feb8c8b9c3f3a0a2ede2a 100644
+index 48be86e156..e7c6b46d7d 100644
 --- a/src/battle_script_commands.c
 +++ b/src/battle_script_commands.c
 @@ -1,4 +1,6 @@
@@ -2607,7 +2614,7 @@ index 48be86e156b18678cc0d28a12e7f591f35eacf2e..e7c6b46d7d5d3a6ace5feb8c8b9c3f3a
          money = GetTrainerMoneyToGive(TRAINER_BATTLE_PARAM.opponentA);
          if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
 diff --git a/src/battle_setup.c b/src/battle_setup.c
-index 6024da3c61085e17e6cadd6c09b9c0b8f5c09881..10a6d3bf8ec53dfd71c5d279535416479ba852c7 100644
+index 6024da3c61..10a6d3bf8e 100644
 --- a/src/battle_setup.c
 +++ b/src/battle_setup.c
 @@ -1,4 +1,5 @@
@@ -2660,7 +2667,7 @@ index 6024da3c61085e17e6cadd6c09b9c0b8f5c09881..10a6d3bf8ec53dfd71c5d27953541647
      {
          CreateNPCTrainerPartyFromTrainer(party, GetTrainerStructFromId(trainerNum));
 diff --git a/src/battle_util.c b/src/battle_util.c
-index e1ae2768f6f64f3e83d1bc4711916474c04871c6..c236189fb4bff201701e6f899bfd4fa4af5e9ce5 100644
+index e1ae2768f6..c236189fb4 100644
 --- a/src/battle_util.c
 +++ b/src/battle_util.c
 @@ -1,4 +1,6 @@
@@ -2680,7 +2687,7 @@ index e1ae2768f6f64f3e83d1bc4711916474c04871c6..c236189fb4bff201701e6f899bfd4fa4
  }
  
 diff --git a/src/data/graphics/pokemon.h b/src/data/graphics/pokemon.h
-index 37b0d7f712dd6d1154342dd49fa0e31fb6fe7087..f25565561e2c3dfe8c39ebe4224acfe31417f07b 100644
+index 37b0d7f712..f25565561e 100644
 --- a/src/data/graphics/pokemon.h
 +++ b/src/data/graphics/pokemon.h
 @@ -27503,3 +27503,103 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
@@ -2788,7 +2795,7 @@ index 37b0d7f712dd6d1154342dd49fa0e31fb6fe7087..f25565561e2c3dfe8c39ebe4224acfe3
 +const u8 gMonIcon_HelixChild[] = INCGFX_U8("graphics/pokemon/lumifin/icon.png", ".4bpp");
 +#endif
 diff --git a/src/data/items.h b/src/data/items.h
-index c51a5acf9af4a1fb218126f9069489265102a2ed..d6edea287a89c658d26be372d50caf9d4e12547e 100644
+index c51a5acf9a..d6edea287a 100644
 --- a/src/data/items.h
 +++ b/src/data/items.h
 @@ -21,6 +21,33 @@ const u8 gQuestionMarksItemName[] = _("????????");
@@ -2835,7 +2842,7 @@ index c51a5acf9af4a1fb218126f9069489265102a2ed..d6edea287a89c658d26be372d50caf9d
              "A tool used for\n"
              "catching wild\n"
 diff --git a/src/data/object_events/object_event_graphics.h b/src/data/object_events/object_event_graphics.h
-index 4e53633ccbfd7df95d501de2f7415738c315157c..fa7cc7f79b5465973facbee4e1434b03157c1d49 100755
+index 4e53633ccb..fa7cc7f79b 100755
 --- a/src/data/object_events/object_event_graphics.h
 +++ b/src/data/object_events/object_event_graphics.h
 @@ -3,6 +3,8 @@ const u16 gObjectEventPal_Brendan[] = INCGFX_U16("graphics/object_events/palette
@@ -2848,7 +2855,7 @@ index 4e53633ccbfd7df95d501de2f7415738c315157c..fa7cc7f79b5465973facbee4e1434b03
  const u16 gObjectEventPal_Null2[16] = {};
  const u16 gObjectEventPal_Null3[16] = {};
 diff --git a/src/data/object_events/object_event_graphics_info.h b/src/data/object_events/object_event_graphics_info.h
-index d1bb7adf999269ce92f87d2e2742ee6513eb7930..aed8003795d7720ae623c7d22360df5f20c4ec4d 100755
+index d1bb7adf99..aed8003795 100755
 --- a/src/data/object_events/object_event_graphics_info.h
 +++ b/src/data/object_events/object_event_graphics_info.h
 @@ -1,3 +1,21 @@
@@ -2874,7 +2881,7 @@ index d1bb7adf999269ce92f87d2e2742ee6513eb7930..aed8003795d7720ae623c7d22360df5f
      .tileTag = TAG_NONE,
      .paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN,
 diff --git a/src/data/object_events/object_event_graphics_info_pointers.h b/src/data/object_events/object_event_graphics_info_pointers.h
-index 90b888e69c0d72760b225f01c589ce621c6ac213..fe7cf7b5409922b666fb92455295cd96f04941e4 100755
+index 90b888e69c..fe7cf7b540 100755
 --- a/src/data/object_events/object_event_graphics_info_pointers.h
 +++ b/src/data/object_events/object_event_graphics_info_pointers.h
 @@ -401,7 +401,10 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvi
@@ -2889,7 +2896,7 @@ index 90b888e69c0d72760b225f01c589ce621c6ac213..fe7cf7b5409922b666fb92455295cd96
      [OBJ_EVENT_GFX_BRENDAN_MACH_BIKE] =        &gObjectEventGraphicsInfo_BrendanMachBike,
      [OBJ_EVENT_GFX_BRENDAN_SURFING] =          &gObjectEventGraphicsInfo_BrendanSurfing,
 diff --git a/src/data/object_events/object_event_pic_tables.h b/src/data/object_events/object_event_pic_tables.h
-index 612f3b68c16e0250cf3e56bba233c8952244ab10..681caf5648fca8cb004b53efcfd224ed55501ff9 100755
+index 612f3b68c1..681caf5648 100755
 --- a/src/data/object_events/object_event_pic_tables.h
 +++ b/src/data/object_events/object_event_pic_tables.h
 @@ -350,6 +350,10 @@ static const struct SpriteFrameImage sPicTable_Teala[] = {
@@ -2904,7 +2911,7 @@ index 612f3b68c16e0250cf3e56bba233c8952244ab10..681caf5648fca8cb004b53efcfd224ed
      overworld_ascending_frames(gObjectEventPic_BreakableRock, 2, 2),
  };
 diff --git a/src/data/pokemon/species_info.h b/src/data/pokemon/species_info.h
-index f7616e53dc8a3f39a71518f85c3f431880c147d2..08668f29734b1529a4cc9b8ba4a676b8e6af1fee 100644
+index f7616e53dc..08668f2973 100644
 --- a/src/data/pokemon/species_info.h
 +++ b/src/data/pokemon/species_info.h
 @@ -95,6 +95,28 @@
@@ -3494,7 +3501,7 @@ index f7616e53dc8a3f39a71518f85c3f431880c147d2..08668f29734b1529a4cc9b8ba4a676b8
      {
          .frontPic = gMonFrontPic_Egg,
 diff --git a/src/data/script_menu.h b/src/data/script_menu.h
-index 5fbd760329029d66bd50f3ad4365430eea7229b8..db7d8fa541fe77963432e5ada78ff7b86bb46397 100644
+index 5fbd760329..db7d8fa541 100644
 --- a/src/data/script_menu.h
 +++ b/src/data/script_menu.h
 @@ -1,3 +1,53 @@
@@ -3590,7 +3597,7 @@ index 5fbd760329029d66bd50f3ad4365430eea7229b8..db7d8fa541fe77963432e5ada78ff7b8
      [MULTI_PC]                         = MULTICHOICE(MultichoiceList_Exit),
      [MULTI_ENTERINFO]                  = MULTICHOICE(MultichoiceList_EnterInfo),
 diff --git a/src/data/trainers.party b/src/data/trainers.party
-index fbe4a37f6dafa6b397902c9e3c01ce12848580f8..53fb45960d3d86faf05904918f3e32661720961e 100644
+index fbe4a37f6d..53fb45960d 100644
 --- a/src/data/trainers.party
 +++ b/src/data/trainers.party
 @@ -16877,3 +16877,15 @@ Double Battle: No
@@ -3610,7 +3617,7 @@ index fbe4a37f6dafa6b397902c9e3c01ce12848580f8..53fb45960d3d86faf05904918f3e3266
 +Level: 5
 +IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 diff --git a/src/egg_hatch.c b/src/egg_hatch.c
-index a7841eda9313ad609530c90e314cba8a4e8b998c..c97148ea0fce4597a2945bddb99cabd0f52d3f14 100644
+index a7841eda93..c97148ea0f 100644
 --- a/src/egg_hatch.c
 +++ b/src/egg_hatch.c
 @@ -1,4 +1,5 @@
@@ -3631,7 +3638,7 @@ index a7841eda9313ad609530c90e314cba8a4e8b998c..c97148ea0fce4597a2945bddb99cabd0
      species = GetMonData(mon, MON_DATA_SPECIES);
      StringCopy(name, GetSpeciesName(species));
 diff --git a/src/event_object_movement.c b/src/event_object_movement.c
-index 3480aaccfd27379971d3448274a5f0e8e04d2b47..6539a8ad6473d5b503588f2cba1bd111164b0f55 100644
+index 3480aaccfd..6539a8ad64 100644
 --- a/src/event_object_movement.c
 +++ b/src/event_object_movement.c
 @@ -496,6 +496,7 @@ const u8 gInitialMovementTypeFacingDirections[NUM_MOVEMENT_TYPES] = {
@@ -3643,7 +3650,7 @@ index 3480aaccfd27379971d3448274a5f0e8e04d2b47..6539a8ad6473d5b503588f2cba1bd111
      {gObjectEventPal_Npc2,                  OBJ_EVENT_PAL_TAG_NPC_2},
      {gObjectEventPal_Npc3,                  OBJ_EVENT_PAL_TAG_NPC_3},
 diff --git a/src/intro.c b/src/intro.c
-index 0187d4d2e2750db600b170a7583fc6b42125f785..588b6c56d8904898572d8cdf2eba0ea758c19e33 100644
+index 0187d4d2e2..588b6c56d8 100644
 --- a/src/intro.c
 +++ b/src/intro.c
 @@ -1,4 +1,5 @@
@@ -3670,7 +3677,7 @@ index 0187d4d2e2750db600b170a7583fc6b42125f785..588b6c56d8904898572d8cdf2eba0ea7
          {
              if (gMultibootProgramStruct.gcmb_field_2 == 2)
 diff --git a/src/item.c b/src/item.c
-index 919eb4b334b3e7fa6b69976817c555feafdda571..d01b1efb27e976805ee25434f46e9bc9499fb559 100644
+index 919eb4b334..d01b1efb27 100644
 --- a/src/item.c
 +++ b/src/item.c
 @@ -1,5 +1,6 @@
@@ -3702,7 +3709,7 @@ index 919eb4b334b3e7fa6b69976817c555feafdda571..d01b1efb27e976805ee25434f46e9bc9
  
  u8 GetItemImportance(enum Item itemId)
 diff --git a/src/main_menu.c b/src/main_menu.c
-index 7fc7e4174bdd3807ff77515e332eda662b967ab7..a63bd3b129f50960bf26c9a357b9d7d77902db65 100644
+index 7fc7e4174b..a63bd3b129 100644
 --- a/src/main_menu.c
 +++ b/src/main_menu.c
 @@ -1,4 +1,6 @@
@@ -3747,17 +3754,19 @@ index 7fc7e4174bdd3807ff77515e332eda662b967ab7..a63bd3b129f50960bf26c9a357b9d7d7
          {
          case SAVE_STATUS_OK:
 diff --git a/src/new_game.c b/src/new_game.c
-index 89a2bf4cf8c6ec1dcbfdbaf3ee18d053f38aaa88..03ed3de818cbb7a0cf4a00a00a8b19fbda12c30b 100644
+index 89a2bf4cf8..11d63c104d 100644
 --- a/src/new_game.c
 +++ b/src/new_game.c
-@@ -1,4 +1,6 @@
+@@ -1,4 +1,8 @@
  #include "global.h"
++#include "helix_preferences.h"
++#include "helix_settings.h"
 +#include "helix_genesis.h"
 +#include "helix_universal.h"
  #include "clock.h"
  #include "new_game.h"
  #include "random.h"
-@@ -135,7 +137,9 @@ static void ClearFrontierRecord(void)
+@@ -135,7 +139,9 @@ static void ClearFrontierRecord(void)
  
  static void WarpToTruck(void)
  {
@@ -3768,7 +3777,16 @@ index 89a2bf4cf8c6ec1dcbfdbaf3ee18d053f38aaa88..03ed3de818cbb7a0cf4a00a00a8b19fb
          SetWarpDestination(MAP_GROUP(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), MAP_NUM(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), WARP_ID_NONE, 6, 6);
      else
          SetWarpDestination(MAP_GROUP(MAP_INSIDE_OF_TRUCK), MAP_NUM(MAP_INSIDE_OF_TRUCK), WARP_ID_NONE, -1, -1);
-@@ -234,6 +238,8 @@ void NewGameInitData(void)
+@@ -177,6 +183,8 @@ void NewGameInitData(void)
+     ClearFrontierRecord();
+     ClearSav1();
+     ClearSav3();
++    // Carry an explicit title-menu choice into the new save, without host state.
++    HelixPreferences_SetLanguage(gHelixSettingsView.language);
+     ClearAllMail();
+     gSaveBlock2Ptr->specialSaveWarpFlags = 0;
+     gSaveBlock2Ptr->gcnLinkFlags = 0;
+@@ -234,6 +242,8 @@ void NewGameInitData(void)
      ResetItemFlags();
      ResetDexNav();
      ClearFollowerNPCData();
@@ -3778,7 +3796,7 @@ index 89a2bf4cf8c6ec1dcbfdbaf3ee18d053f38aaa88..03ed3de818cbb7a0cf4a00a00a8b19fb
  
  static void ResetMiniGamesRecords(void)
 diff --git a/src/option_menu.c b/src/option_menu.c
-index a10b727b0d8cf9367a36b2c509ba23ef88f9f4c0..5a321940ee63b2a394642579e68a158edef2fade 100644
+index a10b727b0d..2495954987 100644
 --- a/src/option_menu.c
 +++ b/src/option_menu.c
 @@ -1,5 +1,6 @@
@@ -3839,7 +3857,7 @@ index a10b727b0d8cf9367a36b2c509ba23ef88f9f4c0..5a321940ee63b2a394642579e68a158e
 +    {HELIX_PAIR("Local account on this device.", "Conta local neste aparelho."), HELIX_PAIR("A: account availability.", "A: disponibilidade do cadastro.")},
 +    {HELIX_PAIR("Left/Right: optional microphone.", "Esq/Dir: uso do microfone."), HELIX_PAIR("A: request access on your device.", "A: pedir acesso no aparelho.")},
 +    {HELIX_PAIR("Left: automatic. A: choose a zone.", "Esq: automatico. A: ajustar."), HELIX_PAIR("Does not change the clock or game.", "Nao muda o relogio nem o jogo.")},
-+    {HELIX_PAIR("Left/Right: setup and NPC language.", "Esq/Dir: idioma do setup e NPCs."), HELIX_PAIR("A: advanced. Story stays English.", "A: ajustes. Historia em ingles.")},
++    {HELIX_PAIR("Left/Right: EN-US or PT-BR.", "Esq/Dir: EN-US ou PT-BR."), HELIX_PAIR("Save keeps it. A: advanced.", "Salvar guarda. A: avancado.")},
 +};
 +static const u8 *const sHelixWaiting[] = HELIX_PAIR("Checking the local device app...", "Consultando o app do aparelho...");
 +static const u8 *const sHelixNoApp[] = HELIX_PAIR("The local device app did not reply.", "Sem resposta do app do aparelho.");
@@ -3954,7 +3972,7 @@ index a10b727b0d8cf9367a36b2c509ba23ef88f9f4c0..5a321940ee63b2a394642579e68a158e
      CopyWindowToVram(WIN_HEADER, COPYWIN_FULL);
  }
  
-@@ -648,6 +745,303 @@ static void DrawOptionMenuTexts(void)
+@@ -648,6 +745,309 @@ static void DrawOptionMenuTexts(void)
      CopyWindowToVram(WIN_OPTIONS, COPYWIN_FULL);
  }
  
@@ -4055,7 +4073,11 @@ index a10b727b0d8cf9367a36b2c509ba23ef88f9f4c0..5a321940ee63b2a394642579e68a158e
 +        break;
 +    }
 +    DrawHeaderText();
-+    if (!gHelixSettingsView.available)
++    if (gHelixSettingsSubmenu == HELIX_MAIN && gHelixSettingsSelection == 4)
++    {
++        // This setting works immediately, including while host queries wait.
++    }
++    else if (!gHelixSettingsView.available)
 +    {
 +        first = gHelixSettingsView.pending ? HELIX_TEXT(sHelixWaiting) : HELIX_TEXT(sHelixNoApp);
 +        second = HELIX_TEXT(sHelixOffline);
@@ -4238,6 +4260,10 @@ index a10b727b0d8cf9367a36b2c509ba23ef88f9f4c0..5a321940ee63b2a394642579e68a158e
 +        HelixSettings_Request(HELIX_SETTINGS_CHECK_KEYS, 0);
 +        changed = TRUE;
 +    }
++    else if (gHelixSettingsSelection == 4 && JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
++    {
++        changed |= HelixSettings_Request(HELIX_SETTINGS_SET_LANGUAGE, JOY_NEW(DPAD_RIGHT) ? 1 : 0);
++    }
 +    else if (!gHelixSettingsView.pending && gHelixSettingsView.available)
 +    {
 +        if (gHelixSettingsSelection == 0 && JOY_NEW(DPAD_LEFT | DPAD_RIGHT | A_BUTTON))
@@ -4248,8 +4274,6 @@ index a10b727b0d8cf9367a36b2c509ba23ef88f9f4c0..5a321940ee63b2a394642579e68a158e
 +            changed |= HelixSettings_Request(HELIX_SETTINGS_OPEN_MICROPHONE, 0);
 +        else if (gHelixSettingsSelection == 3 && JOY_NEW(DPAD_LEFT))
 +            changed |= HelixSettings_Request(HELIX_SETTINGS_TIME_AUTO, 0);
-+        else if (gHelixSettingsSelection == 4 && JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
-+            changed |= HelixSettings_Request(HELIX_SETTINGS_SET_LANGUAGE, JOY_NEW(DPAD_RIGHT) ? 1 : 0);
 +    }
 +    if (changed)
 +        DrawHelixSettings();
@@ -4259,7 +4283,7 @@ index a10b727b0d8cf9367a36b2c509ba23ef88f9f4c0..5a321940ee63b2a394642579e68a158e
  #define TILE_TOP_EDGE     0x1A3
  #define TILE_TOP_CORNER_R 0x1A4
 diff --git a/src/overworld.c b/src/overworld.c
-index 6546ad89b3ed5878b8aa58cfb4895992e37cbc38..05e06ecc2a809a5094d3dcc73ba3a3dd77678838 100644
+index 6546ad89b3..05e06ecc2a 100644
 --- a/src/overworld.c
 +++ b/src/overworld.c
 @@ -1,4 +1,5 @@
@@ -4278,7 +4302,7 @@ index 6546ad89b3ed5878b8aa58cfb4895992e37cbc38..05e06ecc2a809a5094d3dcc73ba3a3dd
      StopMapMusic();
      ResetSafariZoneFlag_();
 diff --git a/src/pokedex.c b/src/pokedex.c
-index d36708ff3635f26c248e3afdf64dbf508425f4c0..39bc6a93643074fe0006617dc3706d1d184869b4 100644
+index d36708ff36..39bc6a9364 100644
 --- a/src/pokedex.c
 +++ b/src/pokedex.c
 @@ -1,4 +1,7 @@
@@ -4381,7 +4405,7 @@ index d36708ff3635f26c248e3afdf64dbf508425f4c0..39bc6a93643074fe0006617dc3706d1d
          sPokedexView->menuY = 0;
          CopyBgTilemapBufferToVram(0);
 diff --git a/src/pokemon.c b/src/pokemon.c
-index 820177770c38a73d17a1db5e37dcc6f9854190d9..cf7f39f8079502c27dfb04f5a77236bee2544e37 100644
+index 820177770c..cf7f39f807 100644
 --- a/src/pokemon.c
 +++ b/src/pokemon.c
 @@ -1,4 +1,8 @@
@@ -4502,7 +4526,7 @@ index 820177770c38a73d17a1db5e37dcc6f9854190d9..cf7f39f8079502c27dfb04f5a77236be
      dst->isShiny = IsMonShiny(src);
      dst->affectionHearts = GetMonAffectionHearts(src);
 diff --git a/src/pokemon_summary_screen.c b/src/pokemon_summary_screen.c
-index 801dfe07ed7a08c08847554a11686baa004cb5be..1ecc5e141c87538062f3e0a7ce8ab97aa2a568b3 100644
+index 801dfe07ed..1ecc5e141c 100644
 --- a/src/pokemon_summary_screen.c
 +++ b/src/pokemon_summary_screen.c
 @@ -1,4 +1,6 @@
@@ -4531,8 +4555,27 @@ index 801dfe07ed7a08c08847554a11686baa004cb5be..1ecc5e141c87538062f3e0a7ce8ab97a
              SetSpriteInvisibility(SPRITE_ARR_ID_TYPE + 1, FALSE);
          }
          else
+diff --git a/src/save.c b/src/save.c
+index 055b072960..1c2e77921d 100644
+--- a/src/save.c
++++ b/src/save.c
+@@ -1,4 +1,6 @@
+ #include "global.h"
++#include "helix_preferences.h"
++#include "helix_settings.h"
+ #include "agb_flash.h"
+ #include "gba/flash_internal.h"
+ #include "fieldmap.h"
+@@ -893,6 +895,7 @@ u8 LoadGameSave(u8 saveType)
+     default:
+         status = TryLoadSaveSlot(FULL_SAVE_SLOT, gRamSaveSectorLocations);
+         CopyPartyAndObjectsFromSave();
++        gHelixSettingsView.language = HelixPreferences_LoadLanguage();
+         gSaveFileStatus = status;
+         gGameContinueCallback = NULL;
+         break;
 diff --git a/src/start_menu.c b/src/start_menu.c
-index 648fa837c2aa629616223eb2fa7a3430f8d1be3d..4f880fdc1f9c934bec78eaf4a49cb92cfe572e6d 100644
+index 648fa837c2..4f880fdc1f 100644
 --- a/src/start_menu.c
 +++ b/src/start_menu.c
 @@ -1,4 +1,8 @@
@@ -4592,7 +4635,7 @@ index 648fa837c2aa629616223eb2fa7a3430f8d1be3d..4f880fdc1f9c934bec78eaf4a49cb92c
          return TRUE;
      }
 diff --git a/src/title_screen.c b/src/title_screen.c
-index cd85d7d6a4d5159a1838865ff4d1390698baf3d6..5d46f5b4c6914522d0f7af63e4b6f68ff04c0064 100644
+index cd85d7d6a4..5d46f5b4c6 100644
 --- a/src/title_screen.c
 +++ b/src/title_screen.c
 @@ -1,4 +1,5 @@
@@ -4614,7 +4657,7 @@ index cd85d7d6a4d5159a1838865ff4d1390698baf3d6..5d46f5b4c6914522d0f7af63e4b6f68f
      {
          CB2_InitTitleScreenFrlg();
 diff --git a/src/wild_encounter.c b/src/wild_encounter.c
-index dd6a0c8893d468cb7fddc4160f121b91ac2baa05..9bafd19b3a8757d713392f1a4ac37db4cb2d0e25 100644
+index dd6a0c8893..9bafd19b3a 100644
 --- a/src/wild_encounter.c
 +++ b/src/wild_encounter.c
 @@ -1,4 +1,5 @@

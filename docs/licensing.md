@@ -1,13 +1,14 @@
 # License boundaries
 
 The [MIT license](../LICENSE) covers the original Helix Python code in
-`companion/`, `genetics/`, `scripts/` and `tests/`; original Lua in `bridge/`;
+`companion/`, `genetics/`, `game_agents/`, `scripts/` and `tests/`; original Lua in `bridge/`;
 the shell/Python/container configuration in `platform/`; project configuration,
 GitHub templates/workflows, and original prose documentation.
 
 **Excluded:** all of `rom-source/`, the fetched `game/` checkout, images and
 other media (including `docs/media/`), upstream patch context, third-party
-code/assets, and Pokémon names, characters, logos and trademarks. No blanket
+code/assets, externally sourced reference records and font/character metrics in
+`examples/`, and Pokémon names, characters, logos and trademarks. No blanket
 open-source license is granted for the game or artwork. Original prose that
 describes those materials does not change their rights.
 

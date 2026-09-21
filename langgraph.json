@@ -1,0 +1,8 @@
+{
+  "dependencies": [
+    "."
+  ],
+  "graphs": {
+    "game_coordinator": "game_agents.graph:graph"
+  }
+}

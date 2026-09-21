@@ -1,9 +1,22 @@
 [project]
 name = "pokemon-helix"
 version = "0.1.0"
-description = "Deterministic synthetic laboratory kickstart for Pokémon Helix"
+description = "Deterministic laboratory, bounded agents and native integration for Pokémon Helix"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "langgraph>=1.0,<2",
+    "langsmith>=0.3,<1",
+    "pydantic>=2.10,<3",
+]
+
+[project.optional-dependencies]
+generation = [
+    "deepagents==0.7.15",
+    "langchain-openai==1.6.2",
+]
 
 [tool.uv]
 package = false
+
+[dependency-groups]
+dev = ["langgraph-cli[inmem]>=0.4,<1"]

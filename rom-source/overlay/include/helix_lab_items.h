@@ -1,5 +1,7 @@
 #ifndef GUARD_HELIX_LAB_ITEMS_H
 #define GUARD_HELIX_LAB_ITEMS_H
+void StartHelixLabNativeSimulation(void);
+extern u16 gHelixLabNativeLastResult;
 
 #define HELIX_LAB_ITEMS_FIRST_FLAG 0x40
 #define HELIX_LAB_ITEMS_MAGIC 0x7000

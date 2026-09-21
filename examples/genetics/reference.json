@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "organism": "Danio rerio",
+  "common_name": "zebrafish",
+  "taxonomy_id": 7955,
+  "reference_accession": "NC_002333.2",
+  "molecule": "mitochondrial DNA",
+  "record_title": "NC_002333.2:1-1536 Danio rerio mitochondrion, complete genome",
+  "coordinates": {
+    "start": 1,
+    "end": 1536,
+    "coordinate_system": "1-based inclusive",
+    "orientation": "+",
+    "efetch_strand": 1
+  },
+  "source_record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_002333.2",
+  "source_fasta_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=NC_002333.2&rettype=fasta&retmode=text&seq_start=1&seq_stop=1536&strand=1",
+  "retrieved_at_utc": "2026-09-20T04:49:08.261364+00:00",
+  "fasta_file": "danio_rerio_NC_002333.2_1-1536.fasta",
+  "fasta_sha256": "f5f51e1122f1ddae7f07749c3688ec2151e8cd00febda54b9192289c44371457",
+  "sequence_sha256": "a6ec23c256a203fcf64a2f420d1ae5b7015aae3ae077f1d8013a2f68b61b9df1",
+  "sequence_length": 1536,
+  "transform_version": "aurora-reference-descriptors-v1",
+  "usage": "Public nonhuman DNA fragment used only as conditioning context for model-generated individual artwork. No deterministic phenotype mapping, biological prediction, or actual genome editing.",
+  "source_genbank_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=NC_002333.2&rettype=gb&retmode=text&seq_start=1&seq_stop=1536&strand=1",
+  "source_genbank_file": "source-record.gb",
+  "source_genbank_sha256": "4c5ddc94aca5e2cfe47e18380ce3d8ff5e72ba8e5cd48d1cffb38d32c25427c7",
+  "genome_scope": "Fragment of a versioned mitochondrial RefSeq record; no nuclear assembly or real trait loci are asserted."
+}

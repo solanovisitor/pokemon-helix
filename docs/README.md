@@ -25,6 +25,9 @@ inputs and no emulator or API key.
 | Reconstruct the pinned Emerald source with Helix changes | [Native source setup](../rom-source/README.md) |
 | Work on desktop emulator communication | [Lua bridge](../bridge/README.md) |
 | Run tests and the service smoke | [Public verification commands](verification.md#reproduce-public-checks) |
+| Run deterministic NPC/Pokémon producers and visual asset tools | [Agent tools](agent-tools.md) |
+| Understand the proposed quest coordinator | [Quest contract](quest-agents.md) |
+| Continue implementation with another agent | [Development handoff](continue-development.md) |
 | Help bring Helix to RG34XX | [Platform limits](architecture.md#platform-limits) and [roadmap](roadmap.md#useful-next-contributions) |
 
 ## Project reference

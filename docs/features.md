@@ -44,8 +44,10 @@ broad native lifecycle coverage remain unfinished.
 
 ## What is available today?
 
-The public repository runs the synthetic assay and local host service, and
-provides a patch/overlay for the Emerald source. It does not reproduce the
+The public repository runs the synthetic assay, local host service and
+[bounded agent tools](agent-tools.md), and provides a patch/overlay for the
+Emerald source, including V18b's offline assay and saved language preference.
+It does not reproduce the
 full local game shown here; required generated game packages are absent.
 
 The opening, companion records and village work belong to the accepted local

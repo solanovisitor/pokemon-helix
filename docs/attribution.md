@@ -25,7 +25,7 @@ records the complete discovered license-path inventory.
 The Helix direction combines an indigo laboratory, teal DNA holograms and warm
 equipment lights. Selected native build inputs are reused byte-for-byte from
 the project's original generated art and deterministic GBA conversions. This
-publication generates no new artwork and publishes no prompts, provider
+publication generates no new artwork and publishes no private prompts, provider
 responses, personal profiles or accepted individual packages.
 
 - The approved laboratory-title source was generated in September 2026 through
@@ -46,6 +46,22 @@ responses, personal profiles or accepted individual packages.
 - Tile-map layouts and authored event scripts are Helix integration work;
   their referenced Emerald tiles, fonts, sprites and other game content retain
   upstream ownership. Native artwork and screenshots are excluded from MIT.
+
+## Public host reference inputs
+
+`examples/native-text-metrics.json` retains only numerical text widths derived
+from the pinned upstream's `src/fonts.c` and `charmap.txt`, with source hashes.
+It contains no glyph pixels and is excluded from the Helix MIT grant. These
+metrics constrain host drafts; a rendered native screenshot is still required
+to establish legibility.
+
+`examples/genetics/` retains the public nonhuman zebrafish mitochondrial record
+`NC_002333.2`, its 1–1536 fragment and deterministic descriptors. The source is
+[NCBI RefSeq](https://www.ncbi.nlm.nih.gov/nuccore/NC_002333.2); retrieval metadata,
+coordinates and hashes remain in `reference.json`. This is reference context,
+not personal genetic data or a validated mapping from sequence to Pokémon traits.
+The external record is excluded from the Helix MIT grant. The dossier example
+uses synthetic identities and does not describe an accepted individual.
 
 ## Published captures
 

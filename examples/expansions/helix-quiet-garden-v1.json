@@ -1,0 +1,833 @@
+{
+  "schema_version": 1,
+  "expansion_id": "helix-quiet-garden-v1",
+  "revision": 1,
+  "status": "fixture",
+  "map": {
+    "group": 75,
+    "number": 3,
+    "name": "HelixQuietGarden",
+    "layout": {
+      "id": "LAYOUT_HELIX_QUIET_GARDEN",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_width": 2,
+      "border_height": 2,
+      "name": "HelixQuietGarden_Layout",
+      "border_filepath": "data/layouts/HelixQuietGarden/border.bin",
+      "blockdata_filepath": "data/layouts/HelixQuietGarden/map.bin",
+      "layout_version": "emerald"
+    },
+    "grid": [
+      [
+        1492,
+        1493,
+        1492,
+        1493,
+        1492,
+        1493,
+        1492,
+        1493,
+        1492,
+        1493,
+        1492,
+        1493,
+        1492,
+        1493,
+        1492,
+        1493,
+        1492,
+        1493,
+        1492,
+        1493
+      ],
+      [
+        1500,
+        1501,
+        1500,
+        1501,
+        1500,
+        1501,
+        1500,
+        1501,
+        1500,
+        1501,
+        1500,
+        1501,
+        1500,
+        1501,
+        1500,
+        1501,
+        1500,
+        1501,
+        1500,
+        1501
+      ],
+      [
+        1492,
+        1493,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        1492,
+        1493
+      ],
+      [
+        1500,
+        1501,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12761,
+        12761,
+        12761,
+        5281,
+        5281,
+        5281,
+        5281,
+        5281,
+        12289,
+        1500,
+        1501
+      ],
+      [
+        1492,
+        1493,
+        12289,
+        5281,
+        5281,
+        5281,
+        5281,
+        5281,
+        12289,
+        12761,
+        12761,
+        12761,
+        5281,
+        5281,
+        5281,
+        5281,
+        5281,
+        12289,
+        1492,
+        1493
+      ],
+      [
+        1500,
+        1501,
+        12289,
+        5281,
+        5281,
+        5281,
+        5281,
+        5281,
+        12289,
+        12761,
+        12761,
+        12761,
+        5281,
+        12289,
+        12289,
+        1027,
+        12289,
+        12289,
+        1500,
+        1501
+      ],
+      [
+        1492,
+        1493,
+        12289,
+        5281,
+        5281,
+        5281,
+        5281,
+        5281,
+        12289,
+        12761,
+        12761,
+        12761,
+        5281,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        1492,
+        1493
+      ],
+      [
+        1500,
+        1501,
+        12289,
+        5281,
+        5281,
+        5281,
+        5281,
+        5281,
+        5281,
+        12761,
+        12761,
+        12761,
+        5281,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        1500,
+        1501
+      ],
+      [
+        1492,
+        1493,
+        12289,
+        5281,
+        5281,
+        5281,
+        5281,
+        5281,
+        12289,
+        12761,
+        12761,
+        12761,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        1492,
+        1493
+      ],
+      [
+        1500,
+        1501,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12761,
+        12761,
+        12761,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        1500,
+        1501
+      ],
+      [
+        1492,
+        1493,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12761,
+        1027,
+        12761,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        1492,
+        1493
+      ],
+      [
+        1500,
+        1501,
+        12289,
+        12289,
+        12289,
+        1027,
+        12289,
+        12289,
+        12289,
+        12761,
+        12761,
+        12761,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        1500,
+        1501
+      ],
+      [
+        1492,
+        1493,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12761,
+        12761,
+        12761,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        1492,
+        1493
+      ],
+      [
+        1500,
+        1501,
+        12289,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12289,
+        1500,
+        1501
+      ],
+      [
+        1492,
+        1493,
+        12289,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12761,
+        12289,
+        1492,
+        1493
+      ],
+      [
+        1500,
+        1501,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12761,
+        12761,
+        12761,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        1500,
+        1501
+      ],
+      [
+        1492,
+        1493,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12761,
+        12761,
+        12761,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        1492,
+        1493
+      ],
+      [
+        1500,
+        1501,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12761,
+        12761,
+        12761,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        12289,
+        1500,
+        1501
+      ],
+      [
+        1492,
+        1493,
+        1492,
+        1493,
+        1492,
+        1493,
+        1492,
+        1493,
+        1492,
+        1493,
+        12289,
+        1493,
+        1492,
+        1493,
+        1492,
+        1493,
+        1492,
+        1493,
+        1492,
+        1493
+      ],
+      [
+        1500,
+        1501,
+        1500,
+        1501,
+        1500,
+        1501,
+        1500,
+        1501,
+        1500,
+        1501,
+        1500,
+        1501,
+        1500,
+        1501,
+        1500,
+        1501,
+        1500,
+        1501,
+        1500,
+        1501
+      ]
+    ],
+    "border": [
+      1492,
+      1493,
+      1500,
+      1501
+    ],
+    "native": {
+      "id": "MAP_HELIX_QUIET_GARDEN",
+      "name": "HelixQuietGarden",
+      "layout": "LAYOUT_HELIX_QUIET_GARDEN",
+      "music": "MUS_OLDALE",
+      "region": "REGION_HOENN",
+      "region_map_section": "MAPSEC_OLDALE_TOWN",
+      "requires_flash": false,
+      "weather": "WEATHER_SUNNY",
+      "map_type": "MAP_TYPE_TOWN",
+      "allow_cycling": false,
+      "allow_escaping": false,
+      "allow_running": true,
+      "show_map_name": false,
+      "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+      "connections": null,
+      "object_events": [
+        {
+          "graphics_id": "OBJ_EVENT_GFX_WOMAN_1",
+          "x": 7,
+          "y": 14,
+          "elevation": 3,
+          "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+          "movement_range_x": 0,
+          "movement_range_y": 0,
+          "trainer_type": "TRAINER_TYPE_NONE",
+          "trainer_sight_or_berry_tree_id": "0",
+          "script": "HelixExpansion_EventScript_Lia",
+          "flag": "0"
+        },
+        {
+          "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+          "x": 15,
+          "y": 8,
+          "elevation": 3,
+          "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+          "movement_range_x": 0,
+          "movement_range_y": 0,
+          "trainer_type": "TRAINER_TYPE_NONE",
+          "trainer_sight_or_berry_tree_id": "0",
+          "script": "HelixExpansion_EventScript_Tom",
+          "flag": "0"
+        },
+        {
+          "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+          "x": 10,
+          "y": 18,
+          "elevation": 3,
+          "movement_type": "MOVEMENT_TYPE_FACE_UP",
+          "movement_range_x": 0,
+          "movement_range_y": 0,
+          "trainer_type": "TRAINER_TYPE_NONE",
+          "trainer_sight_or_berry_tree_id": "0",
+          "script": "HelixExpansion_EventScript_Return",
+          "flag": "0"
+        }
+      ],
+      "warp_events": [],
+      "coord_events": [],
+      "bg_events": [
+        {
+          "type": "sign",
+          "x": 5,
+          "y": 11,
+          "elevation": 0,
+          "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+          "script": "HelixExpansion_EventScript_Bed"
+        },
+        {
+          "type": "sign",
+          "x": 15,
+          "y": 5,
+          "elevation": 0,
+          "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+          "script": "HelixExpansion_EventScript_Mouth"
+        },
+        {
+          "type": "sign",
+          "x": 10,
+          "y": 10,
+          "elevation": 0,
+          "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+          "script": "HelixExpansion_EventScript_Board"
+        }
+      ]
+    },
+    "spawn": [
+      10,
+      17
+    ],
+    "return_target": [
+      10,
+      18
+    ],
+    "return_destination": {
+      "map": "HelixShelterTrail",
+      "position": [
+        18,
+        16
+      ]
+    }
+  },
+  "entry": {
+    "map": "HelixShelterTrail",
+    "target": [
+      18,
+      15
+    ]
+  },
+  "dependencies": {
+    "individual_package_sha256": "0c6a6c3ab374e1731aab4cf9b0fe87e9e548236ec5798c327a901d168e3b8dc6",
+    "care_accepted_rom_sha256": "38584c2c2e9e53d8718891bfee67d2e3c7aa2980bb3ff8651095537266c42c3c",
+    "quest_candidate_rom_sha256": "31c1202c10fb30d1c0f00cec80537e825dffd9bedb67145345cf243d0c657db4"
+  },
+  "state": {
+    "first_flag": 48,
+    "bytes": 2,
+    "magic": 24576,
+    "mask": 65472
+  },
+  "budget": {
+    "maps": 1,
+    "cells": 400,
+    "objects": 3,
+    "save_bytes": 2,
+    "view_bytes": 20,
+    "provider_requests": 0
+  },
+  "nodes": [
+    {
+      "id": "offer",
+      "location": "lia",
+      "action": "accept",
+      "preconditions": [
+        "unseen"
+      ],
+      "effects": [
+        "remember_acceptance"
+      ],
+      "next": [
+        "bed",
+        "mouth"
+      ]
+    },
+    {
+      "id": "bed",
+      "location": "bed",
+      "action": "inspect_bed",
+      "preconditions": [
+        "accepted"
+      ],
+      "effects": [
+        "remember_bed_clue"
+      ],
+      "next": [
+        "mouth",
+        "test"
+      ]
+    },
+    {
+      "id": "mouth",
+      "location": "mouth",
+      "action": "inspect_mouth",
+      "preconditions": [
+        "accepted"
+      ],
+      "effects": [
+        "remember_mouth_clue"
+      ],
+      "next": [
+        "bed",
+        "test"
+      ]
+    },
+    {
+      "id": "test",
+      "location": "board",
+      "action": "observe",
+      "preconditions": [
+        "both_clues",
+        "companion_ready",
+        "prepared"
+      ],
+      "effects": [
+        "remember_method"
+      ],
+      "next": [
+        "bed_screen",
+        "mouth_screen"
+      ]
+    },
+    {
+      "id": "bed_screen",
+      "location": "board",
+      "action": "screen_bed",
+      "preconditions": [
+        "tested",
+        "companion_ready"
+      ],
+      "effects": [
+        "remember_bed_screen"
+      ],
+      "next": [
+        "replay"
+      ]
+    },
+    {
+      "id": "mouth_screen",
+      "location": "board",
+      "action": "screen_mouth",
+      "preconditions": [
+        "tested",
+        "companion_ready"
+      ],
+      "effects": [
+        "remember_mouth_screen"
+      ],
+      "next": [
+        "replay"
+      ]
+    },
+    {
+      "id": "replay",
+      "location": "board",
+      "action": "review",
+      "preconditions": [
+        "resolved"
+      ],
+      "effects": [],
+      "next": []
+    }
+  ],
+  "locations": {
+    "lia": [
+      7,
+      14
+    ],
+    "bed": [
+      5,
+      11
+    ],
+    "mouth": [
+      15,
+      5
+    ],
+    "board": [
+      10,
+      10
+    ],
+    "tom": [
+      15,
+      8
+    ]
+  },
+  "texts": [
+    {
+      "en": "Guide: The Quiet Garden is east.\\nWalk there with me?$",
+      "pt": "Guia: O Jardim da Vazante e ali.\\nQuer ir comigo?$"
+    },
+    {
+      "en": "Guide: Return to Shelter Trail?$",
+      "pt": "Guia: Voltar a Trilha Abrigo?$"
+    },
+    {
+      "en": "LIA: Leaves reach my seedlings.\\nTOM needs a clear water edge.\\pWill you help us choose a screen?$",
+      "pt": "LIA: Folhas chegam as mudas.\\nTOM precisa ver a beira da agua.\\pAjuda a escolher onde por tela?$"
+    },
+    {
+      "en": "LIA: Come back when you wish.\\nThe whole garden stays open.$",
+      "pt": "LIA: Volte quando quiser.\\nO jardim inteiro fica aberto.$"
+    },
+    {
+      "en": "Check the sheltered bed west,\\nthen the channel mouth east.\\pEither order is fine.$",
+      "pt": "Veja o canteiro abrigado a oeste\\ne a entrada do canal a leste.\\pPode comecar por qualquer um.$"
+    },
+    {
+      "en": "Clue: Wet leaves line this bed.\\nWind or water brought them?\\pThe marks alone cannot tell.$",
+      "pt": "Pista: Folhas molhadas na borda.\\nVieram pelo vento ou pela agua?\\pAs marcas nao dizem a causa.$"
+    },
+    {
+      "en": "Clue: A shallow channel leads\\nfrom this mouth to the bed.\\pThat does not prove it flows now.$",
+      "pt": "Pista: Um canal raso liga esta\\nentrada ao canteiro.\\pNao prova que a agua corre agora.$"
+    },
+    {
+      "en": "TOM: I watch leaves drift here.\\nA screen at the bed hides them.\\pAt the mouth, it narrows access.$",
+      "pt": "TOM: Observo folhas boiando aqui.\\nTela no canteiro cobre a vista.\\pNa entrada, estreita o acesso.$"
+    },
+    {
+      "en": "NAUTIL braces the low tray\\nwith its paddle feet.\\pFloat one fallen leaf to test?$",
+      "pt": "NAUTIL firma a bandeja baixa\\ncom seus pes de nadadeira.\\pSoltar uma folha para testar?$"
+    },
+    {
+      "en": "FERRO supports the raised tray\\nwith its long legs.\\pLower one fallen leaf to test?$",
+      "pt": "FERRO apoia a bandeja alta\\ncom suas pernas longas.\\pBaixar uma folha para testar?$"
+    },
+    {
+      "en": "The leaf follows the water\\nfrom the mouth to the bed.\\pFact: The channel carries leaves.$",
+      "pt": "A folha acompanha a agua\\nda entrada ate o canteiro.\\pFato: O canal carrega folhas.$"
+    },
+    {
+      "en": "Bed screen: easy access stays.\\nLeaves stop before the seedlings.\\pTOM loses this clear water view.$",
+      "pt": "Tela no canteiro: acesso livre.\\nFolhas param antes das mudas.\\pTOM perde a vista da agua aqui.$"
+    },
+    {
+      "en": "Mouth screen: clear bed view.\\nLeaves stop at the channel mouth.\\pVisitors must walk around it.$",
+      "pt": "Tela na entrada: vista livre.\\nFolhas param na boca do canal.\\pVisitantes precisam contorna-la.$"
+    },
+    {
+      "en": "Kept: Screen beside the bed.\\nLIA: The access stays simple.\\pTOM: I cannot watch leaves here.$",
+      "pt": "Guardado: Tela junto ao canteiro.\\nLIA: O acesso continua simples.\\pTOM: Nao vejo folhas aqui.$"
+    },
+    {
+      "en": "Kept: Screen at the mouth.\\nTOM: The bed stays in view.\\pLIA: We walk around the screen.$",
+      "pt": "Guardado: Tela na entrada.\\nTOM: A vista continua livre.\\pLIA: Contornamos a tela.$"
+    },
+    {
+      "en": "Stopped. Your notes stay.\\nNo screen has been placed.$",
+      "pt": "Parou. Suas notas continuam.\\nNenhuma tela foi colocada.$"
+    },
+    {
+      "en": "Your companion must be here\\nand well for this test.\\pYou can keep exploring.$",
+      "pt": "Seu parceiro precisa estar aqui\\ne bem para fazer o teste.\\pVoce pode seguir explorando.$"
+    },
+    {
+      "en": "Read both water-edge clues.\\nThen meet at the test board.$",
+      "pt": "Veja as duas pistas na beira.\\nDepois volte ao quadro de teste.$"
+    },
+    {
+      "en": "Test the channel together\\nbefore placing a screen.$",
+      "pt": "Testem o canal juntos\\nantes de colocar uma tela.$"
+    },
+    {
+      "en": "These notes cannot be read.\\nNothing has been changed.$",
+      "pt": "Nao foi possivel ler as notas.\\nNada foi alterado.$"
+    },
+    {
+      "en": "LIA can explain the problem.\\nYou may explore at any time.$",
+      "pt": "LIA explica o problema.\\nVoce pode explorar quando quiser.$"
+    },
+    {
+      "en": "Notes kept: both clues read.\\nBring your companion to the board.$",
+      "pt": "Notas: As duas pistas foram lidas.\\nTraga seu parceiro ao quadro.$"
+    }
+  ],
+  "dynamic_sites": [
+    {
+      "solution": "bed_screen",
+      "position": [
+        6,
+        10
+      ],
+      "block": 1027
+    },
+    {
+      "solution": "mouth_screen",
+      "position": [
+        14,
+        6
+      ],
+      "block": 1027
+    }
+  ]
+}

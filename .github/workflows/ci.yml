@@ -17,6 +17,10 @@ jobs:
   host:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
+    env:
+      LANGSMITH_TRACING: "false"
+      LANGCHAIN_TRACING_V2: "false"
+      LANGGRAPH_ANALYTICS_ENABLED: "false"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -25,12 +29,13 @@ jobs:
         with:
           version: "0.11.12"
           enable-cache: false
-      - run: uv sync --locked --python 3.12
+      - run: uv sync --locked --python 3.12 --extra generation
       - run: uv run --locked python -m unittest discover -s tests -v
       - run: uv run --locked python -m companion.demo
       - run: uv run --locked python platform/rg34xx/smoke.py
       - run: uv run --locked python scripts/check-public.py
       - run: uv run --locked python scripts/check-public-native-fixtures.py
+      - run: uv run --locked python scripts/smoke-agent-tools.py
   container:
     runs-on: ubuntu-24.04-arm
     timeout-minutes: 10
@@ -46,3 +51,11 @@ jobs:
           --tmpfs /tmp:rw,noexec,nosuid,size=16m --cap-drop ALL
           --security-opt no-new-privileges --pids-limit 64 --memory 256m --cpus 1
           helix-lab-ci
+      - name: Build the allowlisted C model check
+        run: docker build --platform linux/arm64 -f platform/rg34xx/Dockerfile.indicator -t helix-indicator-ci .
+      - name: Verify C and Python numeric equivalence
+        run: >-
+          docker run --rm --platform linux/arm64 --network none --read-only
+          --tmpfs /tmp:rw,exec,nosuid,size=64m --cap-drop ALL
+          --security-opt no-new-privileges --pids-limit 64 --memory 512m --cpus 1
+          helix-indicator-ci

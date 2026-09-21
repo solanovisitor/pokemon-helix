@@ -14,7 +14,7 @@ import sys
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-FORBIDDEN_SUFFIXES = {'.gba', '.elf', '.sav', '.sqlite', '.db', '.log', '.jsonl', '.o', '.pyc'}
+FORBIDDEN_SUFFIXES = {'.gba', '.elf', '.sav', '.sqlite', '.sqlite3', '.db', '.log', '.jsonl', '.o', '.pyc'}
 PATTERNS = {
     'private-key': rb'-----BEGIN (?:[A-Z ]+ )?PRIVATE KEY-----',
     'provider-token': rb'(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{40,}|sk-(?:or-v1-)?[A-Za-z0-9_-]{32,}|AKIA[A-Z0-9]{16})',
@@ -57,7 +57,7 @@ def main() -> int:
             failures.append('missing: ' + name)
             continue
         parts = path.relative_to(ROOT).parts
-        if path.suffix.lower() in FORBIDDEN_SUFFIXES or parts[0] in {'game', '.local', 'artifacts', 'assets', 'data'}:
+        if path.suffix.lower() in FORBIDDEN_SUFFIXES or parts[0] in {'game', '.local', '.langgraph_api', 'artifacts', 'assets', 'data'}:
             failures.append('excluded-material: ' + name)
         raw = path.read_bytes()
         if len(raw) > 5_000_000:

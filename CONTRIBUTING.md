@@ -13,16 +13,20 @@ From your fork:
 ```sh
 git clone https://github.com/YOUR-USERNAME/pokemon-helix.git
 cd pokemon-helix
-uv sync --locked --python 3.12
+uv sync --locked --python 3.12 --extra generation
 uv run --offline --frozen python -m companion.demo
 uv run --offline --frozen python -m unittest discover -s tests -v
 uv run --offline --frozen python platform/rg34xx/smoke.py
 ```
 
-Setup may download Python. The demo and tests use synthetic inputs and require
+Setup may download Python and locked dependencies. The demo and tests use synthetic inputs and require
 no API keys, emulator, personal files or retained game packages. The socket smoke
 uses temporary local data and loopback networking. See [verification](docs/verification.md)
 for the restricted container check.
+
+Install a C compiler (`clang` or `cc`) for the native model/preferences tests.
+The `generation` extra runs the offline Deep Agents tool-binding test too.
+See [agent tools](docs/agent-tools.md) for deterministic producer and asset examples.
 
 ## Keep responsibilities clear
 
@@ -38,7 +42,7 @@ Preserve upstream history, authorship and notices. Do not copy unrelated local
 development history into this repository or widen the [license](LICENSE) to
 third-party game content.
 
-Never upload ROMs, saves, savestates, credentials, real genetic files, personal
+Never upload ROMs, saves, savestates, credentials, personal genetic files, personal
 profiles, conversations or private authoring material. Reproduce problems with
 synthetic inputs. Report vulnerabilities using [SECURITY.md](SECURITY.md), and
 follow the [code of conduct](CODE_OF_CONDUCT.md).

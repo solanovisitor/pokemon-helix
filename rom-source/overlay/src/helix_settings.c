@@ -1,6 +1,7 @@
 #include "global.h"
 #include <stddef.h>
 #include "helix_settings.h"
+#include "helix_preferences.h"
 
 STATIC_ASSERT(sizeof(struct HelixSettingsMailbox) == 48, HelixSettingsMailboxSize);
 STATIC_ASSERT(offsetof(struct HelixSettingsMailbox, status) == 6, HelixSettingsStatusOffset);
@@ -44,8 +45,7 @@ static void SafeView(u16 result)
     gHelixSettingsView.result = result;
     gHelixSettingsView.capabilities = 0;
     gHelixSettingsView.available = FALSE;
-    // Retain only the last acknowledged display language in this RAM session.
-    // It is not connectivity or permission; fresh boots still default to EN.
+    // Language belongs to the native save, never a permission/host reply.
     if (gHelixSettingsView.language > 1)
         gHelixSettingsView.language = 0;
     gHelixSettingsView.reserved = 0;
@@ -65,6 +65,13 @@ static void FinishUnavailable(u16 result)
 
 bool32 HelixSettings_Request(u16 operation, u16 argument)
 {
+    if (operation == HELIX_SETTINGS_SET_LANGUAGE)
+    {
+        if (!sOpen || !HelixPreferences_SetLanguage(argument))
+            return FALSE;
+        gHelixSettingsView.language = argument;
+        return TRUE;
+    }
     if (gHelixSettingsAbi[1] != 48 || !sOpen || gHelixSettingsView.pending || sRequest == 0xFFFFFFFF)
         return FALSE;
     if (operation < HELIX_SETTINGS_QUERY || operation > HELIX_SETTINGS_REMOVE_KEY
@@ -161,7 +168,7 @@ bool32 HelixSettings_Update(void)
             gHelixSettingsView.localMinute = response.localMinute;
             gHelixSettingsView.result = response.result;
             gHelixSettingsView.capabilities = response.capabilities;
-            gHelixSettingsView.language = response.language;
+            // A query or stale host preference cannot overwrite local language.
             gHelixSettingsView.voiceEnabled = response.voiceEnabled;
             gHelixSettingsView.timezoneIndex = response.timezoneIndex;
             gHelixSettingsView.openrouterKey = response.openrouterKey;

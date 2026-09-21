@@ -4,6 +4,7 @@ __pycache__/
 *.py[cod]
 /game/
 /.local/
+/.langgraph_api/
 /artifacts/
 /build/
 /dist/
@@ -12,6 +13,8 @@ __pycache__/
 !.env.example
 *.sqlite
 *.sqlite-*
+*.sqlite3
+*.sqlite3-*
 *.db
 *.db-*
 *.log
