@@ -42,6 +42,13 @@ absent. Compilation cannot reproduce the V14/V17c opening or prove their save
 compatibility. Never import an accepted or personal save into this integration.
 No native gameplay or handheld playability is claimed for this export.
 
+The upstream graphics dependency scanner also sees inactive package branches.
+Five absent package sprite sets therefore contain byte-identical copies of
+the reviewed Lumifin sprite/palette as **build placeholders**. The manifest
+records every alias, and the fixture checker verifies them. These are not the
+accepted founders, rival or child artwork and must not be used to imply a
+complete gameplay package. No accepted package is opened to supply them.
+
 Embedded legacy individual/package constants use the separate namespace
 `pokemon-helix/public-source-fixture/v1`. The generated header and checker bind
 synthetic IDs/genomes, placeholder profiles and reused original artwork without

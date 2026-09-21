@@ -39,6 +39,10 @@ responses, personal profiles or accepted individual packages.
   were generated for this project and converted to GBA formats. Their presence
   preserves source dependencies, not accepted individual identities. Public
   fixture bindings are separate and do not establish save compatibility.
+- Five disabled package sprite sets reuse the exact Lumifin bytes as build
+  placeholders because upstream scans graphics in inactive branches. Their
+  aliases are explicit in the native manifest. They do not reproduce the
+  accepted founder, rival, child or third-family artwork.
 - Tile-map layouts and authored event scripts are Helix integration work;
   their referenced Emerald tiles, fonts, sprites and other game content retain
   upstream ownership. Native artwork and screenshots are excluded from MIT.

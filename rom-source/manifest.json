@@ -4,8 +4,8 @@
   "bootstrap_sha256": "ea52898da4d81e7f8aaf86660897ea3853c769e46a6c8d80f1057d2fce4ddf2e",
   "bundle_files": {
     "README.md": {
-      "bytes": 3082,
-      "sha256": "c0a79114ef05bbdc1406a58fc8f23bf0b5b032624c2fc6c6d95ce68a0fc3c781"
+      "bytes": 3537,
+      "sha256": "9b05d002de2ff31d85a30433f33a787e20948acd5c1317a683c7ca302124a761"
     },
     "helix.patch": {
       "bytes": 194705,
@@ -151,6 +151,22 @@
       "bytes": 194,
       "sha256": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972"
     },
+    "overlay/graphics/pokemon/aurora_family_three/back.png": {
+      "bytes": 805,
+      "sha256": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7"
+    },
+    "overlay/graphics/pokemon/aurora_family_three/front.png": {
+      "bytes": 752,
+      "sha256": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42"
+    },
+    "overlay/graphics/pokemon/aurora_family_three/icon.png": {
+      "bytes": 1024,
+      "sha256": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999"
+    },
+    "overlay/graphics/pokemon/aurora_family_three/normal.pal": {
+      "bytes": 194,
+      "sha256": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972"
+    },
     "overlay/graphics/pokemon/aurora_family_two/back.png": {
       "bytes": 805,
       "sha256": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7"
@@ -164,6 +180,70 @@
       "sha256": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999"
     },
     "overlay/graphics/pokemon/aurora_family_two/normal.pal": {
+      "bytes": 194,
+      "sha256": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972"
+    },
+    "overlay/graphics/pokemon/helix_child/back.png": {
+      "bytes": 805,
+      "sha256": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7"
+    },
+    "overlay/graphics/pokemon/helix_child/front.png": {
+      "bytes": 752,
+      "sha256": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42"
+    },
+    "overlay/graphics/pokemon/helix_child/icon.png": {
+      "bytes": 1024,
+      "sha256": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999"
+    },
+    "overlay/graphics/pokemon/helix_child/normal.pal": {
+      "bytes": 194,
+      "sha256": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972"
+    },
+    "overlay/graphics/pokemon/helix_founder_one/back.png": {
+      "bytes": 805,
+      "sha256": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7"
+    },
+    "overlay/graphics/pokemon/helix_founder_one/front.png": {
+      "bytes": 752,
+      "sha256": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42"
+    },
+    "overlay/graphics/pokemon/helix_founder_one/icon.png": {
+      "bytes": 1024,
+      "sha256": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999"
+    },
+    "overlay/graphics/pokemon/helix_founder_one/normal.pal": {
+      "bytes": 194,
+      "sha256": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972"
+    },
+    "overlay/graphics/pokemon/helix_founder_two/back.png": {
+      "bytes": 805,
+      "sha256": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7"
+    },
+    "overlay/graphics/pokemon/helix_founder_two/front.png": {
+      "bytes": 752,
+      "sha256": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42"
+    },
+    "overlay/graphics/pokemon/helix_founder_two/icon.png": {
+      "bytes": 1024,
+      "sha256": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999"
+    },
+    "overlay/graphics/pokemon/helix_founder_two/normal.pal": {
+      "bytes": 194,
+      "sha256": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972"
+    },
+    "overlay/graphics/pokemon/helix_rival/back.png": {
+      "bytes": 805,
+      "sha256": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7"
+    },
+    "overlay/graphics/pokemon/helix_rival/front.png": {
+      "bytes": 752,
+      "sha256": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42"
+    },
+    "overlay/graphics/pokemon/helix_rival/icon.png": {
+      "bytes": 1024,
+      "sha256": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999"
+    },
+    "overlay/graphics/pokemon/helix_rival/normal.pal": {
       "bytes": 194,
       "sha256": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972"
     },
@@ -420,9 +500,31 @@
       "sha256": "6bd2618b66aa74a7fccdc51bfb62c3e3a0692b932ebd8fc51bbe0676a9865077"
     }
   },
+  "disabled_package_art_placeholders": {
+    "graphics/pokemon/aurora_family_three/back.png": "graphics/pokemon/lumifin/back.png",
+    "graphics/pokemon/aurora_family_three/front.png": "graphics/pokemon/lumifin/front.png",
+    "graphics/pokemon/aurora_family_three/icon.png": "graphics/pokemon/lumifin/icon.png",
+    "graphics/pokemon/aurora_family_three/normal.pal": "graphics/pokemon/lumifin/normal.pal",
+    "graphics/pokemon/helix_child/back.png": "graphics/pokemon/lumifin/back.png",
+    "graphics/pokemon/helix_child/front.png": "graphics/pokemon/lumifin/front.png",
+    "graphics/pokemon/helix_child/icon.png": "graphics/pokemon/lumifin/icon.png",
+    "graphics/pokemon/helix_child/normal.pal": "graphics/pokemon/lumifin/normal.pal",
+    "graphics/pokemon/helix_founder_one/back.png": "graphics/pokemon/lumifin/back.png",
+    "graphics/pokemon/helix_founder_one/front.png": "graphics/pokemon/lumifin/front.png",
+    "graphics/pokemon/helix_founder_one/icon.png": "graphics/pokemon/lumifin/icon.png",
+    "graphics/pokemon/helix_founder_one/normal.pal": "graphics/pokemon/lumifin/normal.pal",
+    "graphics/pokemon/helix_founder_two/back.png": "graphics/pokemon/lumifin/back.png",
+    "graphics/pokemon/helix_founder_two/front.png": "graphics/pokemon/lumifin/front.png",
+    "graphics/pokemon/helix_founder_two/icon.png": "graphics/pokemon/lumifin/icon.png",
+    "graphics/pokemon/helix_founder_two/normal.pal": "graphics/pokemon/lumifin/normal.pal",
+    "graphics/pokemon/helix_rival/back.png": "graphics/pokemon/lumifin/back.png",
+    "graphics/pokemon/helix_rival/front.png": "graphics/pokemon/lumifin/front.png",
+    "graphics/pokemon/helix_rival/icon.png": "graphics/pokemon/lumifin/icon.png",
+    "graphics/pokemon/helix_rival/normal.pal": "graphics/pokemon/lumifin/normal.pal"
+  },
   "excluded": "ROM/save/ELF/builds/root assets/prompts/profiles/private canon/credentials/packages/evidence",
   "genesis_package": "disabled; accepted package not included",
-  "overlay_bytes": 528140,
+  "overlay_bytes": 542015,
   "overlay_paths": [
     "data/layouts/HelixFieldVillage/border.bin",
     "data/layouts/HelixFieldVillage/map.bin",
@@ -459,10 +561,30 @@
     "graphics/pokemon/aurora_family_one/front.png",
     "graphics/pokemon/aurora_family_one/icon.png",
     "graphics/pokemon/aurora_family_one/normal.pal",
+    "graphics/pokemon/aurora_family_three/back.png",
+    "graphics/pokemon/aurora_family_three/front.png",
+    "graphics/pokemon/aurora_family_three/icon.png",
+    "graphics/pokemon/aurora_family_three/normal.pal",
     "graphics/pokemon/aurora_family_two/back.png",
     "graphics/pokemon/aurora_family_two/front.png",
     "graphics/pokemon/aurora_family_two/icon.png",
     "graphics/pokemon/aurora_family_two/normal.pal",
+    "graphics/pokemon/helix_child/back.png",
+    "graphics/pokemon/helix_child/front.png",
+    "graphics/pokemon/helix_child/icon.png",
+    "graphics/pokemon/helix_child/normal.pal",
+    "graphics/pokemon/helix_founder_one/back.png",
+    "graphics/pokemon/helix_founder_one/front.png",
+    "graphics/pokemon/helix_founder_one/icon.png",
+    "graphics/pokemon/helix_founder_one/normal.pal",
+    "graphics/pokemon/helix_founder_two/back.png",
+    "graphics/pokemon/helix_founder_two/front.png",
+    "graphics/pokemon/helix_founder_two/icon.png",
+    "graphics/pokemon/helix_founder_two/normal.pal",
+    "graphics/pokemon/helix_rival/back.png",
+    "graphics/pokemon/helix_rival/front.png",
+    "graphics/pokemon/helix_rival/icon.png",
+    "graphics/pokemon/helix_rival/normal.pal",
     "graphics/pokemon/lumifin/back.png",
     "graphics/pokemon/lumifin/front.png",
     "graphics/pokemon/lumifin/icon.png",
@@ -581,10 +703,30 @@
     "graphics/pokemon/aurora_family_one/front.png": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42",
     "graphics/pokemon/aurora_family_one/icon.png": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999",
     "graphics/pokemon/aurora_family_one/normal.pal": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972",
+    "graphics/pokemon/aurora_family_three/back.png": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7",
+    "graphics/pokemon/aurora_family_three/front.png": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42",
+    "graphics/pokemon/aurora_family_three/icon.png": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999",
+    "graphics/pokemon/aurora_family_three/normal.pal": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972",
     "graphics/pokemon/aurora_family_two/back.png": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7",
     "graphics/pokemon/aurora_family_two/front.png": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42",
     "graphics/pokemon/aurora_family_two/icon.png": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999",
     "graphics/pokemon/aurora_family_two/normal.pal": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972",
+    "graphics/pokemon/helix_child/back.png": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7",
+    "graphics/pokemon/helix_child/front.png": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42",
+    "graphics/pokemon/helix_child/icon.png": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999",
+    "graphics/pokemon/helix_child/normal.pal": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972",
+    "graphics/pokemon/helix_founder_one/back.png": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7",
+    "graphics/pokemon/helix_founder_one/front.png": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42",
+    "graphics/pokemon/helix_founder_one/icon.png": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999",
+    "graphics/pokemon/helix_founder_one/normal.pal": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972",
+    "graphics/pokemon/helix_founder_two/back.png": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7",
+    "graphics/pokemon/helix_founder_two/front.png": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42",
+    "graphics/pokemon/helix_founder_two/icon.png": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999",
+    "graphics/pokemon/helix_founder_two/normal.pal": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972",
+    "graphics/pokemon/helix_rival/back.png": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7",
+    "graphics/pokemon/helix_rival/front.png": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42",
+    "graphics/pokemon/helix_rival/icon.png": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999",
+    "graphics/pokemon/helix_rival/normal.pal": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972",
     "graphics/pokemon/lumifin/back.png": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7",
     "graphics/pokemon/lumifin/front.png": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42",
     "graphics/pokemon/lumifin/icon.png": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999",

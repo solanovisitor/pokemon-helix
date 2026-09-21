@@ -136,12 +136,25 @@ def check_source_bindings() -> None:
                 raise ValueError("Public constant binding changed: " + name + ":" + symbol)
 
 
+def check_placeholder_art() -> None:
+    # The upstream dependency scanner also sees inactive INCGFX branches.
+    # Supply reviewed existing pixels, never a retained generated package.
+    for family in ("aurora_family_three", "helix_founder_one", "helix_founder_two",
+                   "helix_rival", "helix_child"):
+        for asset in ("front.png", "back.png", "icon.png", "normal.pal"):
+            source = OVERLAY / "graphics/pokemon/lumifin" / asset
+            placeholder = OVERLAY / "graphics/pokemon" / family / asset
+            if placeholder.read_bytes() != source.read_bytes():
+                raise ValueError("Disabled-package art placeholder changed: " + family + "/" + asset)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--write", action="store_true", help="Regenerate only the public fixture header")
     args = parser.parse_args()
     check_disabled_packages()
     check_source_bindings()
+    check_placeholder_art()
     expected = render()
     if args.write:
         HEADER.write_text(expected)
