@@ -8,8 +8,8 @@
       "sha256": "9b05d002de2ff31d85a30433f33a787e20948acd5c1317a683c7ca302124a761"
     },
     "helix.patch": {
-      "bytes": 194705,
-      "sha256": "e74c18a9eb1f0e8066213bc2e363bd3880719889d7a645bd35d212ee0f1c90b8"
+      "bytes": 194694,
+      "sha256": "199408fdb9a99669477ff647e5bbcd92c0574bbd1ed2df80aa100b0417cbbc8c"
     },
     "overlay/data/layouts/HelixFieldVillage/border.bin": {
       "bytes": 8,
@@ -650,6 +650,9 @@
     "src/pokemon_birth.c"
   ],
   "public_fixture_namespace": "pokemon-helix/public-source-fixture/v1",
+  "public_source_adjustments": [
+    "Rename authored Lumifin teachable table to avoid upstream automatic-teachable name discovery; move list unchanged."
+  ],
   "result_files": {
     "Makefile": "c116674527d4cc44d76fceb7860d2eefc9f3a37b78be70dfb6e31492b082a456",
     "data/event_scripts.s": "7215edd2b42b180ab6e2bc9ef6eb53ec20752fbd3a5578ecd0527c1f5aeb8a76",
@@ -795,7 +798,7 @@
     "src/data/object_events/object_event_graphics_info.h": "4ac0b5af63c1c7a520444a769b741f079c7c29fb5b42d3f56f77050990f2caa6",
     "src/data/object_events/object_event_graphics_info_pointers.h": "dd88dde87ecf1e6cc30f33a9dda75128399d1ed14c3c4933caaca4ba81d6faf3",
     "src/data/object_events/object_event_pic_tables.h": "3ac18d45bc921b6dfb173639a0214e5c428dfaf82d5535cd96d7a014e321e069",
-    "src/data/pokemon/species_info.h": "afd0959173b0355300e8cc421b68eebe0f36428b987d8e32595ea4efb73f6ae5",
+    "src/data/pokemon/species_info.h": "1276b2e29854942e7db964d6d26687f35a0b321fe748d6e9c5f1b0091b7dfc34",
     "src/data/script_menu.h": "2f8e3277820ce3f72d8f90c47d3562076f0235ddfab6341afc80a1039566c669",
     "src/data/trainers.party": "2876b5999fe5fe37f21d7901c493f3d89e09c1e034e7be595f01c39602578df5",
     "src/egg_hatch.c": "3ec0466bf5009dab5617262fb9a592a2da46d4920cc4b9bb2bdbef346d528209",

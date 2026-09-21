@@ -2904,7 +2904,7 @@ index 612f3b68c16e0250cf3e56bba233c8952244ab10..681caf5648fca8cb004b53efcfd224ed
      overworld_ascending_frames(gObjectEventPic_BreakableRock, 2, 2),
  };
 diff --git a/src/data/pokemon/species_info.h b/src/data/pokemon/species_info.h
-index f7616e53dc8a3f39a71518f85c3f431880c147d2..61188b192b748aec8080edf3c54458097b84a0bd 100644
+index f7616e53dc8a3f39a71518f85c3f431880c147d2..08668f29734b1529a4cc9b8ba4a676b8e6af1fee 100644
 --- a/src/data/pokemon/species_info.h
 +++ b/src/data/pokemon/species_info.h
 @@ -95,6 +95,28 @@
@@ -2927,7 +2927,7 @@ index f7616e53dc8a3f39a71518f85c3f431880c147d2..61188b192b748aec8080edf3c5445809
 +    LEVEL_UP_MOVE(36, MOVE_SURF),
 +    LEVEL_UP_END,
 +};
-+static const u16 sLumifinTeachableLearnset[] =
++static const u16 sHelixAuthoredTeachables[] =
 +{
 +    MOVE_PROTECT, MOVE_REST, MOVE_RAIN_DANCE, MOVE_SURF, MOVE_DIVE,
 +    MOVE_WATERFALL, MOVE_ICE_BEAM, MOVE_UNAVAILABLE,
@@ -2991,7 +2991,7 @@ index f7616e53dc8a3f39a71518f85c3f431880c147d2..61188b192b748aec8080edf3c5445809
 +        FOOTPRINT(QuestionMark)
 +        SHADOW(0, 0, SHADOW_SIZE_S)
 +        .levelUpLearnset = sLumifinLevelUpLearnset,
-+        .teachableLearnset = sLumifinTeachableLearnset,
++        .teachableLearnset = sHelixAuthoredTeachables,
 +        .eggMoveLearnset = sNoneEggMoveLearnset,
 +    },
 +
@@ -3046,7 +3046,7 @@ index f7616e53dc8a3f39a71518f85c3f431880c147d2..61188b192b748aec8080edf3c5445809
 +        FOOTPRINT(QuestionMark)
 +        SHADOW(0, 0, SHADOW_SIZE_S)
 +        .levelUpLearnset = sLumifinLevelUpLearnset,
-+        .teachableLearnset = sLumifinTeachableLearnset,
++        .teachableLearnset = sHelixAuthoredTeachables,
 +        .eggMoveLearnset = sNoneEggMoveLearnset,
 +    },
 +
@@ -3101,7 +3101,7 @@ index f7616e53dc8a3f39a71518f85c3f431880c147d2..61188b192b748aec8080edf3c5445809
 +        FOOTPRINT(QuestionMark)
 +        SHADOW(0, 0, SHADOW_SIZE_S)
 +        .levelUpLearnset = sLumifinLevelUpLearnset,
-+        .teachableLearnset = sLumifinTeachableLearnset,
++        .teachableLearnset = sHelixAuthoredTeachables,
 +        .eggMoveLearnset = sNoneEggMoveLearnset,
 +    },
 +
@@ -3156,7 +3156,7 @@ index f7616e53dc8a3f39a71518f85c3f431880c147d2..61188b192b748aec8080edf3c5445809
 +        FOOTPRINT(QuestionMark)
 +        SHADOW(0, 0, SHADOW_SIZE_S)
 +        .levelUpLearnset = sLumifinLevelUpLearnset,
-+        .teachableLearnset = sLumifinTeachableLearnset,
++        .teachableLearnset = sHelixAuthoredTeachables,
 +        .eggMoveLearnset = sNoneEggMoveLearnset,
 +    },
 +
@@ -3211,7 +3211,7 @@ index f7616e53dc8a3f39a71518f85c3f431880c147d2..61188b192b748aec8080edf3c5445809
 +        FOOTPRINT(QuestionMark)
 +        SHADOW(0, 0, SHADOW_SIZE_S)
 +        .levelUpLearnset = sLumifinLevelUpLearnset,
-+        .teachableLearnset = sLumifinTeachableLearnset,
++        .teachableLearnset = sHelixAuthoredTeachables,
 +        .eggMoveLearnset = sNoneEggMoveLearnset,
 +    },
 +
@@ -3266,7 +3266,7 @@ index f7616e53dc8a3f39a71518f85c3f431880c147d2..61188b192b748aec8080edf3c5445809
 +        FOOTPRINT(QuestionMark)
 +        SHADOW(0, 0, SHADOW_SIZE_S)
 +        .levelUpLearnset = sLumifinLevelUpLearnset,
-+        .teachableLearnset = sLumifinTeachableLearnset,
++        .teachableLearnset = sHelixAuthoredTeachables,
 +        .eggMoveLearnset = sNoneEggMoveLearnset,
 +    },
 +
@@ -3321,7 +3321,7 @@ index f7616e53dc8a3f39a71518f85c3f431880c147d2..61188b192b748aec8080edf3c5445809
 +        FOOTPRINT(QuestionMark)
 +        SHADOW(0, 0, SHADOW_SIZE_S)
 +        .levelUpLearnset = sLumifinLevelUpLearnset,
-+        .teachableLearnset = sLumifinTeachableLearnset,
++        .teachableLearnset = sHelixAuthoredTeachables,
 +        .eggMoveLearnset = sNoneEggMoveLearnset,
 +    },
 +
@@ -3376,7 +3376,7 @@ index f7616e53dc8a3f39a71518f85c3f431880c147d2..61188b192b748aec8080edf3c5445809
 +        FOOTPRINT(QuestionMark)
 +        SHADOW(0, 0, SHADOW_SIZE_S)
 +        .levelUpLearnset = sLumifinLevelUpLearnset,
-+        .teachableLearnset = sLumifinTeachableLearnset,
++        .teachableLearnset = sHelixAuthoredTeachables,
 +        .eggMoveLearnset = sNoneEggMoveLearnset,
 +    },
 +
@@ -3431,7 +3431,7 @@ index f7616e53dc8a3f39a71518f85c3f431880c147d2..61188b192b748aec8080edf3c5445809
 +        FOOTPRINT(QuestionMark)
 +        SHADOW(0, 0, SHADOW_SIZE_S)
 +        .levelUpLearnset = sLumifinLevelUpLearnset,
-+        .teachableLearnset = sLumifinTeachableLearnset,
++        .teachableLearnset = sHelixAuthoredTeachables,
 +        .eggMoveLearnset = sNoneEggMoveLearnset,
 +    },
 +
@@ -3486,7 +3486,7 @@ index f7616e53dc8a3f39a71518f85c3f431880c147d2..61188b192b748aec8080edf3c5445809
 +        FOOTPRINT(QuestionMark)
 +        SHADOW(0, 0, SHADOW_SIZE_S)
 +        .levelUpLearnset = sLumifinLevelUpLearnset,
-+        .teachableLearnset = sLumifinTeachableLearnset,
++        .teachableLearnset = sHelixAuthoredTeachables,
 +        .eggMoveLearnset = sNoneEggMoveLearnset,
 +    },
 +
