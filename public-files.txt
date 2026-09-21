@@ -19,6 +19,8 @@ companion/lab_service.py
 docs/README.md
 docs/architecture.md
 docs/attribution.md
+docs/features.md
+docs/getting-started.md
 docs/licensing.md
 docs/media/helix-title.gif
 docs/media/lab-assay.png

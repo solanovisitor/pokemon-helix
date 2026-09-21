@@ -44,7 +44,8 @@ Integer arithmetic makes results deterministic. Sheltered probes at 0, 50 and
 give 46, 50 and 54 (center 50, range 8). These are controlled probe conditions,
 not independent biological replicates. Parameters are fictional and uncalibrated;
 the model does not read Pokémon DNA or demonstrate heredity, real biology or
-genotype-by-environment interaction. Prediction affects interpretation, not physics.
+genotype-by-environment interaction. Predictions are compared with the observed
+response; they do not change the readings or interpretation.
 
 Requests bind the condition and prediction to bounded identifiers, quest revision
 and a state commitment. Verification recalculates the result against the current
