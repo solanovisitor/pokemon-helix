@@ -1,6 +1,6 @@
 # License boundaries
 
-The [MIT license](LICENSE) covers the original Helix Python code in
+The [MIT license](../LICENSE) covers the original Helix Python code in
 `companion/`, `genetics/`, `scripts/` and `tests/`; original Lua in `bridge/`;
 the shell/Python/container configuration in `platform/`; project configuration,
 GitHub templates/workflows, and original prose documentation.
@@ -21,4 +21,4 @@ New contributions should state their origin and preserve applicable notices.
 Submit original contributions to the MIT-covered portions under MIT. Any other
 material needs explicit provenance and an independently appropriate permission;
 do not assume that a contribution to this repository changes upstream rights.
-See [attribution and media provenance](docs/attribution.md).
+See [attribution and media provenance](attribution.md).

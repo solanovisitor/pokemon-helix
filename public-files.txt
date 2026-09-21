@@ -8,7 +8,6 @@ AGENTS.md
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
 LICENSE
-LICENSE-SCOPE.md
 Makefile
 README.md
 SECURITY.md
@@ -20,6 +19,7 @@ companion/lab_service.py
 docs/README.md
 docs/architecture.md
 docs/attribution.md
+docs/licensing.md
 docs/media/helix-title.gif
 docs/media/lab-assay.png
 docs/publication.md

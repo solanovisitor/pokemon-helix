@@ -4,7 +4,7 @@ Pokémon Helix is an independent fan project, unaffiliated with Nintendo,
 Creatures or Game Freak. **Game Freak developed Pokémon Emerald.** Existing
 Pokémon content, characters and trademarks remain with their respective owners.
 Helix's original host simulation and tooling are separately scoped in
-[LICENSE-SCOPE.md](../LICENSE-SCOPE.md); no game-wide MIT license is claimed.
+[licensing.md](licensing.md); no game-wide MIT license is claimed.
 
 ## Engine
 

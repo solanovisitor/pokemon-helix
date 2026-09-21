@@ -62,6 +62,6 @@ including converted title/frame bytes needed by native `INCBIN`. These are
 build inputs. ROM/ELF outputs, saves, root assets, prompts, private canon,
 credentials and retained development evidence are excluded.
 
-The [license boundary](../LICENSE-SCOPE.md) excludes this integration from MIT.
+The [license boundary](../docs/licensing.md) excludes this integration from MIT.
 RHH/pret history, contributors and existing notices remain intact; see
 [attribution](../docs/attribution.md) and [public update workflow](../docs/publication.md).

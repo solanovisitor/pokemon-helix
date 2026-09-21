@@ -4,8 +4,8 @@
   "bootstrap_sha256": "ea52898da4d81e7f8aaf86660897ea3853c769e46a6c8d80f1057d2fce4ddf2e",
   "bundle_files": {
     "README.md": {
-      "bytes": 3537,
-      "sha256": "9b05d002de2ff31d85a30433f33a787e20948acd5c1317a683c7ca302124a761"
+      "bytes": 3538,
+      "sha256": "3d5e38bebfb4f873d9b0a4a703aa42e0573427610a6e6c0b998c8c4053e49788"
     },
     "helix.patch": {
       "bytes": 194694,

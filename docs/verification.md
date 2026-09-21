@@ -39,9 +39,10 @@ historical development suite, compile a complete Helix release or operate mGBA.
 
 Publication preparation on 2026-09-21 passed 39 public unit tests (including 19 bootstrap safety checks), the local
 socket smoke and the restricted Linux ARM64 container smoke on this export.
-The container used Python 3.12.14 as unprivileged UID 65532. The independent
-fresh-clone check and GitHub Actions status should be evaluated separately from
-these preparation results.
+The container used Python 3.12.14 as unprivileged UID 65532. An independent clone from GitHub at `fcf101c` passed the README quickstart,
+all 39 tests, socket smoke and public-file/fixture checks. Both hosted jobs
+passed in [GitHub Actions run 35618923296](https://github.com/solanovisitor/pokemon-helix/actions/runs/35618923296).
+These are public-export checks, separate from the historical local results below.
 
 ## Historical local evidence
 
@@ -82,3 +83,25 @@ New gameplay claims require the exact compiled ROM, mGBA screenshots inspected
 alongside state assertions and ordinary-save evidence. RG34XX claims additionally
 require a real device, frontend, controls, saves and power/peripheral checks.
 Preserve original saves and use isolated inputs for all future verification.
+
+## Native source compilation
+
+On 2026-09-21, the integration compiled in an isolated checkout of the exact
+upstream, using Arm GNU Toolchain 14.3.Rel1 (GCC 14.3.1), GNU Make 3.81 and
+Apple clang 17 on macOS ARM64. Upstream generation scripts used Python 3.9.6;
+the public host suite used Python 3.12. All **174** patched/overlay source files
+matched the public native manifest after the build. The complete upstream was
+cloned from its public URL; no retained Helix package was installed.
+
+The build required explicit toolchain `PATH`, reviewed art placeholders for
+inactive dependency branches and the authored-teachable symbol adjustment
+recorded in the manifest. Those corrections are included in the public source.
+
+- Local output ROM SHA-256: `b1b4d6bcd54cdb775036c9dc527d37b4cb51618c30698de335661f95e61e9605`.
+- Local output ELF SHA-256: `e5741024fa14cc031c193b9b3c0c21dfa5575309bbc69a8c13d9bcbb80ba346e`.
+
+Neither binary is distributed. Both generated-package gates stayed disabled;
+public fixture identities and placeholder art are not the accepted game content.
+**This ROM was not run in mGBA.** Compilation is not gameplay, save compatibility,
+a full public Helix release, or RG34XX proof. Follow the
+[native setup and remaining package gate](../rom-source/README.md).
