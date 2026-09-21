@@ -72,7 +72,8 @@ separate budget; an existing agent queue does not acquire that capability
 implicitly. Public CI never calls either paid provider.
 
 For local graph development, `langgraph.json` intentionally contains no dotenv
-path. Run with fixture mode and tracing disabled, using isolated data:
+path. Run **from the repository root** with tracing disabled and isolated data;
+the CLI entrypoint is fixture-only. Its `.langgraph_api/` state is ignored:
 
 ```sh
 LANGGRAPH_ANALYTICS_ENABLED=false LANGSMITH_TRACING=false LANGCHAIN_TRACING_V2=false \

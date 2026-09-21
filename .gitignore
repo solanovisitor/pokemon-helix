@@ -4,6 +4,7 @@ __pycache__/
 *.py[cod]
 /game/
 /.local/
+/.langgraph_api/
 /artifacts/
 /build/
 /dist/

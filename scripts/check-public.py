@@ -57,7 +57,7 @@ def main() -> int:
             failures.append('missing: ' + name)
             continue
         parts = path.relative_to(ROOT).parts
-        if path.suffix.lower() in FORBIDDEN_SUFFIXES or parts[0] in {'game', '.local', 'artifacts', 'assets', 'data'}:
+        if path.suffix.lower() in FORBIDDEN_SUFFIXES or parts[0] in {'game', '.local', '.langgraph_api', 'artifacts', 'assets', 'data'}:
             failures.append('excluded-material: ' + name)
         raw = path.read_bytes()
         if len(raw) > 5_000_000:

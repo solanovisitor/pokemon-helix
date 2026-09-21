@@ -37,6 +37,13 @@ quest and cached visual asset conversion. All three authoring CLIs passed
 fixture/replay checks without provider calls. The original terminal demo and
 loopback service smoke also passed.
 
+A clean local clone of `79d7713` independently passed all 247 tests, the demo,
+both host smokes and file/fixture checks. A real `uv run langgraph dev` process
+started from that clone's root, served a fixture dialogue and replayed it through
+the HTTP API, with tracing disabled and no paid calls. The owned server stopped
+after the check. Invoking the CLI from an unrelated directory cannot import this
+unpackaged project; use the documented repository-root command.
+
 Both Linux ARM64 Docker checks passed: the service remains dependency-free,
 and the C indicator model matched Python and independent numeric vectors at
 `-O0`/`-O2` with undefined-behavior checks. Reproduce the additional model lane:
