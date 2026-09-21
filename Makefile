@@ -8,7 +8,7 @@ help:
 	@printf '%s\n' 'make setup            Prepare Python 3.12 from the dependency lock' 'make demo             Compare the two synthetic lab conditions' 'make test             Run the public host unit suite' 'make smoke            Test the real loopback service and durable replay' 'make container-smoke  Test the service in restricted Linux ARM64 Docker'
 
 setup:
-	$(UV) sync --locked --python 3.12
+	$(UV) sync --locked --python 3.12 --extra generation
 
 demo:
 	$(UV) run --offline --frozen python -m companion.demo

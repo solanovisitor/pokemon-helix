@@ -1,0 +1,117 @@
+LOCUS       NC_002333               1536 bp    DNA     linear   VRT 03-APR-2023
+DEFINITION  Danio rerio mitochondrion, complete genome.
+ACCESSION   NC_002333 REGION: 1..1536
+VERSION     NC_002333.2
+DBLINK      BioProject: PRJNA927338
+KEYWORDS    RefSeq.
+SOURCE      mitochondrion Danio rerio (zebrafish)
+  ORGANISM  Danio rerio
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Actinopterygii; Neopterygii; Teleostei; Ostariophysi;
+            Cypriniformes; Danionidae; Danioninae; Danio.
+REFERENCE   1  (bases 1 to 1536)
+  AUTHORS   Broughton,R.E., Milam,J.E. and Roe,B.A.
+  TITLE     The complete sequence of the zebrafish (Danio rerio) mitochondrial
+            genome and evolutionary patterns in vertebrate mitochondrial DNA
+  JOURNAL   Genome Res. 11 (11), 1958-1967 (2001)
+   PUBMED   11691861
+REFERENCE   2  (bases 1 to 1536)
+  AUTHORS   Milam,J.E., Broughton,R.E. and Roe,B.A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (21-JUN-2001) Department Of Chemistry And Biochemistry,
+            The University Of Oklahoma, 620 Parrington Oval, Room 208, Norman,
+            OK 73019, USA
+  REMARK    Sequence update by submitter
+REFERENCE   3  (bases 1 to 1536)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (09-JUN-2000) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+REFERENCE   4  (bases 1 to 1536)
+  AUTHORS   Milam,J.E., Broughton,R.E. and Roe,B.A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (06-JUN-2000) Department Of Chemistry And Biochemistry,
+            The University Of Oklahoma, 620 Parrington Oval, Room 208, Norman,
+            OK 73019, USA
+REFERENCE   5  (bases 1 to 1536)
+  AUTHORS   Milam,J.E., Broughton,R.E. and Roe,B.A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (21-APR-2000) Department Of Chemistry And Biochemistry,
+            The University Of Oklahoma, 620 Parrington Oval, Room 208, Norman,
+            OK 73019, USA
+REFERENCE   6  (bases 1 to 1536)
+  AUTHORS   Milam,J.E., Broughton,R.E. and Roe,B.A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (28-FEB-2000) Department Of Chemistry And Biochemistry,
+            The University Of Oklahoma, 620 Parrington Oval, Room 208, Norman,
+            OK 73019, USA
+COMMENT     REVIEWED REFSEQ: This record has been curated by NCBI staff. The
+            reference sequence was derived from AC024175.
+            
+            On Aug 2, 2001 this sequence version replaced NC_002333.1.
+            COMPLETENESS: full length.
+FEATURES             Location/Qualifiers
+     source          1..1536
+                     /organism="Danio rerio"
+                     /organelle="mitochondrion"
+                     /mol_type="genomic DNA"
+                     /db_xref="taxon:7955"
+     D-loop          1..950
+                     /db_xref="ZFIN:ZDB-GENE-011205-1"
+     gene            951..1019
+                     /gene="trnF"
+                     /gene_synonym="mttf"
+                     /nomenclature="Official Symbol: mt-ti | Name: tRNA
+                     phenylalanine, mitochondrial"
+                     /note="tRNAphe"
+                     /db_xref="GeneID:140525"
+                     /db_xref="ZFIN:ZDB-GENE-011205-2"
+     tRNA            951..1019
+                     /gene="trnF"
+                     /gene_synonym="mttf"
+                     /product="tRNA-Phe"
+                     /db_xref="GeneID:140525"
+                     /db_xref="ZFIN:ZDB-GENE-011205-2"
+     gene            1020..>1536
+                     /gene="mt-rnr1"
+                     /gene_synonym="mtrnr1"
+                     /nomenclature="Official Symbol: mt-rnr1 | Name: 12S RNA,
+                     mitochondrial"
+                     /db_xref="GeneID:140505"
+                     /db_xref="ZFIN:ZDB-GENE-011205-3"
+     rRNA            1020..>1536
+                     /gene="mt-rnr1"
+                     /gene_synonym="mtrnr1"
+                     /product="s-rRNA"
+                     /note="12S rRNA"
+                     /db_xref="GeneID:140505"
+                     /db_xref="ZFIN:ZDB-GENE-011205-3"
+ORIGIN      
+        1 acggccggcg acaatttata tgtcaatgtt ttagtaattt acaattaaga cagacatgca
+       61 ctgtattgat acattaatca tacataaaat gcatgctcta atttttacat atgcatgtgc
+      121 aagcatatac atatgtgtgg atacacacgt atgtgctttg tcacatgtat gtactggtta
+      181 catattatgc atgtattagg acatactatg tattatcacc atatcattat tttaaccata
+      241 aagcaggtac ataatgttta tattattcac catatcaagt gagagaccac caataattta
+      301 tataaatgca tatcatgcat gatagaatca gggacatcaa tttaaacgtt gttaaaaaat
+      361 gaactattcc tggtatctgg ttcaaatctc acgttcatcg ctacaagacc cacccacaat
+      421 ctagtggtaa acggcatatg attagtcaga tgtgttaatc atttagtcct ttactcccca
+      481 tgccgagcgt tcttgtatat acaaggggtg atctcttatt tttttccttt cgctggcatt
+      541 tcatagtgca aatataaatg ttaaattaag gtggtactat tccttgcatg tgataatata
+      601 tattaattat ctaaagacat aatattaaga ctcactaact tttaattcaa gtgcataaag
+      661 tacttattat ttccttgata aactatatat tattatctcc cccttttggt atacgcgcga
+      721 caaaccccct taccccctta cgtccagcga ttcctgttat ccttgtcaaa cccctaaacc
+      781 aaggaaggcc cgagaacgta cagccaataa gttgaaaata aattgacatt atatatatat
+      841 atatatatac atatctacat atgtcattta attgcccgtt ttttagccta aaaaccccaa
+      901 ctaaaattta caaaaatatt tagtactaaa aatgttaata tatttttaag gctagcgtag
+      961 cttaaaataa agcacggcac tgaagctgcc aagatgggcc ctaataagct ccgcatgcac
+     1021 aaaggcatgg tcccgacctt ttgatcagct tttacctaat ttacacatgc aagtctccgc
+     1081 acccctgtga atacgccctc aatccccaaa cctggggacg aggagcaggt atcaggcaca
+     1141 aaatttttag cccaagacgc ctagccaagc cacaccccca aggggatcca gcagtgacaa
+     1201 acattaagct ataagtgaaa acttgactca gttaaggtaa agagagccgg taaaactcgt
+     1261 gccagcaacc gcggttaaac gagaggctct agttgatata ctacggcgta aagggtggtt
+     1321 aaggaacaat gtaaaataaa gccaaacggc cctttaactg ttatacgctt ttagatgcta
+     1381 gaggcccaaa cacgaaagta gctttaaatt aattacctga acccacgaaa gctaagaaac
+     1441 aaactgggat tagatacccc actatgctta gccataaaca aagacattta atcacaacaa
+     1501 tgttcgcccg gacactacaa gcataagctt aaaacc
+//
+

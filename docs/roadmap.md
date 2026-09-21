@@ -8,9 +8,9 @@ current encounter tables and shops do not yet establish global scarcity.
 
 | Status | Scope |
 | --- | --- |
-| Runnable in this repository | Deterministic synthetic assay, bounded host service, tests and portability smoke |
+| Runnable in this repository | Deterministic assay, bounded host service, local graph, draft producers, visual asset fixtures, tests and portability smoke |
 | Accepted local V14 | Laboratory opening, persistent first companions, field investigation, individual records, village work and shared watering |
-| Verified local candidates | V15c native quest; V16b Quiet Garden and first native DNA slice; V17c MIRA/ADA's indicator assay, Culture Reader and Nanomon Medium |
+| Verified local candidates | V15c native quest; V16b Quiet Garden and first native DNA slice; V17c MIRA/ADA's indicator assay; V18b offline assay and saved EN/PT preference |
 | Deliberately blocked | CORAL's birth, pending its later journey |
 | Planned / unfinished | General breeding, broad native lifecycle coverage, authenticated shared-world multiplayer, CRISPR and a global economy |
 
@@ -34,8 +34,15 @@ reproducible public game build. V14 stays the local default.
    Define migration, archive and capacity behavior before adding species,
    evolution, gifts, trades, forms, eggs or Day Care. Do not recycle identities
    or remove owned companions to make room.
-5. **Keep offline preferences.** Persist the language choice across reset with
-   the bridge disconnected; it currently returns to English.
+5. **Implement a quest coordinator.** Separate reusable definitions from player
+   instances and durable conversations. Start with a bounded NPC interview and
+   one visible native consequence; see the [quest contract](quest-agents.md).
+
+The V18b source retains language through ordinary save and computes the assay
+offline. The public variant has separate synthetic identities and requires its
+own mGBA verification. Its wait counter represents task iterations, not hardware
+frames; the local candidate measured about six seconds on desktop. Handheld
+pacing remains unmeasured.
 
 Cooperation, teaching and future Trainer/Breeder specializations should deepen
 shared knowledge and lineage stories. Ownership authentication, transfers and

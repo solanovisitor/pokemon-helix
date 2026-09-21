@@ -4,12 +4,12 @@
   "bootstrap_sha256": "ea52898da4d81e7f8aaf86660897ea3853c769e46a6c8d80f1057d2fce4ddf2e",
   "bundle_files": {
     "README.md": {
-      "bytes": 3538,
-      "sha256": "3d5e38bebfb4f873d9b0a4a703aa42e0573427610a6e6c0b998c8c4053e49788"
+      "bytes": 3751,
+      "sha256": "9ed60e78b34c525a286f28695a85f4d1094634a4747920102db78d8c4b2721e4"
     },
     "helix.patch": {
-      "bytes": 194694,
-      "sha256": "199408fdb9a99669477ff647e5bbcd92c0574bbd1ed2df80aa100b0417cbbc8c"
+      "bytes": 193016,
+      "sha256": "fa1490a92eb1fc0f5cb1dfa0ef2d0064e33d1a70de95b6403f6f0de78021dc3a"
     },
     "overlay/data/layouts/HelixFieldVillage/border.bin": {
       "bytes": 8,
@@ -88,8 +88,8 @@
       "sha256": "766e7ba909773408bd3b8e7310ba741b1edaa936ba696a4fcd1787220da9b9b3"
     },
     "overlay/data/scripts/helix_lab_items.inc": {
-      "bytes": 3693,
-      "sha256": "04d7539f2bdbbbb47ef6704faa1d2ec5fea5cd053d932f3d86fb726a100110d2"
+      "bytes": 3705,
+      "sha256": "584eff7b3fa4743f8d0064fb3441f84a6ce48ca8d75d83303198beecfae41fa5"
     },
     "overlay/data/scripts/helix_quest.inc": {
       "bytes": 4602,
@@ -359,17 +359,25 @@
       "bytes": 2394,
       "sha256": "366c7c78c389bf463c35366685e9cddc8eb3238006fdd3a0e198bac048650bb1"
     },
+    "overlay/include/helix_indicator_model.h": {
+      "bytes": 882,
+      "sha256": "8a364be9365711b4374b5ffedc87e9adb3b5ed16ce65b5cbf301348c2e64203c"
+    },
     "overlay/include/helix_lab_bridge.h": {
       "bytes": 536,
       "sha256": "f8332f072f0a92df5e827e11b3452ed562af0ad3f5904d0ed0fb37e3ded27ad8"
     },
     "overlay/include/helix_lab_items.h": {
-      "bytes": 948,
-      "sha256": "0f7e6d6f363197f5ad85530f28d6b3c8c456441faa7a5265b45d6f00e65395fc"
+      "bytes": 1028,
+      "sha256": "b4d22325a4486dc834148f79aec7b94f41443a37da931b78b73545569b805c49"
     },
     "overlay/include/helix_pokedex.h": {
       "bytes": 719,
       "sha256": "b51abac782f1f76603a6c081247d5990411d21b1fc55e51768aa7ad58618d295"
+    },
+    "overlay/include/helix_preferences.h": {
+      "bytes": 331,
+      "sha256": "a5128563b8605a2d96f3d3293abd29fbacd762a0b24bde9cc483990fd7bdfeca"
     },
     "overlay/include/helix_quest.h": {
       "bytes": 2680,
@@ -455,6 +463,10 @@
       "bytes": 24548,
       "sha256": "b9199e9cdcb334b31534324a4cafd119f8284446d2642ccacdf7b9ee8ba32e3f"
     },
+    "overlay/src/helix_indicator_model.c": {
+      "bytes": 1688,
+      "sha256": "0cc3052a636ad96aaa53b33476d1af70c2ea55a7f78660ec69d39bccc6f6c65d"
+    },
     "overlay/src/helix_lab.c": {
       "bytes": 8588,
       "sha256": "0fdd38e0430ec155412296c7fa3cc74334c928a0f5ea7433cf5154889dc901cd"
@@ -464,12 +476,16 @@
       "sha256": "9681c8e0156f0752f2f7421cffc26c5b1e9615036e863fa96fcb6143753c1f31"
     },
     "overlay/src/helix_lab_items.c": {
-      "bytes": 15114,
-      "sha256": "cd94ce9eb463e1e99e2e6fc1812d25bf63397b2d696b72d13b63f75e25e79b16"
+      "bytes": 18869,
+      "sha256": "6246117a4917aedf106f057889e6fa89c64ddc7386436c4a8bcec787f307346e"
     },
     "overlay/src/helix_pokedex.c": {
       "bytes": 22648,
       "sha256": "6d423bf1b629564013cb103ba64933483fcd1440b98ab8d8674af91ad3398c66"
+    },
+    "overlay/src/helix_preferences.c": {
+      "bytes": 1427,
+      "sha256": "a6ce163d61cafd310f2720920903e7dca8496b0548f007d89a7725995f6fe149"
     },
     "overlay/src/helix_quest.c": {
       "bytes": 19322,
@@ -480,8 +496,8 @@
       "sha256": "de84bebc26cfde677807f878587510ecd0bb79b21b9e26f47d2b137cfc789ed7"
     },
     "overlay/src/helix_settings.c": {
-      "bytes": 8326,
-      "sha256": "3cdf1d2be495489cd927cfe5eb8de80d0d03b5474aadef8c6be825f9a2c81bde"
+      "bytes": 8515,
+      "sha256": "614c4703c901d92d3d2f081f101d69ce606961a57a2022171e2ebc5394ad47e3"
     },
     "overlay/src/helix_signal.c": {
       "bytes": 8739,
@@ -524,7 +540,7 @@
   },
   "excluded": "ROM/save/ELF/builds/root assets/prompts/profiles/private canon/credentials/packages/evidence",
   "genesis_package": "disabled; accepted package not included",
-  "overlay_bytes": 542015,
+  "overlay_bytes": 550379,
   "overlay_paths": [
     "data/layouts/HelixFieldVillage/border.bin",
     "data/layouts/HelixFieldVillage/map.bin",
@@ -613,9 +629,11 @@
     "include/constants/helix_settings.h",
     "include/helix_expansion.h",
     "include/helix_genesis.h",
+    "include/helix_indicator_model.h",
     "include/helix_lab_bridge.h",
     "include/helix_lab_items.h",
     "include/helix_pokedex.h",
+    "include/helix_preferences.h",
     "include/helix_quest.h",
     "include/helix_region.h",
     "include/helix_settings.h",
@@ -637,10 +655,12 @@
     "src/data/helix_title_sprite_frames.h",
     "src/helix_expansion.c",
     "src/helix_genesis.c",
+    "src/helix_indicator_model.c",
     "src/helix_lab.c",
     "src/helix_lab_bridge.c",
     "src/helix_lab_items.c",
     "src/helix_pokedex.c",
+    "src/helix_preferences.c",
     "src/helix_quest.c",
     "src/helix_region.c",
     "src/helix_settings.c",
@@ -688,11 +708,11 @@
     "data/maps/Route103/scripts.inc": "d27a7b7d27585e23295d5ca3775bdd06377afa67a1782a989f8aa8f049bb3d0c",
     "data/maps/map_groups.json": "66db529ba89fa6b83bc4eae50e6d04fd86fba916a210a3ca650ef37e4486f197",
     "data/scripts/helix_expansion.inc": "766e7ba909773408bd3b8e7310ba741b1edaa936ba696a4fcd1787220da9b9b3",
-    "data/scripts/helix_lab_items.inc": "04d7539f2bdbbbb47ef6704faa1d2ec5fea5cd053d932f3d86fb726a100110d2",
+    "data/scripts/helix_lab_items.inc": "584eff7b3fa4743f8d0064fb3441f84a6ce48ca8d75d83303198beecfae41fa5",
     "data/scripts/helix_quest.inc": "14904ee94490d7ad496486aab67101382f7c4ad07205a1dbe91f34d3af791bb7",
     "data/scripts/helix_region.inc": "0c7d348cf640fa8cbc6660c607c9c40e977f984317ff54a33e768ac88a59ea28",
     "data/scripts/helix_universal.inc": "82bfaead5804a136e7bf2e65fb66fc896d128d356c5983a3368ce88c021bf66e",
-    "data/specials.inc": "a5e52f07cf9444be57c127023f636d30e399a0c2dc1c59a4d7d65af0f2f3cf4e",
+    "data/specials.inc": "da65ecafc5ccedfc3f5a51e7287db171ff5637bdef23c6897aae9e94a4e71b02",
     "data/text/birch_speech.inc": "fb83ae4fe23dcde6099747e647b8c753a7d5480d2f97f01e927dff4afa823e7a",
     "graphics/aurora_title/coast.bin": "1ddb8034276e44ca05fce9f5fe298ab3bd6edb41c5da1d065b6ebeee2bc15c58",
     "graphics/helix_generated_title/night.8bpp": "5bddf3b501d7a55e95ff1b31efd248f501990f9f3032ed47acdfe728831ce5bf",
@@ -762,12 +782,14 @@
     "include/constants/script_menu.h": "54bf94d90e29947401b5d11f384d7efda1f545c5e64665afbf10d05e2478d020",
     "include/constants/species.h": "0cf8bc9ff3932187785baf35f47da4e5e495af1cb42509b21c041b5aee6fe09c",
     "include/constants/vars.h": "7b49d8342765e5313246ddb39d0ddf795727400d25d4cf438c96a3e5c436ec0e",
-    "include/global.h": "ef3898494b23b0139d9c3775a92e069edd9e3def96de3714c5c876c036306769",
+    "include/global.h": "4c72fa9fa5cafba9c8f19df0100d13bb9f08e59fd330eb23de7b740c93c0c923",
     "include/helix_expansion.h": "b18cced29a876b9a0608c14da0194322dcd472bce030ed95b9888e03c3cd33bc",
     "include/helix_genesis.h": "366c7c78c389bf463c35366685e9cddc8eb3238006fdd3a0e198bac048650bb1",
+    "include/helix_indicator_model.h": "8a364be9365711b4374b5ffedc87e9adb3b5ed16ce65b5cbf301348c2e64203c",
     "include/helix_lab_bridge.h": "f8332f072f0a92df5e827e11b3452ed562af0ad3f5904d0ed0fb37e3ded27ad8",
-    "include/helix_lab_items.h": "0f7e6d6f363197f5ad85530f28d6b3c8c456441faa7a5265b45d6f00e65395fc",
+    "include/helix_lab_items.h": "b4d22325a4486dc834148f79aec7b94f41443a37da931b78b73545569b805c49",
     "include/helix_pokedex.h": "b51abac782f1f76603a6c081247d5990411d21b1fc55e51768aa7ad58618d295",
+    "include/helix_preferences.h": "a5128563b8605a2d96f3d3293abd29fbacd762a0b24bde9cc483990fd7bdfeca",
     "include/helix_quest.h": "aab54a34be5009494ce809e7291482f68955ae402940644b4afc87c835fb39c3",
     "include/helix_region.h": "2116458364f8a384c861413be5c0106de45f6c72a85892f59b7853618267f324",
     "include/helix_settings.h": "5e4630848f1f8aced25298d5c0cad09b72eb44c4b25b0c4a452f520319f9903e",
@@ -805,26 +827,29 @@
     "src/event_object_movement.c": "dbeac89829bbc6be274e1d7c56a90afdb395dfa21c9d0c76bfa7176d0c624510",
     "src/helix_expansion.c": "a1f4c3f3aafec7ba35224df52bc7e35a345e190cac3e7e82ecfca5a851e5ec8c",
     "src/helix_genesis.c": "b9199e9cdcb334b31534324a4cafd119f8284446d2642ccacdf7b9ee8ba32e3f",
+    "src/helix_indicator_model.c": "0cc3052a636ad96aaa53b33476d1af70c2ea55a7f78660ec69d39bccc6f6c65d",
     "src/helix_lab.c": "0fdd38e0430ec155412296c7fa3cc74334c928a0f5ea7433cf5154889dc901cd",
     "src/helix_lab_bridge.c": "9681c8e0156f0752f2f7421cffc26c5b1e9615036e863fa96fcb6143753c1f31",
-    "src/helix_lab_items.c": "cd94ce9eb463e1e99e2e6fc1812d25bf63397b2d696b72d13b63f75e25e79b16",
+    "src/helix_lab_items.c": "6246117a4917aedf106f057889e6fa89c64ddc7386436c4a8bcec787f307346e",
     "src/helix_pokedex.c": "6d423bf1b629564013cb103ba64933483fcd1440b98ab8d8674af91ad3398c66",
+    "src/helix_preferences.c": "a6ce163d61cafd310f2720920903e7dca8496b0548f007d89a7725995f6fe149",
     "src/helix_quest.c": "8679f2dd63d86005fddf248152cc2a0faacb8ac302304a7db9e1be5349e3dffd",
     "src/helix_region.c": "de84bebc26cfde677807f878587510ecd0bb79b21b9e26f47d2b137cfc789ed7",
-    "src/helix_settings.c": "3cdf1d2be495489cd927cfe5eb8de80d0d03b5474aadef8c6be825f9a2c81bde",
+    "src/helix_settings.c": "614c4703c901d92d3d2f081f101d69ce606961a57a2022171e2ebc5394ad47e3",
     "src/helix_signal.c": "ec23648ae29a93da3946273dcc1a57c2caa4e3b08f8370e503b798ce5f7479d2",
     "src/helix_universal.c": "34999f1b11426e6690580798af285f11d388264e91ba22f388d99568a619378b",
     "src/helix_universal_codec.c": "d475a73ab3af03b999a0de694a1c58ce613691fbd98ead914dd3175afc8fecd7",
     "src/intro.c": "8c7172e4208a4070983dc567d837388ed8f6caa02170c4a8274f0126e993796d",
     "src/item.c": "015ddd67097ccfe9ddef722e50b72843180384034a17f35efcb1bef391daf251",
     "src/main_menu.c": "ac5fb3d12c8142eb33200c2f4b788a86c3e24c9a877eda792b27b2464fcde5ac",
-    "src/new_game.c": "d701cb7df502dd37d54ec47da40d065288db58bc0d2694c2cc757ff4721ca603",
-    "src/option_menu.c": "010f3dd1a5dcf59659843ea3fe0755082fadabce3cebab8ba7f9d451aab561e0",
+    "src/new_game.c": "3c2a262b18d96a184d6c356ea6d5c07c0b71a1e5e3b249c28990dcf0e9714e05",
+    "src/option_menu.c": "6f3c4550e73277f2875197f64c7bddbc5b888a705a0c902dc9478656b7422dc4",
     "src/overworld.c": "8090b574cdc0358e90411801024a4fc56443ba981eb656c664a9eb375469f782",
     "src/pokedex.c": "b4761db3fea8803ddbc17abe7b72eaf261210a6ce1cd38b15b00067cf96f57e5",
     "src/pokemon.c": "34de007d2c5d20f43e7bd6e8c8b363c5db800f3d51f1f90e199fa94125ec7e63",
     "src/pokemon_birth.c": "6bd2618b66aa74a7fccdc51bfb62c3e3a0692b932ebd8fc51bbe0676a9865077",
     "src/pokemon_summary_screen.c": "1ba55ebc46cac02487d18e9f395e258ce196aa77d099aec0dbf798ce04a34fc0",
+    "src/save.c": "06738c9b6a2ff85d29fca980e4dce010abc508ca59ecb1114d9588488132fe83",
     "src/start_menu.c": "6fb3436a90d706c9759437487720e2b168a8b8a1094da40df47dd302365023b9",
     "src/title_screen.c": "50948b2807da27bdc635e1c8e99c125be5be0fdd5857d809d14008ac9e0d36bb",
     "src/wild_encounter.c": "e87222c3c7b570220b45f04c6318bc702c5869792c832b131ba93817ef9b1939"
@@ -880,6 +905,7 @@
     "src/pokedex.c",
     "src/pokemon.c",
     "src/pokemon_summary_screen.c",
+    "src/save.c",
     "src/start_menu.c",
     "src/title_screen.c",
     "src/wild_encounter.c"

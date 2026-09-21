@@ -1,0 +1,148 @@
+{
+  "accession": "NC_002333.2",
+  "coordinates": {
+    "coordinate_system": "1-based inclusive",
+    "efetch_strand": 1,
+    "end": 1536,
+    "orientation": "+",
+    "start": 1
+  },
+  "descriptor_version": "aurora-reference-descriptors-v1",
+  "deterministic_phenotype_mapping": false,
+  "fasta_sha256": "f5f51e1122f1ddae7f07749c3688ec2151e8cd00febda54b9192289c44371457",
+  "features": {
+    "descriptor_version": "aurora-reference-descriptors-v1",
+    "use": "prompt_context_not_trait_weights",
+    "whole_fragment": {
+      "base_composition_entropy_bits": 1.9444741373431402,
+      "base_counts": {
+        "A": 521,
+        "C": 323,
+        "G": 248,
+        "T": 444
+      },
+      "base_fractions": {
+        "A": 0.3391927083333333,
+        "C": 0.21028645833333334,
+        "G": 0.16145833333333334,
+        "T": 0.2890625
+      },
+      "gc_fraction": 0.3717447916666667,
+      "length_bp": 1536,
+      "longest_homopolymer_bp": 7,
+      "normalized_base_composition_entropy": 0.9722370686715701,
+      "overlapping_dinucleotide_counts": {
+        "AT": 166,
+        "CG": 40
+      },
+      "overlapping_dinucleotide_fractions": {
+        "AT": 0.10814332247557003,
+        "CG": 0.026058631921824105
+      }
+    },
+    "windows": [
+      {
+        "end": 512,
+        "metrics": {
+          "base_composition_entropy_bits": 1.9238589574232297,
+          "base_counts": {
+            "A": 169,
+            "C": 92,
+            "G": 82,
+            "T": 169
+          },
+          "base_fractions": {
+            "A": 0.330078125,
+            "C": 0.1796875,
+            "G": 0.16015625,
+            "T": 0.330078125
+          },
+          "gc_fraction": 0.33984375,
+          "length_bp": 512,
+          "longest_homopolymer_bp": 6,
+          "normalized_base_composition_entropy": 0.9619294787116148,
+          "overlapping_dinucleotide_counts": {
+            "AT": 77,
+            "CG": 10
+          },
+          "overlapping_dinucleotide_fractions": {
+            "AT": 0.1506849315068493,
+            "CG": 0.019569471624266144
+          }
+        },
+        "orientation": "+",
+        "start": 1
+      },
+      {
+        "end": 1024,
+        "metrics": {
+          "base_composition_entropy_bits": 1.9005219647388338,
+          "base_counts": {
+            "A": 176,
+            "C": 103,
+            "G": 65,
+            "T": 168
+          },
+          "base_fractions": {
+            "A": 0.34375,
+            "C": 0.201171875,
+            "G": 0.126953125,
+            "T": 0.328125
+          },
+          "gc_fraction": 0.328125,
+          "length_bp": 512,
+          "longest_homopolymer_bp": 7,
+          "normalized_base_composition_entropy": 0.9502609823694169,
+          "overlapping_dinucleotide_counts": {
+            "AT": 62,
+            "CG": 12
+          },
+          "overlapping_dinucleotide_fractions": {
+            "AT": 0.12133072407045009,
+            "CG": 0.023483365949119372
+          }
+        },
+        "orientation": "+",
+        "start": 513
+      },
+      {
+        "end": 1536,
+        "metrics": {
+          "base_composition_entropy_bits": 1.9635228668300424,
+          "base_counts": {
+            "A": 176,
+            "C": 128,
+            "G": 101,
+            "T": 107
+          },
+          "base_fractions": {
+            "A": 0.34375,
+            "C": 0.25,
+            "G": 0.197265625,
+            "T": 0.208984375
+          },
+          "gc_fraction": 0.447265625,
+          "length_bp": 512,
+          "longest_homopolymer_bp": 5,
+          "normalized_base_composition_entropy": 0.9817614334150212,
+          "overlapping_dinucleotide_counts": {
+            "AT": 27,
+            "CG": 18
+          },
+          "overlapping_dinucleotide_fractions": {
+            "AT": 0.05283757338551859,
+            "CG": 0.03522504892367906
+          }
+        },
+        "orientation": "+",
+        "start": 1025
+      }
+    ]
+  },
+  "genbank_sha256": "4c5ddc94aca5e2cfe47e18380ce3d8ff5e72ba8e5cd48d1cffb38d32c25427c7",
+  "output_contract": "Model-conditioning data, not creature stats, colours, sprites or phenotype predictions.",
+  "retrieved_at_utc": "2026-09-20T04:49:08.261364+00:00",
+  "schema_version": 1,
+  "sequence_sha256": "a6ec23c256a203fcf64a2f420d1ae5b7015aae3ae077f1d8013a2f68b61b9df1",
+  "source_fasta_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=NC_002333.2&rettype=fasta&retmode=text&seq_start=1&seq_stop=1536&strand=1"
+}

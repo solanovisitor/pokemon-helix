@@ -2,8 +2,12 @@
 
 This is Helix C/event/map source and selected original-art build inputs. It is
 not a ROM, an accepted release or a playable public package. Source comes from
-the local V17c integration, with accepted individual bindings replaced by
+the local V18b integration, with accepted individual bindings replaced by
 deterministic public fixtures. V14 remains the accepted local default.
+
+The V18b source adds an offline indicator calculation and ordinary-save language
+preferences. This public variant still needs its own complete package and mGBA
+verification before any claim of playable delivery.
 
 ## Reconstruct source
 
@@ -38,7 +42,7 @@ host tests do not need the native checkout.
 
 `HELIX_GENESIS_ENABLED` and `AURORA_ADVENTURE_ENABLED` stay disabled. The
 accepted founder/adventure packages, stores, expression profiles and saves are
-absent. Compilation cannot reproduce the V14/V17c opening or prove their save
+absent. Compilation cannot reproduce the V14/V18b opening or prove their save
 compatibility. Never import an accepted or personal save into this integration.
 No native gameplay or handheld playability is claimed for this export.
 

@@ -50,7 +50,8 @@ uv run --offline --frozen python -m companion.demo
 ```
 
 [Understand the results and change a prediction](docs/getting-started.md),
-or [set up the native source](rom-source/README.md).
+try the [bounded agent tools](docs/agent-tools.md), or
+[set up the native source](rom-source/README.md).
 
 ## Documentation and contributions
 

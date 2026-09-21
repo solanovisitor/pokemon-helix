@@ -10,5 +10,5 @@
 - Native changes need an exact build identity, inspected mGBA screenshots,
   state assertions and isolated ordinary Save/Continue tests before play claims.
 - Do not reuse local accepted identities or saves for public fixtures.
-- V14 is the accepted local default; V15c/V16b/V17c are candidates. CORAL stays blocked.
+- V14 is the accepted local default; V15c/V16b/V17c/V18b are candidates. CORAL stays blocked.
 - Keep docs short and distinguish implemented behavior, proposals and unknowns.

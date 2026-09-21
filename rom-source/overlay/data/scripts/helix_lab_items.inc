@@ -1,4 +1,4 @@
-@ Two lab items, one atomic simulated assay. Bridge only after explicit YES.
+@ Two lab items, one atomic simulated assay. Native model only after explicit YES.
 HelixLabItems_EventScript_Mira::
 	lock
 	faceplayer
@@ -75,7 +75,7 @@ HelixLabItems_Prediction:
 	special BufferHelixLabItemsText
 	message gStringVar4
 	waitmessage
-	special StartHelixLabSimulation
+	special StartHelixLabNativeSimulation
 	goto_if_ne VAR_RESULT, 99, HelixLabItems_NoResult
 	waitstate
 	goto_if_ne VAR_RESULT, 1, HelixLabItems_NoResult

@@ -9,10 +9,11 @@ generated packages required for the full local game.
 After cloning:
 
 ```sh
-uv sync --locked --python 3.12
+uv sync --locked --python 3.12 --extra generation
 uv run --offline --frozen python -m companion.demo
 uv run --offline --frozen python -m unittest discover -s tests -v
 uv run --offline --frozen python platform/rg34xx/smoke.py
+uv run --offline --frozen python scripts/smoke-agent-tools.py
 ```
 
 The demo compares sheltered readings 10/11/13 with exposed readings 46/50/54.
@@ -21,6 +22,41 @@ To change predictions and inspect complete deterministic results, run
 The service smoke checks loopback request/result, replay, cancellation, restart
 and persisted results using temporary synthetic data. Neither opens a player
 save nor establishes native gameplay.
+
+The extended suite needs a C compiler (`clang` or `cc`). Agent fixtures use
+temporary synthetic identities and explicitly disable tracing. The generation
+extra exercises the actual Deep Agents SDK with an offline model and tool.
+
+## V18 public export checks
+
+On 2026-09-21 this export passed **247 tests**, with no skips, using its own
+locked Python 3.12 environment. This includes eight C model/preferences tests,
+the original 39 public tests and 200 agent/producer/genetics tests. The agent
+smoke denied network access and verified persistent dialogue replay, a draft
+quest and cached visual asset conversion. All three authoring CLIs passed
+fixture/replay checks without provider calls. The original terminal demo and
+loopback service smoke also passed.
+
+Both Linux ARM64 Docker checks passed: the service remains dependency-free,
+and the C indicator model matched Python and independent numeric vectors at
+`-O0`/`-O2` with undefined-behavior checks. Reproduce the additional model lane:
+
+```sh
+docker build --platform linux/arm64 -f platform/rg34xx/Dockerfile.indicator \
+  -t helix-indicator:public-arm64 .
+docker run --rm --platform linux/arm64 --network none --read-only \
+  --tmpfs /tmp:rw,exec,nosuid,size=64m --cap-drop ALL \
+  --security-opt no-new-privileges --pids-limit 64 --memory 512m --cpus 1 \
+  helix-indicator:public-arm64
+```
+
+The initial model container run could compile but could not execute its temporary
+test binaries. Explicit `exec` on that isolated tmpfs corrected the configuration;
+the service lane retains `noexec`. Neither lane proves ARM7 execution or hardware
+behavior on RG34XX. Native preference tests use a host struct stub and do not
+establish ordinary-save layout compatibility by themselves.
+
+## Original service container lane
 
 The Linux ARM64 check uses Docker:
 
@@ -67,6 +103,14 @@ savestate forks on that ROM. Native DNA is limited to Wingull/Pelipper with
 40 lifetime records, including abandoned encounters. Offline reset returns the
 host-backed language preference to English.
 
+The later V18b local candidate recorded **1,158 tests, 408 mGBA checkpoints,
+201 distinct inspected screenshots and 18 ordinary Save/Continue pairs**. It
+adds native offline assay calculation and saved EN/PT language. Its final
+verification commitment is
+`bf6eaade8732183bff68e672099cef059667d4a450a229cf054488e33c44bc69`.
+This evidence belongs to the retained local ROM, not the sanitized public ROM.
+V18b is also unaccepted; V14 remains default and CORAL remains blocked.
+
 ## Published images
 
 Both files are unmodified emulator captures, selected individually. The title
@@ -84,7 +128,7 @@ alongside state assertions and ordinary-save evidence. RG34XX claims additionall
 require a real device, frontend, controls, saves and power/peripheral checks.
 Preserve original saves and use isolated inputs for all future verification.
 
-## Native source compilation
+## Initial native source compilation
 
 On 2026-09-21, the integration compiled in an isolated checkout of the exact
 upstream, using Arm GNU Toolchain 14.3.Rel1 (GCC 14.3.1), GNU Make 3.81 and
@@ -105,3 +149,22 @@ public fixture identities and placeholder art are not the accepted game content.
 **This ROM was not run in mGBA.** Compilation is not gameplay, save compatibility,
 a full public Helix release, or RG34XX proof. Follow the
 [native setup and remaining package gate](../rom-source/README.md).
+
+## V18 public native compilation
+
+The updated overlay compiled in a new isolated checkout with the same pinned
+upstream and Arm GNU Toolchain 14.3.Rel1. All **179** manifest source results
+matched after compilation; the bootstrap also verified an unchanged second
+invocation before building. Only 13 native files changed from the previous
+public bundle. Public IDs, existing art, disabled-package aliases and both
+package gates remain unchanged.
+
+- Native manifest SHA-256: `e5b16967ff48d952d53cf0d06f8f8483141a5eb282a8f97569f6541916aa1814`.
+- Local output ROM SHA-256: `3ea15eed18855b0aa763f7f0fd4fca85a98b20bf50f5a47055f388c4e5efcfd6`.
+- Local output ELF SHA-256: `590defcbb8637995b42be77e640a405d751441bf9b8a6d3ac48f0a5e11671064`.
+
+**The public V18 ROM has not run in mGBA or on physical RG34XX.** These binaries
+are not distributed. A public gameplay package, its own save namespace and
+exact-ROM play evidence remain required. The local candidate's measured assay
+wait was about six seconds: the native counter counts task iterations, not
+hardware frames. No device performance claim follows from the host model tests.
