@@ -1,36 +1,46 @@
 # Pokémon Helix
 
-<img src="docs/media/helix-title.gif" width="720" alt="Pokémon Helix title: a glowing DNA helix in a blue laboratory beneath an aurora">
+<img src="docs/media/helix-title.gif" width="480" alt="Pokémon Helix title: a glowing DNA helix in a blue laboratory beneath an aurora">
 
-Learn the nature of the world. Raise a companion whose history matters. Become
-a breeder capable of shaping extraordinary lineages.
+[Features](docs/features.md) · [Getting started](#getting-started) · [Documentation](docs/README.md) · [Contributing](CONTRIBUTING.md)
 
-**Pokémon Helix** is an independent Pokémon Emerald fan project built around
-observation, care and discovery. Its direction is a world where Pokémon are rare,
-Poké Balls are professional investments, and knowledge grows through places,
-people and experiments.
+**Pokémon Helix** is an experimental Pokémon Emerald fan game about field
+research, lasting companions and the pursuit of extraordinary lineages.
+Learn the nature of the world, earn the trust of its people, and become a
+breeder whose knowledge matters.
 
-The locally developed game includes:
+The aim is to make Pokémon rare and meaningful: companions with histories,
+practical roles and a place in the world. Observation, care and experiments
+should shape your progress alongside battles. Breeding is a long-term goal
+still in development.
 
-- A laboratory opening and persistent first companions with individual records.
-- Field investigations and practical village work, including remembered shared watering.
-- A **V17c candidate** experiment with MIRA and ADA: predict a culture's response,
-  use a Culture Reader and Nanomon Medium, then revisit the saved result.
-  It does not edit Pokémon DNA.
+**Public availability:** this repository provides native source and a runnable
+laboratory simulation. A playable public Helix release is not available yet.
 
-<img src="docs/media/lab-assay.png" width="480" alt="Laboratory result showing sheltered readings of 10, 11 and 13, with a range of 3">
+## Features
 
-*Actual emulator captures. Title: historical presentation. Assay: V17c candidate.*
+Local development builds include:
 
-**Status:** V14 is the accepted local default. V15c, V16b and V17c are verified
-candidates, not accepted releases. CORAL's birth remains blocked. Native DNA
-coverage is Wingull/Pelipper with 40 lifetime records, including abandoned
-encounters. General breeding, shared-world multiplayer and a global economy
-remain unfinished. RG34XX hardware and its emulator adapter still need validation.
+- **Companions with continuity.** A laboratory opening, persistent first
+  companions and records for individual Pokémon.
+- **Research in the field.** Investigations and village work, including shared
+  watering that the game remembers.
+- **Hands-on experiments.** A candidate laboratory lesson with MIRA and ADA:
+  predict a culture's response, measure it and revisit the saved result.
 
-## Try the laboratory model
+<img src="docs/media/lab-assay.png" width="320" alt="Laboratory result showing sheltered readings of 10, 11 and 13, with a range of 3">
 
-Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then:
+*Emulator captures from local development: historical title presentation above;
+candidate laboratory lesson here. [Explore the features and their status](docs/features.md).*
+
+## Getting started
+
+Try the deterministic laboratory simulation in your terminal. It compares
+sheltered and exposed conditions using synthetic data; no emulator, API key
+or player save is needed.
+
+Install [Git](https://git-scm.com/downloads) and
+[uv](https://docs.astral.sh/uv/getting-started/installation/), then:
 
 ```sh
 git clone https://github.com/solanovisitor/pokemon-helix.git
@@ -39,15 +49,19 @@ uv sync --locked --python 3.12
 uv run --offline --frozen python -m companion.demo
 ```
 
-Compare sheltered and exposed conditions using a deterministic, synthetic
-assay. No keys or personal files are needed.
+[Understand the results and change a prediction](docs/getting-started.md),
+or [set up the native source](rom-source/README.md).
 
-**This kickstart runs host tools; a fresh clone does not provide a playable
-ROM.** The retained generated packages needed for the full game are absent.
+## Documentation and contributions
 
-Explore the [docs](docs/README.md), [evidence and limits](docs/verification.md),
-[roadmap](docs/roadmap.md), or [make your first contribution](CONTRIBUTING.md).
+The [documentation](docs/README.md) covers the game, architecture, source setup
+and verification. To help, start with clearer laboratory lessons, synthetic
+test cases or the [public game-build work](docs/roadmap.md#useful-next-contributions).
+See [Contributing](CONTRIBUTING.md) for setup and pull requests.
 
-Built on RHH's `pokeemerald-expansion` and pret's `pokeemerald`. Unaffiliated
-with Nintendo, Creatures or Game Freak. See [attribution and licensing
-boundaries](docs/attribution.md).
+## Credits
+
+Built on [RHH's pokeemerald-expansion](https://rh-hideout.github.io/pokeemerald-expansion/)
+and [pret's pokeemerald](https://github.com/pret/pokeemerald). Unaffiliated with
+Nintendo, Creatures or Game Freak. [Credits and media provenance](docs/attribution.md)
+· [Licensing](docs/licensing.md).
