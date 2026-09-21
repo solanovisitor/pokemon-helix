@@ -1,0 +1,11 @@
+**
+!companion/
+!companion/__init__.py
+!companion/lab_service.py
+!genetics/
+!genetics/__init__.py
+!genetics/lab_simulation.py
+!platform/
+!platform/rg34xx/
+!platform/rg34xx/Dockerfile
+!platform/rg34xx/smoke.py

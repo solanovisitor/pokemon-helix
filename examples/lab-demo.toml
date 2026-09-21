@@ -1,0 +1,5 @@
+# Fictional culture only. Change a prediction and compare the JSON feedback;
+# the measured signals stay the same. No keys, accounts, files, or DNA required.
+[predictions]
+sheltered = "stable"
+exposed = "sensitive"

@@ -1,0 +1,756 @@
+{
+  "acceptance_status": "public_source_only; packages disabled; no native gameplay acceptance",
+  "art_policy": "native-reviewed",
+  "bootstrap_sha256": "ea52898da4d81e7f8aaf86660897ea3853c769e46a6c8d80f1057d2fce4ddf2e",
+  "bundle_files": {
+    "README.md": {
+      "bytes": 3082,
+      "sha256": "c0a79114ef05bbdc1406a58fc8f23bf0b5b032624c2fc6c6d95ce68a0fc3c781"
+    },
+    "helix.patch": {
+      "bytes": 194705,
+      "sha256": "e74c18a9eb1f0e8066213bc2e363bd3880719889d7a645bd35d212ee0f1c90b8"
+    },
+    "overlay/data/layouts/HelixFieldVillage/border.bin": {
+      "bytes": 8,
+      "sha256": "1cedb5b187dc6e470095d034b616e33269998409ae53d50aeb9e3f51cb9cd513"
+    },
+    "overlay/data/layouts/HelixFieldVillage/map.bin": {
+      "bytes": 1792,
+      "sha256": "2c4b079b8b623195565ac218aeb9bc8ebb04efb8a5f31b17dc82b66e2b75a5cc"
+    },
+    "overlay/data/layouts/HelixQuietGarden/border.bin": {
+      "bytes": 8,
+      "sha256": "1cedb5b187dc6e470095d034b616e33269998409ae53d50aeb9e3f51cb9cd513"
+    },
+    "overlay/data/layouts/HelixQuietGarden/map.bin": {
+      "bytes": 800,
+      "sha256": "74b4e9633684fa09b8e0c7dfab4fb99ed40be89847e27df107e77c7b13a32479"
+    },
+    "overlay/data/layouts/HelixResearchPost/border.bin": {
+      "bytes": 8,
+      "sha256": "efef8d5a9f8dbe5bb218e6b0cc452583eb9d1452b615b1c7ab66ad49c82e9d70"
+    },
+    "overlay/data/layouts/HelixResearchPost/map.bin": {
+      "bytes": 240,
+      "sha256": "936f5bd779cccf282b8227dfa973bf4ef6c2c86f2b971fff7e297ecad3eef70c"
+    },
+    "overlay/data/layouts/HelixShelterTrail/border.bin": {
+      "bytes": 8,
+      "sha256": "1cedb5b187dc6e470095d034b616e33269998409ae53d50aeb9e3f51cb9cd513"
+    },
+    "overlay/data/layouts/HelixShelterTrail/map.bin": {
+      "bytes": 1536,
+      "sha256": "7fdb7377d2224225bb22b717ef9680f8664f43998dd4384f3bb74e39244c8fa3"
+    },
+    "overlay/data/maps/HelixFieldVillage/map.json": {
+      "bytes": 2926,
+      "sha256": "e034691abfdc318d6e492985e7751959b5a121fe15f3a653d5a2269cba6c4ba0"
+    },
+    "overlay/data/maps/HelixFieldVillage/scripts.inc": {
+      "bytes": 166,
+      "sha256": "d7a80729b4ad12d7702803eabe0019f8b562da4ea3560046ca6d7b6b4027957a"
+    },
+    "overlay/data/maps/HelixLaboratory/map.json": {
+      "bytes": 4282,
+      "sha256": "d474f986eaf32558ed49cba82deadc352bab6025d842f1adcb00e88f71701036"
+    },
+    "overlay/data/maps/HelixLaboratory/scripts.inc": {
+      "bytes": 27467,
+      "sha256": "7f1c21a6edd4dcd619ff2d65c45d18255c481f3f553aebe8cefa559d29a5565c"
+    },
+    "overlay/data/maps/HelixQuietGarden/map.json": {
+      "bytes": 2263,
+      "sha256": "56476f7f627462b3091fa26b3bacdb4c58630a9d38818f0f912609f58d069d8a"
+    },
+    "overlay/data/maps/HelixQuietGarden/scripts.inc": {
+      "bytes": 158,
+      "sha256": "63c87b0af4bc97a9d1b7038ebfaa7cd8347f195fadf69e98374640f2ba6454d4"
+    },
+    "overlay/data/maps/HelixResearchPost/map.json": {
+      "bytes": 1967,
+      "sha256": "a420022541252233a4c109453ca59e6606a2505f436941ee2dfa6744a55a05f3"
+    },
+    "overlay/data/maps/HelixResearchPost/scripts.inc": {
+      "bytes": 40,
+      "sha256": "f0a3a751bd85fb52756849c444e78557987ba2c77c58f26ee5ed6e63940f19e7"
+    },
+    "overlay/data/maps/HelixShelterTrail/map.json": {
+      "bytes": 1561,
+      "sha256": "ef86ebe30365665b41435131883512cab420f05af41eb190ca41af5506bcf447"
+    },
+    "overlay/data/maps/HelixShelterTrail/scripts.inc": {
+      "bytes": 40,
+      "sha256": "e42840f79f254ae3f7292b1030b19334ad4e9250adb717d4796a27ddcef70710"
+    },
+    "overlay/data/scripts/helix_expansion.inc": {
+      "bytes": 5579,
+      "sha256": "766e7ba909773408bd3b8e7310ba741b1edaa936ba696a4fcd1787220da9b9b3"
+    },
+    "overlay/data/scripts/helix_lab_items.inc": {
+      "bytes": 3693,
+      "sha256": "04d7539f2bdbbbb47ef6704faa1d2ec5fea5cd053d932f3d86fb726a100110d2"
+    },
+    "overlay/data/scripts/helix_quest.inc": {
+      "bytes": 4602,
+      "sha256": "14904ee94490d7ad496486aab67101382f7c4ad07205a1dbe91f34d3af791bb7"
+    },
+    "overlay/data/scripts/helix_region.inc": {
+      "bytes": 9795,
+      "sha256": "0c7d348cf640fa8cbc6660c607c9c40e977f984317ff54a33e768ac88a59ea28"
+    },
+    "overlay/data/scripts/helix_universal.inc": {
+      "bytes": 2905,
+      "sha256": "82bfaead5804a136e7bf2e65fb66fc896d128d356c5983a3368ce88c021bf66e"
+    },
+    "overlay/graphics/aurora_title/coast.bin": {
+      "bytes": 2048,
+      "sha256": "1ddb8034276e44ca05fce9f5fe298ab3bd6edb41c5da1d065b6ebeee2bc15c58"
+    },
+    "overlay/graphics/helix_generated_title/night.8bpp": {
+      "bytes": 38464,
+      "sha256": "5bddf3b501d7a55e95ff1b31efd248f501990f9f3032ed47acdfe728831ce5bf"
+    },
+    "overlay/graphics/helix_generated_title/night.bin": {
+      "bytes": 2048,
+      "sha256": "1ddb8034276e44ca05fce9f5fe298ab3bd6edb41c5da1d065b6ebeee2bc15c58"
+    },
+    "overlay/graphics/helix_generated_title/night.gbapal": {
+      "bytes": 512,
+      "sha256": "7f7c1b3c748a692cc299c796c921449db6d9850fb76dc2c63d9d1ab7184e1ac6"
+    },
+    "overlay/graphics/helix_title/night.bin": {
+      "bytes": 2048,
+      "sha256": "1ddb8034276e44ca05fce9f5fe298ab3bd6edb41c5da1d065b6ebeee2bc15c58"
+    },
+    "overlay/graphics/helix_title_sprite_frames/frames.8bpp": {
+      "bytes": 73728,
+      "sha256": "b10061eeff698a0ed5519b5dbd6f69acdf86b5c9f326698127327fc231925b2c"
+    },
+    "overlay/graphics/object_events/palettes/signal_beacon.pal": {
+      "bytes": 174,
+      "sha256": "61daf81e0fc140b2e6e98f19474dcce93be21881b66d9be8818bbb2726f5189a"
+    },
+    "overlay/graphics/object_events/pics/misc/signal_beacon.png": {
+      "bytes": 267,
+      "sha256": "9c8b95b767f35f6a096e48c8acddff418f5ecd5e62e811cf5546264d674bbea7"
+    },
+    "overlay/graphics/pokemon/aurora_family_one/back.png": {
+      "bytes": 805,
+      "sha256": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7"
+    },
+    "overlay/graphics/pokemon/aurora_family_one/front.png": {
+      "bytes": 752,
+      "sha256": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42"
+    },
+    "overlay/graphics/pokemon/aurora_family_one/icon.png": {
+      "bytes": 1024,
+      "sha256": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999"
+    },
+    "overlay/graphics/pokemon/aurora_family_one/normal.pal": {
+      "bytes": 194,
+      "sha256": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972"
+    },
+    "overlay/graphics/pokemon/aurora_family_two/back.png": {
+      "bytes": 805,
+      "sha256": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7"
+    },
+    "overlay/graphics/pokemon/aurora_family_two/front.png": {
+      "bytes": 752,
+      "sha256": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42"
+    },
+    "overlay/graphics/pokemon/aurora_family_two/icon.png": {
+      "bytes": 1024,
+      "sha256": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999"
+    },
+    "overlay/graphics/pokemon/aurora_family_two/normal.pal": {
+      "bytes": 194,
+      "sha256": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972"
+    },
+    "overlay/graphics/pokemon/lumifin/back.png": {
+      "bytes": 805,
+      "sha256": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7"
+    },
+    "overlay/graphics/pokemon/lumifin/front.png": {
+      "bytes": 752,
+      "sha256": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42"
+    },
+    "overlay/graphics/pokemon/lumifin/icon.png": {
+      "bytes": 1024,
+      "sha256": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999"
+    },
+    "overlay/graphics/pokemon/lumifin/normal.pal": {
+      "bytes": 194,
+      "sha256": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972"
+    },
+    "overlay/graphics/pokemon/lumifin_child/back.png": {
+      "bytes": 750,
+      "sha256": "2fc6e2bad4cd21e86655e0d02669e838f3350504e9dbcd6507ce26c804c4febb"
+    },
+    "overlay/graphics/pokemon/lumifin_child/front.png": {
+      "bytes": 722,
+      "sha256": "55d91d83b3ddc5510b31952722c9c2ce57e5eb743d6fd9a77b356a2af77668f8"
+    },
+    "overlay/graphics/pokemon/lumifin_child/icon.png": {
+      "bytes": 348,
+      "sha256": "c8d23856ec21292864e2033043f12007c7a061966ae7cb6d4c06b7e3c94244fa"
+    },
+    "overlay/graphics/pokemon/lumifin_child/normal.pal": {
+      "bytes": 193,
+      "sha256": "c64f435db1e90025f95b4af2a0e6b64330d74b532b3c5081175272c66696a305"
+    },
+    "overlay/graphics/pokemon/lumifin_child_edited/back.png": {
+      "bytes": 774,
+      "sha256": "47efbf45169bc00969c2f54ee42cd5813135c566a1efc2d20c1f2f8d9baaf83a"
+    },
+    "overlay/graphics/pokemon/lumifin_child_edited/front.png": {
+      "bytes": 754,
+      "sha256": "b0116e30f0b6c5a3f2b96fd407440f3145a7f2dedb1eca47cd6eff0b4d3f68d2"
+    },
+    "overlay/graphics/pokemon/lumifin_child_edited/icon.png": {
+      "bytes": 351,
+      "sha256": "61bd998383c54961e3972a9e14a2a09dd19e9e4ed34be518d205e506cfdd2f61"
+    },
+    "overlay/graphics/pokemon/lumifin_child_edited/normal.pal": {
+      "bytes": 193,
+      "sha256": "c64f435db1e90025f95b4af2a0e6b64330d74b532b3c5081175272c66696a305"
+    },
+    "overlay/include/ai_bridge.h": {
+      "bytes": 732,
+      "sha256": "ac0570782ae3cd74649bb27c9b8fab6b2b20302d3b4fb79c9c249489eb868e7b"
+    },
+    "overlay/include/aurora_adventure.h": {
+      "bytes": 1425,
+      "sha256": "20f287190ef65f8c7659fef58d96acf85a6f074255af19bd0c055bedb7572f0a"
+    },
+    "overlay/include/aurora_combat.h": {
+      "bytes": 1501,
+      "sha256": "23db5625305e503118bca9c0a2b3182513de38a0d3c8cc886c2632ac9f4e8241"
+    },
+    "overlay/include/aurora_individual.h": {
+      "bytes": 1678,
+      "sha256": "c3ca2d3666f3b89269080370f1b51bc7d53bd58aae69a91917e0d6afcbc6f09b"
+    },
+    "overlay/include/aurora_roster.h": {
+      "bytes": 1701,
+      "sha256": "9b953155de2b3d82c6a1963910fba5107af9a13855e175453c5ffef8e49d491a"
+    },
+    "overlay/include/aurora_title.h": {
+      "bytes": 231,
+      "sha256": "646bf2d8de58ff913726294145080ef86540dc0b41b0fd56399f9f355e5eb6be"
+    },
+    "overlay/include/constants/ai_bridge.h": {
+      "bytes": 983,
+      "sha256": "6b88138af64dad791a008e6e3b25cd0420b94d9ea42ad3ab5f9edc9a56f20ee3"
+    },
+    "overlay/include/constants/aurora_adventure_content.h": {
+      "bytes": 858,
+      "sha256": "917825ac0cefd5068a36c28cb4974163d5ba72a048a287873b03b89a5faa9c6e"
+    },
+    "overlay/include/constants/aurora_individual.h": {
+      "bytes": 1141,
+      "sha256": "f1dd6b89005fef078d6fa4e17e0ce9b81b7ab0cda969e930ac6eedbc22861325"
+    },
+    "overlay/include/constants/aurora_investigation.h": {
+      "bytes": 828,
+      "sha256": "ffd0e9ced1c69d58f74c3d1408d0e7c6105d40eeb487455243b6a7f1496f1336"
+    },
+    "overlay/include/constants/aurora_roster.h": {
+      "bytes": 640,
+      "sha256": "fa0b8cf1733d66f28d0f68d7360c59ec05a36fe9aa6b334687a061cbbeeac043"
+    },
+    "overlay/include/constants/helix_genesis_content.h": {
+      "bytes": 214,
+      "sha256": "b9f16cd6839c875f7459ccde224afbad3f43d88c3ea99d127094ec249dd45e5e"
+    },
+    "overlay/include/constants/helix_public_fixture.h": {
+      "bytes": 5845,
+      "sha256": "063fb85e4a1c9c689802d59dc61abc18ca022655aa71a5d61475324f732ae9c5"
+    },
+    "overlay/include/constants/helix_settings.h": {
+      "bytes": 1309,
+      "sha256": "bb3d8052b47045cd6688a29beb68e68df2cade08d709b365d892a41dca5aeb74"
+    },
+    "overlay/include/helix_expansion.h": {
+      "bytes": 753,
+      "sha256": "b18cced29a876b9a0608c14da0194322dcd472bce030ed95b9888e03c3cd33bc"
+    },
+    "overlay/include/helix_genesis.h": {
+      "bytes": 2394,
+      "sha256": "366c7c78c389bf463c35366685e9cddc8eb3238006fdd3a0e198bac048650bb1"
+    },
+    "overlay/include/helix_lab_bridge.h": {
+      "bytes": 536,
+      "sha256": "f8332f072f0a92df5e827e11b3452ed562af0ad3f5904d0ed0fb37e3ded27ad8"
+    },
+    "overlay/include/helix_lab_items.h": {
+      "bytes": 948,
+      "sha256": "0f7e6d6f363197f5ad85530f28d6b3c8c456441faa7a5265b45d6f00e65395fc"
+    },
+    "overlay/include/helix_pokedex.h": {
+      "bytes": 719,
+      "sha256": "b51abac782f1f76603a6c081247d5990411d21b1fc55e51768aa7ad58618d295"
+    },
+    "overlay/include/helix_quest.h": {
+      "bytes": 2680,
+      "sha256": "aab54a34be5009494ce809e7291482f68955ae402940644b4afc87c835fb39c3"
+    },
+    "overlay/include/helix_region.h": {
+      "bytes": 408,
+      "sha256": "2116458364f8a384c861413be5c0106de45f6c72a85892f59b7853618267f324"
+    },
+    "overlay/include/helix_settings.h": {
+      "bytes": 1461,
+      "sha256": "5e4630848f1f8aced25298d5c0cad09b72eb44c4b25b0c4a452f520319f9903e"
+    },
+    "overlay/include/helix_signal.h": {
+      "bytes": 394,
+      "sha256": "0b10935e163ba3a2f9e68b883ec644d98bc2aeed564c21d57f0a7ef0bfd0e3d3"
+    },
+    "overlay/include/helix_universal.h": {
+      "bytes": 1885,
+      "sha256": "c0d74c6987fa70d0930f144de958eae71d232da78e0c3b89b7692a8e5ec4096a"
+    },
+    "overlay/include/helix_universal_types.h": {
+      "bytes": 1305,
+      "sha256": "da297215ecf29d895e173d5605cb0b7347072bd53538563173f69bd6d2642397"
+    },
+    "overlay/include/pokemon_birth.h": {
+      "bytes": 972,
+      "sha256": "eb3c022cd5a67edfff872d3feb849f0adbb55366e6b271063d3f5636bb45f6ba"
+    },
+    "overlay/src/ai_bridge.c": {
+      "bytes": 8823,
+      "sha256": "a8b99f9f26c115e68f58696c418a94456c067b7ca76616547ebdda620333b87b"
+    },
+    "overlay/src/aurora_adventure.c": {
+      "bytes": 15395,
+      "sha256": "fcf909c34fa2471fc886199add69d034bf24508a3cfea35757cf66fade7a453d"
+    },
+    "overlay/src/aurora_combat.c": {
+      "bytes": 13017,
+      "sha256": "66da3923e2427f04cac316344094baf5c8c97cb63bb13563e4346308224b7cbe"
+    },
+    "overlay/src/aurora_individual.c": {
+      "bytes": 21890,
+      "sha256": "467c73175fa4b7bdf50f6d056846a83f0a6ae73e2675408e67562c9b6dae7445"
+    },
+    "overlay/src/aurora_roster.c": {
+      "bytes": 14114,
+      "sha256": "07dc7f07071548457e9fe92c7fb66e4abd780f3cd77540d5adc28fadbbb9704a"
+    },
+    "overlay/src/aurora_title.c": {
+      "bytes": 15582,
+      "sha256": "dd773515ac3a75ddec770095b303d9cadd311728ddb75f3c98fc7b26f27c894e"
+    },
+    "overlay/src/data/aurora_individual_art.h": {
+      "bytes": 13301,
+      "sha256": "316c634f2cafe705d5ec42b561c567e0cf0dd12198c387bf19bb4caff4b91a69"
+    },
+    "overlay/src/data/aurora_title_lights.h": {
+      "bytes": 106,
+      "sha256": "cb624874014a949a947c0d1b14a4b605def67a49369565e5d1e87f4c10ed9f10"
+    },
+    "overlay/src/data/helix_generated_title.h": {
+      "bytes": 372,
+      "sha256": "fd59679cd0cd08145e045f53015f30a05eb9568026b7a18f19def4791e860fe5"
+    },
+    "overlay/src/data/helix_timezones.h": {
+      "bytes": 23723,
+      "sha256": "dc50ab9189749dfd336bfa1b69cb2293eba62fbebbec8ec334de158290c8cf21"
+    },
+    "overlay/src/data/helix_title_lights.h": {
+      "bytes": 528,
+      "sha256": "8bdd890bbfe84ab7f93819916e6b46025177ec30623324ce2563823621ad7434"
+    },
+    "overlay/src/data/helix_title_sprite_frames.h": {
+      "bytes": 313,
+      "sha256": "5722b2324e558fe0f9e74357d53e81dadd9f9913a55907d0cc58d3e59f2b5f9e"
+    },
+    "overlay/src/helix_expansion.c": {
+      "bytes": 13196,
+      "sha256": "a1f4c3f3aafec7ba35224df52bc7e35a345e190cac3e7e82ecfca5a851e5ec8c"
+    },
+    "overlay/src/helix_genesis.c": {
+      "bytes": 24548,
+      "sha256": "b9199e9cdcb334b31534324a4cafd119f8284446d2642ccacdf7b9ee8ba32e3f"
+    },
+    "overlay/src/helix_lab.c": {
+      "bytes": 8588,
+      "sha256": "0fdd38e0430ec155412296c7fa3cc74334c928a0f5ea7433cf5154889dc901cd"
+    },
+    "overlay/src/helix_lab_bridge.c": {
+      "bytes": 5044,
+      "sha256": "9681c8e0156f0752f2f7421cffc26c5b1e9615036e863fa96fcb6143753c1f31"
+    },
+    "overlay/src/helix_lab_items.c": {
+      "bytes": 15114,
+      "sha256": "cd94ce9eb463e1e99e2e6fc1812d25bf63397b2d696b72d13b63f75e25e79b16"
+    },
+    "overlay/src/helix_pokedex.c": {
+      "bytes": 22648,
+      "sha256": "6d423bf1b629564013cb103ba64933483fcd1440b98ab8d8674af91ad3398c66"
+    },
+    "overlay/src/helix_quest.c": {
+      "bytes": 19322,
+      "sha256": "8679f2dd63d86005fddf248152cc2a0faacb8ac302304a7db9e1be5349e3dffd"
+    },
+    "overlay/src/helix_region.c": {
+      "bytes": 20063,
+      "sha256": "de84bebc26cfde677807f878587510ecd0bb79b21b9e26f47d2b137cfc789ed7"
+    },
+    "overlay/src/helix_settings.c": {
+      "bytes": 8326,
+      "sha256": "3cdf1d2be495489cd927cfe5eb8de80d0d03b5474aadef8c6be825f9a2c81bde"
+    },
+    "overlay/src/helix_signal.c": {
+      "bytes": 8739,
+      "sha256": "ec23648ae29a93da3946273dcc1a57c2caa4e3b08f8370e503b798ce5f7479d2"
+    },
+    "overlay/src/helix_universal.c": {
+      "bytes": 11445,
+      "sha256": "34999f1b11426e6690580798af285f11d388264e91ba22f388d99568a619378b"
+    },
+    "overlay/src/helix_universal_codec.c": {
+      "bytes": 3219,
+      "sha256": "d475a73ab3af03b999a0de694a1c58ce613691fbd98ead914dd3175afc8fecd7"
+    },
+    "overlay/src/pokemon_birth.c": {
+      "bytes": 3640,
+      "sha256": "6bd2618b66aa74a7fccdc51bfb62c3e3a0692b932ebd8fc51bbe0676a9865077"
+    }
+  },
+  "excluded": "ROM/save/ELF/builds/root assets/prompts/profiles/private canon/credentials/packages/evidence",
+  "genesis_package": "disabled; accepted package not included",
+  "overlay_bytes": 528140,
+  "overlay_paths": [
+    "data/layouts/HelixFieldVillage/border.bin",
+    "data/layouts/HelixFieldVillage/map.bin",
+    "data/layouts/HelixQuietGarden/border.bin",
+    "data/layouts/HelixQuietGarden/map.bin",
+    "data/layouts/HelixResearchPost/border.bin",
+    "data/layouts/HelixResearchPost/map.bin",
+    "data/layouts/HelixShelterTrail/border.bin",
+    "data/layouts/HelixShelterTrail/map.bin",
+    "data/maps/HelixFieldVillage/map.json",
+    "data/maps/HelixFieldVillage/scripts.inc",
+    "data/maps/HelixLaboratory/map.json",
+    "data/maps/HelixLaboratory/scripts.inc",
+    "data/maps/HelixQuietGarden/map.json",
+    "data/maps/HelixQuietGarden/scripts.inc",
+    "data/maps/HelixResearchPost/map.json",
+    "data/maps/HelixResearchPost/scripts.inc",
+    "data/maps/HelixShelterTrail/map.json",
+    "data/maps/HelixShelterTrail/scripts.inc",
+    "data/scripts/helix_expansion.inc",
+    "data/scripts/helix_lab_items.inc",
+    "data/scripts/helix_quest.inc",
+    "data/scripts/helix_region.inc",
+    "data/scripts/helix_universal.inc",
+    "graphics/aurora_title/coast.bin",
+    "graphics/helix_generated_title/night.8bpp",
+    "graphics/helix_generated_title/night.bin",
+    "graphics/helix_generated_title/night.gbapal",
+    "graphics/helix_title/night.bin",
+    "graphics/helix_title_sprite_frames/frames.8bpp",
+    "graphics/object_events/palettes/signal_beacon.pal",
+    "graphics/object_events/pics/misc/signal_beacon.png",
+    "graphics/pokemon/aurora_family_one/back.png",
+    "graphics/pokemon/aurora_family_one/front.png",
+    "graphics/pokemon/aurora_family_one/icon.png",
+    "graphics/pokemon/aurora_family_one/normal.pal",
+    "graphics/pokemon/aurora_family_two/back.png",
+    "graphics/pokemon/aurora_family_two/front.png",
+    "graphics/pokemon/aurora_family_two/icon.png",
+    "graphics/pokemon/aurora_family_two/normal.pal",
+    "graphics/pokemon/lumifin/back.png",
+    "graphics/pokemon/lumifin/front.png",
+    "graphics/pokemon/lumifin/icon.png",
+    "graphics/pokemon/lumifin/normal.pal",
+    "graphics/pokemon/lumifin_child/back.png",
+    "graphics/pokemon/lumifin_child/front.png",
+    "graphics/pokemon/lumifin_child/icon.png",
+    "graphics/pokemon/lumifin_child/normal.pal",
+    "graphics/pokemon/lumifin_child_edited/back.png",
+    "graphics/pokemon/lumifin_child_edited/front.png",
+    "graphics/pokemon/lumifin_child_edited/icon.png",
+    "graphics/pokemon/lumifin_child_edited/normal.pal",
+    "include/ai_bridge.h",
+    "include/aurora_adventure.h",
+    "include/aurora_combat.h",
+    "include/aurora_individual.h",
+    "include/aurora_roster.h",
+    "include/aurora_title.h",
+    "include/constants/ai_bridge.h",
+    "include/constants/aurora_adventure_content.h",
+    "include/constants/aurora_individual.h",
+    "include/constants/aurora_investigation.h",
+    "include/constants/aurora_roster.h",
+    "include/constants/helix_genesis_content.h",
+    "include/constants/helix_public_fixture.h",
+    "include/constants/helix_settings.h",
+    "include/helix_expansion.h",
+    "include/helix_genesis.h",
+    "include/helix_lab_bridge.h",
+    "include/helix_lab_items.h",
+    "include/helix_pokedex.h",
+    "include/helix_quest.h",
+    "include/helix_region.h",
+    "include/helix_settings.h",
+    "include/helix_signal.h",
+    "include/helix_universal.h",
+    "include/helix_universal_types.h",
+    "include/pokemon_birth.h",
+    "src/ai_bridge.c",
+    "src/aurora_adventure.c",
+    "src/aurora_combat.c",
+    "src/aurora_individual.c",
+    "src/aurora_roster.c",
+    "src/aurora_title.c",
+    "src/data/aurora_individual_art.h",
+    "src/data/aurora_title_lights.h",
+    "src/data/helix_generated_title.h",
+    "src/data/helix_timezones.h",
+    "src/data/helix_title_lights.h",
+    "src/data/helix_title_sprite_frames.h",
+    "src/helix_expansion.c",
+    "src/helix_genesis.c",
+    "src/helix_lab.c",
+    "src/helix_lab_bridge.c",
+    "src/helix_lab_items.c",
+    "src/helix_pokedex.c",
+    "src/helix_quest.c",
+    "src/helix_region.c",
+    "src/helix_settings.c",
+    "src/helix_signal.c",
+    "src/helix_universal.c",
+    "src/helix_universal_codec.c",
+    "src/pokemon_birth.c"
+  ],
+  "public_fixture_namespace": "pokemon-helix/public-source-fixture/v1",
+  "result_files": {
+    "Makefile": "c116674527d4cc44d76fceb7860d2eefc9f3a37b78be70dfb6e31492b082a456",
+    "data/event_scripts.s": "7215edd2b42b180ab6e2bc9ef6eb53ec20752fbd3a5578ecd0527c1f5aeb8a76",
+    "data/layouts/HelixFieldVillage/border.bin": "1cedb5b187dc6e470095d034b616e33269998409ae53d50aeb9e3f51cb9cd513",
+    "data/layouts/HelixFieldVillage/map.bin": "2c4b079b8b623195565ac218aeb9bc8ebb04efb8a5f31b17dc82b66e2b75a5cc",
+    "data/layouts/HelixQuietGarden/border.bin": "1cedb5b187dc6e470095d034b616e33269998409ae53d50aeb9e3f51cb9cd513",
+    "data/layouts/HelixQuietGarden/map.bin": "74b4e9633684fa09b8e0c7dfab4fb99ed40be89847e27df107e77c7b13a32479",
+    "data/layouts/HelixResearchPost/border.bin": "efef8d5a9f8dbe5bb218e6b0cc452583eb9d1452b615b1c7ab66ad49c82e9d70",
+    "data/layouts/HelixResearchPost/map.bin": "936f5bd779cccf282b8227dfa973bf4ef6c2c86f2b971fff7e297ecad3eef70c",
+    "data/layouts/HelixShelterTrail/border.bin": "1cedb5b187dc6e470095d034b616e33269998409ae53d50aeb9e3f51cb9cd513",
+    "data/layouts/HelixShelterTrail/map.bin": "7fdb7377d2224225bb22b717ef9680f8664f43998dd4384f3bb74e39244c8fa3",
+    "data/layouts/layouts.json": "5dec6e7e974ceb94ec8225c76e82acf478704c92bde44c7dac4ea169b462c510",
+    "data/maps/HelixFieldVillage/map.json": "e034691abfdc318d6e492985e7751959b5a121fe15f3a653d5a2269cba6c4ba0",
+    "data/maps/HelixFieldVillage/scripts.inc": "d7a80729b4ad12d7702803eabe0019f8b562da4ea3560046ca6d7b6b4027957a",
+    "data/maps/HelixLaboratory/map.json": "d474f986eaf32558ed49cba82deadc352bab6025d842f1adcb00e88f71701036",
+    "data/maps/HelixLaboratory/scripts.inc": "7f1c21a6edd4dcd619ff2d65c45d18255c481f3f553aebe8cefa559d29a5565c",
+    "data/maps/HelixQuietGarden/map.json": "56476f7f627462b3091fa26b3bacdb4c58630a9d38818f0f912609f58d069d8a",
+    "data/maps/HelixQuietGarden/scripts.inc": "63c87b0af4bc97a9d1b7038ebfaa7cd8347f195fadf69e98374640f2ba6454d4",
+    "data/maps/HelixResearchPost/map.json": "a420022541252233a4c109453ca59e6606a2505f436941ee2dfa6744a55a05f3",
+    "data/maps/HelixResearchPost/scripts.inc": "f0a3a751bd85fb52756849c444e78557987ba2c77c58f26ee5ed6e63940f19e7",
+    "data/maps/HelixShelterTrail/map.json": "ef86ebe30365665b41435131883512cab420f05af41eb190ca41af5506bcf447",
+    "data/maps/HelixShelterTrail/scripts.inc": "e42840f79f254ae3f7292b1030b19334ad4e9250adb717d4796a27ddcef70710",
+    "data/maps/LittlerootTown/map.json": "071a2c46aa7afe19091acdac79831789ffa213f25207d76fc675fa4efc16d0ff",
+    "data/maps/LittlerootTown/scripts.inc": "f0dda18f4717aac8c6d0f6c7d89b1ecec9865f145ac92e7cb50855dbbb1bea95",
+    "data/maps/OldaleTown/map.json": "6c34c0ba147cb23d903246dafdca42b5ae7d93fdc8e2704ca29cd972e7d83817",
+    "data/maps/OldaleTown/scripts.inc": "91968538feaf69428a58be3f9fece6c8db18fb4bea8b076c209010a7419c1220",
+    "data/maps/OldaleTown_House1/map.json": "7dc2a785e7a9b590e18a5880b1f2f285f30a02a04ed7e36fb5c1c7b0e3d7da6c",
+    "data/maps/OldaleTown_House1/scripts.inc": "16ef02721e76f7c20ddc93ed120cc897b8d8d1682be833a6119a4889c9973fd5",
+    "data/maps/OldaleTown_Mart/scripts.inc": "01da66c74f4583d630970fd5ca2ad38bb7e2e5cd1126c350727194426f9afff3",
+    "data/maps/Route101/map.json": "f34a25a7181fdf47847d3b1fe5edb2db5ca264df35c572dd88636cea931b7829",
+    "data/maps/Route101/scripts.inc": "f909eb0c85c77bded18884b3a9c3ce59acd3308d2a545e2a61ea434246e5d2d5",
+    "data/maps/Route103/map.json": "803fbfacb2d460c5fe762e8c6fdf9d968087ca2808d75c3bc7f735c06f72e7e3",
+    "data/maps/Route103/scripts.inc": "d27a7b7d27585e23295d5ca3775bdd06377afa67a1782a989f8aa8f049bb3d0c",
+    "data/maps/map_groups.json": "66db529ba89fa6b83bc4eae50e6d04fd86fba916a210a3ca650ef37e4486f197",
+    "data/scripts/helix_expansion.inc": "766e7ba909773408bd3b8e7310ba741b1edaa936ba696a4fcd1787220da9b9b3",
+    "data/scripts/helix_lab_items.inc": "04d7539f2bdbbbb47ef6704faa1d2ec5fea5cd053d932f3d86fb726a100110d2",
+    "data/scripts/helix_quest.inc": "14904ee94490d7ad496486aab67101382f7c4ad07205a1dbe91f34d3af791bb7",
+    "data/scripts/helix_region.inc": "0c7d348cf640fa8cbc6660c607c9c40e977f984317ff54a33e768ac88a59ea28",
+    "data/scripts/helix_universal.inc": "82bfaead5804a136e7bf2e65fb66fc896d128d356c5983a3368ce88c021bf66e",
+    "data/specials.inc": "a5e52f07cf9444be57c127023f636d30e399a0c2dc1c59a4d7d65af0f2f3cf4e",
+    "data/text/birch_speech.inc": "fb83ae4fe23dcde6099747e647b8c753a7d5480d2f97f01e927dff4afa823e7a",
+    "graphics/aurora_title/coast.bin": "1ddb8034276e44ca05fce9f5fe298ab3bd6edb41c5da1d065b6ebeee2bc15c58",
+    "graphics/helix_generated_title/night.8bpp": "5bddf3b501d7a55e95ff1b31efd248f501990f9f3032ed47acdfe728831ce5bf",
+    "graphics/helix_generated_title/night.bin": "1ddb8034276e44ca05fce9f5fe298ab3bd6edb41c5da1d065b6ebeee2bc15c58",
+    "graphics/helix_generated_title/night.gbapal": "7f7c1b3c748a692cc299c796c921449db6d9850fb76dc2c63d9d1ab7184e1ac6",
+    "graphics/helix_title/night.bin": "1ddb8034276e44ca05fce9f5fe298ab3bd6edb41c5da1d065b6ebeee2bc15c58",
+    "graphics/helix_title_sprite_frames/frames.8bpp": "b10061eeff698a0ed5519b5dbd6f69acdf86b5c9f326698127327fc231925b2c",
+    "graphics/object_events/palettes/signal_beacon.pal": "61daf81e0fc140b2e6e98f19474dcce93be21881b66d9be8818bbb2726f5189a",
+    "graphics/object_events/pics/misc/signal_beacon.png": "9c8b95b767f35f6a096e48c8acddff418f5ecd5e62e811cf5546264d674bbea7",
+    "graphics/pokemon/aurora_family_one/back.png": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7",
+    "graphics/pokemon/aurora_family_one/front.png": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42",
+    "graphics/pokemon/aurora_family_one/icon.png": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999",
+    "graphics/pokemon/aurora_family_one/normal.pal": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972",
+    "graphics/pokemon/aurora_family_two/back.png": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7",
+    "graphics/pokemon/aurora_family_two/front.png": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42",
+    "graphics/pokemon/aurora_family_two/icon.png": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999",
+    "graphics/pokemon/aurora_family_two/normal.pal": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972",
+    "graphics/pokemon/lumifin/back.png": "d470ac747af0de95ced0e54a82057ad2a09253c8612d4b79a90bdc5104bbe2c7",
+    "graphics/pokemon/lumifin/front.png": "e6fab961d72317199e67540d1c0f054d8284c9e76775f1bdc99fa9d1d57dbb42",
+    "graphics/pokemon/lumifin/icon.png": "07e2335117ce6c04b808a69d48f0f138dbca4f28ff8d87d6b47eefe935622999",
+    "graphics/pokemon/lumifin/normal.pal": "b4bc4c020a827e297b106aaf566b1391dbf04924755820819793152cd3eb0972",
+    "graphics/pokemon/lumifin_child/back.png": "2fc6e2bad4cd21e86655e0d02669e838f3350504e9dbcd6507ce26c804c4febb",
+    "graphics/pokemon/lumifin_child/front.png": "55d91d83b3ddc5510b31952722c9c2ce57e5eb743d6fd9a77b356a2af77668f8",
+    "graphics/pokemon/lumifin_child/icon.png": "c8d23856ec21292864e2033043f12007c7a061966ae7cb6d4c06b7e3c94244fa",
+    "graphics/pokemon/lumifin_child/normal.pal": "c64f435db1e90025f95b4af2a0e6b64330d74b532b3c5081175272c66696a305",
+    "graphics/pokemon/lumifin_child_edited/back.png": "47efbf45169bc00969c2f54ee42cd5813135c566a1efc2d20c1f2f8d9baaf83a",
+    "graphics/pokemon/lumifin_child_edited/front.png": "b0116e30f0b6c5a3f2b96fd407440f3145a7f2dedb1eca47cd6eff0b4d3f68d2",
+    "graphics/pokemon/lumifin_child_edited/icon.png": "61bd998383c54961e3972a9e14a2a09dd19e9e4ed34be518d205e506cfdd2f61",
+    "graphics/pokemon/lumifin_child_edited/normal.pal": "c64f435db1e90025f95b4af2a0e6b64330d74b532b3c5081175272c66696a305",
+    "include/ai_bridge.h": "ac0570782ae3cd74649bb27c9b8fab6b2b20302d3b4fb79c9c249489eb868e7b",
+    "include/aurora_adventure.h": "20f287190ef65f8c7659fef58d96acf85a6f074255af19bd0c055bedb7572f0a",
+    "include/aurora_combat.h": "23db5625305e503118bca9c0a2b3182513de38a0d3c8cc886c2632ac9f4e8241",
+    "include/aurora_individual.h": "c3ca2d3666f3b89269080370f1b51bc7d53bd58aae69a91917e0d6afcbc6f09b",
+    "include/aurora_roster.h": "9b953155de2b3d82c6a1963910fba5107af9a13855e175453c5ffef8e49d491a",
+    "include/aurora_title.h": "646bf2d8de58ff913726294145080ef86540dc0b41b0fd56399f9f355e5eb6be",
+    "include/constants/ai_bridge.h": "6b88138af64dad791a008e6e3b25cd0420b94d9ea42ad3ab5f9edc9a56f20ee3",
+    "include/constants/aurora_adventure_content.h": "917825ac0cefd5068a36c28cb4974163d5ba72a048a287873b03b89a5faa9c6e",
+    "include/constants/aurora_individual.h": "f1dd6b89005fef078d6fa4e17e0ce9b81b7ab0cda969e930ac6eedbc22861325",
+    "include/constants/aurora_investigation.h": "ffd0e9ced1c69d58f74c3d1408d0e7c6105d40eeb487455243b6a7f1496f1336",
+    "include/constants/aurora_roster.h": "fa0b8cf1733d66f28d0f68d7360c59ec05a36fe9aa6b334687a061cbbeeac043",
+    "include/constants/event_objects.h": "b903cf8d09470591995f9bd26c8378d0e3f651b8f2016d084fbf38d74ec6cb50",
+    "include/constants/helix_genesis_content.h": "b9f16cd6839c875f7459ccde224afbad3f43d88c3ea99d127094ec249dd45e5e",
+    "include/constants/helix_public_fixture.h": "063fb85e4a1c9c689802d59dc61abc18ca022655aa71a5d61475324f732ae9c5",
+    "include/constants/helix_settings.h": "bb3d8052b47045cd6688a29beb68e68df2cade08d709b365d892a41dca5aeb74",
+    "include/constants/items.h": "7f0a8037e9632750e86834a83fcff08a4652db551c17c85a2e2725d933ecc6cd",
+    "include/constants/opponents.h": "2f78f5d3bcbf592363f203453a0e9518e3777f95e7d134f3daaab35af9eb9647",
+    "include/constants/script_menu.h": "54bf94d90e29947401b5d11f384d7efda1f545c5e64665afbf10d05e2478d020",
+    "include/constants/species.h": "0cf8bc9ff3932187785baf35f47da4e5e495af1cb42509b21c041b5aee6fe09c",
+    "include/constants/vars.h": "7b49d8342765e5313246ddb39d0ddf795727400d25d4cf438c96a3e5c436ec0e",
+    "include/global.h": "ef3898494b23b0139d9c3775a92e069edd9e3def96de3714c5c876c036306769",
+    "include/helix_expansion.h": "b18cced29a876b9a0608c14da0194322dcd472bce030ed95b9888e03c3cd33bc",
+    "include/helix_genesis.h": "366c7c78c389bf463c35366685e9cddc8eb3238006fdd3a0e198bac048650bb1",
+    "include/helix_lab_bridge.h": "f8332f072f0a92df5e827e11b3452ed562af0ad3f5904d0ed0fb37e3ded27ad8",
+    "include/helix_lab_items.h": "0f7e6d6f363197f5ad85530f28d6b3c8c456441faa7a5265b45d6f00e65395fc",
+    "include/helix_pokedex.h": "b51abac782f1f76603a6c081247d5990411d21b1fc55e51768aa7ad58618d295",
+    "include/helix_quest.h": "aab54a34be5009494ce809e7291482f68955ae402940644b4afc87c835fb39c3",
+    "include/helix_region.h": "2116458364f8a384c861413be5c0106de45f6c72a85892f59b7853618267f324",
+    "include/helix_settings.h": "5e4630848f1f8aced25298d5c0cad09b72eb44c4b25b0c4a452f520319f9903e",
+    "include/helix_signal.h": "0b10935e163ba3a2f9e68b883ec644d98bc2aeed564c21d57f0a7ef0bfd0e3d3",
+    "include/helix_universal.h": "c0d74c6987fa70d0930f144de958eae71d232da78e0c3b89b7692a8e5ec4096a",
+    "include/helix_universal_types.h": "da297215ecf29d895e173d5605cb0b7347072bd53538563173f69bd6d2642397",
+    "include/pokemon.h": "c6b3dbd4d1d2a8323eca6dbf37f9e8c2aa2476bc9dd72140b5769a965dae5248",
+    "include/pokemon_birth.h": "eb3c022cd5a67edfff872d3feb849f0adbb55366e6b271063d3f5636bb45f6ba",
+    "src/ai_bridge.c": "a8b99f9f26c115e68f58696c418a94456c067b7ca76616547ebdda620333b87b",
+    "src/aurora_adventure.c": "fcf909c34fa2471fc886199add69d034bf24508a3cfea35757cf66fade7a453d",
+    "src/aurora_combat.c": "66da3923e2427f04cac316344094baf5c8c97cb63bb13563e4346308224b7cbe",
+    "src/aurora_individual.c": "467c73175fa4b7bdf50f6d056846a83f0a6ae73e2675408e67562c9b6dae7445",
+    "src/aurora_roster.c": "07dc7f07071548457e9fe92c7fb66e4abd780f3cd77540d5adc28fadbbb9704a",
+    "src/aurora_title.c": "dd773515ac3a75ddec770095b303d9cadd311728ddb75f3c98fc7b26f27c894e",
+    "src/battle_main.c": "6ae659b913803d5612ce7b8b5c44c272b3b74290d858b442a18e4b859668f731",
+    "src/battle_script_commands.c": "a00c0c84ee88b9bccff78df9aaddd3e7ce051b76c5cc0d1d37192c17c6238203",
+    "src/battle_setup.c": "d18cc94035020bea944207b00a2c653d7a6295f9eb85f1702db72c5d1943902a",
+    "src/battle_util.c": "7525f522822a2dc03ebf98ee3ae561da58c8bd0c7065b00525cb4958efdbfaee",
+    "src/data/aurora_individual_art.h": "316c634f2cafe705d5ec42b561c567e0cf0dd12198c387bf19bb4caff4b91a69",
+    "src/data/aurora_title_lights.h": "cb624874014a949a947c0d1b14a4b605def67a49369565e5d1e87f4c10ed9f10",
+    "src/data/graphics/pokemon.h": "4ac736bf6959b0873e958e5cb9b32ec7a1af2a5f7a31a17dd5263b19e895da8e",
+    "src/data/helix_generated_title.h": "fd59679cd0cd08145e045f53015f30a05eb9568026b7a18f19def4791e860fe5",
+    "src/data/helix_timezones.h": "dc50ab9189749dfd336bfa1b69cb2293eba62fbebbec8ec334de158290c8cf21",
+    "src/data/helix_title_lights.h": "8bdd890bbfe84ab7f93819916e6b46025177ec30623324ce2563823621ad7434",
+    "src/data/helix_title_sprite_frames.h": "5722b2324e558fe0f9e74357d53e81dadd9f9913a55907d0cc58d3e59f2b5f9e",
+    "src/data/items.h": "3a87ab18083349ebd84181ac5a0b1720ef6bed5a750d6c33dcd36364062232b6",
+    "src/data/object_events/object_event_graphics.h": "514ebf783f6bf0f35ce865889c8fa9dc7ac3c2ee15621d80203c430ca324eb6b",
+    "src/data/object_events/object_event_graphics_info.h": "4ac0b5af63c1c7a520444a769b741f079c7c29fb5b42d3f56f77050990f2caa6",
+    "src/data/object_events/object_event_graphics_info_pointers.h": "dd88dde87ecf1e6cc30f33a9dda75128399d1ed14c3c4933caaca4ba81d6faf3",
+    "src/data/object_events/object_event_pic_tables.h": "3ac18d45bc921b6dfb173639a0214e5c428dfaf82d5535cd96d7a014e321e069",
+    "src/data/pokemon/species_info.h": "afd0959173b0355300e8cc421b68eebe0f36428b987d8e32595ea4efb73f6ae5",
+    "src/data/script_menu.h": "2f8e3277820ce3f72d8f90c47d3562076f0235ddfab6341afc80a1039566c669",
+    "src/data/trainers.party": "2876b5999fe5fe37f21d7901c493f3d89e09c1e034e7be595f01c39602578df5",
+    "src/egg_hatch.c": "3ec0466bf5009dab5617262fb9a592a2da46d4920cc4b9bb2bdbef346d528209",
+    "src/event_object_movement.c": "dbeac89829bbc6be274e1d7c56a90afdb395dfa21c9d0c76bfa7176d0c624510",
+    "src/helix_expansion.c": "a1f4c3f3aafec7ba35224df52bc7e35a345e190cac3e7e82ecfca5a851e5ec8c",
+    "src/helix_genesis.c": "b9199e9cdcb334b31534324a4cafd119f8284446d2642ccacdf7b9ee8ba32e3f",
+    "src/helix_lab.c": "0fdd38e0430ec155412296c7fa3cc74334c928a0f5ea7433cf5154889dc901cd",
+    "src/helix_lab_bridge.c": "9681c8e0156f0752f2f7421cffc26c5b1e9615036e863fa96fcb6143753c1f31",
+    "src/helix_lab_items.c": "cd94ce9eb463e1e99e2e6fc1812d25bf63397b2d696b72d13b63f75e25e79b16",
+    "src/helix_pokedex.c": "6d423bf1b629564013cb103ba64933483fcd1440b98ab8d8674af91ad3398c66",
+    "src/helix_quest.c": "8679f2dd63d86005fddf248152cc2a0faacb8ac302304a7db9e1be5349e3dffd",
+    "src/helix_region.c": "de84bebc26cfde677807f878587510ecd0bb79b21b9e26f47d2b137cfc789ed7",
+    "src/helix_settings.c": "3cdf1d2be495489cd927cfe5eb8de80d0d03b5474aadef8c6be825f9a2c81bde",
+    "src/helix_signal.c": "ec23648ae29a93da3946273dcc1a57c2caa4e3b08f8370e503b798ce5f7479d2",
+    "src/helix_universal.c": "34999f1b11426e6690580798af285f11d388264e91ba22f388d99568a619378b",
+    "src/helix_universal_codec.c": "d475a73ab3af03b999a0de694a1c58ce613691fbd98ead914dd3175afc8fecd7",
+    "src/intro.c": "8c7172e4208a4070983dc567d837388ed8f6caa02170c4a8274f0126e993796d",
+    "src/item.c": "015ddd67097ccfe9ddef722e50b72843180384034a17f35efcb1bef391daf251",
+    "src/main_menu.c": "ac5fb3d12c8142eb33200c2f4b788a86c3e24c9a877eda792b27b2464fcde5ac",
+    "src/new_game.c": "d701cb7df502dd37d54ec47da40d065288db58bc0d2694c2cc757ff4721ca603",
+    "src/option_menu.c": "010f3dd1a5dcf59659843ea3fe0755082fadabce3cebab8ba7f9d451aab561e0",
+    "src/overworld.c": "8090b574cdc0358e90411801024a4fc56443ba981eb656c664a9eb375469f782",
+    "src/pokedex.c": "b4761db3fea8803ddbc17abe7b72eaf261210a6ce1cd38b15b00067cf96f57e5",
+    "src/pokemon.c": "34de007d2c5d20f43e7bd6e8c8b363c5db800f3d51f1f90e199fa94125ec7e63",
+    "src/pokemon_birth.c": "6bd2618b66aa74a7fccdc51bfb62c3e3a0692b932ebd8fc51bbe0676a9865077",
+    "src/pokemon_summary_screen.c": "1ba55ebc46cac02487d18e9f395e258ce196aa77d099aec0dbf798ce04a34fc0",
+    "src/start_menu.c": "6fb3436a90d706c9759437487720e2b168a8b8a1094da40df47dd302365023b9",
+    "src/title_screen.c": "50948b2807da27bdc635e1c8e99c125be5be0fdd5857d809d14008ac9e0d36bb",
+    "src/wild_encounter.c": "e87222c3c7b570220b45f04c6318bc702c5869792c832b131ba93817ef9b1939"
+  },
+  "schema": "helix-native-overlay-v1",
+  "tracked_patch_paths": [
+    "Makefile",
+    "data/event_scripts.s",
+    "data/layouts/layouts.json",
+    "data/maps/LittlerootTown/map.json",
+    "data/maps/LittlerootTown/scripts.inc",
+    "data/maps/OldaleTown/map.json",
+    "data/maps/OldaleTown/scripts.inc",
+    "data/maps/OldaleTown_House1/map.json",
+    "data/maps/OldaleTown_House1/scripts.inc",
+    "data/maps/OldaleTown_Mart/scripts.inc",
+    "data/maps/Route101/map.json",
+    "data/maps/Route101/scripts.inc",
+    "data/maps/Route103/map.json",
+    "data/maps/Route103/scripts.inc",
+    "data/maps/map_groups.json",
+    "data/specials.inc",
+    "data/text/birch_speech.inc",
+    "include/constants/event_objects.h",
+    "include/constants/items.h",
+    "include/constants/opponents.h",
+    "include/constants/script_menu.h",
+    "include/constants/species.h",
+    "include/constants/vars.h",
+    "include/global.h",
+    "include/pokemon.h",
+    "src/battle_main.c",
+    "src/battle_script_commands.c",
+    "src/battle_setup.c",
+    "src/battle_util.c",
+    "src/data/graphics/pokemon.h",
+    "src/data/items.h",
+    "src/data/object_events/object_event_graphics.h",
+    "src/data/object_events/object_event_graphics_info.h",
+    "src/data/object_events/object_event_graphics_info_pointers.h",
+    "src/data/object_events/object_event_pic_tables.h",
+    "src/data/pokemon/species_info.h",
+    "src/data/script_menu.h",
+    "src/data/trainers.party",
+    "src/egg_hatch.c",
+    "src/event_object_movement.c",
+    "src/intro.c",
+    "src/item.c",
+    "src/main_menu.c",
+    "src/new_game.c",
+    "src/option_menu.c",
+    "src/overworld.c",
+    "src/pokedex.c",
+    "src/pokemon.c",
+    "src/pokemon_summary_screen.c",
+    "src/start_menu.c",
+    "src/title_screen.c",
+    "src/wild_encounter.c"
+  ],
+  "upstream_license_paths": [
+    "tools/bin2c/LICENSE",
+    "tools/gbafix/COPYING",
+    "tools/gbagfx/LICENSE",
+    "tools/mid2agb/LICENSE",
+    "tools/preproc/LICENSE",
+    "tools/ramscrgen/LICENSE",
+    "tools/rsfont/LICENSE",
+    "tools/scaninc/LICENSE",
+    "tools/wav2agb/LICENSE"
+  ],
+  "upstream_revision": "36f5cf6271c382d4dc161ba040dd1dd3bc8b2a7f",
+  "upstream_top_level_license": false,
+  "upstream_url": "https://github.com/rh-hideout/pokeemerald-expansion.git"
+}

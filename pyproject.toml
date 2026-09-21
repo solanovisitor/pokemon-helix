@@ -1,0 +1,9 @@
+[project]
+name = "pokemon-helix"
+version = "0.1.0"
+description = "Deterministic synthetic laboratory kickstart for Pokémon Helix"
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.uv]
+package = false

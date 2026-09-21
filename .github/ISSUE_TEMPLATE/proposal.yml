@@ -1,0 +1,22 @@
+name: Contribution proposal
+description: Propose a bounded improvement with a way to verify it.
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Player or contributor need
+      description: Explain the experience or workflow this improves.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Proposed scope and acceptance
+      description: What changes, what proves it works, and what remains future work?
+    validations:
+      required: true
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Dependencies and provenance
+      description: List source licenses or hardware needed. Use synthetic examples only.

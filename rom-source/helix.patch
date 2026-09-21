@@ -1,0 +1,4633 @@
+diff --git a/Makefile b/Makefile
+index 37249891fad5563553c17316adf4ce2bf6bd89e9..ce3287b95eba16a4a96de21e9f469890adbfccad 100644
+--- a/Makefile
++++ b/Makefile
+@@ -157,6 +157,8 @@ else
+ O_LEVEL ?= 2
+ endif
+ CPPFLAGS := $(INCLUDE_CPP_ARGS) -Wno-trigraphs -DMODERN=1 -DTESTING=$(TEST) -D$(GAME_VERSION) -std=gnu17
++AURORA_LANGUAGE_PT_BR ?= 0
++override CPPFLAGS += -DAURORA_LANGUAGE_PT_BR=$(AURORA_LANGUAGE_PT_BR)
+ ifeq ($(RELEASE),1)
+ 	override CPPFLAGS += -DRELEASE
+ 	ifeq ($(USE_LTO_ON_RELEASE),1)
+diff --git a/data/event_scripts.s b/data/event_scripts.s
+index bc9688b6ac093ead52ec47fb31cab0f6644ce0b2..20440031243bfd389a63a4d3579915087906b5b6 100644
+--- a/data/event_scripts.s
++++ b/data/event_scripts.s
+@@ -2,6 +2,10 @@
+ #include "config/battle.h"
+ #include "config/item.h"
+ #include "constants/global.h"
++#include "constants/ai_bridge.h"
++#include "constants/helix_genesis_content.h"
++#include "constants/aurora_individual.h"
++#include "constants/aurora_investigation.h"
+ #include "constants/apprentice.h"
+ #include "constants/apricorn_tree.h"
+ #include "constants/battle.h"
+@@ -193,6 +197,15 @@ gStdScripts_End::
+ 	.include "data/maps/LittlerootTown_MaysHouse_2F/scripts.inc"
+ 	.include "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.inc"
+ 	.include "data/maps/OldaleTown_House1/scripts.inc"
++	.include "data/maps/HelixLaboratory/scripts.inc"
++	.include "data/scripts/helix_region.inc"
++	.include "data/scripts/helix_quest.inc"
++	.include "data/scripts/helix_expansion.inc"
++	.include "data/scripts/helix_universal.inc"
++	.include "data/maps/HelixFieldVillage/scripts.inc"
++	.include "data/maps/HelixShelterTrail/scripts.inc"
++	.include "data/maps/HelixResearchPost/scripts.inc"
++	.include "data/maps/HelixQuietGarden/scripts.inc"
+ 	.include "data/maps/OldaleTown_House2/scripts.inc"
+ 	.include "data/maps/OldaleTown_PokemonCenter_1F/scripts.inc"
+ 	.include "data/maps/OldaleTown_PokemonCenter_2F/scripts.inc"
+@@ -1738,3 +1751,4 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
+ 	.include "data/scripts/battle_frontier.inc"
+ 	.include "data/scripts/apricorn_tree.inc"
+ 	.include "data/scripts/wild_encounter.inc"
++	.include "data/scripts/helix_lab_items.inc"
+diff --git a/data/layouts/layouts.json b/data/layouts/layouts.json
+index 2b25587ac142c0fcd0b90755a3347ee16e785857..ac012d647c99bcc2bf3e2d776c590247c93543be 100644
+--- a/data/layouts/layouts.json
++++ b/data/layouts/layouts.json
+@@ -9323,6 +9323,58 @@
+       "border_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa_Frlg/border.bin",
+       "blockdata_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa_Frlg/map.bin",
+       "layout_version": "frlg"
++    },
++    {
++      "id": "LAYOUT_HELIX_FIELD_VILLAGE",
++      "width": 32,
++      "height": 28,
++      "primary_tileset": "gTileset_General",
++      "secondary_tileset": "gTileset_Petalburg",
++      "border_width": 2,
++      "border_height": 2,
++      "name": "HelixFieldVillage_Layout",
++      "border_filepath": "data/layouts/HelixFieldVillage/border.bin",
++      "blockdata_filepath": "data/layouts/HelixFieldVillage/map.bin",
++      "layout_version": "emerald"
++    },
++    {
++      "id": "LAYOUT_HELIX_SHELTER_TRAIL",
++      "width": 24,
++      "height": 32,
++      "primary_tileset": "gTileset_General",
++      "secondary_tileset": "gTileset_Petalburg",
++      "border_width": 2,
++      "border_height": 2,
++      "name": "HelixShelterTrail_Layout",
++      "border_filepath": "data/layouts/HelixShelterTrail/border.bin",
++      "blockdata_filepath": "data/layouts/HelixShelterTrail/map.bin",
++      "layout_version": "emerald"
++    },
++    {
++      "id": "LAYOUT_HELIX_RESEARCH_POST",
++      "width": 12,
++      "height": 10,
++      "primary_tileset": "gTileset_Building",
++      "secondary_tileset": "gTileset_GenericBuilding",
++      "border_width": 2,
++      "border_height": 2,
++      "name": "HelixResearchPost_Layout",
++      "border_filepath": "data/layouts/HelixResearchPost/border.bin",
++      "blockdata_filepath": "data/layouts/HelixResearchPost/map.bin",
++      "layout_version": "emerald"
++    },
++    {
++      "id": "LAYOUT_HELIX_QUIET_GARDEN",
++      "width": 20,
++      "height": 20,
++      "primary_tileset": "gTileset_General",
++      "secondary_tileset": "gTileset_Petalburg",
++      "border_width": 2,
++      "border_height": 2,
++      "name": "HelixQuietGarden_Layout",
++      "border_filepath": "data/layouts/HelixQuietGarden/border.bin",
++      "blockdata_filepath": "data/layouts/HelixQuietGarden/map.bin",
++      "layout_version": "emerald"
+     }
+   ]
+ }
+diff --git a/data/maps/LittlerootTown/map.json b/data/maps/LittlerootTown/map.json
+index 1e91f8cf95e04ec5bc22ab5f514e490b72a4914b..7a3be72d549b7db41cba5f3cc7d9500672af5d40 100644
+--- a/data/maps/LittlerootTown/map.json
++++ b/data/maps/LittlerootTown/map.json
+@@ -53,13 +53,14 @@
+       "x": 14,
+       "y": 17,
+       "elevation": 3,
+-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+-      "movement_range_x": 2,
+-      "movement_range_y": 1,
++      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
++      "movement_range_x": 0,
++      "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+       "trainer_sight_or_berry_tree_id": "0",
+       "script": "LittlerootTown_EventScript_Boy",
+-      "flag": "0"
++      "flag": "0",
++      "local_id": "LOCALID_LITTLEROOT_IVO"
+     },
+     {
+       "local_id": "LOCALID_LITTLEROOT_MOM",
+@@ -128,6 +129,20 @@
+       "trainer_sight_or_berry_tree_id": "0",
+       "script": "0x0",
+       "flag": "FLAG_HIDE_LITTLEROOT_TOWN_BIRCH"
++    },
++    {
++      "local_id": "LOCALID_LITTLEROOT_SIGNAL_CLUE",
++      "graphics_id": "OBJ_EVENT_GFX_SIGNAL_BEACON",
++      "x": 15,
++      "y": 12,
++      "elevation": 3,
++      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
++      "movement_range_x": 0,
++      "movement_range_y": 0,
++      "trainer_type": "TRAINER_TYPE_NONE",
++      "trainer_sight_or_berry_tree_id": "0",
++      "script": "LittlerootTown_EventScript_SignalClue",
++      "flag": "0"
+     }
+   ],
+   "warp_events": [
+diff --git a/data/maps/LittlerootTown/scripts.inc b/data/maps/LittlerootTown/scripts.inc
+index 6a2c6af41bb1d1a4d27cb2b74fbe655b53641cf9..b90ac75cd871f8e5a4f4ccdc7c00e711ca710582 100644
+--- a/data/maps/LittlerootTown/scripts.inc
++++ b/data/maps/LittlerootTown/scripts.inc
+@@ -246,19 +246,670 @@ LittlerootTown_EventScript_FatMan::
+ 	end
+ 
+ LittlerootTown_EventScript_Boy::
+-	msgbox LittlerootTown_Text_BirchSpendsDaysInLab, MSGBOX_NPC
++	lock
++	faceplayer
++	special GetHelixSignalRoute
++	goto_if_eq VAR_RESULT, 1, HelixSignal_Ivo
++	goto_if_eq VAR_RESULT, 2, HelixSignal_Unavailable
++	goto_if_eq VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_NOT_STARTED, LittlerootTown_EventScript_IvoFirstMeeting
++	goto_if_eq VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_CLUE_FOUND, LittlerootTown_EventScript_IvoReportClue
++	goto_if_eq VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_REPORTED, LittlerootTown_EventScript_IvoRemember
++	msgbox LittlerootTown_Text_IvoReminder, MSGBOX_DEFAULT
++	goto LittlerootTown_EventScript_IvoDialogue
++
++LittlerootTown_EventScript_IvoFirstMeeting::
++	msgbox LittlerootTown_Text_IvoIntroduction, MSGBOX_DEFAULT
++	dynmultichoice 1, 1, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE, LittlerootTown_Text_ChooseDiscover, LittlerootTown_Text_ChooseHelp
++	goto_if_eq VAR_RESULT, MULTI_B_PRESSED, LittlerootTown_EventScript_IvoDecline
++	setvar VAR_SIGNAL_MOTIVATION, SIGNAL_MOTIVATION_CURIOSITY
++	call_if_eq VAR_RESULT, 1, LittlerootTown_EventScript_IvoChooseHelp
++	setvar VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_ACCEPTED
++	msgbox LittlerootTown_Text_IvoDirections, MSGBOX_DEFAULT
++	goto LittlerootTown_EventScript_IvoDialogue
++
++LittlerootTown_EventScript_IvoChooseHelp::
++	setvar VAR_SIGNAL_MOTIVATION, SIGNAL_MOTIVATION_VILLAGE
++	return
++
++LittlerootTown_EventScript_IvoDecline::
++	msgbox LittlerootTown_Text_IvoDeclined, MSGBOX_DEFAULT
++	release
++	end
++
++LittlerootTown_EventScript_IvoReportClue::
++	msgbox LittlerootTown_Text_IvoClueReport, MSGBOX_DEFAULT
++	@ Authored scripts alone commit progress. Model text cannot set variables.
++	setvar VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_REPORTED
++	goto LittlerootTown_EventScript_IvoRemember
++
++LittlerootTown_EventScript_IvoRemember::
++	goto_if_eq VAR_SIGNAL_MOTIVATION, SIGNAL_MOTIVATION_VILLAGE, LittlerootTown_EventScript_IvoRememberHelp
++	msgbox LittlerootTown_Text_IvoRemembersCuriosity, MSGBOX_DEFAULT
++	goto LittlerootTown_EventScript_IvoDialogue
++
++LittlerootTown_EventScript_IvoRememberHelp::
++	msgbox LittlerootTown_Text_IvoRemembersHelp, MSGBOX_DEFAULT
++
++LittlerootTown_EventScript_IvoDialogue::
++	message LittlerootTown_Text_IvoListening
++	waitmessage
++	special RequestIvoDialogue
++	waitstate
++	goto_if_eq VAR_RESULT, AI_BRIDGE_RESULT_CANCELLED, LittlerootTown_EventScript_IvoFinish
++	msgbox gStringVar4, MSGBOX_DEFAULT
++LittlerootTown_EventScript_IvoFinish::
++	special EndAiDialogue
++	release
++	end
++
++LittlerootTown_EventScript_SignalClue::
++	lock
++	faceplayer
++	special GetHelixSignalRoute
++	goto_if_eq VAR_RESULT, 1, HelixSignal_Beacon
++	goto_if_eq VAR_RESULT, 2, HelixSignal_Unavailable
++	goto_if_eq VAR_AURORA_INVESTIGATION, AURORA_QUEST_NORTH_DECODED, LittlerootTown_EventScript_AuroraHomeAnswer
++	goto_if_eq VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_REPORTED, LittlerootTown_EventScript_AuroraIndividual
++	goto_if_eq VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_NOT_STARTED, LittlerootTown_EventScript_SignalClueBeforeMeeting
++	goto_if_ge VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_CLUE_FOUND, LittlerootTown_EventScript_SignalClueReadAgain
++	msgbox LittlerootTown_Text_SignalClueFound, MSGBOX_DEFAULT
++	setvar VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_CLUE_FOUND
++	msgbox LittlerootTown_Text_SignalClueReturn, MSGBOX_DEFAULT
++	release
+ 	end
+ 
++LittlerootTown_EventScript_SignalClueBeforeMeeting::
++	msgbox LittlerootTown_Text_SignalClueUnknown, MSGBOX_DEFAULT
++	release
++	end
++
++LittlerootTown_EventScript_SignalClueReadAgain::
++	msgbox LittlerootTown_Text_SignalClueReadAgain, MSGBOX_DEFAULT
++	release
++	end
++
++@ Helix uses the existing quest/motivation, without a new persistent field.
++@ VAR_0x800A exposes the current presentation phase for read-only verification.
++HelixSignal_Ivo::
++	goto_if_eq VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_CLUE_FOUND, HelixSignal_Report
++	goto_if_eq VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_REPORTED, HelixSignal_Remember
++	goto_if_eq VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_ACCEPTED, HelixSignal_Reminder
++	goto_if_ne VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_NOT_STARTED, HelixSignal_Unavailable
++	special GetHelixSignalReady
++	goto_if_eq VAR_RESULT, 0, HelixSignal_Unavailable
++	goto_if_ge VAR_RESULT, 4, HelixSignal_Unavailable
++	setvar VAR_0x800A, 1
++	setvar VAR_0x8004, 0
++	special BufferHelixSignalPage
++	msgbox gStringVar4, MSGBOX_DEFAULT
++	closemessage
++	setvar VAR_0x800A, 2
++	special GetHelixLabLanguage
++	goto_if_eq VAR_RESULT, 1, HelixSignal_MotivationPT
++	dynmultichoice 1, 1, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, HelixSignal_Text_DiscoverEN, HelixSignal_Text_HelpEN, HelixSignal_Text_CancelEN
++	goto HelixSignal_MotivationChoice
++HelixSignal_MotivationPT:
++	dynmultichoice 1, 1, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, HelixSignal_Text_DiscoverPT, HelixSignal_Text_HelpPT, HelixSignal_Text_CancelPT
++HelixSignal_MotivationChoice:
++	goto_if_ge VAR_RESULT, 2, HelixSignal_Decline
++	copyvar VAR_SIGNAL_MOTIVATION, VAR_RESULT
++	addvar VAR_SIGNAL_MOTIVATION, 1
++	setvar VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_ACCEPTED
++	setvar VAR_0x800A, 3
++	setvar VAR_0x8004, 1
++	goto HelixSignal_PageAndFinish
++HelixSignal_Reminder:
++	setvar VAR_0x800A, 4
++	setvar VAR_0x8004, 2
++	goto HelixSignal_PageAndFinish
++HelixSignal_Decline:
++	setvar VAR_0x8004, 13
++	goto HelixSignal_PageAndFinish
++HelixSignal_Report:
++	setvar VAR_0x800A, 13
++	setvar VAR_0x8004, 9
++	special BufferHelixSignalPage
++	msgbox gStringVar4, MSGBOX_DEFAULT
++	setvar VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_REPORTED
++HelixSignal_Remember:
++	setvar VAR_0x800A, 14
++	setvar VAR_0x8004, 10
++	goto HelixSignal_PageAndFinish
++
++HelixSignal_Beacon::
++	goto_if_eq VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_NOT_STARTED, HelixSignal_BeforeMeeting
++	goto_if_eq VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_REPORTED, HelixSignal_ReplayMenu
++	goto_if_eq VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_CLUE_FOUND, HelixSignal_Review
++	goto_if_ne VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_ACCEPTED, HelixSignal_Unavailable
++HelixSignal_Observe:
++	setvar VAR_0x800A, 6
++	closemessage
++	call HelixSignal_DoublePulse
++	setvar VAR_0x8004, 4
++	special BufferHelixSignalPage
++	msgbox gStringVar4, MSGBOX_DEFAULT
++HelixSignal_ObserveMenu:
++	closemessage
++	setvar VAR_0x800A, 7
++	special GetHelixLabLanguage
++	goto_if_eq VAR_RESULT, 1, HelixSignal_ObservePT
++	dynmultichoice 1, 1, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, HelixSignal_Text_WatchEN, HelixSignal_Text_AnswerEN, HelixSignal_Text_LeaveEN
++	goto HelixSignal_ObserveChoice
++HelixSignal_ObservePT:
++	dynmultichoice 1, 1, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, HelixSignal_Text_WatchPT, HelixSignal_Text_AnswerPT, HelixSignal_Text_LeavePT
++HelixSignal_ObserveChoice:
++	goto_if_eq VAR_RESULT, 0, HelixSignal_Observe
++	goto_if_ne VAR_RESULT, 1, HelixSignal_Finish
++	special GetHelixSignalReady
++	goto_if_ne VAR_RESULT, 1, HelixSignal_Unavailable
++	setvar VAR_0x800A, 8
++	setvar VAR_0x8004, 5
++	special BufferHelixSignalPage
++	showmonpic VAR_0x8009, 10, 3
++	playse SE_PC_ON
++	msgbox gStringVar4, MSGBOX_DEFAULT
++	hidemonpic
++	closemessage
++	setvar VAR_0x800A, 9
++	special GetHelixLabLanguage
++	goto_if_eq VAR_RESULT, 1, HelixSignal_RhythmPT
++	dynmultichoice 1, 1, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, HelixSignal_Text_OnceEN, HelixSignal_Text_TwiceEN, HelixSignal_Text_LeaveEN
++	goto HelixSignal_RhythmChoice
++HelixSignal_RhythmPT:
++	dynmultichoice 1, 1, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, HelixSignal_Text_OncePT, HelixSignal_Text_TwicePT, HelixSignal_Text_LeavePT
++HelixSignal_RhythmChoice:
++	goto_if_eq VAR_RESULT, 0, HelixSignal_WrongRhythm
++	goto_if_ne VAR_RESULT, 1, HelixSignal_Finish
++	special GetHelixSignalReady
++	goto_if_ne VAR_RESULT, 1, HelixSignal_Unavailable
++	closemessage
++	playse SE_SELECT
++	delay 18
++	playse SE_SELECT
++	delay 24
++	call HelixSignal_DoublePulse
++	playse SE_PC_LOGIN
++	setvar VAR_0x800A, 11
++	setvar VAR_0x8004, 7
++	special BufferHelixSignalPage
++	msgbox gStringVar4, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, HelixSignal_ObserveMenu
++	@ B/No above leaves the saved quest untouched. Recheck before committing.
++	special GetHelixSignalReady
++	goto_if_ne VAR_RESULT, 1, HelixSignal_Unavailable
++	setvar VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_CLUE_FOUND
++	setvar VAR_0x800A, 12
++	setvar VAR_0x8004, 8
++	goto HelixSignal_PageAndFinish
++HelixSignal_WrongRhythm:
++	setvar VAR_0x800A, 10
++	playse SE_SELECT
++	delay 18
++	playse SE_PC_OFF
++	setvar VAR_0x8004, 6
++	special BufferHelixSignalPage
++	msgbox gStringVar4, MSGBOX_DEFAULT
++	goto HelixSignal_Observe
++HelixSignal_BeforeMeeting:
++	setvar VAR_0x800A, 5
++	setvar VAR_0x8004, 3
++	goto HelixSignal_PageAndFinish
++HelixSignal_Unavailable:
++	setvar VAR_0x800A, 16
++	setvar VAR_0x8004, 12
++	goto HelixSignal_PageAndFinish
++HelixSignal_Review:
++	setvar VAR_0x800A, 17
++	setvar VAR_0x8004, 11
++	special BufferHelixSignalPage
++	msgbox gStringVar4, MSGBOX_DEFAULT
++	goto_if_eq VAR_SIGNAL_QUEST_STATE, SIGNAL_QUEST_REPORTED, HelixSignal_ReplayMenu
++	setvar VAR_0x8004, 8
++	goto HelixSignal_PageAndFinish
++HelixSignal_ReplayMenu:
++	setvar VAR_0x800A, 15
++	closemessage
++	special GetHelixLabLanguage
++	goto_if_eq VAR_RESULT, 1, HelixSignal_ReplayPT
++	dynmultichoice 1, 1, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, HelixSignal_Text_ReviewEN, HelixSignal_Text_EarlierEN, HelixSignal_Text_LeaveEN
++	goto HelixSignal_ReplayChoice
++HelixSignal_ReplayPT:
++	dynmultichoice 1, 1, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, HelixSignal_Text_ReviewPT, HelixSignal_Text_EarlierPT, HelixSignal_Text_LeavePT
++HelixSignal_ReplayChoice:
++	goto_if_eq VAR_RESULT, 0, HelixSignal_Review
++	goto_if_ne VAR_RESULT, 1, HelixSignal_Finish
++	@ Existing historical companions remain inspectable; Helix never issues one.
++	setvar VAR_0x800A, 0
++	goto_if_eq VAR_AURORA_INVESTIGATION, AURORA_QUEST_NORTH_DECODED, LittlerootTown_EventScript_AuroraHomeAnswer
++	goto LittlerootTown_EventScript_AuroraIndividual
++HelixSignal_PageAndFinish:
++	special BufferHelixSignalPage
++	msgbox gStringVar4, MSGBOX_DEFAULT
++HelixSignal_Finish:
++	setvar VAR_0x800A, 0
++	closemessage
++	release
++	end
++
++HelixSignal_DoublePulse:
++	hideobjectat LOCALID_LITTLEROOT_SIGNAL_CLUE, MAP_LITTLEROOT_TOWN
++	delay 18
++	showobjectat LOCALID_LITTLEROOT_SIGNAL_CLUE, MAP_LITTLEROOT_TOWN
++	playse SE_PIN
++	delay 18
++	hideobjectat LOCALID_LITTLEROOT_SIGNAL_CLUE, MAP_LITTLEROOT_TOWN
++	delay 18
++	showobjectat LOCALID_LITTLEROOT_SIGNAL_CLUE, MAP_LITTLEROOT_TOWN
++	playse SE_PIN
++	delay 48
++	return
++
++HelixSignal_Text_DiscoverEN:
++	.string "I want to discover$"
++HelixSignal_Text_HelpEN:
++	.string "I want to help$"
++HelixSignal_Text_CancelEN:
++	.string "Cancel$"
++HelixSignal_Text_DiscoverPT:
++	.string "Quero descobrir$"
++HelixSignal_Text_HelpPT:
++	.string "Quero ajudar$"
++HelixSignal_Text_CancelPT:
++	.string "Cancelar$"
++HelixSignal_Text_WatchEN:
++	.string "Watch again$"
++HelixSignal_Text_AnswerEN:
++	.string "Answer together$"
++HelixSignal_Text_LeaveEN:
++	.string "Leave$"
++HelixSignal_Text_WatchPT:
++	.string "Observar de novo$"
++HelixSignal_Text_AnswerPT:
++	.string "Responder juntos$"
++HelixSignal_Text_LeavePT:
++	.string "Sair$"
++HelixSignal_Text_OnceEN:
++	.string "Tap once$"
++HelixSignal_Text_TwiceEN:
++	.string "Tap twice$"
++HelixSignal_Text_OncePT:
++	.string "Um toque$"
++HelixSignal_Text_TwicePT:
++	.string "Dois toques$"
++HelixSignal_Text_ReviewEN:
++	.string "Review discovery$"
++HelixSignal_Text_EarlierEN:
++	.string "Earlier signal$"
++HelixSignal_Text_ReviewPT:
++	.string "Rever descoberta$"
++HelixSignal_Text_EarlierPT:
++	.string "Sinal anterior$"
++
++LittlerootTown_EventScript_AuroraIndividual::
++	special GetHelixSignalRoute
++	goto_if_eq VAR_RESULT, 2, HelixSignal_Unavailable
++	goto_if_eq VAR_RESULT, 1, HelixLegacy_Inspect
++	special GetAuroraIndividualState
++	goto_if_eq VAR_RESULT, AURORA_INDIVIDUAL_UNSUPPORTED, LittlerootTown_EventScript_IndividualUnsupported
++	goto_if_eq VAR_RESULT, AURORA_INDIVIDUAL_PRESENT, LittlerootTown_EventScript_IndividualExisting
++	msgbox LittlerootTown_Text_IndividualHatch, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, LittlerootTown_EventScript_IndividualFinish
++	message LittlerootTown_Text_IndividualReceiving
++	waitmessage
++	special HatchAuroraIndividual
++	goto_if_eq VAR_RESULT, AI_BRIDGE_RESULT_INVALID, LittlerootTown_EventScript_IndividualFinish
++	goto_if_eq VAR_RESULT, AURORA_INDIVIDUAL_RESULT_PARTY_FULL, LittlerootTown_EventScript_IndividualPartyFull
++	waitstate
++	goto_if_eq VAR_RESULT, AI_BRIDGE_RESULT_CANCELLED, LittlerootTown_EventScript_IndividualFinish
++	msgbox LittlerootTown_Text_IndividualJoined, MSGBOX_DEFAULT
++	call_if_eq VAR_LITTLEROOT_TOWN_STATE, 0, LittlerootTown_EventScript_IndividualMeetRival
++	setvar VAR_0x8004, 0
++	goto LittlerootTown_EventScript_IndividualShow
++
++HelixLegacy_Inspect:
++	special GetAuroraIndividualPartyState
++	goto_if_eq VAR_RESULT, AURORA_INDIVIDUAL_PARTY, LittlerootTown_EventScript_IndividualView
++	goto_if_eq VAR_RESULT, AURORA_INDIVIDUAL_BOXED, LittlerootTown_EventScript_IndividualView
++	special GetHelixLabLanguage
++	goto_if_eq VAR_RESULT, 1, HelixLegacy_StudyPT
++	msgbox HelixLegacy_Text_StudyEN, MSGBOX_DEFAULT
++	goto HelixSignal_Finish
++HelixLegacy_StudyPT:
++	msgbox HelixLegacy_Text_StudyPT, MSGBOX_DEFAULT
++	goto HelixSignal_Finish
++HelixLegacy_Text_StudyEN:
++	.string "The earlier signal is in your notes.\n"
++	.string "It does not hold another companion.\p"
++	.string "Keep exploring with your partner.\n"
++	.string "Study its traits as you grow close.$"
++HelixLegacy_Text_StudyPT:
++	.string "O sinal anterior está nas notas.\n"
++	.string "Ele nao guarda outro companheiro.\p"
++	.string "Continue explorando com seu parceiro.\n"
++	.string "Conheça seus traços e crie um vínculo.$"
++
++LittlerootTown_EventScript_IndividualExisting::
++	special GetAuroraIndividualPartyState
++	goto_if_eq VAR_RESULT, AURORA_INDIVIDUAL_PARTY_ABSENT, LittlerootTown_EventScript_IndividualLegacyJoin
++	goto_if_eq VAR_RESULT, AURORA_INDIVIDUAL_MISSING, LittlerootTown_EventScript_IndividualMissing
++	goto_if_eq VAR_RESULT, AURORA_INDIVIDUAL_PARTY_UNSUPPORTED, LittlerootTown_EventScript_IndividualUnsupported
++	goto LittlerootTown_EventScript_IndividualView
++
++LittlerootTown_EventScript_IndividualLegacyJoin::
++	special JoinAuroraIndividualParty
++	goto_if_eq VAR_RESULT, AURORA_INDIVIDUAL_RESULT_PARTY_FULL, LittlerootTown_EventScript_IndividualPartyFull
++	goto_if_ne VAR_RESULT, AURORA_INDIVIDUAL_PARTY, LittlerootTown_EventScript_IndividualUnsupported
++	msgbox LittlerootTown_Text_IndividualJoined, MSGBOX_DEFAULT
++	call_if_eq VAR_LITTLEROOT_TOWN_STATE, 0, LittlerootTown_EventScript_IndividualMeetRival
++	goto LittlerootTown_EventScript_IndividualView
++
++LittlerootTown_EventScript_IndividualMeetRival::
++	msgbox LittlerootTown_Text_IndividualMeetRival, MSGBOX_DEFAULT
++	return
++
++LittlerootTown_EventScript_IndividualMissing::
++	msgbox LittlerootTown_Text_IndividualMissing, MSGBOX_DEFAULT
++	goto LittlerootTown_EventScript_IndividualView
++
++LittlerootTown_EventScript_IndividualPartyFull::
++	msgbox LittlerootTown_Text_IndividualPartyFull, MSGBOX_DEFAULT
++	goto LittlerootTown_EventScript_IndividualFinish
++
++LittlerootTown_EventScript_IndividualView::
++	msgbox LittlerootTown_Text_IndividualView, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, LittlerootTown_EventScript_IndividualFinish
++	setvar VAR_0x8004, 1
++
++LittlerootTown_EventScript_IndividualShow::
++	message LittlerootTown_Text_IndividualCaption
++	waitmessage
++	special ShowAuroraIndividual
++	goto_if_eq VAR_RESULT, AI_BRIDGE_RESULT_INVALID, LittlerootTown_EventScript_IndividualFinish
++	waitstate
++LittlerootTown_EventScript_IndividualFinish::
++	closemessage
++	release
++	end
++
++LittlerootTown_EventScript_IndividualUnsupported::
++	msgbox LittlerootTown_Text_IndividualUnsupported, MSGBOX_DEFAULT
++	release
++	end
++
++LittlerootTown_EventScript_AuroraHomeAnswer::
++	special GetAuroraIndividualPartyState
++	goto_if_ne VAR_RESULT, AURORA_INDIVIDUAL_PARTY, LittlerootTown_EventScript_AuroraHomeNeedsLumifin
++	msgbox LittlerootTown_Text_AuroraHomeAnswer, MSGBOX_DEFAULT
++	playse SE_PC_LOGIN
++	waitse
++	setvar VAR_AURORA_INVESTIGATION, AURORA_QUEST_HOME_ANSWERED
++	msgbox LittlerootTown_Text_AuroraHomeAnswered, MSGBOX_DEFAULT
++	goto LittlerootTown_EventScript_IndividualFinish
++
++LittlerootTown_EventScript_AuroraHomeNeedsLumifin::
++	msgbox LittlerootTown_Text_AuroraHomeNeedsLumifin, MSGBOX_DEFAULT
++	goto LittlerootTown_EventScript_IndividualFinish
++
++#if AURORA_LANGUAGE_PT_BR
++LittlerootTown_Text_IndividualHatch:
++	.string "Um ovo responde ao sinal.\n"
++	.string "Chocar este LUMIFIN?$"
++LittlerootTown_Text_IndividualView:
++	.string "O registro de LUMIFIN esta aqui.\n"
++	.string "Quer ve-lo novamente?$"
++LittlerootTown_Text_IndividualReceiving:
++	.string "O ovo se move. Preparando arte...\n"
++	.string "B: sair. A identidade fica.$"
++LittlerootTown_Text_IndividualJoined:
++	.string "LUMIFIN entrou na sua equipe!\n"
++	.string "Agora voces podem batalhar.\p"
++	.string "MIRA estuda sinais em OLDALE.\n"
++	.string "Visite-a perto do CENTRO POKéMON.\p"
++	.string "Salve o jogo para manter\n"
++	.string "seu novo companheiro.$"
++LittlerootTown_Text_IndividualPartyFull:
++	.string "Sua equipe esta cheia.\n"
++	.string "Abra uma vaga e volte aqui.\p"
++	.string "Nenhum companheiro foi substituido.$"
++LittlerootTown_Text_IndividualMissing:
++	.string "LUMIFIN ja partiu com voce.\n"
++	.string "Este registro nao cria outro.$"
++LittlerootTown_Text_IndividualCaption:
++	.string "LUMIFIN - 52E2B3DE\n"
++	.string "Salve o jogo para mante-lo.$"
++LittlerootTown_Text_IndividualUnsupported:
++	.string "Registro desconhecido.\n"
++	.string "Nenhuma identidade foi alterada.$"
++#else
++LittlerootTown_Text_IndividualHatch:
++	.string "An egg answers the signal.\n"
++	.string "Hatch this LUMIFIN?$"
++LittlerootTown_Text_IndividualView:
++	.string "Your LUMIFIN's record is here.\n"
++	.string "View it again?$"
++LittlerootTown_Text_IndividualReceiving:
++	.string "The egg stirs. Preparing artwork...\n"
++	.string "B: leave. Its identity stays.$"
++LittlerootTown_Text_IndividualJoined:
++	.string "LUMIFIN joined your party!\n"
++	.string "You can battle together now.\p"
++	.string "MIRA studies signals in OLDALE.\n"
++	.string "Meet her near the POKéMON CENTER.\p"
++	.string "Save your game to keep\n"
++	.string "your new companion.$"
++LittlerootTown_Text_IndividualPartyFull:
++	.string "Your party is full.\n"
++	.string "Make room, then return here.\p"
++	.string "No partner has been replaced.$"
++LittlerootTown_Text_IndividualMissing:
++	.string "LUMIFIN already left with you.\n"
++	.string "This record cannot create another.$"
++LittlerootTown_Text_IndividualCaption:
++	.string "LUMIFIN - 52E2B3DE\n"
++	.string "Save your game to keep it.$"
++LittlerootTown_Text_IndividualUnsupported:
++	.string "Unrecognized specimen record.\n"
++	.string "No identity has been changed.$"
++#endif
++
++LittlerootTown_Text_AuroraHomeAnswer:
++	.string "LUMIFIN listens to the beacon\n"
++	.string "where your journey began.\p"
++	.string "This time, it answers.\n"
++	.string "One clear note joins the others.$"
++LittlerootTown_Text_AuroraHomeAnswered:
++	.string "An answering light travels north.\n"
++	.string "The river route is connected!\p"
++	.string "Return to MIRA in OLDALE\n"
++	.string "with your discovery.$"
++LittlerootTown_Text_AuroraHomeNeedsLumifin:
++	.string "The beacon waits for one last note.\n"
++	.string "Bring LUMIFIN in your party.$"
++LittlerootTown_Text_IndividualMeetRival:
++	.string "Before leaving town, meet BIRCH's\n"
++	.string "child upstairs in the other house.\p"
++	.string "Check the POKé BALL in their room.\n"
++	.string "Then take LUMIFIN north with you.$"
++
++#if AURORA_LANGUAGE_PT_BR
++LittlerootTown_Text_IvoIntroduction:
++	.string "IVO: Voce ouviu esse som?\n"
++	.string "Tres notas, depois silencio.\p"
++	.string "Meu receptor captou o sinal\n"
++	.string "vindo daqui, da nossa vila.\p"
++	.string "Quero descobrir quem chamou.\n"
++	.string "Por que voce me ajudaria?$"
++
++LittlerootTown_Text_ChooseDiscover:
++	.string "Quero descobrir$"
++
++LittlerootTown_Text_ChooseHelp:
++	.string "Quero ajudar$"
++
++LittlerootTown_Text_IvoDirections:
++	.string "IVO: Vamos seguir essa pista.\n"
++	.string "Vi uma luz perto da placa.\p"
++	.string "Procure ao norte da placa da\n"
++	.string "vila e examine o aparelho.\p"
++	.string "Depois me conte o que achou.\n"
++	.string "Vou escutar daqui.$"
++
++LittlerootTown_Text_IvoDeclined:
++	.string "IVO: Tudo bem. Vou ficar aqui.\n"
++	.string "Se mudar de ideia, me procure.$"
++
++LittlerootTown_Text_IvoReminder:
++	.string "IVO: O aparelho fica ao norte\n"
++	.string "da placa da vila.\p"
++	.string "Examine a luz azul e volte.\n"
++	.string "Precisamos entender o sinal.$"
++
++LittlerootTown_Text_SignalClueUnknown:
++	.string "Um aparelho pisca em azul.\n"
++	.string "Tres notas. Depois silencio.\p"
++	.string "O garoto ao lado do laboratorio\n"
++	.string "parece estar escutando.$"
++
++LittlerootTown_Text_SignalClueFound:
++	.string "A luz pulsa tres vezes.\n"
++	.string "Ha palavras gravadas na base:\p"
++	.string "SE VOCE PODE OUVIR,\n"
++	.string "AINDA ESTAMOS AQUI.\p"
++	.string "Por um instante, o receptor\n"
++	.string "responde com as mesmas notas.$"
++
++LittlerootTown_Text_SignalClueReturn:
++	.string "Voce guardou as palavras.\n"
++	.string "Volte e conte a IVO.$"
++
++LittlerootTown_Text_SignalClueReadAgain:
++	.string "SE VOCE PODE OUVIR,\n"
++	.string "AINDA ESTAMOS AQUI.\p"
++	.string "A luz azul continua acesa.$"
++
++LittlerootTown_Text_IvoClueReport:
++	.string "IVO: Ainda estamos aqui...\n"
++	.string "Entao alguem espera resposta.\p"
++	.string "Vou registrar as tres notas.\n"
++	.string "Hoje ouvimos. Vamos responder.$"
++
++LittlerootTown_Text_IvoRemembersCuriosity:
++	.string "IVO: Lembro do que voce disse:\n"
++	.string "queria descobrir.\p"
++	.string "Sua curiosidade nos trouxe ate\n"
++	.string "a primeira pista. Obrigado.$"
++
++LittlerootTown_Text_IvoRemembersHelp:
++	.string "IVO: Lembro do que voce disse:\n"
++	.string "queria ajudar a vila.\p"
++	.string "Vou cuidar desse sinal com voce.\n"
++	.string "Obrigado por ficar do nosso lado.$"
++
++LittlerootTown_Text_IvoListening:
++	.string "IVO escuta o receptor...\n"
++	.string "B: continuar a aventura.$"
++#else
++LittlerootTown_Text_IvoIntroduction:
++	.string "IVO: Did you hear that sound?\n"
++	.string "Three notes, then silence.\p"
++	.string "My receiver picked up a signal\n"
++	.string "coming from our own town.\p"
++	.string "I want to know who called.\n"
++	.string "Why would you help me?$"
++
++LittlerootTown_Text_ChooseDiscover:
++	.string "I want to discover$"
++
++LittlerootTown_Text_ChooseHelp:
++	.string "I want to help$"
++
++LittlerootTown_Text_IvoDirections:
++	.string "IVO: Let's follow that clue.\n"
++	.string "I saw a light near the sign.\p"
++	.string "Look north of the town sign\n"
++	.string "and examine the device.\p"
++	.string "Then tell me what you find.\n"
++	.string "I'll keep listening here.$"
++
++LittlerootTown_Text_IvoDeclined:
++	.string "IVO: That's fine. I'll be here.\n"
++	.string "Find me if you change your mind.$"
++
++LittlerootTown_Text_IvoReminder:
++	.string "IVO: The device is north\n"
++	.string "of the town sign.\p"
++	.string "Check the blue light and return.\n"
++	.string "We need to understand the signal.$"
++
++LittlerootTown_Text_SignalClueUnknown:
++	.string "A device blinks blue.\n"
++	.string "Three notes, then silence.\p"
++	.string "The boy beside the laboratory\n"
++	.string "seems to be listening.$"
++
++LittlerootTown_Text_SignalClueFound:
++	.string "The light pulses three times.\n"
++	.string "Words are carved into its base:\p"
++	.string "IF YOU CAN HEAR,\n"
++	.string "WE ARE STILL HERE.\p"
++	.string "For a moment, the receiver\n"
++	.string "answers with the same notes.$"
++
++LittlerootTown_Text_SignalClueReturn:
++	.string "You memorized the words.\n"
++	.string "Go back and tell IVO.$"
++
++LittlerootTown_Text_SignalClueReadAgain:
++	.string "IF YOU CAN HEAR,\n"
++	.string "WE ARE STILL HERE.\p"
++	.string "The blue light is still on.$"
++
++LittlerootTown_Text_IvoClueReport:
++	.string "IVO: We are still here...\n"
++	.string "Someone is waiting for an answer.\p"
++	.string "I'll record the three notes.\n"
++	.string "We heard them. Let's answer.$"
++
++LittlerootTown_Text_IvoRemembersCuriosity:
++	.string "IVO: I remember what you said:\n"
++	.string "you wanted to discover.\p"
++	.string "Your curiosity led us to\n"
++	.string "our first clue. Thank you.$"
++
++LittlerootTown_Text_IvoRemembersHelp:
++	.string "IVO: I remember what you said:\n"
++	.string "you wanted to help the town.\p"
++	.string "We'll look after this signal.\n"
++	.string "Thanks for standing with us.$"
++
++LittlerootTown_Text_IvoListening:
++	.string "IVO listens to the receiver...\n"
++	.string "B: continue your adventure.$"
++#endif
++
+ LittlerootTown_EventScript_Twin::
+ 	lock
+ 	faceplayer
+ 	goto_if_set FLAG_ADVENTURE_STARTED, LittlerootTown_EventScript_GoodLuck
+ 	goto_if_set FLAG_RESCUED_BIRCH, LittlerootTown_EventScript_YouSavedBirch
+ 	goto_if_ne VAR_LITTLEROOT_TOWN_STATE, 0, LittlerootTown_EventScript_GoSaveBirch
++	special GetAuroraIndividualPartyState
++	goto_if_eq VAR_RESULT, AURORA_INDIVIDUAL_PARTY, LittlerootTown_EventScript_TwinMeetRival
+ 	msgbox LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut, MSGBOX_DEFAULT
+ 	release
+ 	end
+ 
++LittlerootTown_EventScript_TwinMeetRival::
++	msgbox LittlerootTown_Text_TwinMeetRival, MSGBOX_DEFAULT
++	release
++	end
++
++LittlerootTown_Text_TwinMeetRival:
++	.string "Wow! You and LUMIFIN look ready!\n"
++	.string "But BIRCH's child wanted to meet you.\p"
++	.string "They're upstairs in the other house.\n"
++	.string "Check the POKé BALL in their room.$"
++
+ LittlerootTown_EventScript_GoSaveBirch::
+ 	special GetPlayerBigGuyGirlString
+ 	msgbox LittlerootTown_Text_CanYouGoSeeWhatsHappening, MSGBOX_DEFAULT
+@@ -291,6 +942,8 @@ LittlerootTown_EventScript_NeedPokemonTriggerLeft::
+ 	end
+ 
+ LittlerootTown_EventScript_DangerousWithoutPokemon::
++	special GetAuroraIndividualPartyState
++	goto_if_eq VAR_RESULT, AURORA_INDIVIDUAL_PARTY, LittlerootTown_EventScript_CompanionMeetRival
+ 	msgbox LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut, MSGBOX_DEFAULT
+ 	closemessage
+ 	applymovement LOCALID_LITTLEROOT_TWIN, LittlerootTown_Movement_TwinPushPlayerFromRoute
+@@ -300,6 +953,14 @@ LittlerootTown_EventScript_DangerousWithoutPokemon::
+ 	closemessage
+ 	return
+ 
++LittlerootTown_EventScript_CompanionMeetRival::
++	msgbox LittlerootTown_Text_TwinMeetRival, MSGBOX_DEFAULT
++	closemessage
++	applymovement LOCALID_LITTLEROOT_TWIN, LittlerootTown_Movement_TwinPushPlayerFromRoute
++	applymovement LOCALID_PLAYER, LittlerootTown_Movement_PushPlayerBackFromRoute
++	waitmovement 0
++	return
++
+ LittlerootTown_Movement_TwinApproachPlayerLeft:
+ 	face_right
+ 	delay_8
+@@ -1013,4 +1674,3 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab:
+ 	.string "I gave you?\p"
+ 	.string "I have something to show you.\n"
+ 	.string "Let's go to my LAB.$"
+-
+diff --git a/data/maps/OldaleTown/map.json b/data/maps/OldaleTown/map.json
+index 1c43428af083405f7105f2296457ddb4512934d5..5637fbfa9939b6d433e85be44f37e1edeb828403 100644
+--- a/data/maps/OldaleTown/map.json
++++ b/data/maps/OldaleTown/map.json
+@@ -85,6 +85,32 @@
+       "trainer_sight_or_berry_tree_id": "0",
+       "script": "OldaleTown_EventScript_Rival",
+       "flag": "FLAG_HIDE_OLDALE_TOWN_RIVAL"
++    },
++    {
++      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
++      "x": 9,
++      "y": 13,
++      "elevation": 3,
++      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
++      "movement_range_x": 0,
++      "movement_range_y": 0,
++      "trainer_type": "TRAINER_TYPE_NONE",
++      "trainer_sight_or_berry_tree_id": "0",
++      "script": "OldaleTown_EventScript_Mira",
++      "flag": "0"
++    },
++    {
++      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
++      "x": 12,
++      "y": 11,
++      "elevation": 3,
++      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
++      "movement_range_x": 0,
++      "movement_range_y": 0,
++      "trainer_type": "TRAINER_TYPE_NONE",
++      "trainer_sight_or_berry_tree_id": "0",
++      "script": "HelixRegion_EventScript_Guide",
++      "flag": "0"
+     }
+   ],
+   "warp_events": [
+diff --git a/data/maps/OldaleTown/scripts.inc b/data/maps/OldaleTown/scripts.inc
+index a127cd07be552db51a505664d6f5fe06c3e9474b..57ffcfcb10e18c50789f52b9e555f4620e8afb56 100644
+--- a/data/maps/OldaleTown/scripts.inc
++++ b/data/maps/OldaleTown/scripts.inc
+@@ -395,3 +395,294 @@ OldaleTown_Text_TownSign:
+ 	.string "OLDALE TOWN\n"
+ 	.string "“Where things start off scarce.”$"
+ 
++@ The second investigation is authored and playable with no companion running.
++OldaleTown_EventScript_Mira::
++	lock
++	faceplayer
++	goto_if_eq VAR_AURORA_INVESTIGATION, AURORA_QUEST_COMPLETE, OldaleTown_EventScript_MiraComplete
++	special GetAuroraIndividualPartyState
++	goto_if_ne VAR_RESULT, AURORA_INDIVIDUAL_PARTY, OldaleTown_EventScript_MiraNeedsLumifin
++	switch VAR_AURORA_INVESTIGATION
++	case AURORA_QUEST_UNMET, OldaleTown_EventScript_MiraIntroduction
++	case AURORA_QUEST_RELAY, OldaleTown_EventScript_MiraRelayReminder
++	case AURORA_QUEST_RELAY_READ, OldaleTown_EventScript_MiraRelayReport
++	case AURORA_QUEST_NORTH_SIGNAL, OldaleTown_EventScript_MiraNorthReminder
++	case AURORA_QUEST_NORTH_DECODED, OldaleTown_EventScript_MiraHomeReminder
++	case AURORA_QUEST_HOME_ANSWERED, OldaleTown_EventScript_MiraFinalReport
++	msgbox OldaleTown_Text_MiraUnknown, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++
++OldaleTown_EventScript_MiraIntroduction::
++	msgbox OldaleTown_Text_MiraIntroduction, MSGBOX_DEFAULT
++	msgbox OldaleTown_Text_MiraAccept, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, OldaleTown_EventScript_MiraDeclined
++	setvar VAR_AURORA_INVESTIGATION, AURORA_QUEST_RELAY
++	msgbox OldaleTown_Text_MiraRelayDirections, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++
++OldaleTown_EventScript_MiraDeclined::
++	msgbox OldaleTown_Text_MiraDeclined, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++
++OldaleTown_EventScript_MiraNeedsLumifin::
++	msgbox OldaleTown_Text_MiraNeedsLumifin, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++
++OldaleTown_EventScript_MiraRelayReminder::
++	msgbox OldaleTown_Text_MiraRelayDirections, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++
++OldaleTown_EventScript_MiraRelayReport::
++	msgbox OldaleTown_Text_MiraRelayReport, MSGBOX_DEFAULT
++	setvar VAR_AURORA_INVESTIGATION, AURORA_QUEST_NORTH_SIGNAL
++	msgbox OldaleTown_Text_MiraNorthDirections, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++
++OldaleTown_EventScript_MiraNorthReminder::
++	msgbox OldaleTown_Text_MiraNorthDirections, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++
++OldaleTown_EventScript_MiraHomeReminder::
++	msgbox OldaleTown_Text_MiraHomeDirections, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++
++OldaleTown_EventScript_MiraFinalReport::
++	msgbox OldaleTown_Text_MiraFinalReport, MSGBOX_DEFAULT
++	giveitem ITEM_POTION, 3
++	goto_if_eq VAR_RESULT, FALSE, OldaleTown_EventScript_MiraBagFull
++	setvar VAR_AURORA_INVESTIGATION, AURORA_QUEST_COMPLETE
++	special HealPlayerParty
++	msgbox OldaleTown_Text_MiraThanks, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++
++OldaleTown_EventScript_MiraBagFull::
++	msgbox OldaleTown_Text_MiraBagFull, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++
++OldaleTown_EventScript_MiraComplete::
++#if AURORA_ADVENTURE_VARIANT != 0
++	goto OldaleTown_EventScript_NorthPool
++#endif
++	msgbox OldaleTown_Text_MiraComplete, MSGBOX_DEFAULT
++OldaleTown_EventScript_MiraFinish::
++	release
++	end
++
++OldaleTown_Text_MiraIntroduction:
++	.string "MIRA: I map the sounds of rivers.\n"
++	.string "Usually, rivers don't answer back.\p"
++	.string "Then IVO sent me three notes from\n"
++	.string "LITTLEROOT. My receiver replied!\p"
++	.string "And your LUMIFIN is keeping time\n"
++	.string "with it. Look at those fins!\p"
++	.string "I thought the signal was a warning.\n"
++	.string "Your partner seems less certain.$"
++OldaleTown_Text_MiraAccept:
++	.string "Will you and LUMIFIN help me\n"
++	.string "follow the river's reply?$"
++OldaleTown_Text_MiraDeclined:
++	.string "MIRA: Take your time. A good\n"
++	.string "listener never rushes an answer.$"
++OldaleTown_Text_MiraNeedsLumifin:
++	.string "MIRA: IVO found an egg by the\n"
++	.string "LITTLEROOT beacon. Did it hatch?\p"
++	.string "Bring that LUMIFIN in your party.\n"
++	.string "I think it can hear my receiver.\p"
++	.string "If it is in a PC BOX, withdraw it\n"
++	.string "at the POKéMON CENTER nearby.$"
++OldaleTown_Text_MiraRelayDirections:
++	.string "MIRA: On ROUTE 101, find the cyan\n"
++	.string "relay just above the route sign.\p"
++	.string "Take LUMIFIN there. Listen for the\n"
++	.string "pause after the first three notes.\p"
++	.string "Come back and tell me what your\n"
++	.string "partner hears in that silence.$"
++OldaleTown_Text_MiraRelayReport:
++	.string "MIRA: Three notes, then two?\n"
++	.string "My recorder heard only the first!\p"
++	.string "LUMIFIN heard the reply before\n"
++	.string "the receiver could pick it up.\p"
++	.string "The river bends north of here.\n"
++	.string "An old survey beacon stands there.\p"
++	.string "Let's test a new idea: perhaps\n"
++	.string "something is asking for a guide.$"
++OldaleTown_Text_MiraNorthDirections:
++	.string "MIRA: Go north to ROUTE 103.\n"
++	.string "Find the cyan beacon by the water.\p"
++	.string "Stay on this side of the river.\n"
++	.string "You won't need to SURF.\p"
++	.string "A restless POOCHYENA circles it.\n"
++	.string "Let LUMIFIN lead your party.\p"
++	.string "Heal at the CENTER before you go.\n"
++	.string "Then inspect the beacon together.$"
++OldaleTown_Text_MiraHomeDirections:
++	.string "MIRA: A route for young POKéMON!\n"
++	.string "The signal keeps them together.\p"
++	.string "Go back to the LITTLEROOT beacon.\n"
++	.string "Let LUMIFIN answer the last note.\p"
++	.string "Then return here. We should know\n"
++	.string "whether the river heard us.$"
++OldaleTown_Text_MiraFinalReport:
++	.string "MIRA: Every relay answered!\n"
++	.string "You brought the route back to life.\p"
++	.string "These are no distress calls.\n"
++	.string "They're instructions for a journey.\p"
++	.string "LUMIFIN isn't our test subject.\n"
++	.string "It's our first river guide.\p"
++	.string "Someone built those beacons to\n"
++	.string "listen to partners like yours.\p"
++	.string "Who? That's the next question.\n"
++	.string "For now, take these for the road.$"
++OldaleTown_Text_MiraThanks:
++	.string "MIRA: I've healed your team, too.\n"
++	.string "A guide deserves a little rest.\p"
++	.string "Save your adventure. LUMIFIN has\n"
++	.string "earned a place in our field notes.$"
++OldaleTown_Text_MiraComplete:
++	.string "MIRA: Visit the field lab in the\n"
++	.string "northwest house. Our family grows!\p"
++	.string "MIRA: The river route is awake.\n"
++	.string "LUMIFIN taught us how to listen.\p"
++	.string "The north beacon can still draw\n"
++	.string "POOCHYENA out for battle practice.\p"
++	.string "A PC BOX won't change your partner.\n"
++	.string "Its identity travels with it.$"
++OldaleTown_Text_MiraBagFull:
++	.string "MIRA: Make room for three POTIONS,\n"
++	.string "then come back for your supplies.$"
++OldaleTown_Text_MiraUnknown:
++	.string "MIRA: These field notes are unclear.\n"
++	.string "Let's leave them as they are.$"
++
++@ North Pool v1: a prepared adventure owns its causal grammar and family.
++@ The original quest remains 6. Lab clue 1 still means its reward succeeded.
++#if AURORA_ADVENTURE_VARIANT != 0
++OldaleTown_EventScript_NorthPool::
++	goto_if_eq VAR_AURORA_NORTH_POOL, AURORA_NORTH_COMPLETE, OldaleTown_EventScript_NorthComplete
++	goto_if_ne VAR_AURORA_LAB_CLUE, 1, OldaleTown_EventScript_NorthLabReminder
++	special GetAuroraAdventureState
++	goto_if_ne VAR_RESULT, 1, OldaleTown_EventScript_NorthFamilyReminder
++	goto_if_eq VAR_AURORA_NORTH_POOL, AURORA_NORTH_UNMET, OldaleTown_EventScript_NorthOffer
++#if AURORA_ADVENTURE_VARIANT == 1
++	goto_if_eq VAR_AURORA_NORTH_POOL, AURORA_NORTH_BATTLE_WON, OldaleTown_EventScript_NorthReward
++	goto_if_eq VAR_AURORA_NORTH_CLUES, AURORA_NORTH_REED, OldaleTown_EventScript_NorthBattleReminder
++	goto OldaleTown_EventScript_NorthReedReminder
++#else
++	goto_if_ne VAR_AURORA_NORTH_POOL, AURORA_NORTH_BATTLE_WON, OldaleTown_EventScript_NorthBattleReminder
++	goto_if_eq VAR_AURORA_NORTH_CLUES, AURORA_NORTH_ALL_CLUES, OldaleTown_EventScript_NorthReward
++	msgbox OldaleTown_Text_NorthBothClues, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++#endif
++
++OldaleTown_EventScript_NorthOffer::
++	msgbox OldaleTown_Text_NorthOffer, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, OldaleTown_EventScript_MiraDeclined
++	setvar VAR_AURORA_NORTH_POOL, AURORA_NORTH_ACCEPTED
++#if AURORA_ADVENTURE_VARIANT == 1
++	goto OldaleTown_EventScript_NorthReedReminder
++#else
++	goto OldaleTown_EventScript_NorthBattleReminder
++#endif
++
++OldaleTown_EventScript_NorthReedReminder::
++	msgbox OldaleTown_Text_NorthReed, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++OldaleTown_EventScript_NorthBattleReminder::
++	msgbox OldaleTown_Text_NorthBattle, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++OldaleTown_EventScript_NorthLabReminder::
++	msgbox OldaleTown_Text_NorthLabReminder, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++OldaleTown_EventScript_NorthFamilyReminder::
++	msgbox OldaleTown_Text_NorthFamilyReminder, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++
++OldaleTown_EventScript_NorthReward::
++	msgbox OldaleTown_Text_NorthConclusion, MSGBOX_DEFAULT
++	giveitem ITEM_SUPER_POTION, 2
++	goto_if_eq VAR_RESULT, FALSE, OldaleTown_EventScript_NorthBagFull
++	setvar VAR_AURORA_NORTH_POOL, AURORA_NORTH_COMPLETE
++	special HealPlayerParty
++	msgbox OldaleTown_Text_NorthThanks, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++OldaleTown_EventScript_NorthBagFull::
++	msgbox OldaleTown_Text_NorthBagFull, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++OldaleTown_EventScript_NorthComplete::
++	msgbox OldaleTown_Text_NorthComplete, MSGBOX_DEFAULT
++	goto OldaleTown_EventScript_MiraFinish
++
++OldaleTown_Text_NorthOffer:
++#if AURORA_ADVENTURE_VARIANT == 1
++	.string "MIRA: NORTH POOL is a nursery!\n"
++	.string "A reed marker knows its quiet path.\p"
++	.string "Will your new family help me\n"
++	.string "find the nursery's lost entrance?$"
++#else
++	.string "MIRA: NORTH POOL has two channels.\n"
++	.string "Something has silenced them both.\p"
++	.string "Will your new family help me\n"
++	.string "reunite the nursery's two voices?$"
++#endif
++OldaleTown_Text_NorthReed:
++	.string "MIRA: Go north to ROUTE 103.\n"
++	.string "Find the REED MARKER west of\l"
++	.string "the beacon by the river.\p"
++	.string "Bring a healthy family partner.\n"
++	.string "The marker reveals the safe note.$"
++OldaleTown_Text_NorthBattle:
++	.string "MIRA: Find the river beacon on\n"
++	.string "ROUTE 103, beside the west bank.\p"
++	.string "Two restless POKéMON guard it.\n"
++	.string "Both new partners must lead.\p"
++	.string "Put them first and second, healthy.\n"
++	.string "No SURF is needed to reach it.$"
++OldaleTown_Text_NorthBothClues:
++	.string "MIRA: Read both markers on ROUTE\n"
++	.string "103, west of the river beacon.\p"
++	.string "REED is near the beacon. STONE\n"
++	.string "is farther west. Either comes first.\p"
++	.string "Bring a healthy family partner.\n"
++	.string "Then tell me what joins the notes.$"
++OldaleTown_Text_NorthLabReminder:
++	.string "MIRA: First visit the field lab\n"
++	.string "in the northwest house.\p"
++	.string "Let mature, edited RIPPLE listen.\n"
++	.string "Collect the lab's POKé BALL.\p"
++	.string "That confirms NORTH POOL in our\n"
++	.string "notes. Make Bag room if needed.$"
++OldaleTown_Text_NorthFamilyReminder:
++	.string "MIRA: The field lab has a new\n"
++	.string "family ready for this adventure.\p"
++	.string "Visit the northwest house with\n"
++	.string "two free places in your party.$"
++OldaleTown_Text_NorthConclusion:
++#if AURORA_ADVENTURE_VARIANT == 1
++	.string "MIRA: The reed taught us the note.\n"
++	.string "Your family carried it to the pool.\p"
++	.string "Now the entrance stays quiet.\n"
++	.string "Young POKéMON can return safely.$"
++#else
++	.string "MIRA: First you calmed the pool.\n"
++	.string "Then both channels answered.\p"
++	.string "The reed marks outgoing calls;\n"
++	.string "the stone marks replies.\p"
++	.string "Together they form a nursery map.\n"
++	.string "One clue alone hid its purpose!$"
++#endif
++OldaleTown_Text_NorthThanks:
++	.string "MIRA: Supplies for your family,\n"
++	.string "and a well-earned rest.\p"
++	.string "Save your adventure. The nursery\n"
++	.string "will remember this discovery.$"
++OldaleTown_Text_NorthBagFull:
++	.string "MIRA: Make room for two\n"
++	.string "SUPER POTIONS, then return.\p"
++	.string "Your discovery is still recorded.\n"
++	.string "I will keep the supplies here.$"
++OldaleTown_Text_NorthComplete:
++	.string "MIRA: NORTH POOL is safe.\n"
++	.string "Your family's discovery is recorded.\p"
++	.string "The river beacon offers practice.\n"
++	.string "The markers remember your notes.$"
++#endif
+diff --git a/data/maps/OldaleTown_House1/map.json b/data/maps/OldaleTown_House1/map.json
+index 39b599ecc46695293d5234a5d5f2c07bc59d1589..196bf7793d4be5f0d4c3452075f874d8711b0fb4 100644
+--- a/data/maps/OldaleTown_House1/map.json
++++ b/data/maps/OldaleTown_House1/map.json
+@@ -20,13 +20,26 @@
+       "x": 6,
+       "y": 4,
+       "elevation": 3,
+-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+-      "movement_range_x": 1,
+-      "movement_range_y": 1,
++      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
++      "movement_range_x": 0,
++      "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+       "trainer_sight_or_berry_tree_id": "0",
+       "script": "OldaleTown_House1_EventScript_Woman",
+       "flag": "0"
++    },
++    {
++      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
++      "x": 2,
++      "y": 2,
++      "elevation": 3,
++      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
++      "movement_range_x": 0,
++      "movement_range_y": 0,
++      "trainer_type": "TRAINER_TYPE_NONE",
++      "trainer_sight_or_berry_tree_id": "0",
++      "script": "OldaleTown_House1_EventScript_AuroraLab",
++      "flag": "0"
+     }
+   ],
+   "warp_events": [
+diff --git a/data/maps/OldaleTown_House1/scripts.inc b/data/maps/OldaleTown_House1/scripts.inc
+index 5211f583edabb724004aa2b0e2a683eb512aa178..2f281524e4b332d3134474ca18d7a28cf9798e6a 100644
+--- a/data/maps/OldaleTown_House1/scripts.inc
++++ b/data/maps/OldaleTown_House1/scripts.inc
+@@ -2,6 +2,9 @@ OldaleTown_House1_MapScripts::
+ 	.byte 0
+ 
+ OldaleTown_House1_EventScript_Woman::
++#if AURORA_COMBAT_ENABLED
++	goto HelixNursery_Offer
++#endif
+ 	msgbox OldaleTown_House1_Text_LeftPokemonGoesOutFirst, MSGBOX_NPC
+ 	end
+ 
+@@ -13,3 +16,437 @@ OldaleTown_House1_Text_LeftPokemonGoesOutFirst:
+ 	.string "of your POKéMON.\p"
+ 	.string "It could give you an advantage.$"
+ 
++
++@ Aurora field lab. All effects are ordinary script/special transitions.
++OldaleTown_House1_EventScript_AuroraLab::
++	lock
++	faceplayer
++#if HELIX_GENESIS_ENABLED
++	special GetHelixGenesisState
++	goto_if_ne VAR_RESULT, 0, HelixLab_Reenter
++#endif
++#if AURORA_COMBAT_ENABLED
++	goto HelixLab_Entry
++#endif
++#if AURORA_ADVENTURE_VARIANT != 0
++	special GetAuroraAdventureState
++	goto_if_eq VAR_RESULT, 3, AuroraLab_AdventureOffer
++	goto_if_eq VAR_RESULT, 2, AuroraLab_AdventureInvalid
++#endif
++AuroraLab_LegacyMenu:
++	msgbox AuroraLab_Text_Welcome, MSGBOX_DEFAULT
++	closemessage
++	multichoice 12, 0, MULTI_AURORA_LAB, FALSE
++	switch VAR_RESULT
++	case 0, AuroraLab_Hatch
++	case 1, AuroraLab_Notes
++	case 2, AuroraLab_Rest
++	case 3, AuroraLab_Listen
++	case 4, AuroraLab_Edit
++	goto AuroraLab_Finish
++
++AuroraLab_Hatch:
++	setvar VAR_0x8005, 0
++	special GetAuroraRosterAge
++	goto_if_eq VAR_RESULT, 5, AuroraLab_Invalid
++	goto_if_eq VAR_0x8008, FALSE, AuroraLab_TooYoung
++	setvar VAR_0x8005, 1
++	special GetAuroraRosterState
++	goto_if_eq VAR_RESULT, 1, AuroraLab_RecoverParty
++	goto_if_eq VAR_RESULT, 2, AuroraLab_RecoverBox
++	goto_if_eq VAR_RESULT, 3, AuroraLab_Missing
++	goto_if_eq VAR_RESULT, 4, AuroraLab_Invalid
++	msgbox AuroraLab_Text_Hatch, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, AuroraLab_Finish
++	special AdoptAuroraRosterChild
++	goto_if_eq VAR_RESULT, 7, AuroraLab_Full
++	goto_if_ne VAR_RESULT, 1, AuroraLab_Invalid
++	playfanfare MUS_OBTAIN_ITEM
++	msgbox AuroraLab_Text_Hatched, MSGBOX_DEFAULT
++	waitfanfare
++	goto AuroraLab_Finish
++
++AuroraLab_RecoverParty:
++	special AdoptAuroraRosterChild
++	goto_if_ne VAR_RESULT, 1, AuroraLab_Invalid
++	goto AuroraLab_Already
++AuroraLab_RecoverBox:
++	special AdoptAuroraRosterChild
++	goto_if_ne VAR_RESULT, 2, AuroraLab_Invalid
++	goto AuroraLab_Boxed
++
++AuroraLab_Choose:
++	closemessage
++	multichoice 14, 0, MULTI_AURORA_INDIVIDUAL, FALSE
++	return
++
++AuroraLab_Notes:
++	call AuroraLab_Choose
++	goto_if_ge VAR_RESULT, 2, AuroraLab_Finish
++	copyvar VAR_0x8005, VAR_RESULT
++	special BufferAuroraRosterInfo
++	goto_if_eq VAR_RESULT, 5, AuroraLab_Invalid
++	msgbox AuroraLab_Text_Notes, MSGBOX_DEFAULT
++	goto_if_eq VAR_0x8008, FALSE, AuroraLab_YoungNotes
++	msgbox AuroraLab_Text_MatureNotes, MSGBOX_DEFAULT
++	goto_if_eq VAR_0x8005, 0, AuroraLab_Finish
++	goto_if_eq VAR_0x800A, 1, AuroraLab_GermlineNotes
++	goto_if_eq VAR_0x8009, 1, AuroraLab_SomaticNotes
++	goto AuroraLab_Finish
++AuroraLab_GermlineNotes:
++	msgbox AuroraLab_Text_GermlineNotes, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++AuroraLab_SomaticNotes:
++	msgbox AuroraLab_Text_SomaticNotes, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++AuroraLab_YoungNotes:
++	msgbox AuroraLab_Text_YoungNotes, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++
++AuroraLab_Rest:
++	msgbox AuroraLab_Text_Rest, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, AuroraLab_Finish
++	special RestAuroraRoster
++	goto_if_ne VAR_RESULT, 8, AuroraLab_Invalid
++	fadescreen FADE_TO_BLACK
++	special HealPlayerParty
++	fadescreen FADE_FROM_BLACK
++	msgbox AuroraLab_Text_Rested, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++
++AuroraLab_Listen:
++	call AuroraLab_Choose
++	goto_if_ge VAR_RESULT, 2, AuroraLab_Finish
++	copyvar VAR_0x8005, VAR_RESULT
++	special GetAuroraRosterAge
++	goto_if_eq VAR_RESULT, 5, AuroraLab_Invalid
++	goto_if_eq VAR_0x8008, FALSE, AuroraLab_TooYoung
++	special GetAuroraRosterSignal
++	goto_if_eq VAR_RESULT, FALSE, AuroraLab_Quiet
++	goto_if_ge VAR_0x8007, 13, AuroraLab_ClearSignal
++	msgbox AuroraLab_Text_FaintSignal, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++AuroraLab_ClearSignal:
++	msgbox AuroraLab_Text_ClearSignal, MSGBOX_DEFAULT
++	goto_if_eq VAR_AURORA_LAB_CLUE, 1, AuroraLab_Finish
++	giveitem ITEM_POKE_BALL, 1
++	goto_if_eq VAR_RESULT, FALSE, AuroraLab_Finish
++	setvar VAR_AURORA_LAB_CLUE, 1
++	msgbox AuroraLab_Text_Reward, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++AuroraLab_Quiet:
++	msgbox AuroraLab_Text_Quiet, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++
++AuroraLab_Edit:
++	setvar VAR_0x8005, 1
++	special GetAuroraRosterState
++	goto_if_eq VAR_RESULT, 2, AuroraLab_Boxed
++	goto_if_ne VAR_RESULT, 1, AuroraLab_Invalid
++	msgbox AuroraLab_Text_EditExplain, MSGBOX_DEFAULT
++	closemessage
++	multichoice 14, 0, MULTI_AURORA_EDIT, FALSE
++	goto_if_ge VAR_RESULT, 2, AuroraLab_Finish
++	copyvar VAR_0x8006, VAR_RESULT
++	addvar VAR_0x8006, 1
++	special PreviewAuroraRosterEdit
++	goto_if_eq VAR_RESULT, 11, AuroraLab_AlreadyEdited
++	goto_if_ne VAR_RESULT, 9, AuroraLab_Invalid
++	goto_if_eq VAR_0x8006, 2, AuroraLab_GermlinePreview
++	msgbox AuroraLab_Text_SomaticPreview, MSGBOX_DEFAULT
++	goto AuroraLab_ConfirmEdit
++AuroraLab_GermlinePreview:
++	msgbox AuroraLab_Text_GermlinePreview, MSGBOX_DEFAULT
++AuroraLab_ConfirmEdit:
++	msgbox AuroraLab_Text_ConfirmEdit, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, AuroraLab_CancelEdit
++	special CommitAuroraRosterEdit
++	goto_if_ne VAR_RESULT, 10, AuroraLab_Invalid
++	msgbox AuroraLab_Text_Edited, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++AuroraLab_CancelEdit:
++	special CancelAuroraRosterEdit
++	msgbox AuroraLab_Text_Cancelled, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++AuroraLab_AlreadyEdited:
++	msgbox AuroraLab_Text_AlreadyEdited, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++AuroraLab_Already:
++	msgbox AuroraLab_Text_Already, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++AuroraLab_Boxed:
++	msgbox AuroraLab_Text_Boxed, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++AuroraLab_Missing:
++	msgbox AuroraLab_Text_Missing, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++AuroraLab_Full:
++	msgbox AuroraLab_Text_Full, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++AuroraLab_TooYoung:
++	msgbox AuroraLab_Text_TooYoung, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++AuroraLab_Invalid:
++	msgbox AuroraLab_Text_Invalid, MSGBOX_DEFAULT
++AuroraLab_Finish:
++	special CancelAuroraRosterEdit
++	release
++	end
++
++AuroraLab_Text_Welcome:
++	.string "Welcome to the AURORA field lab.\n"
++	.string "Let's follow your family's story.$"
++AuroraLab_Text_Hatch:
++	.string "RIPPLE is LUMIFIN's offspring.\n"
++	.string "Its other parent lives at the lab.\p"
++	.string "Its inherited pattern is ready.\n"
++	.string "Hatch RIPPLE into your party?$"
++AuroraLab_Text_Hatched:
++	.string "RIPPLE joined your party!\n"
++	.string "A new life, with its own pattern.\p"
++	.string "Open its SUMMARY to meet it.\n"
++	.string "Save to keep your family's progress.$"
++AuroraLab_Text_Notes:
++	.string "{STR_VAR_1}: {STR_VAR_3}\n"
++	.string "Days observed: {STR_VAR_2}\p"
++	.string "Age advances when we rest here.\n"
++	.string "Training XP is counted separately.$"
++AuroraLab_Text_MatureNotes:
++	.string "Mature: ready for family studies.\n"
++	.string "Its acquired XP is never inherited.$"
++AuroraLab_Text_YoungNotes:
++	.string "Juvenile at day 3, mature at day 7.\n"
++	.string "Let this young partner take its time.$"
++AuroraLab_Text_GermlineNotes:
++	.string "Edit record: GERMLINE, revision 1.\n"
++	.string "Its edited allele can be inherited.$"
++AuroraLab_Text_SomaticNotes:
++	.string "Edit record: SOMATIC, revision 1.\n"
++	.string "Its inherited genome is unchanged.$"
++AuroraLab_Text_Rest:
++	.string "Rest for one simulated day?\n"
++	.string "Party and boxed family members age.\p"
++	.string "Your team will heal, but gain no XP.\n"
++	.string "Time away from the game won't count.$"
++AuroraLab_Text_Rested:
++	.string "A day passes beside the nursery.\n"
++	.string "Your partners are rested.$"
++AuroraLab_Text_TooYoung:
++	.string "Let this partner mature first.\n"
++	.string "The lab counts seven days of rest.$"
++AuroraLab_Text_FaintSignal:
++	.string "A faint reply: three notes, a pause.\n"
++	.string "Another voice hides beneath them.\p"
++	.string "A more sensitive partner might\n"
++	.string "separate those overlapping notes.$"
++AuroraLab_Text_ClearSignal:
++	.string "Your partner separates both voices!\n"
++	.string "The quiet one repeats: NORTH POOL.\p"
++	.string "MIRA's missing nursery has a name.\n"
++	.string "We'll mark it in the field notes.$"
++AuroraLab_Text_Reward:
++	.string "Take this POKé BALL for the journey.\n"
++	.string "This discovery is yours to keep.$"
++AuroraLab_Text_Quiet:
++	.string "No clear reply. Bring a healthy\n"
++	.string "family member out of the PC first.$"
++AuroraLab_Text_EditExplain:
++	.string "We can try one virtual allele edit.\n"
++	.string "This is our fictional DNA model.\p"
++	.string "SOMATIC changes RIPPLE's expression.\n"
++	.string "GERMLINE also changes inheritance.\p"
++	.string "The original record stays intact.\n"
++	.string "Each choice has a recorded revision.$"
++AuroraLab_Text_SomaticPreview:
++	.string "Preview: a new luminous pattern.\n"
++	.string "Only RIPPLE's expression changes.\p"
++	.string "Future young inherit its original\n"
++	.string "alleles. Training stays the same.$"
++AuroraLab_Text_GermlinePreview:
++	.string "Preview: a new luminous pattern.\n"
++	.string "One inherited allele also changes.\p"
++	.string "Future young may inherit that copy.\n"
++	.string "Training stays the same.$"
++AuroraLab_Text_ConfirmEdit:
++	.string "Apply this recorded edit to RIPPLE?\n"
++	.string "Its identity and XP will stay.$"
++AuroraLab_Text_Edited:
++	.string "The new revision is recorded.\n"
++	.string "See RIPPLE's pattern in SUMMARY.\p"
++	.string "Save to keep this change.\n"
++	.string "The lab retains its original record.$"
++AuroraLab_Text_Cancelled:
++	.string "Preview cancelled.\n"
++	.string "RIPPLE is unchanged.$"
++AuroraLab_Text_AlreadyEdited:
++	.string "That revision is already recorded.\n"
++	.string "The lab won't apply it twice.$"
++AuroraLab_Text_Already:
++	.string "RIPPLE is already with you.\n"
++	.string "There is only one of this individual.$"
++AuroraLab_Text_Boxed:
++	.string "RIPPLE is in a PC BOX.\n"
++	.string "Withdraw it to work together here.$"
++AuroraLab_Text_Missing:
++	.string "RIPPLE has already left this lab.\n"
++	.string "We cannot hatch that individual again.$"
++AuroraLab_Text_Full:
++	.string "Your party is full. Make room first.\n"
++	.string "The egg will wait here safely.$"
++AuroraLab_Text_Invalid:
++	.string "I need LUMIFIN's verified field notes.\n"
++	.string "Meet IVO and hatch its beacon egg.\p"
++	.string "If a record is damaged or unfamiliar,\n"
++	.string "we leave it untouched.$"
++
++#if AURORA_ADVENTURE_VARIANT != 0
++@ New content is issued once; the legacy menu keeps all original choice indices.
++AuroraLab_AdventureOffer:
++	msgbox AuroraLab_Text_AdventureOffer, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, AuroraLab_LegacyMenu
++	special AdoptAuroraAdventureFamily
++	goto_if_eq VAR_RESULT, 7, AuroraLab_AdventureFull
++	goto_if_ne VAR_RESULT, 1, AuroraLab_AdventureInvalid
++	playfanfare MUS_OBTAIN_ITEM
++	msgbox AuroraLab_Text_AdventureJoined, MSGBOX_DEFAULT
++	waitfanfare
++	goto AuroraLab_Finish
++AuroraLab_AdventureFull:
++	msgbox AuroraLab_Text_AdventureFull, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++AuroraLab_AdventureInvalid:
++	msgbox AuroraLab_Text_AdventureInvalid, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++AuroraLab_Text_AdventureOffer:
++	.string "Two new partners share a family\n"
++	.string "pattern, but each has its own form.\p"
++	.string "Their story belongs to this journey.\n"
++	.string "Welcome both into your party?$"
++AuroraLab_Text_AdventureJoined:
++	.string "Both family partners joined you!\n"
++	.string "Meet each one in its SUMMARY.\p"
++	.string "MIRA can guide your family to\n"
++	.string "NORTH POOL. Save your progress.$"
++AuroraLab_Text_AdventureFull:
++	.string "Make two free places in your party.\n"
++	.string "Use the POKéMON CENTER's PC.\p"
++	.string "This family will wait here for you.$"
++AuroraLab_Text_AdventureInvalid:
++	.string "This family cannot join this save.\n"
++	.string "Keep its matching adventure ROM.\p"
++	.string "Existing partners are unchanged.$"
++#endif
++
++#if AURORA_COMBAT_ENABLED
++HelixLab_Entry:
++	special GetAuroraCombatState
++	goto_if_eq VAR_RESULT, 0, HelixLab_Offer
++	goto_if_eq VAR_RESULT, 16, HelixLab_Migrate
++	goto_if_eq VAR_RESULT, 255, AuroraLab_AdventureInvalid
++	msgbox HelixLab_Text_Directions, MSGBOX_DEFAULT
++	goto AuroraLab_LegacyMenu
++HelixLab_Offer:
++	msgbox HelixLab_Text_Offer, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, AuroraLab_LegacyMenu
++	special AdoptAuroraCombatParent
++	goto_if_eq VAR_RESULT, 7, HelixLab_Full
++	goto_if_ne VAR_RESULT, 1, AuroraLab_AdventureInvalid
++	giveitem ITEM_POKE_BALL, 5
++	msgbox HelixLab_Text_Joined, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++HelixLab_Full:
++	msgbox HelixLab_Text_Full, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++HelixLab_Migrate:
++	msgbox HelixLab_Text_Migrate, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, AuroraLab_Finish
++	special AdoptAuroraCombatParent
++	goto_if_ne VAR_RESULT, 1, AuroraLab_AdventureInvalid
++	msgbox HelixLab_Text_Migrated, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++HelixNursery_Offer:
++	lock
++	faceplayer
++	msgbox HelixNursery_Text_Offer, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, HelixNursery_Cancel
++	special CompleteAuroraCombatBirth
++	goto_if_eq VAR_RESULT, 1, HelixNursery_Born
++	goto_if_eq VAR_RESULT, 2, HelixNursery_Already
++	goto_if_eq VAR_RESULT, 7, HelixLab_Full
++	msgbox HelixNursery_Text_Parents, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++HelixNursery_Born:
++	playfanfare MUS_OBTAIN_ITEM
++	msgbox HelixNursery_Text_Born, MSGBOX_DEFAULT
++	waitfanfare
++	goto AuroraLab_Finish
++HelixNursery_Already:
++	msgbox HelixNursery_Text_Already, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++HelixNursery_Cancel:
++	msgbox HelixNursery_Text_Cancel, MSGBOX_DEFAULT
++	goto AuroraLab_Finish
++HelixLab_Text_Offer:
++	.string "This river partner has a family\n"
++	.string "waiting to grow. Travel together?$"
++HelixLab_Text_Joined:
++	.string "Your new partner joined you!\n"
++	.string "Its own traits shape its strengths.\p"
++	.string "Find its mate at the river beacon\n"
++	.string "on ROUTE 103. Bring POKé BALLS.\p"
++	.string "Save your adventure before you go.\n"
++	.string "Each partner is one of a kind.$"
++HelixLab_Text_Full:
++	.string "Make one free place in your party.\n"
++	.string "Your partner will wait safely here.$"
++HelixLab_Text_Directions:
++	.string "Find the wild partner at ROUTE 103's\n"
++	.string "river beacon. Try a POKé BALL!\p"
++	.string "Then bring both parents to the\n"
++	.string "woman beside me to grow the family.$"
++HelixLab_Text_Migrate:
++	.string "We can add battle notes for your\n"
++	.string "family's own traits. Update them?\p"
++	.string "Their XP, moves and history stay.\n"
++	.string "No past birth gives extra XP.$"
++HelixLab_Text_Migrated:
++	.string "Their new battle notes are ready.\n"
++	.string "All past progress is still here.\p"
++	.string "Their wild relative waits at\n"
++	.string "ROUTE 103's river beacon.$"
++HelixNursery_Text_Offer:
++	.string "Bring both river parents and leave\n"
++	.string "one party place for their young.\p"
++	.string "Shall we welcome their new child?$"
++HelixNursery_Text_Parents:
++	.string "Bring both parents in your party.\n"
++	.string "Catch the wild one at ROUTE 103.\p"
++	.string "We only learn from a successful\n"
++	.string "birth. Nobody gained XP yet.$"
++HelixNursery_Text_Born:
++	.string "A new child joined the family!\n"
++	.string "Its own inherited pattern is ready.\p"
++	.string "Both parents learned from this:\n"
++	.string "each gained 125 XP, just once.\p"
++	.string "Save to keep your family's story.\n"
++	.string "Meet your child in its SUMMARY.$"
++HelixNursery_Text_Already:
++	.string "This child has already been born.\n"
++	.string "Its parents keep what they learned.\p"
++	.string "Repeating our notes gives no XP.$"
++HelixNursery_Text_Cancel:
++	.string "Take your time. The family can wait.\n"
++	.string "No birth or XP was recorded.$"
++#endif
++
++HelixLab_Reenter:
++	msgbox HelixLab_Text_Reenter, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, AuroraLab_Finish
++	closemessage
++	warp MAP_HELIX_LABORATORY, 6, 10
++	waitstate
++	release
++	end
++HelixLab_Text_Reenter:
++	.string "The HELIX laboratory is at the back.\n"
++	.string "Go in and revisit your project?$"
+diff --git a/data/maps/OldaleTown_Mart/scripts.inc b/data/maps/OldaleTown_Mart/scripts.inc
+index 1e1aacbb104be8bb3cb5936e5afb92d8f1f4e689..0eacc54fb3a9ab2843eedb48d6eb69aa73c014a2 100644
+--- a/data/maps/OldaleTown_Mart/scripts.inc
++++ b/data/maps/OldaleTown_Mart/scripts.inc
+@@ -57,8 +57,8 @@ OldaleTown_Mart_Text_PokeBallsAreSoldOut:
+ 	.string "I can't buy any POKé BALLS.$"
+ 
+ OldaleTown_Mart_Text_ImGoingToBuyPokeBalls:
+-	.string "I'm going to buy a bunch of POKé BALLS\n"
+-	.string "and catch a bunch of POKéMON!$"
++	.string "A POKE BALL is an investment.\n"
++	.string "I prepare before each capture.$"
+ 
+ OldaleTown_Mart_Text_RestoreHPWithPotion:
+ 	.string "If a POKéMON gets hurt and loses its HP\n"
+diff --git a/data/maps/Route101/map.json b/data/maps/Route101/map.json
+index 4fcd98d9ac3322878aae7a31ab89a1daf25fe254..8d28445528495d64b337e221eb750cf534cfb37f 100644
+--- a/data/maps/Route101/map.json
++++ b/data/maps/Route101/map.json
+@@ -105,6 +105,19 @@
+       "trainer_sight_or_berry_tree_id": "0",
+       "script": "Route101_EventScript_Boy",
+       "flag": "FLAG_HIDE_ROUTE_101_BOY"
++    },
++    {
++      "graphics_id": "OBJ_EVENT_GFX_SIGNAL_BEACON",
++      "x": 6,
++      "y": 8,
++      "elevation": 3,
++      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
++      "movement_range_x": 0,
++      "movement_range_y": 0,
++      "trainer_type": "TRAINER_TYPE_NONE",
++      "trainer_sight_or_berry_tree_id": "0",
++      "script": "Route101_EventScript_AuroraRelay",
++      "flag": "0"
+     }
+   ],
+   "warp_events": [],
+diff --git a/data/maps/Route101/scripts.inc b/data/maps/Route101/scripts.inc
+index 3cc5209df678361be9d923f1628f7ba5efe7069a..2b31e45cba03673ad38a02cc82c134424cdaade2 100644
+--- a/data/maps/Route101/scripts.inc
++++ b/data/maps/Route101/scripts.inc
+@@ -296,3 +296,57 @@ Route101_Text_RouteSign:
+ 	.string "ROUTE 101\n"
+ 	.string "{UP_ARROW} OLDALE TOWN$"
+ 
++Route101_EventScript_AuroraRelay::
++	lock
++	faceplayer
++	goto_if_eq VAR_AURORA_INVESTIGATION, AURORA_QUEST_UNMET, Route101_EventScript_AuroraRelayUnmet
++	special GetAuroraIndividualPartyState
++	goto_if_ne VAR_RESULT, AURORA_INDIVIDUAL_PARTY, Route101_EventScript_AuroraRelayNeedsLumifin
++	goto_if_ge VAR_AURORA_INVESTIGATION, AURORA_QUEST_RELAY_READ, Route101_EventScript_AuroraRelayRead
++	msgbox Route101_Text_AuroraRelayListen, MSGBOX_DEFAULT
++	playse SE_PC_ON
++	waitse
++	delay 24
++	playse SE_PC_OFF
++	waitse
++	msgbox Route101_Text_AuroraRelayReply, MSGBOX_DEFAULT
++	setvar VAR_AURORA_INVESTIGATION, AURORA_QUEST_RELAY_READ
++	goto Route101_EventScript_AuroraRelayFinish
++
++Route101_EventScript_AuroraRelayUnmet::
++	msgbox Route101_Text_AuroraRelayUnmet, MSGBOX_DEFAULT
++	goto Route101_EventScript_AuroraRelayFinish
++
++Route101_EventScript_AuroraRelayNeedsLumifin::
++	msgbox Route101_Text_AuroraRelayNeedsLumifin, MSGBOX_DEFAULT
++	goto Route101_EventScript_AuroraRelayFinish
++
++Route101_EventScript_AuroraRelayRead::
++	msgbox Route101_Text_AuroraRelayRead, MSGBOX_DEFAULT
++Route101_EventScript_AuroraRelayFinish::
++	release
++	end
++
++Route101_Text_AuroraRelayUnmet:
++	.string "The relay plays three faint notes.\n"
++	.string "A label reads: MIRA, OLDALE TOWN.$"
++Route101_Text_AuroraRelayNeedsLumifin:
++	.string "The reply is too faint to hear.\n"
++	.string "Bring LUMIFIN in your party.$"
++Route101_Text_AuroraRelayListen:
++	.string "Three notes ring through the trees.\n"
++	.string "Then the relay falls silent.\p"
++	.string "LUMIFIN turns toward the north.\n"
++	.string "Its fins keep moving.\p"
++	.string "You wait with your partner.$"
++Route101_Text_AuroraRelayReply:
++	.string "Two softer notes answer!\n"
++	.string "LUMIFIN heard them coming.\p"
++	.string "The relay points toward a river,\n"
++	.string "beyond the houses of OLDALE.\p"
++	.string "Tell MIRA what you heard.$"
++Route101_Text_AuroraRelayRead:
++	.string "Three notes. A pause. Two replies.\n"
++	.string "LUMIFIN follows the quiet part.\p"
++	.string "MIRA in OLDALE is mapping\n"
++	.string "where the signal goes.$"
+diff --git a/data/maps/Route103/map.json b/data/maps/Route103/map.json
+index e3bd33542d2a20a85114b965c6715812ff007d7d..f40be5d5f16312e7a6142fde975198d3206b9704 100644
+--- a/data/maps/Route103/map.json
++++ b/data/maps/Route103/map.json
+@@ -286,6 +286,45 @@
+       "trainer_sight_or_berry_tree_id": "ITEM_PP_UP",
+       "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_ROUTE_103_PP_UP"
++    },
++    {
++      "graphics_id": "OBJ_EVENT_GFX_SIGNAL_BEACON",
++      "x": 18,
++      "y": 8,
++      "elevation": 3,
++      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
++      "movement_range_x": 0,
++      "movement_range_y": 0,
++      "trainer_type": "TRAINER_TYPE_NONE",
++      "trainer_sight_or_berry_tree_id": "0",
++      "script": "Route103_EventScript_AuroraSignal",
++      "flag": "0"
++    },
++    {
++      "graphics_id": "OBJ_EVENT_GFX_SIGNAL_BEACON",
++      "x": 12,
++      "y": 7,
++      "elevation": 3,
++      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
++      "movement_range_x": 0,
++      "movement_range_y": 0,
++      "trainer_type": "TRAINER_TYPE_NONE",
++      "trainer_sight_or_berry_tree_id": "0",
++      "script": "Route103_EventScript_NorthReed",
++      "flag": "0"
++    },
++    {
++      "graphics_id": "OBJ_EVENT_GFX_SIGNAL_BEACON",
++      "x": 7,
++      "y": 7,
++      "elevation": 3,
++      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
++      "movement_range_x": 0,
++      "movement_range_y": 0,
++      "trainer_type": "TRAINER_TYPE_NONE",
++      "trainer_sight_or_berry_tree_id": "0",
++      "script": "Route103_EventScript_NorthStone",
++      "flag": "0"
+     }
+   ],
+   "warp_events": [
+diff --git a/data/maps/Route103/scripts.inc b/data/maps/Route103/scripts.inc
+index 941d464c37e00f14a3163bb39a5c82c89a911291..550d0b5cbf2740cd9fedb5a2f4d11ac3f1e6e8e5 100644
+--- a/data/maps/Route103/scripts.inc
++++ b/data/maps/Route103/scripts.inc
+@@ -351,3 +351,354 @@ Route103_Text_RouteSign:
+ 	.string "ROUTE 103\n"
+ 	.string "{DOWN_ARROW} OLDALE TOWN$"
+ 
++Route103_EventScript_AuroraSignal::
++	lock
++	faceplayer
++#if AURORA_COMBAT_ENABLED
++	goto_if_eq VAR_AURORA_INVESTIGATION, AURORA_QUEST_COMPLETE, HelixWild_Gate
++#endif
++#if AURORA_ADVENTURE_VARIANT != 0
++	goto_if_eq VAR_AURORA_INVESTIGATION, AURORA_QUEST_COMPLETE, Route103_EventScript_NorthPool
++#endif
++	goto_if_lt VAR_AURORA_INVESTIGATION, AURORA_QUEST_NORTH_SIGNAL, Route103_EventScript_AuroraSignalEarly
++	special GetAuroraIndividualBattleReady
++	goto_if_ne VAR_RESULT, TRUE, Route103_EventScript_AuroraSignalNeedsLead
++	goto_if_ge VAR_AURORA_INVESTIGATION, AURORA_QUEST_NORTH_DECODED, Route103_EventScript_AuroraSignalPractice
++	msgbox Route103_Text_AuroraSignalDisturbed, MSGBOX_DEFAULT
++	msgbox Route103_Text_AuroraSignalBattle, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, Route103_EventScript_AuroraSignalFinish
++	goto Route103_EventScript_AuroraSignalStartBattle
++
++Route103_EventScript_AuroraSignalPractice::
++	msgbox Route103_Text_AuroraSignalPractice, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, Route103_EventScript_AuroraSignalFinish
++
++Route103_EventScript_AuroraSignalStartBattle::
++	closemessage
++	setwildbattle SPECIES_POOCHYENA, 3
++	dowildbattle
++	specialvar VAR_RESULT, GetBattleOutcome
++	goto_if_ne VAR_RESULT, B_OUTCOME_WON, Route103_EventScript_AuroraSignalRetry
++	special GetAuroraIndividualBattleWon
++	goto_if_ne VAR_RESULT, TRUE, Route103_EventScript_AuroraSignalRetry
++	goto_if_ge VAR_AURORA_INVESTIGATION, AURORA_QUEST_NORTH_DECODED, Route103_EventScript_AuroraSignalPracticeWon
++	msgbox Route103_Text_AuroraSignalDecoded, MSGBOX_DEFAULT
++	setvar VAR_AURORA_INVESTIGATION, AURORA_QUEST_NORTH_DECODED
++	msgbox Route103_Text_AuroraSignalReturn, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++
++Route103_EventScript_AuroraSignalPracticeWon::
++	msgbox Route103_Text_AuroraSignalPracticeWon, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++
++Route103_EventScript_AuroraSignalEarly::
++	msgbox Route103_Text_AuroraSignalEarly, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++
++Route103_EventScript_AuroraSignalNeedsLead::
++	msgbox Route103_Text_AuroraSignalNeedsLead, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++
++Route103_EventScript_AuroraSignalRetry::
++	msgbox Route103_Text_AuroraSignalRetry, MSGBOX_DEFAULT
++Route103_EventScript_AuroraSignalFinish::
++	release
++	end
++
++Route103_Text_AuroraSignalEarly:
++	.string "A cyan light flashes by the river.\n"
++	.string "The pattern is incomplete.\p"
++	.string "MIRA in OLDALE is studying\n"
++	.string "the relays along this route.$"
++Route103_Text_AuroraSignalNeedsLead:
++	.string "Let LUMIFIN lead this investigation.\n"
++	.string "Put it first in your party.\p"
++	.string "If it has fainted, heal it at the\n"
++	.string "POKéMON CENTER in OLDALE.$"
++Route103_Text_AuroraSignalDisturbed:
++	.string "A POOCHYENA circles the beacon.\n"
++	.string "It jumps at every broken note.\p"
++	.string "LUMIFIN moves between it and you.\n"
++	.string "Your partner is ready to help.$"
++Route103_Text_AuroraSignalBattle:
++	.string "Battle the POOCHYENA with LUMIFIN\n"
++	.string "and clear the way to the beacon?$"
++Route103_Text_AuroraSignalRetry:
++	.string "The signal is still broken.\n"
++	.string "Rest your team, then try again.\p"
++	.string "Win with LUMIFIN leading to give\n"
++	.string "your partner time to listen.$"
++Route103_Text_AuroraSignalDecoded:
++	.string "The POOCHYENA retreats to the grass.\n"
++	.string "LUMIFIN touches the beacon.\p"
++	.string "Three notes. Two replies.\n"
++	.string "Then a final note from LUMIFIN.\p"
++	.string "A faded display lights up:\n"
++	.string "RIVER NURSERY - SAFE PASSAGE.\p"
++	.string "A chain of lights leads south,\n"
++	.string "all the way to LITTLEROOT.\p"
++	.string "The signal guides young POKéMON\n"
++	.string "between quiet pools.\p"
++	.string "LUMIFIN knew the missing note.\n"
++	.string "Your partner is part of this route.$"
++Route103_Text_AuroraSignalReturn:
++	.string "MIRA should hear this discovery.\n"
++	.string "Return to her in OLDALE.\p"
++	.string "The beacon now remembers\n"
++	.string "LUMIFIN's reply.$"
++Route103_Text_AuroraSignalPractice:
++	.string "The river beacon is working.\n"
++	.string "A POOCHYENA rustles in the grass.\p"
++	.string "Practice another battle\n"
++	.string "with LUMIFIN leading?$"
++Route103_Text_AuroraSignalPracticeWon:
++	.string "LUMIFIN's reply rings out clearly.\n"
++	.string "The river route stays open.$"
++
++@ North Pool objects are west-bank ground; no Surf or rival skip is needed.
++Route103_EventScript_NorthReed::
++	lock
++	faceplayer
++#if AURORA_ADVENTURE_VARIANT == 0
++	goto Route103_EventScript_NorthDormant
++#else
++	goto_if_eq VAR_AURORA_NORTH_POOL, AURORA_NORTH_UNMET, Route103_EventScript_NorthMeetMira
++#if AURORA_ADVENTURE_VARIANT == 2
++	goto_if_lt VAR_AURORA_NORTH_POOL, AURORA_NORTH_BATTLE_WON, Route103_EventScript_NorthBlockedClue
++#endif
++	special GetAuroraAdventurePartnerReady
++	goto_if_ne VAR_RESULT, TRUE, Route103_EventScript_NorthNeedsPartner
++	goto_if_eq VAR_AURORA_NORTH_CLUES, AURORA_NORTH_REED, Route103_EventScript_NorthReedRead
++	goto_if_eq VAR_AURORA_NORTH_CLUES, AURORA_NORTH_ALL_CLUES, Route103_EventScript_NorthReedRead
++	goto_if_eq VAR_AURORA_NORTH_CLUES, AURORA_NORTH_STONE, Route103_EventScript_NorthReedJoin
++	setvar VAR_AURORA_NORTH_CLUES, AURORA_NORTH_REED
++	goto Route103_EventScript_NorthReedRead
++Route103_EventScript_NorthReedJoin::
++	setvar VAR_AURORA_NORTH_CLUES, AURORA_NORTH_ALL_CLUES
++Route103_EventScript_NorthReedRead::
++	msgbox Route103_Text_NorthReed, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++#endif
++
++Route103_EventScript_NorthStone::
++	lock
++	faceplayer
++#if AURORA_ADVENTURE_VARIANT != 2
++	goto Route103_EventScript_NorthDormant
++#else
++	goto_if_eq VAR_AURORA_NORTH_POOL, AURORA_NORTH_UNMET, Route103_EventScript_NorthMeetMira
++	goto_if_lt VAR_AURORA_NORTH_POOL, AURORA_NORTH_BATTLE_WON, Route103_EventScript_NorthBlockedClue
++	special GetAuroraAdventurePartnerReady
++	goto_if_ne VAR_RESULT, TRUE, Route103_EventScript_NorthNeedsPartner
++	goto_if_eq VAR_AURORA_NORTH_CLUES, AURORA_NORTH_STONE, Route103_EventScript_NorthStoneRead
++	goto_if_eq VAR_AURORA_NORTH_CLUES, AURORA_NORTH_ALL_CLUES, Route103_EventScript_NorthStoneRead
++	goto_if_eq VAR_AURORA_NORTH_CLUES, AURORA_NORTH_REED, Route103_EventScript_NorthStoneJoin
++	setvar VAR_AURORA_NORTH_CLUES, AURORA_NORTH_STONE
++	goto Route103_EventScript_NorthStoneRead
++Route103_EventScript_NorthStoneJoin::
++	setvar VAR_AURORA_NORTH_CLUES, AURORA_NORTH_ALL_CLUES
++Route103_EventScript_NorthStoneRead::
++	msgbox Route103_Text_NorthStone, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++#endif
++
++Route103_EventScript_NorthDormant::
++	msgbox Route103_Text_NorthDormant, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++
++#if AURORA_ADVENTURE_VARIANT != 0
++Route103_EventScript_NorthPool::
++	goto_if_eq VAR_AURORA_NORTH_POOL, AURORA_NORTH_UNMET, Route103_EventScript_NorthMeetMira
++#if AURORA_ADVENTURE_VARIANT == 1
++	goto_if_eq VAR_AURORA_NORTH_CLUES, 0, Route103_EventScript_NorthNeedReed
++#endif
++	goto_if_ge VAR_AURORA_NORTH_POOL, AURORA_NORTH_BATTLE_WON, Route103_EventScript_NorthPractice
++	msgbox Route103_Text_NorthDisturbed, MSGBOX_DEFAULT
++	goto Route103_EventScript_NorthBattleOffer
++Route103_EventScript_NorthPractice::
++	msgbox Route103_Text_NorthPractice, MSGBOX_DEFAULT
++Route103_EventScript_NorthBattleOffer::
++	special GetAuroraAdventureBattleReady
++	goto_if_ne VAR_RESULT, TRUE, Route103_EventScript_NorthNeedsPair
++	goto_if_eq VAR_0x8007, 1, Route103_EventScript_NorthRecoveryOffer
++	goto Route103_EventScript_NorthConfirmBattle
++Route103_EventScript_NorthRecoveryOffer::
++	msgbox Route103_Text_NorthRecovery, MSGBOX_DEFAULT
++Route103_EventScript_NorthConfirmBattle::
++	msgbox Route103_Text_NorthBattleOffer, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, Route103_EventScript_AuroraSignalFinish
++	closemessage
++#if AURORA_ADVENTURE_VARIANT == 1
++	setwildbattle SPECIES_POOCHYENA, 3, ITEM_NONE, SPECIES_POOCHYENA, 3, ITEM_NONE
++#else
++	setwildbattle SPECIES_POOCHYENA, 3, ITEM_NONE, SPECIES_ZIGZAGOON, 3, ITEM_NONE
++#endif
++	dowildbattle
++	specialvar VAR_RESULT, GetBattleOutcome
++	goto_if_ne VAR_RESULT, B_OUTCOME_WON, Route103_EventScript_NorthRetry
++	special GetAuroraAdventureBattleWon
++	goto_if_ne VAR_RESULT, TRUE, Route103_EventScript_NorthRetry
++	goto_if_ge VAR_AURORA_NORTH_POOL, AURORA_NORTH_BATTLE_WON, Route103_EventScript_NorthPracticeWon
++	setvar VAR_AURORA_NORTH_POOL, AURORA_NORTH_BATTLE_WON
++	msgbox Route103_Text_NorthBattleWon, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++Route103_EventScript_NorthPracticeWon::
++	msgbox Route103_Text_NorthPracticeWon, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++Route103_EventScript_NorthRetry::
++	msgbox Route103_Text_NorthRetry, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++Route103_EventScript_NorthNeedsPair::
++	msgbox Route103_Text_NorthNeedsPair, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++Route103_EventScript_NorthNeedsPartner::
++	msgbox Route103_Text_NorthNeedsPartner, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++Route103_EventScript_NorthMeetMira::
++	msgbox Route103_Text_NorthMeetMira, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++Route103_EventScript_NorthNeedReed::
++	msgbox Route103_Text_NorthNeedReed, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++Route103_EventScript_NorthBlockedClue::
++	msgbox Route103_Text_NorthBlockedClue, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++#endif
++
++Route103_Text_NorthDormant:
++	.string "An old nursery marker.\n"
++	.string "It hums quietly in the reeds.$"
++#if AURORA_ADVENTURE_VARIANT != 0
++Route103_Text_NorthMeetMira:
++	.string "The marker repeats: NORTH POOL.\n"
++	.string "Ask MIRA in OLDALE about it.$"
++Route103_Text_NorthNeedsPartner:
++	.string "Bring a healthy partner from your\n"
++	.string "new family to hear this marker.\p"
++	.string "If boxed, withdraw it at the PC.\n"
++	.string "If fainted, visit the CENTER.$"
++Route103_Text_NorthNeedsPair:
++	.string "Your two new family partners\n"
++	.string "must both lead this battle.\p"
++	.string "Put them first and second.\n"
++	.string "Heal both at the CENTER.\p"
++	.string "If either is boxed, withdraw it.\n"
++	.string "The beacon will wait for you.\p"
++	.string "If a partner has left your care,\n"
++	.string "two healthy POKéMON can carry\l"
++	.string "the family's saved field notes.$"
++Route103_Text_NorthNeedReed:
++	.string "The pool is missing its safe note.\n"
++	.string "Read the REED MARKER to the west.$"
++Route103_Text_NorthBlockedClue:
++	.string "Restless calls drown out the note.\n"
++	.string "Calm the river beacon to the east.\p"
++	.string "Then this marker can answer.$"
++Route103_Text_NorthReed:
++#if AURORA_ADVENTURE_VARIANT == 1
++	.string "REED MARKER: Your partner hears\n"
++	.string "a low note beneath the rustling.\p"
++	.string "It is the nursery's safe call!\n"
++	.string "Take both partners to the beacon\l"
++	.string "beside the water, just east of here.$"
++#else
++	.string "REED MARKER: Three rising notes.\n"
++	.string "Young POKéMON leave by this path.\p"
++	.string "The STONE MARKER farther west\n"
++	.string "records the other half.\p"
++	.string "When both are read, tell MIRA.$"
++#endif
++Route103_Text_NorthStone:
++	.string "STONE MARKER: Two falling notes.\n"
++	.string "A reply points toward safe water.\p"
++	.string "The REED MARKER farther east\n"
++	.string "records the other half.\p"
++	.string "When both are read, tell MIRA.$"
++Route103_Text_NorthDisturbed:
++#if AURORA_ADVENTURE_VARIANT == 1
++	.string "Two POOCHYENA block the pool.\n"
++	.string "Your family repeats the reed's call.\p"
++	.string "Win together to guide them away\n"
++	.string "from the nursery entrance.$"
++#else
++	.string "A POOCHYENA and ZIGZAGOON\n"
++	.string "chase each other's broken calls.\p"
++	.string "Win together to quiet the pool\n"
++	.string "and hear its two hidden channels.$"
++#endif
++Route103_Text_NorthRecovery:
++	.string "A family partner has left your care.\n"
++	.string "Its field notes still hold the call.\p"
++	.string "Your two healthy lead POKéMON\n"
++	.string "can carry those notes together.$"
++Route103_Text_NorthBattleOffer:
++	.string "Begin a DOUBLE BATTLE to carry\n"
++	.string "your family's call to the pool?$"
++Route103_Text_NorthRetry:
++	.string "The nursery still needs help.\n"
++	.string "No discovery was lost.\p"
++	.string "Heal both partners, then return.\n"
++	.string "A win together will calm the pool.$"
++Route103_Text_NorthBattleWon:
++#if AURORA_ADVENTURE_VARIANT == 1
++	.string "The wild pair settles in the grass.\n"
++	.string "Your partners carry the safe note.\p"
++	.string "NORTH POOL's entrance is open!\n"
++	.string "Report your discovery to MIRA.$"
++#else
++	.string "The pool grows quiet. Two replies\n"
++	.string "come from markers to the west.\p"
++	.string "Read REED near here and STONE\n"
++	.string "farther west, in either order.\p"
++	.string "Then tell MIRA what you heard.$"
++#endif
++Route103_Text_NorthPractice:
++	.string "NORTH POOL is quiet. A wild pair\n"
++	.string "waits in the grass for practice.$"
++Route103_Text_NorthPracticeWon:
++	.string "Both partners answer together.\n"
++	.string "Your discoveries stay recorded.$"
++#endif
++
++#if AURORA_COMBAT_ENABLED
++HelixWild_Gate:
++	special GetAuroraCombatState
++	goto_if_eq VAR_RESULT, 47, Route103_EventScript_NorthPool
++	goto_if_eq VAR_RESULT, 63, Route103_EventScript_NorthPool
++HelixWild_Offer:
++	msgbox HelixWild_Text_Offer, MSGBOX_YESNO
++	goto_if_eq VAR_RESULT, NO, Route103_EventScript_AuroraSignalFinish
++	closemessage
++	setwildbattle SPECIES_AURORA_FAMILY_THREE, 5
++	special PrepareAuroraCombatEncounter
++	goto_if_ne VAR_RESULT, 1, HelixWild_Unavailable
++	dowildbattle
++	special FinishAuroraCombatEncounter
++	goto_if_eq VAR_RESULT, 1, HelixWild_Captured
++	msgbox HelixWild_Text_Retry, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++HelixWild_Captured:
++	msgbox HelixWild_Text_Captured, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++HelixWild_Unavailable:
++	msgbox HelixWild_Text_Unavailable, MSGBOX_DEFAULT
++	goto Route103_EventScript_AuroraSignalFinish
++HelixWild_Text_Offer:
++	.string "A wild river partner answers!\n"
++	.string "Its traits give it its own strengths.\p"
++	.string "Approach it? You can catch this\n"
++	.string "partner with a POKé BALL.$"
++HelixWild_Text_Retry:
++	.string "The same partner waits by the water.\n"
++	.string "Rest, then try again when ready.$"
++HelixWild_Text_Captured:
++	.string "You caught that very same partner!\n"
++	.string "Its traits and pattern stay its own.\p"
++	.string "Bring both parents to the woman\n"
++	.string "at OLDALE's field lab. Save first!$"
++HelixWild_Text_Unavailable:
++	.string "If this partner joined you already,\n"
++	.string "look in your party or PC BOX.\p"
++	.string "Otherwise meet the scientist in\n"
++	.string "OLDALE's northwest house first.$"
++#endif
+diff --git a/data/maps/map_groups.json b/data/maps/map_groups.json
+index d6320f485b9f48724f0ccfc1429974812c4b22f0..fd06ad5e87e4818f73b189ffeff0f9c79e490990 100644
+--- a/data/maps/map_groups.json
++++ b/data/maps/map_groups.json
+@@ -74,7 +74,8 @@
+     "gMapGroup_IndoorFiveIslandRoute_Frlg",
+     "gMapGroup_IndoorTwoIslandRoute_Frlg",
+     "gMapGroup_IndoorSixIslandRoute_Frlg",
+-    "gMapGroup_IndoorSevenIslandRoute_Frlg"
++    "gMapGroup_IndoorSevenIslandRoute_Frlg",
++    "gMapGroup_HelixField"
+   ],
+   "gMapGroup_TownsAndRoutes": [
+     "PetalburgCity",
+@@ -147,7 +148,8 @@
+     "OldaleTown_House2",
+     "OldaleTown_PokemonCenter_1F",
+     "OldaleTown_PokemonCenter_2F",
+-    "OldaleTown_Mart"
++    "OldaleTown_Mart",
++    "HelixLaboratory"
+   ],
+   "gMapGroup_IndoorDewford": [
+     "DewfordTown_House1",
+@@ -1160,5 +1162,11 @@
+   ],
+   "gMapGroup_IndoorSevenIslandRoute_Frlg": [
+     "SevenIsland_SevaultCanyon_House_Frlg"
++  ],
++  "gMapGroup_HelixField": [
++    "HelixFieldVillage",
++    "HelixShelterTrail",
++    "HelixResearchPost",
++    "HelixQuietGarden"
+   ]
+ }
+diff --git a/data/specials.inc b/data/specials.inc
+index 3492bf3b66b57ddda8891101e0e5b89d8e95e635..2da71d4c3bbdf7f6cd575ed463561ea1f29aa8f1 100644
+--- a/data/specials.inc
++++ b/data/specials.inc
+@@ -638,3 +638,78 @@ gSpecials::
+ 	def_special UpdateTrainerCardPhotoIcons
+ 	def_special StickerManGetBragFlags
+ 	def_special CheckAddCoins
++	def_special RequestIvoDialogue
++	def_special GetAuroraIndividualState
++	def_special HatchAuroraIndividual
++	def_special ShowAuroraIndividual
++	def_special GetAuroraIndividualPartyState
++	def_special JoinAuroraIndividualParty
++	def_special GetAuroraIndividualBattleReady
++	def_special GetAuroraIndividualBattleWon
++	def_special GetAuroraRosterState
++	def_special AdoptAuroraRosterChild
++	def_special GetAuroraRosterAge
++	def_special BufferAuroraRosterInfo
++	def_special RestAuroraRoster
++	def_special PreviewAuroraRosterEdit
++	def_special CommitAuroraRosterEdit
++	def_special CancelAuroraRosterEdit
++	def_special GetAuroraRosterSignal
++	def_special GetAuroraAdventureState
++	def_special AdoptAuroraAdventureFamily
++	def_special GetAuroraAdventurePartnerReady
++	def_special GetAuroraAdventureBattleReady
++	def_special GetAuroraAdventureBattleWon
++
++	def_special GetAuroraCombatState
++	def_special AdoptAuroraCombatParent
++	def_special PrepareAuroraCombatEncounter
++	def_special FinishAuroraCombatEncounter
++	def_special CompleteAuroraCombatBirth
++
++	def_special GetHelixGenesisState
++	def_special SetHelixGenesisSoul
++	def_special SetHelixGenesisDnaTutorial
++	def_special SelectHelixGenesisRecipe
++	def_special PrepareHelixGenesis
++	def_special IncubateHelixGenesis
++	def_special AdmitHelixGenesis
++	def_special BufferHelixGenesis
++	def_special MarkHelixGenesisWelcome
++	def_special PrepareHelixRival
++	def_special FinishHelixRival
++	def_special GetHelixLabLanguage
++	def_special BufferHelixLabPage
++	def_special RequestLabDialogue
++	def_special EndAiDialogue
++	def_special GetHelixSignalRoute
++	def_special GetHelixSignalReady
++	def_special BufferHelixSignalPage
++
++	def_special GetHelixCrossState
++	def_special AdmitHelixCross
++	def_special GetHelixRegionState
++	def_special CheckHelixRegionCompanion
++	def_special CommitHelixRegionAction
++	def_special BufferHelixRegionText
++	def_special GetHelixUtilityState
++	def_special GetHelixCareState
++	def_special GetHelixQuestState
++	def_special GetHelixQuestLocation
++	def_special CommitHelixQuestAction
++	def_special BufferHelixQuestText
++	def_special ShowHelixQuestMenu
++	def_special ClearHelixQuestPreview
++	def_special GetHelixExpansionState
++	def_special CommitHelixExpansionAction
++	def_special BufferHelixExpansionText
++	def_special ShowHelixExpansionMenu
++	def_special ClearHelixExpansionPreview
++	def_special HelixUniversalInspectFirst
++	def_special GetHelixExpansionLayout
++	def_special GetHelixLabItemsState
++	def_special CommitHelixLabItemsAction
++	def_special BufferHelixLabItemsText
++	def_special ShowHelixLabItemsMenu
++	def_special ClearHelixLabItemsPreview
++	def_special StartHelixLabSimulation
+diff --git a/data/text/birch_speech.inc b/data/text/birch_speech.inc
+index 7a9ea6a611857d307eb537999b6d25311e972f30..a8fe80f0bbe94fd9e23011d182c8eb7123f135bb 100644
+--- a/data/text/birch_speech.inc
++++ b/data/text/birch_speech.inc
+@@ -1,10 +1,16 @@
+ gText_Birch_Welcome::
++#if HELIX_GENESIS_ENABLED
++	.string "Welcome to POKéMON HELIX!\p"
++	.string "I am BIRCH, a POKéMON researcher.\p"
++	.string "The laboratory is waiting for you.$"
++#else
+ 	.string "Hi! Sorry to keep you waiting!\p"
+ 	.string "Welcome to the world of POKéMON!\p"
+ 	.string "My name is BIRCH.\p"
+ 	.string "But everyone calls me the POKéMON\n"
+ 	.string "PROFESSOR.\p"
+ 	.string "$"
++#endif
+ 
+ gText_Birch_Pokemon::
+ 	.string "This is what we call a “POKéMON.”\p"
+@@ -12,6 +18,14 @@ gText_Birch_Pokemon::
+ 	.string "$"
+ 
+ gText_Birch_MainSpeech::
++#if HELIX_GENESIS_ENABLED
++	.string "Every POKéMON has its own ways.\p"
++	.string "At the HELIX laboratory, you take part\p"
++	.string "in the birth of your first companion.\p"
++	.string "An ancient sample meets other\p"
++	.string "lineages to create a new life.\p"
++	.string "First, let us get your trainer ready.$"
++#else
+ 	.string "This world is widely inhabited by\n"
+ 	.string "creatures known as POKéMON.\p"
+ 	.string "We humans live alongside POKéMON,\n"
+@@ -27,6 +41,7 @@ gText_Birch_MainSpeech::
+ 	.string "I've been undertaking research.\l"
+ 	.string "That's what I do.\p"
+ 	.string "$"
++#endif
+ 
+ gText_Birch_AndYouAre::
+ 	.string "And you are?$"
+@@ -43,13 +58,25 @@ gText_Birch_SoItsPlayer::
+ 	.string "So it's {PLAYER}{KUN}?$"
+ 
+ gText_Birch_YourePlayer::
++#if HELIX_GENESIS_ENABLED
++	.string "All right, {PLAYER}!\p"
++	.string "Your name and appearance are ready.\p"
++	.string "Choose your profile at the laboratory.$"
++#else
+ 	.string "Ah, okay!\p"
+ 	.string "You're {PLAYER}{KUN} who's moving to my\n"
+ 	.string "hometown of LITTLEROOT.\l"
+ 	.string "I get it now!\p"
+ 	.string "$"
++#endif
+ 
+ gText_Birch_AreYouReady::
++#if HELIX_GENESIS_ENABLED
++	.string "Your journey begins at the laboratory.\p"
++	.string "Talk to the team, explore the\p"
++	.string "combinations, and follow the birth.\p"
++	.string "Your companion will be ready today.$"
++#else
+ 	.string "All right, are you ready?\p"
+ 	.string "Your very own adventure is about\n"
+ 	.string "to unfold.\p"
+@@ -59,3 +86,5 @@ gText_Birch_AreYouReady::
+ 	.string "Well, I'll be expecting you later.\n"
+ 	.string "Come see me in my POKéMON LAB.\p"
+ 	.string "$"
++
++#endif
+\ No newline at end of file
+diff --git a/include/constants/event_objects.h b/include/constants/event_objects.h
+index af305e850ea1d784e5b07beecfb2810469b9be51..8ad3d4b860ef9c8425eec4bd961ceb437ab1df1c 100644
+--- a/include/constants/event_objects.h
++++ b/include/constants/event_objects.h
+@@ -413,6 +413,7 @@ enum
+     OBJ_EVENT_GFX_PUSHABLE_BOULDER_FRLG,
+     OBJ_EVENT_GFX_CUTTABLE_TREE_FRLG,
+     OBJ_EVENT_GFX_BREAKABLE_ROCK_FRLG,
++    OBJ_EVENT_GFX_SIGNAL_BEACON,
+     NUM_OBJ_EVENT_GFX,
+ };
+ 
+@@ -610,6 +611,7 @@ enum
+ #define OBJ_EVENT_PAL_TAG_LIGHT_2                 0x8002
+ #define OBJ_EVENT_PAL_TAG_EMOTES                  0x8003
+ #define OBJ_EVENT_PAL_TAG_NEON_LIGHT              0x8004
++#define OBJ_EVENT_PAL_TAG_SIGNAL_BEACON           0x8005
+ // Not a real OW palette tag; used for the white flash applied to followers
+ #define OBJ_EVENT_PAL_TAG_WHITE                   (OBJ_EVENT_PAL_TAG_NONE - 1)
+ #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
+diff --git a/include/constants/items.h b/include/constants/items.h
+index bf4522306bea70779738e27f10c542a6440b5e14..1c0e934404a9709711b6e785036a98a383974bd1 100644
+--- a/include/constants/items.h
++++ b/include/constants/items.h
+@@ -1052,6 +1052,9 @@ enum __attribute__((packed)) Item
+     ITEM_TATSUGIRINITE = 872,
+     ITEM_GLIMMORANITE = 873,
+ 
++    ITEM_HELIX_READER = 874,
++    ITEM_HELIX_MEDIUM = 875,
++
+     ITEMS_COUNT,
+     ITEM_FIELD_ARROW = ITEMS_COUNT,
+ };
+diff --git a/include/constants/opponents.h b/include/constants/opponents.h
+index 0724da54864312626d54eea485b11dacf8f0f73f..35b2422d6d4f88653cf9c534a31f54741324e705 100644
+--- a/include/constants/opponents.h
++++ b/include/constants/opponents.h
+@@ -864,7 +864,8 @@
+ //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
+ //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
+ 
+-#define TRAINERS_COUNT_EMERALD     855
++#define TRAINER_HELIX_NOA           855
++#define TRAINERS_COUNT_EMERALD     856
+ #define MAX_TRAINERS_COUNT_EMERALD 864
+ 
+ #if IS_FRLG
+diff --git a/include/constants/script_menu.h b/include/constants/script_menu.h
+index 87724f26b40cf46707cee54a1c8a6970297293c4..9c61678d3ee47b194cd385925b1f9cc9e9ea8f4e 100644
+--- a/include/constants/script_menu.h
++++ b/include/constants/script_menu.h
+@@ -169,6 +169,17 @@ enum
+     MULTI_HOF_VICTORIES_QUIT,
+     MULTI_EGGS_VICTORIES_QUIT,
+     MULTI_HOF_EGGS_VICTORIES_QUIT,
++    MULTI_AURORA_LAB,
++    MULTI_AURORA_INDIVIDUAL,
++    MULTI_AURORA_EDIT,
++    MULTI_HELIX_RECEPTION,
++    MULTI_HELIX_SOUL,
++    MULTI_HELIX_DNA,
++    MULTI_HELIX_GENETICIST,
++    MULTI_HELIX_RECIPES,
++    MULTI_HELIX_NURSERY,
++    MULTI_HELIX_NOTES_EN,
++    MULTI_HELIX_NOTES_PT,
+ };
+ 
+ #define MULTI_NONE 255
+diff --git a/include/constants/species.h b/include/constants/species.h
+index bf5122e13ff4beb871550ad284bfbf45e3dfed2b..dc19fff84db2d4e0dff3bff373b984f0c57d2273 100644
+--- a/include/constants/species.h
++++ b/include/constants/species.h
+@@ -1692,6 +1692,17 @@ enum __attribute__((packed)) Species
+ 
+     SPECIES_CUSTOM_START = SPECIES_GLIMMORA_MEGA,
+     // Add any custom species between here and SPECIES_CUSTOM_END
++    SPECIES_LUMIFIN,
++    SPECIES_LUMIFIN_CHILD,
++    SPECIES_LUMIFIN_CHILD_EDITED,
++    // Bounded per-package appearance slots, never primer identifiers.
++    SPECIES_AURORA_FAMILY_ONE,
++    SPECIES_AURORA_FAMILY_TWO,
++    SPECIES_AURORA_FAMILY_THREE,
++    SPECIES_HELIX_FOUNDER_ONE,
++    SPECIES_HELIX_FOUNDER_TWO,
++    SPECIES_HELIX_RIVAL,
++    SPECIES_HELIX_CHILD,
+     SPECIES_CUSTOM_END,
+ 
+     SPECIES_EGG = SPECIES_CUSTOM_END,
+diff --git a/include/constants/vars.h b/include/constants/vars.h
+index 7992ae09a426bd3966e12f00fde30121925a6bef..2e9478c18f0d179091a612aa8fbe194e988e034d 100644
+--- a/include/constants/vars.h
++++ b/include/constants/vars.h
+@@ -266,15 +266,15 @@
+ #define VAR_ROXANNE_CALL_STEP_COUNTER                    0x40F4
+ #define VAR_SCOTT_BF_CALL_STEP_COUNTER                   0x40F5
+ #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
+-#define VAR_UNUSED_0x40F7                                0x40F7 // Unused Var
+-#define VAR_UNUSED_0x40F8                                0x40F8 // Unused Var
+-#define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var
+-#define VAR_UNUSED_0x40FA                                0x40FA // Unused Var
+-#define VAR_UNUSED_0x40FB                                0x40FB // Unused Var
+-#define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
++#define VAR_SIGNAL_QUEST_STATE                           0x40F7 // 0=unmet, 1=accepted, 2=clue, 3=reported
++#define VAR_SIGNAL_MOTIVATION                            0x40F8 // 0=unset, 1=curiosity, 2=help the village
++#define VAR_AURORA_INVESTIGATION                         0x40F9 // See constants/aurora_investigation.h
++#define VAR_AURORA_LAB_CLUE                              0x40FA // Aurora field-lab clue
++#define VAR_AURORA_NORTH_POOL                            0x40FB // Adventure chapter, see aurora_investigation.h
++#define VAR_AURORA_NORTH_CLUES                           0x40FC // North Pool discovery bits, retained on retry
+ #define VAR_UNUSED_0x40FD                                0x40FD // Unused Var
+ #define VAR_UNUSED_0x40FE                                0x40FE // Unused Var
+-#define VAR_UNUSED_0x40FF                                0x40FF // Unused Var
++#define VAR_HELIX_FIELD_RESEARCH                         0x40FF // Versioned field notebook; see helix_region.c
+ 
+ #define VARS_END                                         0x40FF
+ #define VARS_COUNT                                       (VARS_END - VARS_START + 1)
+diff --git a/include/global.h b/include/global.h
+index 6e29f721a374ce9c518d213266f95203e9adaa8a..8d40831efc129954e64232360b438c202e309d76 100644
+--- a/include/global.h
++++ b/include/global.h
+@@ -26,6 +26,7 @@
+ #include "constants/items.h"
+ #include "constants/moves.h"
+ #include "config/save.h"
++#include "helix_universal_types.h"
+ 
+ // Prevent cross-jump optimization.
+ #define BLOCK_CROSS_JUMP asm("");
+@@ -272,6 +273,8 @@ struct SaveBlock3
+ #if APRICORN_TREE_COUNT > 0
+     u8 apricornTrees[NUM_APRICORN_TREE_BYTES];
+ #endif
++    // Append only: old fields retain offsets. Sector tails have a separate CRC.
++    struct HelixUniversalStore helixUniversal;
+ }; /* max size 1624 bytes */
+ 
+ extern struct SaveBlock3 *gSaveBlock3Ptr;
+diff --git a/include/pokemon.h b/include/pokemon.h
+index 4a8de5689efdafb386a5c1629571761aa32f717c..f1c6707d99c1e6e29e2da37aee77b69cedc5273c 100644
+--- a/include/pokemon.h
++++ b/include/pokemon.h
+@@ -125,6 +125,7 @@ enum MonData {
+     MON_DATA_GIGANTAMAX_FACTOR,
+     MON_DATA_TERA_TYPE,
+     MON_DATA_EVOLUTION_TRACKER,
++    MON_DATA_DATE_OF_BIRTH, // u32 one-based calendar day since 2000-01-01; 0 unknown.
+ };
+ 
+ #define BLOCK_AI_DYNAMAX 15 // Used as dynamax level value by the AI to indicate this mon shouldn't dynamax
+diff --git a/src/battle_main.c b/src/battle_main.c
+index 4729c542d0e3ed56765000a2e38cc822357d0dea..6d262e1403364f5230ff648bcb15d71e4dd55dc6 100644
+--- a/src/battle_main.c
++++ b/src/battle_main.c
+@@ -1,4 +1,7 @@
+ #include "global.h"
++#include "helix_genesis.h"
++#include "aurora_combat.h"
++#include "aurora_adventure.h"
+ #include "battle.h"
+ #include "battle_anim.h"
+ #include "battle_ai_main.h"
+@@ -3150,6 +3153,8 @@ static void DoBattleIntro(void)
+                 memcpy(&gBattleMons[battler], &gBattleResources->bufferB[battler][4], sizeof(struct BattlePokemon));
+                 gBattleMons[battler].types[0] = GetSpeciesType(gBattleMons[battler].species, 0);
+                 gBattleMons[battler].types[1] = GetSpeciesType(gBattleMons[battler].species, 1);
++                AuroraCombatApplyBattleTypes(GetBattlerMon(battler), &gBattleMons[battler]);
++                HelixGenesisApplyBattleTypes(GetBattlerMon(battler), &gBattleMons[battler]);
+                 gBattleMons[battler].types[2] = TYPE_MYSTERY;
+                 gBattleMons[battler].ability = GetAbilityBySpecies(gBattleMons[battler].species, gBattleMons[battler].abilityNum);
+                 gBattleStruct->battlerState[battler].hpOnSwitchout = gBattleMons[battler].hp;
+@@ -5232,6 +5237,12 @@ static void HandleEndTurn_FinishBattle(void)
+ {
+     if (gCurrentActionFuncId == B_ACTION_TRY_FINISH || gCurrentActionFuncId == B_ACTION_FINISHED)
+     {
++        // Authenticate before fade teardown, which may clear enemies while active.
++        HelixCaptureRivalOutcome();
++        if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
++            AuroraAdventureObserveBattleEnd(
++                GetBattlerMon(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)),
++                GetBattlerMon(GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT)));
+         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK
+                                   | BATTLE_TYPE_RECORDED_LINK
+                                   | BATTLE_TYPE_FIRST_BATTLE
+diff --git a/src/battle_script_commands.c b/src/battle_script_commands.c
+index 48be86e156b18678cc0d28a12e7f591f35eacf2e..e7c6b46d7d5d3a6ace5feb8c8b9c3f3a0a2ede2a 100644
+--- a/src/battle_script_commands.c
++++ b/src/battle_script_commands.c
+@@ -1,4 +1,6 @@
+ #include "global.h"
++#include "helix_genesis.h"
++#include "aurora_combat.h"
+ #include "battle.h"
+ #include "battle_hold_effects.h"
+ #include "battle_message.h"
+@@ -3245,6 +3247,8 @@ static void Cmd_switchindataupdate(void)
+ 
+     gBattleMons[battler].types[0] = GetSpeciesType(gBattleMons[battler].species, 0);
+     gBattleMons[battler].types[1] = GetSpeciesType(gBattleMons[battler].species, 1);
++    AuroraCombatApplyBattleTypes(GetBattlerMon(battler), &gBattleMons[battler]);
++    HelixGenesisApplyBattleTypes(GetBattlerMon(battler), &gBattleMons[battler]);
+     gBattleMons[battler].types[2] = TYPE_MYSTERY;
+     gBattleMons[battler].ability = GetAbilityBySpecies(gBattleMons[battler].species, gBattleMons[battler].abilityNum);
+     #if TESTING
+@@ -4052,7 +4056,11 @@ static void Cmd_getmoneyreward(void)
+     u32 money;
+     u8 sPartyLevel = 1;
+ 
+-    if (gBattleOutcome == B_OUTCOME_WON)
++    if (HELIX_GENESIS_ENABLED && TRAINER_BATTLE_PARAM.opponentA == TRAINER_HELIX_NOA)
++    {
++        money = 0; // Optional lab practice has no prize or stake.
++    }
++    else if (gBattleOutcome == B_OUTCOME_WON)
+     {
+         money = GetTrainerMoneyToGive(TRAINER_BATTLE_PARAM.opponentA);
+         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+diff --git a/src/battle_setup.c b/src/battle_setup.c
+index 6024da3c61085e17e6cadd6c09b9c0b8f5c09881..10a6d3bf8ec53dfd71c5d279535416479ba852c7 100644
+--- a/src/battle_setup.c
++++ b/src/battle_setup.c
+@@ -1,4 +1,5 @@
+ #include "global.h"
++#include "helix_genesis.h"
+ #include "data.h"
+ #include "main.h"
+ #include "battle.h"
+@@ -1007,10 +1008,22 @@ void ChooseStarter(void)
+ static void CB2_GiveStarter(void)
+ {
+     u16 starterMon;
++    u32 priorPartyCount = CalculatePlayerPartyCount();
+ 
+     *GetVarPointer(VAR_STARTER_MON) = gSpecialVar_Result;
+     starterMon = GetStarterPokemon(gSpecialVar_Result);
+     ScriptGiveMon(starterMon, 5, ITEM_NONE);
++    // The early Aurora companion can precede Birch's starter. His lab event
++    // names slot 0, so keep the newly received starter there without replacing
++    // or recreating the companion (including its individual personality/OT).
++    if (priorPartyCount > 0 && priorPartyCount < PARTY_SIZE
++        && GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_SPECIES) == SPECIES_LUMIFIN
++        && GetMonData(&gParties[B_TRAINER_PLAYER][priorPartyCount], MON_DATA_SPECIES) == starterMon)
++    {
++        struct Pokemon companion = gParties[B_TRAINER_PLAYER][0];
++        gParties[B_TRAINER_PLAYER][0] = gParties[B_TRAINER_PLAYER][priorPartyCount];
++        gParties[B_TRAINER_PLAYER][priorPartyCount] = companion;
++    }
+     ResetTasks();
+     PlayBattleBGM();
+     SetMainCallback2(CB2_StartFirstBattle);
+@@ -1463,7 +1476,10 @@ void BattleSetup_StartTrainerBattle(void)
+         }
+     }
+ 
+-    if (TRAINER_BATTLE_PARAM.earlyRival && GetRivalBattleFlags() & RIVAL_BATTLE_TUTORIAL)
++    // Emerald replaces FIRST_BATTLE opponents with Birch's level-2 Zigzagoon.
++    // NOA uses early-rival recovery only; its prepared individual must survive.
++    if (TRAINER_BATTLE_PARAM.earlyRival && GetRivalBattleFlags() & RIVAL_BATTLE_TUTORIAL
++        && !(HELIX_GENESIS_ENABLED && TRAINER_BATTLE_PARAM.opponentA == TRAINER_HELIX_NOA))
+         gBattleTypeFlags |= BATTLE_TYPE_FIRST_BATTLE;
+ 
+     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
+@@ -2259,6 +2275,7 @@ void CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Traine
+ 
+ static void CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum)
+ {
++    if (HelixCreateTrainerParty(party, trainerNum)) return;
+     if (!GetTrainerStructFromId(trainerNum)->overrideTrainer)
+     {
+         CreateNPCTrainerPartyFromTrainer(party, GetTrainerStructFromId(trainerNum));
+diff --git a/src/battle_util.c b/src/battle_util.c
+index e1ae2768f6f64f3e83d1bc4711916474c04871c6..c236189fb4bff201701e6f899bfd4fa4af5e9ce5 100644
+--- a/src/battle_util.c
++++ b/src/battle_util.c
+@@ -1,4 +1,6 @@
+ #include "global.h"
++#include "helix_genesis.h"
++#include "aurora_combat.h"
+ #include "battle.h"
+ #include "battle_anim.h"
+ #include "battle_anim_scripts.h"
+@@ -9547,6 +9549,8 @@ void CopyMonAbilityAndTypesToBattleMon(enum BattlerId battler, struct Pokemon *m
+     #endif
+     gBattleMons[battler].types[0] = GetSpeciesType(gBattleMons[battler].species, 0);
+     gBattleMons[battler].types[1] = GetSpeciesType(gBattleMons[battler].species, 1);
++    AuroraCombatApplyBattleTypes(mon, &gBattleMons[battler]);
++    HelixGenesisApplyBattleTypes(mon, &gBattleMons[battler]);
+     gBattleMons[battler].types[2] = TYPE_MYSTERY;
+ }
+ 
+diff --git a/src/data/graphics/pokemon.h b/src/data/graphics/pokemon.h
+index 37b0d7f712dd6d1154342dd49fa0e31fb6fe7087..f25565561e2c3dfe8c39ebe4224acfe31417f07b 100644
+--- a/src/data/graphics/pokemon.h
++++ b/src/data/graphics/pokemon.h
+@@ -27503,3 +27503,103 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
+     const u32 gMonFrontPic_Egg[] = INCGFX_U32("graphics/pokemon/egg/anim_front.png", ".4bpp.smol");
+     const u16 gMonPalette_Egg[] = INCGFX_U16("graphics/pokemon/egg/normal.pal", ".gbapal");
+     const u8 gMonIcon_Egg[] = INCGFX_U8("graphics/pokemon/egg/icon.png", ".4bpp");
++// Authored Aurora companion: one immutable front/back palette and icon.
++const u32 gMonFrontPic_Lumifin[] = INCGFX_U32("graphics/pokemon/lumifin/front.png", ".4bpp.smol");
++const u32 gMonBackPic_Lumifin[] = INCGFX_U32("graphics/pokemon/lumifin/back.png", ".4bpp.smol");
++const u16 gMonPalette_Lumifin[] = INCGFX_U16("graphics/pokemon/lumifin/normal.pal", ".gbapal");
++const u8 gMonIcon_Lumifin[] = INCGFX_U8("graphics/pokemon/lumifin/icon.png", ".4bpp");
++
++const u32 gMonFrontPic_LumifinChild[] = INCGFX_U32("graphics/pokemon/lumifin_child/front.png", ".4bpp.smol");
++const u32 gMonBackPic_LumifinChild[] = INCGFX_U32("graphics/pokemon/lumifin_child/back.png", ".4bpp.smol");
++const u16 gMonPalette_LumifinChild[] = INCGFX_U16("graphics/pokemon/lumifin_child/normal.pal", ".gbapal");
++const u8 gMonIcon_LumifinChild[] = INCGFX_U8("graphics/pokemon/lumifin_child/icon.png", ".4bpp");
++
++const u32 gMonFrontPic_LumifinChildEdited[] = INCGFX_U32("graphics/pokemon/lumifin_child_edited/front.png", ".4bpp.smol");
++const u32 gMonBackPic_LumifinChildEdited[] = INCGFX_U32("graphics/pokemon/lumifin_child_edited/back.png", ".4bpp.smol");
++const u16 gMonPalette_LumifinChildEdited[] = INCGFX_U16("graphics/pokemon/lumifin_child_edited/normal.pal", ".gbapal");
++const u8 gMonIcon_LumifinChildEdited[] = INCGFX_U8("graphics/pokemon/lumifin_child_edited/icon.png", ".4bpp");
++
++#include "constants/aurora_adventure_content.h"
++
++#if AURORA_ADVENTURE_ENABLED
++const u32 gMonFrontPic_AuroraFamilyOne[] = INCGFX_U32("graphics/pokemon/aurora_family_one/front.png", ".4bpp.smol");
++const u32 gMonBackPic_AuroraFamilyOne[] = INCGFX_U32("graphics/pokemon/aurora_family_one/back.png", ".4bpp.smol");
++const u16 gMonPalette_AuroraFamilyOne[] = INCGFX_U16("graphics/pokemon/aurora_family_one/normal.pal", ".gbapal");
++const u8 gMonIcon_AuroraFamilyOne[] = INCGFX_U8("graphics/pokemon/aurora_family_one/icon.png", ".4bpp");
++#else
++const u32 gMonFrontPic_AuroraFamilyOne[] = INCGFX_U32("graphics/pokemon/lumifin/front.png", ".4bpp.smol");
++const u32 gMonBackPic_AuroraFamilyOne[] = INCGFX_U32("graphics/pokemon/lumifin/back.png", ".4bpp.smol");
++const u16 gMonPalette_AuroraFamilyOne[] = INCGFX_U16("graphics/pokemon/lumifin/normal.pal", ".gbapal");
++const u8 gMonIcon_AuroraFamilyOne[] = INCGFX_U8("graphics/pokemon/lumifin/icon.png", ".4bpp");
++#endif
++
++#if AURORA_ADVENTURE_ENABLED
++const u32 gMonFrontPic_AuroraFamilyTwo[] = INCGFX_U32("graphics/pokemon/aurora_family_two/front.png", ".4bpp.smol");
++const u32 gMonBackPic_AuroraFamilyTwo[] = INCGFX_U32("graphics/pokemon/aurora_family_two/back.png", ".4bpp.smol");
++const u16 gMonPalette_AuroraFamilyTwo[] = INCGFX_U16("graphics/pokemon/aurora_family_two/normal.pal", ".gbapal");
++const u8 gMonIcon_AuroraFamilyTwo[] = INCGFX_U8("graphics/pokemon/aurora_family_two/icon.png", ".4bpp");
++#else
++const u32 gMonFrontPic_AuroraFamilyTwo[] = INCGFX_U32("graphics/pokemon/lumifin/front.png", ".4bpp.smol");
++const u32 gMonBackPic_AuroraFamilyTwo[] = INCGFX_U32("graphics/pokemon/lumifin/back.png", ".4bpp.smol");
++const u16 gMonPalette_AuroraFamilyTwo[] = INCGFX_U16("graphics/pokemon/lumifin/normal.pal", ".gbapal");
++const u8 gMonIcon_AuroraFamilyTwo[] = INCGFX_U8("graphics/pokemon/lumifin/icon.png", ".4bpp");
++#endif
++
++#if AURORA_COMBAT_ENABLED
++const u32 gMonFrontPic_AuroraFamilyThree[] = INCGFX_U32("graphics/pokemon/aurora_family_three/front.png", ".4bpp.smol");
++const u32 gMonBackPic_AuroraFamilyThree[] = INCGFX_U32("graphics/pokemon/aurora_family_three/back.png", ".4bpp.smol");
++const u16 gMonPalette_AuroraFamilyThree[] = INCGFX_U16("graphics/pokemon/aurora_family_three/normal.pal", ".gbapal");
++const u8 gMonIcon_AuroraFamilyThree[] = INCGFX_U8("graphics/pokemon/aurora_family_three/icon.png", ".4bpp");
++#else
++const u32 gMonFrontPic_AuroraFamilyThree[] = INCGFX_U32("graphics/pokemon/lumifin/front.png", ".4bpp.smol");
++const u32 gMonBackPic_AuroraFamilyThree[] = INCGFX_U32("graphics/pokemon/lumifin/back.png", ".4bpp.smol");
++const u16 gMonPalette_AuroraFamilyThree[] = INCGFX_U16("graphics/pokemon/lumifin/normal.pal", ".gbapal");
++const u8 gMonIcon_AuroraFamilyThree[] = INCGFX_U8("graphics/pokemon/lumifin/icon.png", ".4bpp");
++#endif
++
++#include "constants/helix_genesis_content.h"
++#if HELIX_GENESIS_ENABLED
++const u32 gMonFrontPic_HelixFounderOne[] = INCGFX_U32("graphics/pokemon/helix_founder_one/front.png", ".4bpp.smol");
++const u32 gMonBackPic_HelixFounderOne[] = INCGFX_U32("graphics/pokemon/helix_founder_one/back.png", ".4bpp.smol");
++const u16 gMonPalette_HelixFounderOne[] = INCGFX_U16("graphics/pokemon/helix_founder_one/normal.pal", ".gbapal");
++const u8 gMonIcon_HelixFounderOne[] = INCGFX_U8("graphics/pokemon/helix_founder_one/icon.png", ".4bpp");
++#else
++const u32 gMonFrontPic_HelixFounderOne[] = INCGFX_U32("graphics/pokemon/lumifin/front.png", ".4bpp.smol");
++const u32 gMonBackPic_HelixFounderOne[] = INCGFX_U32("graphics/pokemon/lumifin/back.png", ".4bpp.smol");
++const u16 gMonPalette_HelixFounderOne[] = INCGFX_U16("graphics/pokemon/lumifin/normal.pal", ".gbapal");
++const u8 gMonIcon_HelixFounderOne[] = INCGFX_U8("graphics/pokemon/lumifin/icon.png", ".4bpp");
++#endif
++#if HELIX_GENESIS_ENABLED
++const u32 gMonFrontPic_HelixFounderTwo[] = INCGFX_U32("graphics/pokemon/helix_founder_two/front.png", ".4bpp.smol");
++const u32 gMonBackPic_HelixFounderTwo[] = INCGFX_U32("graphics/pokemon/helix_founder_two/back.png", ".4bpp.smol");
++const u16 gMonPalette_HelixFounderTwo[] = INCGFX_U16("graphics/pokemon/helix_founder_two/normal.pal", ".gbapal");
++const u8 gMonIcon_HelixFounderTwo[] = INCGFX_U8("graphics/pokemon/helix_founder_two/icon.png", ".4bpp");
++#else
++const u32 gMonFrontPic_HelixFounderTwo[] = INCGFX_U32("graphics/pokemon/lumifin/front.png", ".4bpp.smol");
++const u32 gMonBackPic_HelixFounderTwo[] = INCGFX_U32("graphics/pokemon/lumifin/back.png", ".4bpp.smol");
++const u16 gMonPalette_HelixFounderTwo[] = INCGFX_U16("graphics/pokemon/lumifin/normal.pal", ".gbapal");
++const u8 gMonIcon_HelixFounderTwo[] = INCGFX_U8("graphics/pokemon/lumifin/icon.png", ".4bpp");
++#endif
++#if HELIX_GENESIS_ENABLED
++const u32 gMonFrontPic_HelixRival[] = INCGFX_U32("graphics/pokemon/helix_rival/front.png", ".4bpp.smol");
++const u32 gMonBackPic_HelixRival[] = INCGFX_U32("graphics/pokemon/helix_rival/back.png", ".4bpp.smol");
++const u16 gMonPalette_HelixRival[] = INCGFX_U16("graphics/pokemon/helix_rival/normal.pal", ".gbapal");
++const u8 gMonIcon_HelixRival[] = INCGFX_U8("graphics/pokemon/helix_rival/icon.png", ".4bpp");
++#else
++const u32 gMonFrontPic_HelixRival[] = INCGFX_U32("graphics/pokemon/lumifin/front.png", ".4bpp.smol");
++const u32 gMonBackPic_HelixRival[] = INCGFX_U32("graphics/pokemon/lumifin/back.png", ".4bpp.smol");
++const u16 gMonPalette_HelixRival[] = INCGFX_U16("graphics/pokemon/lumifin/normal.pal", ".gbapal");
++const u8 gMonIcon_HelixRival[] = INCGFX_U8("graphics/pokemon/lumifin/icon.png", ".4bpp");
++#endif
++
++#if HELIX_GENESIS_ENABLED && HELIX_CROSS_ENABLED
++const u32 gMonFrontPic_HelixChild[] = INCGFX_U32("graphics/pokemon/helix_child/front.png", ".4bpp.smol");
++const u32 gMonBackPic_HelixChild[] = INCGFX_U32("graphics/pokemon/helix_child/back.png", ".4bpp.smol");
++const u16 gMonPalette_HelixChild[] = INCGFX_U16("graphics/pokemon/helix_child/normal.pal", ".gbapal");
++const u8 gMonIcon_HelixChild[] = INCGFX_U8("graphics/pokemon/helix_child/icon.png", ".4bpp");
++#else
++const u32 gMonFrontPic_HelixChild[] = INCGFX_U32("graphics/pokemon/lumifin/front.png", ".4bpp.smol");
++const u32 gMonBackPic_HelixChild[] = INCGFX_U32("graphics/pokemon/lumifin/back.png", ".4bpp.smol");
++const u16 gMonPalette_HelixChild[] = INCGFX_U16("graphics/pokemon/lumifin/normal.pal", ".gbapal");
++const u8 gMonIcon_HelixChild[] = INCGFX_U8("graphics/pokemon/lumifin/icon.png", ".4bpp");
++#endif
+diff --git a/src/data/items.h b/src/data/items.h
+index c51a5acf9af4a1fb218126f9069489265102a2ed..d6edea287a89c658d26be372d50caf9d4e12547e 100644
+--- a/src/data/items.h
++++ b/src/data/items.h
+@@ -21,6 +21,33 @@ const u8 gQuestionMarksItemName[] = _("????????");
+ 
+ const struct ItemInfo gItemsInfo[] =
+ {
++
++    // Helix candidate v17: appended IDs, no change to previously owned items.
++    [ITEM_HELIX_READER] =
++    {
++        .name = ITEM_NAME("Culture Reader"),
++        .price = 0,
++        .description = COMPOUND_STRING("Reusable reader.\nUse with MIRA at\nthe research post."),
++        .importance = 1,
++        .pocket = POCKET_KEY_ITEMS,
++        .type = ITEM_USE_BAG_MENU,
++        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
++        .iconPic = gItemIcon_DevonScope,
++        .iconPalette = gItemIconPalette_DevonScope,
++    },
++    [ITEM_HELIX_MEDIUM] =
++    {
++        .name = ITEM_NAME("Nanomon Medium"),
++        .price = 0,
++        .description = COMPOUND_STRING("Fictional culture.\nMIRA uses one for\na lab assay."),
++        .importance = 1,
++        .pocket = POCKET_ITEMS,
++        .type = ITEM_USE_BAG_MENU,
++        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
++        .iconPic = gItemIcon_Honey,
++        .iconPalette = gItemIconPalette_Honey,
++    },
++
+     [ITEM_NONE] =
+     {
+         .name = gQuestionMarksItemName,
+@@ -55,7 +82,7 @@ const struct ItemInfo gItemsInfo[] =
+     [ITEM_POKE_BALL] =
+     {
+         .name = ITEM_NAME("Poké Ball"),
+-        .price = 200,
++        .price = 400,
+         .description = COMPOUND_STRING(
+             "A tool used for\n"
+             "catching wild\n"
+diff --git a/src/data/object_events/object_event_graphics.h b/src/data/object_events/object_event_graphics.h
+index 4e53633ccbfd7df95d501de2f7415738c315157c..fa7cc7f79b5465973facbee4e1434b03157c1d49 100755
+--- a/src/data/object_events/object_event_graphics.h
++++ b/src/data/object_events/object_event_graphics.h
+@@ -3,6 +3,8 @@ const u16 gObjectEventPal_Brendan[] = INCGFX_U16("graphics/object_events/palette
+ const u32 gObjectEventPic_RubySapphireBrendanNormal[] = INCGFX_U32("graphics/object_events/pics/people/ruby_sapphire_brendan/walking.png", ".4bpp", "-mwidth 2 -mheight 4");
+ const u32 gObjectEventPic_RubySapphireBrendanRunning[] = INCGFX_U32("graphics/object_events/pics/people/ruby_sapphire_brendan/running.png", ".4bpp", "-mwidth 2 -mheight 4");
+ const u16 gObjectEventPal_RubySapphireBrendan[] = INCGFX_U16("graphics/object_events/palettes/ruby_sapphire_brendan.pal", ".gbapal");
++const u32 gObjectEventPic_SignalBeacon[] = INCGFX_U32("graphics/object_events/pics/misc/signal_beacon.png", ".4bpp", "-mwidth 2 -mheight 4");
++const u16 gObjectEventPal_SignalBeacon[] = INCGFX_U16("graphics/object_events/palettes/signal_beacon.pal", ".gbapal");
+ const u16 gObjectEventPal_Null1[16] = {};
+ const u16 gObjectEventPal_Null2[16] = {};
+ const u16 gObjectEventPal_Null3[16] = {};
+diff --git a/src/data/object_events/object_event_graphics_info.h b/src/data/object_events/object_event_graphics_info.h
+index d1bb7adf999269ce92f87d2e2742ee6513eb7930..aed8003795d7720ae623c7d22360df5f20c4ec4d 100755
+--- a/src/data/object_events/object_event_graphics_info.h
++++ b/src/data/object_events/object_event_graphics_info.h
+@@ -1,3 +1,21 @@
++const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SignalBeacon = {
++    .tileTag = TAG_NONE,
++    .paletteTag = OBJ_EVENT_PAL_TAG_SIGNAL_BEACON,
++    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
++    .size = 256,
++    .width = 16,
++    .height = 32,
++    .paletteSlot = PALSLOT_NPC_SPECIAL,
++    .shadowSize = SHADOW_SIZE_S,
++    .inanimate = TRUE,
++    .compressed = FALSE,
++    .tracks = TRACKS_NONE,
++    .oam = &gObjectEventBaseOam_16x32,
++    .subspriteTables = sOamTables_16x32,
++    .anims = sAnimTable_Inanimate,
++    .images = sPicTable_SignalBeacon,
++};
++
+ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanNormal = {
+     .tileTag = TAG_NONE,
+     .paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN,
+diff --git a/src/data/object_events/object_event_graphics_info_pointers.h b/src/data/object_events/object_event_graphics_info_pointers.h
+index 90b888e69c0d72760b225f01c589ce621c6ac213..fe7cf7b5409922b666fb92455295cd96f04941e4 100755
+--- a/src/data/object_events/object_event_graphics_info_pointers.h
++++ b/src/data/object_events/object_event_graphics_info_pointers.h
+@@ -401,7 +401,10 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvi
+ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan2;
+ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ApricornTree;
+ 
++extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SignalBeacon;
++
+ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
++    [OBJ_EVENT_GFX_SIGNAL_BEACON] = &gObjectEventGraphicsInfo_SignalBeacon,
+     [OBJ_EVENT_GFX_BRENDAN_NORMAL] =           &gObjectEventGraphicsInfo_BrendanNormal,
+     [OBJ_EVENT_GFX_BRENDAN_MACH_BIKE] =        &gObjectEventGraphicsInfo_BrendanMachBike,
+     [OBJ_EVENT_GFX_BRENDAN_SURFING] =          &gObjectEventGraphicsInfo_BrendanSurfing,
+diff --git a/src/data/object_events/object_event_pic_tables.h b/src/data/object_events/object_event_pic_tables.h
+index 612f3b68c16e0250cf3e56bba233c8952244ab10..681caf5648fca8cb004b53efcfd224ed55501ff9 100755
+--- a/src/data/object_events/object_event_pic_tables.h
++++ b/src/data/object_events/object_event_pic_tables.h
+@@ -350,6 +350,10 @@ static const struct SpriteFrameImage sPicTable_Teala[] = {
+     overworld_ascending_frames(gObjectEventPic_Teala, 2, 4),
+ };
+ 
++static const struct SpriteFrameImage sPicTable_SignalBeacon[] = {
++    overworld_frame(gObjectEventPic_SignalBeacon, 2, 4, 0),
++};
++
+ static const struct SpriteFrameImage sPicTable_BreakableRock[] = {
+     overworld_ascending_frames(gObjectEventPic_BreakableRock, 2, 2),
+ };
+diff --git a/src/data/pokemon/species_info.h b/src/data/pokemon/species_info.h
+index f7616e53dc8a3f39a71518f85c3f431880c147d2..61188b192b748aec8080edf3c54458097b84a0bd 100644
+--- a/src/data/pokemon/species_info.h
++++ b/src/data/pokemon/species_info.h
+@@ -95,6 +95,28 @@
+ #define FLIP    0
+ #define NO_FLIP 1
+ 
++// Authored battle balance. None of these values are inferred from the genome
++// or generated expression profile. This species has no automatic evolution.
++static const struct LevelUpMove sLumifinLevelUpLearnset[] =
++{
++    LEVEL_UP_MOVE(1, MOVE_WATER_GUN),
++    LEVEL_UP_MOVE(1, MOVE_TACKLE),
++    LEVEL_UP_MOVE(1, MOVE_TAIL_WHIP),
++    LEVEL_UP_MOVE(1, MOVE_SUPERSONIC),
++    LEVEL_UP_MOVE(9, MOVE_AQUA_JET),
++    LEVEL_UP_MOVE(13, MOVE_WATER_PULSE),
++    LEVEL_UP_MOVE(18, MOVE_SAFEGUARD),
++    LEVEL_UP_MOVE(24, MOVE_AQUA_RING),
++    LEVEL_UP_MOVE(30, MOVE_SIGNAL_BEAM),
++    LEVEL_UP_MOVE(36, MOVE_SURF),
++    LEVEL_UP_END,
++};
++static const u16 sLumifinTeachableLearnset[] =
++{
++    MOVE_PROTECT, MOVE_REST, MOVE_RAIN_DANCE, MOVE_SURF, MOVE_DIVE,
++    MOVE_WATERFALL, MOVE_ICE_BEAM, MOVE_UNAVAILABLE,
++};
++
+ const struct SpeciesInfo gSpeciesInfo[] =
+ {
+     [SPECIES_NONE] =
+@@ -160,6 +182,556 @@ const struct SpeciesInfo gSpeciesInfo[] =
+     #include "species_info/gen_8_families.h"
+     #include "species_info/gen_9_families.h"
+ 
++    [SPECIES_LUMIFIN] =
++    {
++        .baseHP = 50,
++        .baseAttack = 40,
++        .baseDefense = 45,
++        .baseSpeed = 60,
++        .baseSpAttack = 60,
++        .baseSpDefense = 55,
++        .types = MON_TYPES(TYPE_WATER),
++        .catchRate = 45,
++        .expYield = 64,
++        .evYield_SpAttack = 1,
++        .genderRatio = MON_GENDERLESS,
++        .eggCycles = 20,
++        .friendship = STANDARD_FRIENDSHIP,
++        .growthRate = GROWTH_MEDIUM_FAST,
++        // Native daycare must not create an unregistered copy. Aurora's
++        // inherited-genome breeding pipeline owns new individual identities.
++        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
++        .abilities = {ABILITY_ILLUMINATE, ABILITY_NONE, ABILITY_NONE},
++        .bodyColor = BODY_COLOR_BLUE,
++        .speciesName = _("Lumifin"),
++        .cryId = CRY_CHINCHOU,
++        .natDexNum = NATIONAL_DEX_NONE,
++        .categoryName = _("Signal"),
++        .height = 4,
++        .weight = 35,
++        .description = COMPOUND_STRING(
++            "Its luminous fins answer faint pulses\n"
++            "that people cannot hear. It guides\n"
++            "trusted companions toward echoes\n"
++            "of the Aurora Frequency."),
++        .pokemonScale = 256,
++        .trainerScale = 256,
++        .frontPic = gMonFrontPic_Lumifin,
++        .frontPicSize = MON_COORDS_SIZE(64, 64),
++        .frontPicYOffset = 0,
++        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
++        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
++        .backPic = gMonBackPic_Lumifin,
++        .backPicSize = MON_COORDS_SIZE(64, 64),
++        .backPicYOffset = 0,
++        .backAnimId = BACK_ANIM_H_SLIDE,
++        .palette = gMonPalette_Lumifin,
++        .shinyPalette = gMonPalette_Lumifin,
++        .iconSprite = gMonIcon_Lumifin,
++        .iconPalIndex = 3,
++        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
++        FOOTPRINT(QuestionMark)
++        SHADOW(0, 0, SHADOW_SIZE_S)
++        .levelUpLearnset = sLumifinLevelUpLearnset,
++        .teachableLearnset = sLumifinTeachableLearnset,
++        .eggMoveLearnset = sNoneEggMoveLearnset,
++    },
++
++    [SPECIES_LUMIFIN_CHILD] =
++    {
++        .baseHP = 50,
++        .baseAttack = 40,
++        .baseDefense = 45,
++        .baseSpeed = 60,
++        .baseSpAttack = 60,
++        .baseSpDefense = 55,
++        .types = MON_TYPES(TYPE_WATER),
++        .catchRate = 45,
++        .expYield = 64,
++        .evYield_SpAttack = 1,
++        .genderRatio = MON_GENDERLESS,
++        .eggCycles = 20,
++        .friendship = STANDARD_FRIENDSHIP,
++        .growthRate = GROWTH_MEDIUM_FAST,
++        // Native daycare must not create an unregistered copy. Aurora's
++        // inherited-genome breeding pipeline owns new individual identities.
++        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
++        .abilities = {ABILITY_ILLUMINATE, ABILITY_NONE, ABILITY_NONE},
++        .bodyColor = BODY_COLOR_BLUE,
++        .speciesName = _("Lumifin"),
++        .cryId = CRY_CHINCHOU,
++        .natDexNum = NATIONAL_DEX_NONE,
++        .categoryName = _("Signal"),
++        .height = 4,
++        .weight = 35,
++        .description = COMPOUND_STRING(
++            "Its luminous fins answer faint pulses\n"
++            "that people cannot hear. It guides\n"
++            "trusted companions toward echoes\n"
++            "of the Aurora Frequency."),
++        .pokemonScale = 256,
++        .trainerScale = 256,
++        .frontPic = gMonFrontPic_LumifinChild,
++        .frontPicSize = MON_COORDS_SIZE(64, 64),
++        .frontPicYOffset = 0,
++        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
++        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
++        .backPic = gMonBackPic_LumifinChild,
++        .backPicSize = MON_COORDS_SIZE(64, 64),
++        .backPicYOffset = 0,
++        .backAnimId = BACK_ANIM_H_SLIDE,
++        .palette = gMonPalette_LumifinChild,
++        .shinyPalette = gMonPalette_LumifinChild,
++        .iconSprite = gMonIcon_LumifinChild,
++        .iconPalIndex = 3,
++        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
++        FOOTPRINT(QuestionMark)
++        SHADOW(0, 0, SHADOW_SIZE_S)
++        .levelUpLearnset = sLumifinLevelUpLearnset,
++        .teachableLearnset = sLumifinTeachableLearnset,
++        .eggMoveLearnset = sNoneEggMoveLearnset,
++    },
++
++    [SPECIES_LUMIFIN_CHILD_EDITED] =
++    {
++        .baseHP = 50,
++        .baseAttack = 40,
++        .baseDefense = 45,
++        .baseSpeed = 60,
++        .baseSpAttack = 60,
++        .baseSpDefense = 55,
++        .types = MON_TYPES(TYPE_WATER),
++        .catchRate = 45,
++        .expYield = 64,
++        .evYield_SpAttack = 1,
++        .genderRatio = MON_GENDERLESS,
++        .eggCycles = 20,
++        .friendship = STANDARD_FRIENDSHIP,
++        .growthRate = GROWTH_MEDIUM_FAST,
++        // Native daycare must not create an unregistered copy. Aurora's
++        // inherited-genome breeding pipeline owns new individual identities.
++        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
++        .abilities = {ABILITY_ILLUMINATE, ABILITY_NONE, ABILITY_NONE},
++        .bodyColor = BODY_COLOR_BLUE,
++        .speciesName = _("Lumifin"),
++        .cryId = CRY_CHINCHOU,
++        .natDexNum = NATIONAL_DEX_NONE,
++        .categoryName = _("Signal"),
++        .height = 4,
++        .weight = 35,
++        .description = COMPOUND_STRING(
++            "Its luminous fins answer faint pulses\n"
++            "that people cannot hear. It guides\n"
++            "trusted companions toward echoes\n"
++            "of the Aurora Frequency."),
++        .pokemonScale = 256,
++        .trainerScale = 256,
++        .frontPic = gMonFrontPic_LumifinChildEdited,
++        .frontPicSize = MON_COORDS_SIZE(64, 64),
++        .frontPicYOffset = 0,
++        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
++        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
++        .backPic = gMonBackPic_LumifinChildEdited,
++        .backPicSize = MON_COORDS_SIZE(64, 64),
++        .backPicYOffset = 0,
++        .backAnimId = BACK_ANIM_H_SLIDE,
++        .palette = gMonPalette_LumifinChildEdited,
++        .shinyPalette = gMonPalette_LumifinChildEdited,
++        .iconSprite = gMonIcon_LumifinChildEdited,
++        .iconPalIndex = 3,
++        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
++        FOOTPRINT(QuestionMark)
++        SHADOW(0, 0, SHADOW_SIZE_S)
++        .levelUpLearnset = sLumifinLevelUpLearnset,
++        .teachableLearnset = sLumifinTeachableLearnset,
++        .eggMoveLearnset = sNoneEggMoveLearnset,
++    },
++
++    [SPECIES_AURORA_FAMILY_ONE] =
++    {
++        .baseHP = 50,
++        .baseAttack = 40,
++        .baseDefense = 45,
++        .baseSpeed = 60,
++        .baseSpAttack = 60,
++        .baseSpDefense = 55,
++        .types = MON_TYPES(TYPE_WATER),
++        .catchRate = 45,
++        .expYield = 64,
++        .evYield_SpAttack = 1,
++        .genderRatio = MON_GENDERLESS,
++        .eggCycles = 20,
++        .friendship = STANDARD_FRIENDSHIP,
++        .growthRate = GROWTH_MEDIUM_FAST,
++        // Native daycare must not create an unregistered copy. Aurora's
++        // inherited-genome breeding pipeline owns new individual identities.
++        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
++        .abilities = {ABILITY_ILLUMINATE, ABILITY_NONE, ABILITY_NONE},
++        .bodyColor = BODY_COLOR_BLUE,
++        .speciesName = _("Lumifin"),
++        .cryId = CRY_CHINCHOU,
++        .natDexNum = NATIONAL_DEX_NONE,
++        .categoryName = _("Signal"),
++        .height = 4,
++        .weight = 35,
++        .description = COMPOUND_STRING(
++            "Its luminous fins answer faint pulses\n"
++            "that people cannot hear. It guides\n"
++            "trusted companions toward echoes\n"
++            "of the Aurora Frequency."),
++        .pokemonScale = 256,
++        .trainerScale = 256,
++        .frontPic = gMonFrontPic_AuroraFamilyOne,
++        .frontPicSize = MON_COORDS_SIZE(64, 64),
++        .frontPicYOffset = 0,
++        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
++        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
++        .backPic = gMonBackPic_AuroraFamilyOne,
++        .backPicSize = MON_COORDS_SIZE(64, 64),
++        .backPicYOffset = 0,
++        .backAnimId = BACK_ANIM_H_SLIDE,
++        .palette = gMonPalette_AuroraFamilyOne,
++        .shinyPalette = gMonPalette_AuroraFamilyOne,
++        .iconSprite = gMonIcon_AuroraFamilyOne,
++        .iconPalIndex = 3,
++        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
++        FOOTPRINT(QuestionMark)
++        SHADOW(0, 0, SHADOW_SIZE_S)
++        .levelUpLearnset = sLumifinLevelUpLearnset,
++        .teachableLearnset = sLumifinTeachableLearnset,
++        .eggMoveLearnset = sNoneEggMoveLearnset,
++    },
++
++    [SPECIES_AURORA_FAMILY_TWO] =
++    {
++        .baseHP = 50,
++        .baseAttack = 40,
++        .baseDefense = 45,
++        .baseSpeed = 60,
++        .baseSpAttack = 60,
++        .baseSpDefense = 55,
++        .types = MON_TYPES(TYPE_WATER),
++        .catchRate = 45,
++        .expYield = 64,
++        .evYield_SpAttack = 1,
++        .genderRatio = MON_GENDERLESS,
++        .eggCycles = 20,
++        .friendship = STANDARD_FRIENDSHIP,
++        .growthRate = GROWTH_MEDIUM_FAST,
++        // Native daycare must not create an unregistered copy. Aurora's
++        // inherited-genome breeding pipeline owns new individual identities.
++        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
++        .abilities = {ABILITY_ILLUMINATE, ABILITY_NONE, ABILITY_NONE},
++        .bodyColor = BODY_COLOR_BLUE,
++        .speciesName = _("Lumifin"),
++        .cryId = CRY_CHINCHOU,
++        .natDexNum = NATIONAL_DEX_NONE,
++        .categoryName = _("Signal"),
++        .height = 4,
++        .weight = 35,
++        .description = COMPOUND_STRING(
++            "Its luminous fins answer faint pulses\n"
++            "that people cannot hear. It guides\n"
++            "trusted companions toward echoes\n"
++            "of the Aurora Frequency."),
++        .pokemonScale = 256,
++        .trainerScale = 256,
++        .frontPic = gMonFrontPic_AuroraFamilyTwo,
++        .frontPicSize = MON_COORDS_SIZE(64, 64),
++        .frontPicYOffset = 0,
++        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
++        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
++        .backPic = gMonBackPic_AuroraFamilyTwo,
++        .backPicSize = MON_COORDS_SIZE(64, 64),
++        .backPicYOffset = 0,
++        .backAnimId = BACK_ANIM_H_SLIDE,
++        .palette = gMonPalette_AuroraFamilyTwo,
++        .shinyPalette = gMonPalette_AuroraFamilyTwo,
++        .iconSprite = gMonIcon_AuroraFamilyTwo,
++        .iconPalIndex = 3,
++        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
++        FOOTPRINT(QuestionMark)
++        SHADOW(0, 0, SHADOW_SIZE_S)
++        .levelUpLearnset = sLumifinLevelUpLearnset,
++        .teachableLearnset = sLumifinTeachableLearnset,
++        .eggMoveLearnset = sNoneEggMoveLearnset,
++    },
++
++    [SPECIES_AURORA_FAMILY_THREE] =
++    {
++        .baseHP = 50,
++        .baseAttack = 40,
++        .baseDefense = 45,
++        .baseSpeed = 60,
++        .baseSpAttack = 60,
++        .baseSpDefense = 55,
++        .types = MON_TYPES(TYPE_WATER),
++        .catchRate = 255,
++        .expYield = 64,
++        .evYield_SpAttack = 1,
++        .genderRatio = MON_GENDERLESS,
++        .eggCycles = 20,
++        .friendship = STANDARD_FRIENDSHIP,
++        .growthRate = GROWTH_MEDIUM_FAST,
++        // Native daycare must not create an unregistered copy. Aurora's
++        // inherited-genome breeding pipeline owns new individual identities.
++        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
++        .abilities = {ABILITY_ILLUMINATE, ABILITY_NONE, ABILITY_NONE},
++        .bodyColor = BODY_COLOR_BLUE,
++        .speciesName = _("Lumifin"),
++        .cryId = CRY_CHINCHOU,
++        .natDexNum = NATIONAL_DEX_NONE,
++        .categoryName = _("Signal"),
++        .height = 4,
++        .weight = 35,
++        .description = COMPOUND_STRING(
++            "Its luminous fins answer faint pulses\n"
++            "that people cannot hear. It guides\n"
++            "trusted companions toward echoes\n"
++            "of the Aurora Frequency."),
++        .pokemonScale = 256,
++        .trainerScale = 256,
++        .frontPic = gMonFrontPic_AuroraFamilyThree,
++        .frontPicSize = MON_COORDS_SIZE(64, 64),
++        .frontPicYOffset = 0,
++        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
++        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
++        .backPic = gMonBackPic_AuroraFamilyThree,
++        .backPicSize = MON_COORDS_SIZE(64, 64),
++        .backPicYOffset = 0,
++        .backAnimId = BACK_ANIM_H_SLIDE,
++        .palette = gMonPalette_AuroraFamilyThree,
++        .shinyPalette = gMonPalette_AuroraFamilyThree,
++        .iconSprite = gMonIcon_AuroraFamilyThree,
++        .iconPalIndex = 3,
++        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
++        FOOTPRINT(QuestionMark)
++        SHADOW(0, 0, SHADOW_SIZE_S)
++        .levelUpLearnset = sLumifinLevelUpLearnset,
++        .teachableLearnset = sLumifinTeachableLearnset,
++        .eggMoveLearnset = sNoneEggMoveLearnset,
++    },
++
++    [SPECIES_HELIX_FOUNDER_ONE] =
++    {
++        .baseHP = 50,
++        .baseAttack = 40,
++        .baseDefense = 45,
++        .baseSpeed = 60,
++        .baseSpAttack = 60,
++        .baseSpDefense = 55,
++        .types = MON_TYPES(TYPE_WATER),
++        .catchRate = 45,
++        .expYield = 64,
++        .evYield_SpAttack = 1,
++        .genderRatio = MON_GENDERLESS,
++        .eggCycles = 20,
++        .friendship = STANDARD_FRIENDSHIP,
++        .growthRate = GROWTH_MEDIUM_FAST,
++        // Native daycare must not create an unregistered copy. Aurora's
++        // inherited-genome breeding pipeline owns new individual identities.
++        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
++        .abilities = {ABILITY_ILLUMINATE, ABILITY_NONE, ABILITY_NONE},
++        .bodyColor = BODY_COLOR_BLUE,
++        .speciesName = _("Helix"),
++        .cryId = CRY_CHINCHOU,
++        .natDexNum = NATIONAL_DEX_NONE,
++        .categoryName = _("Hybrid"),
++        .height = 4,
++        .weight = 35,
++        .description = COMPOUND_STRING(
++            "An individual with a lasting identity.\n"
++            "Its own inherited pattern and traits\n"
++            "are retained in the HELIX laboratory.\n"
++            "Learn its personality together."),
++        .pokemonScale = 256,
++        .trainerScale = 256,
++        .frontPic = gMonFrontPic_HelixFounderOne,
++        .frontPicSize = MON_COORDS_SIZE(64, 64),
++        .frontPicYOffset = 0,
++        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
++        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
++        .backPic = gMonBackPic_HelixFounderOne,
++        .backPicSize = MON_COORDS_SIZE(64, 64),
++        .backPicYOffset = 0,
++        .backAnimId = BACK_ANIM_H_SLIDE,
++        .palette = gMonPalette_HelixFounderOne,
++        .shinyPalette = gMonPalette_HelixFounderOne,
++        .iconSprite = gMonIcon_HelixFounderOne,
++        .iconPalIndex = 3,
++        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
++        FOOTPRINT(QuestionMark)
++        SHADOW(0, 0, SHADOW_SIZE_S)
++        .levelUpLearnset = sLumifinLevelUpLearnset,
++        .teachableLearnset = sLumifinTeachableLearnset,
++        .eggMoveLearnset = sNoneEggMoveLearnset,
++    },
++
++    [SPECIES_HELIX_FOUNDER_TWO] =
++    {
++        .baseHP = 50,
++        .baseAttack = 40,
++        .baseDefense = 45,
++        .baseSpeed = 60,
++        .baseSpAttack = 60,
++        .baseSpDefense = 55,
++        .types = MON_TYPES(TYPE_WATER),
++        .catchRate = 45,
++        .expYield = 64,
++        .evYield_SpAttack = 1,
++        .genderRatio = MON_GENDERLESS,
++        .eggCycles = 20,
++        .friendship = STANDARD_FRIENDSHIP,
++        .growthRate = GROWTH_MEDIUM_FAST,
++        // Native daycare must not create an unregistered copy. Aurora's
++        // inherited-genome breeding pipeline owns new individual identities.
++        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
++        .abilities = {ABILITY_ILLUMINATE, ABILITY_NONE, ABILITY_NONE},
++        .bodyColor = BODY_COLOR_BLUE,
++        .speciesName = _("Helix"),
++        .cryId = CRY_CHINCHOU,
++        .natDexNum = NATIONAL_DEX_NONE,
++        .categoryName = _("Hybrid"),
++        .height = 4,
++        .weight = 35,
++        .description = COMPOUND_STRING(
++            "An individual with a lasting identity.\n"
++            "Its own inherited pattern and traits\n"
++            "are retained in the HELIX laboratory.\n"
++            "Learn its personality together."),
++        .pokemonScale = 256,
++        .trainerScale = 256,
++        .frontPic = gMonFrontPic_HelixFounderTwo,
++        .frontPicSize = MON_COORDS_SIZE(64, 64),
++        .frontPicYOffset = 0,
++        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
++        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
++        .backPic = gMonBackPic_HelixFounderTwo,
++        .backPicSize = MON_COORDS_SIZE(64, 64),
++        .backPicYOffset = 0,
++        .backAnimId = BACK_ANIM_H_SLIDE,
++        .palette = gMonPalette_HelixFounderTwo,
++        .shinyPalette = gMonPalette_HelixFounderTwo,
++        .iconSprite = gMonIcon_HelixFounderTwo,
++        .iconPalIndex = 3,
++        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
++        FOOTPRINT(QuestionMark)
++        SHADOW(0, 0, SHADOW_SIZE_S)
++        .levelUpLearnset = sLumifinLevelUpLearnset,
++        .teachableLearnset = sLumifinTeachableLearnset,
++        .eggMoveLearnset = sNoneEggMoveLearnset,
++    },
++
++    [SPECIES_HELIX_RIVAL] =
++    {
++        .baseHP = 50,
++        .baseAttack = 40,
++        .baseDefense = 45,
++        .baseSpeed = 60,
++        .baseSpAttack = 60,
++        .baseSpDefense = 55,
++        .types = MON_TYPES(TYPE_WATER),
++        .catchRate = 45,
++        .expYield = 64,
++        .evYield_SpAttack = 1,
++        .genderRatio = MON_GENDERLESS,
++        .eggCycles = 20,
++        .friendship = STANDARD_FRIENDSHIP,
++        .growthRate = GROWTH_MEDIUM_FAST,
++        // Native daycare must not create an unregistered copy. Aurora's
++        // inherited-genome breeding pipeline owns new individual identities.
++        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
++        .abilities = {ABILITY_ILLUMINATE, ABILITY_NONE, ABILITY_NONE},
++        .bodyColor = BODY_COLOR_BLUE,
++        .speciesName = _("Helix"),
++        .cryId = CRY_CHINCHOU,
++        .natDexNum = NATIONAL_DEX_NONE,
++        .categoryName = _("Hybrid"),
++        .height = 4,
++        .weight = 35,
++        .description = COMPOUND_STRING(
++            "An individual with a lasting identity.\n"
++            "Its own inherited pattern and traits\n"
++            "are retained in the HELIX laboratory.\n"
++            "Learn its personality together."),
++        .pokemonScale = 256,
++        .trainerScale = 256,
++        .frontPic = gMonFrontPic_HelixRival,
++        .frontPicSize = MON_COORDS_SIZE(64, 64),
++        .frontPicYOffset = 0,
++        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
++        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
++        .backPic = gMonBackPic_HelixRival,
++        .backPicSize = MON_COORDS_SIZE(64, 64),
++        .backPicYOffset = 0,
++        .backAnimId = BACK_ANIM_H_SLIDE,
++        .palette = gMonPalette_HelixRival,
++        .shinyPalette = gMonPalette_HelixRival,
++        .iconSprite = gMonIcon_HelixRival,
++        .iconPalIndex = 3,
++        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
++        FOOTPRINT(QuestionMark)
++        SHADOW(0, 0, SHADOW_SIZE_S)
++        .levelUpLearnset = sLumifinLevelUpLearnset,
++        .teachableLearnset = sLumifinTeachableLearnset,
++        .eggMoveLearnset = sNoneEggMoveLearnset,
++    },
++
++    [SPECIES_HELIX_CHILD] =
++    {
++        .baseHP = 50,
++        .baseAttack = 40,
++        .baseDefense = 45,
++        .baseSpeed = 60,
++        .baseSpAttack = 60,
++        .baseSpDefense = 55,
++        .types = MON_TYPES(TYPE_WATER),
++        .catchRate = 45,
++        .expYield = 64,
++        .evYield_SpAttack = 1,
++        .genderRatio = MON_GENDERLESS,
++        .eggCycles = 20,
++        .friendship = STANDARD_FRIENDSHIP,
++        .growthRate = GROWTH_MEDIUM_FAST,
++        // Native daycare must not create an unregistered copy. Aurora's
++        // inherited-genome breeding pipeline owns new individual identities.
++        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
++        .abilities = {ABILITY_ILLUMINATE, ABILITY_NONE, ABILITY_NONE},
++        .bodyColor = BODY_COLOR_BLUE,
++        .speciesName = _("Helix"),
++        .cryId = CRY_CHINCHOU,
++        .natDexNum = NATIONAL_DEX_NONE,
++        .categoryName = _("Hybrid"),
++        .height = 4,
++        .weight = 35,
++        .description = COMPOUND_STRING(
++            "An individual with a lasting identity.\n"
++            "Its own inherited pattern and traits\n"
++            "are retained in the HELIX laboratory.\n"
++            "Learn its personality together."),
++        .pokemonScale = 256,
++        .trainerScale = 256,
++        .frontPic = gMonFrontPic_HelixChild,
++        .frontPicSize = MON_COORDS_SIZE(64, 64),
++        .frontPicYOffset = 0,
++        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
++        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
++        .backPic = gMonBackPic_HelixChild,
++        .backPicSize = MON_COORDS_SIZE(64, 64),
++        .backPicYOffset = 0,
++        .backAnimId = BACK_ANIM_H_SLIDE,
++        .palette = gMonPalette_HelixChild,
++        .shinyPalette = gMonPalette_HelixChild,
++        .iconSprite = gMonIcon_HelixChild,
++        .iconPalIndex = 3,
++        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
++        FOOTPRINT(QuestionMark)
++        SHADOW(0, 0, SHADOW_SIZE_S)
++        .levelUpLearnset = sLumifinLevelUpLearnset,
++        .teachableLearnset = sLumifinTeachableLearnset,
++        .eggMoveLearnset = sNoneEggMoveLearnset,
++    },
++
+     [SPECIES_EGG] =
+     {
+         .frontPic = gMonFrontPic_Egg,
+diff --git a/src/data/script_menu.h b/src/data/script_menu.h
+index 5fbd760329029d66bd50f3ad4365430eea7229b8..db7d8fa541fe77963432e5ada78ff7b86bb46397 100644
+--- a/src/data/script_menu.h
++++ b/src/data/script_menu.h
+@@ -1,3 +1,53 @@
++static const struct MenuAction sHelixNotesEn[] = {
++    {COMPOUND_STRING("Companion")},
++    {COMPOUND_STRING("Origins")},
++    {COMPOUND_STRING("Look closely")},
++    {COMPOUND_STRING("Next step")},
++    {COMPOUND_STRING("Rest")},
++    {COMPOUND_STRING("Exit")},
++};
++static const struct MenuAction sHelixNotesPt[] = {
++    {COMPOUND_STRING("Companheiro")},
++    {COMPOUND_STRING("Origens")},
++    {COMPOUND_STRING("Olhe de perto")},
++    {COMPOUND_STRING("Próximo passo")},
++    {COMPOUND_STRING("Descansar")},
++    {COMPOUND_STRING("Sair")},
++};
++static const struct MenuAction sHelixRECEPTION[] = {
++    {COMPOUND_STRING("Edit profile")},
++    {COMPOUND_STRING("Talk")},
++    {COMPOUND_STRING("Next step")},
++    {COMPOUND_STRING("Exit")},
++};
++static const struct MenuAction sHelixSOUL[] = {
++    {COMPOUND_STRING("Discover")},
++    {COMPOUND_STRING("Care")},
++    {COMPOUND_STRING("Observe")},
++    {COMPOUND_STRING("Cancel")},
++};
++static const struct MenuAction sHelixDNA[] = {
++    {COMPOUND_STRING("No personal data")},
++    {COMPOUND_STRING("See synthetic sample")},
++    {COMPOUND_STRING("Cancel")},
++};
++static const struct MenuAction sHelixGENETICIST[] = {
++    {COMPOUND_STRING("Analyze projects")},
++    {COMPOUND_STRING("Explore genetics")},
++    {COMPOUND_STRING("Talk")},
++    {COMPOUND_STRING("Exit")},
++};
++static const struct MenuAction sHelixRECIPES[] = {
++    {COMPOUND_STRING("Coast: NAUTIL")},
++    {COMPOUND_STRING("Reeds: FERRO")},
++    {COMPOUND_STRING("Cancel")},
++};
++static const struct MenuAction sHelixNURSERY[] = {
++    {COMPOUND_STRING("Incubator")},
++    {COMPOUND_STRING("Follow-up")},
++    {COMPOUND_STRING("Talk")},
++    {COMPOUND_STRING("Exit")},
++};
+ // multichoice lists
+ static const struct MenuAction MultichoiceList_BrineyOnDewford[] =
+ {
+@@ -1127,6 +1177,18 @@ static const struct MenuAction MultichoiceList_Exit[] =
+     {gText_Exit},
+ };
+ 
++static const struct MenuAction sAuroraLabMenu[] = {
++    {COMPOUND_STRING("Hatch child")}, {COMPOUND_STRING("Family notes")},
++    {COMPOUND_STRING("Rest one day")}, {COMPOUND_STRING("Listen")},
++    {COMPOUND_STRING("Virtual edit")}, {COMPOUND_STRING("Leave")},
++};
++static const struct MenuAction sAuroraIndividualMenu[] = {
++    {COMPOUND_STRING("LUMIFIN")}, {COMPOUND_STRING("RIPPLE")}, {COMPOUND_STRING("Cancel")},
++};
++static const struct MenuAction sAuroraEditMenu[] = {
++    {COMPOUND_STRING("Somatic")}, {COMPOUND_STRING("Germline")}, {COMPOUND_STRING("Cancel")},
++};
++
+ struct MultichoiceListStruct
+ {
+     const struct MenuAction *list;
+@@ -1135,6 +1197,18 @@ struct MultichoiceListStruct
+ 
+ static const struct MultichoiceListStruct sMultichoiceLists[] =
+ {
++    [MULTI_AURORA_LAB] = MULTICHOICE(sAuroraLabMenu),
++    [MULTI_AURORA_INDIVIDUAL] = MULTICHOICE(sAuroraIndividualMenu),
++    [MULTI_AURORA_EDIT] = MULTICHOICE(sAuroraEditMenu),
++    [MULTI_HELIX_RECEPTION] = MULTICHOICE(sHelixRECEPTION),
++    [MULTI_HELIX_SOUL] = MULTICHOICE(sHelixSOUL),
++    [MULTI_HELIX_DNA] = MULTICHOICE(sHelixDNA),
++    [MULTI_HELIX_GENETICIST] = MULTICHOICE(sHelixGENETICIST),
++    [MULTI_HELIX_RECIPES] = MULTICHOICE(sHelixRECIPES),
++    [MULTI_HELIX_NURSERY] = MULTICHOICE(sHelixNURSERY),
++    [MULTI_HELIX_NOTES_EN] = MULTICHOICE(sHelixNotesEn),
++    [MULTI_HELIX_NOTES_PT] = MULTICHOICE(sHelixNotesPt),
++
+     [MULTI_BRINEY_ON_DEWFORD]          = MULTICHOICE(MultichoiceList_BrineyOnDewford),
+     [MULTI_PC]                         = MULTICHOICE(MultichoiceList_Exit),
+     [MULTI_ENTERINFO]                  = MULTICHOICE(MultichoiceList_EnterInfo),
+diff --git a/src/data/trainers.party b/src/data/trainers.party
+index fbe4a37f6dafa6b397902c9e3c01ce12848580f8..53fb45960d3d86faf05904918f3e32661720961e 100644
+--- a/src/data/trainers.party
++++ b/src/data/trainers.party
+@@ -16877,3 +16877,15 @@ Double Battle: No
+ Kyogre
+ Level: 5
+ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
++
++=== TRAINER_HELIX_NOA ===
++Name: NOA
++Class: Pkmn Trainer 1
++Pic: Scientist FRLG
++Gender: Male
++Music: Male
++Double Battle: No
++
++Poochyena
++Level: 5
++IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+diff --git a/src/egg_hatch.c b/src/egg_hatch.c
+index a7841eda9313ad609530c90e314cba8a4e8b998c..c97148ea0fce4597a2945bddb99cabd0f52d3f14 100644
+--- a/src/egg_hatch.c
++++ b/src/egg_hatch.c
+@@ -1,4 +1,5 @@
+ #include "global.h"
++#include "pokemon_birth.h"
+ #include "pokemon.h"
+ #include "egg_hatch.h"
+ #include "pokedex.h"
+@@ -314,8 +315,10 @@ static void AddHatchedMonToParty(u8 id)
+     metloc_u8_t metLocation;
+     struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][id];
+ 
++    bool32 wasEgg = GetMonData(mon, MON_DATA_IS_EGG);
+     bool32 isEgg = FALSE;
+     SetMonData(mon, MON_DATA_IS_EGG, &isEgg);
++    if (wasEgg && !GetMonData(mon, MON_DATA_SANITY_IS_BAD_EGG)) RecordMonBirthDate(mon);
+ 
+     species = GetMonData(mon, MON_DATA_SPECIES);
+     StringCopy(name, GetSpeciesName(species));
+diff --git a/src/event_object_movement.c b/src/event_object_movement.c
+index 3480aaccfd27379971d3448274a5f0e8e04d2b47..6539a8ad6473d5b503588f2cba1bd111164b0f55 100644
+--- a/src/event_object_movement.c
++++ b/src/event_object_movement.c
+@@ -496,6 +496,7 @@ const u8 gInitialMovementTypeFacingDirections[NUM_MOVEMENT_TYPES] = {
+ #include "data/object_events/object_event_graphics_info_followers.h"
+ 
+ static const struct SpritePalette sObjectEventSpritePalettes[] = {
++    {gObjectEventPal_SignalBeacon,         OBJ_EVENT_PAL_TAG_SIGNAL_BEACON},
+     {gObjectEventPal_Npc1,                  OBJ_EVENT_PAL_TAG_NPC_1},
+     {gObjectEventPal_Npc2,                  OBJ_EVENT_PAL_TAG_NPC_2},
+     {gObjectEventPal_Npc3,                  OBJ_EVENT_PAL_TAG_NPC_3},
+diff --git a/src/intro.c b/src/intro.c
+index 0187d4d2e2750db600b170a7583fc6b42125f785..588b6c56d8904898572d8cdf2eba0ea758c19e33 100644
+--- a/src/intro.c
++++ b/src/intro.c
+@@ -1,4 +1,5 @@
+ #include "global.h"
++#include "aurora_title.h"
+ #include "main.h"
+ #include "palette.h"
+ #include "scanline_effect.h"
+@@ -1105,13 +1106,9 @@ static u8 SetUpCopyrightScreen(void)
+     case COPYRIGHT_START_INTRO:
+         if (UpdatePaletteFade())
+             break;
+-#if EXPANSION_INTRO == TRUE
+-        SetMainCallback2(CB2_ExpansionIntro);
+-        CreateTask(Task_HandleExpansionIntro, 0);
+-#else
+-        CreateTask(Task_Scene1_Load, 0);
+-        SetMainCallback2(MainCB2_Intro);
+-#endif
++        // Keep the original game's copyright screen; Aurora has its own
++        // presentation. RHH/pret and original-game credits are on Select.
++        SetMainCallback2(CB2_InitAuroraTitleScreen);
+         if (gMultibootProgramStruct.gcmb_field_2 != 0)
+         {
+             if (gMultibootProgramStruct.gcmb_field_2 == 2)
+diff --git a/src/item.c b/src/item.c
+index 919eb4b334b3e7fa6b69976817c555feafdda571..d01b1efb27e976805ee25434f46e9bc9499fb559 100644
+--- a/src/item.c
++++ b/src/item.c
+@@ -1,5 +1,6 @@
+ #include "global.h"
+ #include "item.h"
++#include "helix_lab_items.h"
+ #include "berry.h"
+ #include "pokeball.h"
+ #include "string_util.h"
+@@ -812,7 +813,9 @@ static enum Item SanitizeBagItemId(enum Item itemId)
+ 
+ const u8 *GetItemName(enum Item itemId)
+ {
+-    const u8 *name = gItemsInfo[SanitizeItemId(itemId)].name;
++    const u8 *name = HelixLabItemsItemName(itemId);
++    if (name == NULL)
++        name = gItemsInfo[SanitizeItemId(itemId)].name;
+ 
+     return name == NULL ? gQuestionMarksItemName : name;
+ }
+@@ -863,7 +866,8 @@ u32 GetItemHoldEffectParam(enum Item itemId)
+ 
+ const u8 *GetItemDescription(enum Item itemId)
+ {
+-    return gItemsInfo[SanitizeItemId(itemId)].description;
++    const u8 *description = HelixLabItemsItemDescription(itemId);
++    return description != NULL ? description : gItemsInfo[SanitizeItemId(itemId)].description;
+ }
+ 
+ u8 GetItemImportance(enum Item itemId)
+diff --git a/src/main_menu.c b/src/main_menu.c
+index 7fc7e4174bdd3807ff77515e332eda662b967ab7..a63bd3b129f50960bf26c9a357b9d7d77902db65 100644
+--- a/src/main_menu.c
++++ b/src/main_menu.c
+@@ -1,4 +1,6 @@
+ #include "global.h"
++#include "helix_genesis.h"
++#include "aurora_adventure.h"
+ #include "trainer_pokemon_sprites.h"
+ #include "bg.h"
+ #include "constants/rgb.h"
+@@ -642,6 +644,19 @@ static u32 InitMainMenu(bool8 returningFromOptionsMenu)
+ 
+ #define tArrowTaskIsScrolled data[15]   // For scroll indicator arrow task
+ 
++static const u8 sAuroraIncompatibleSave[] = _("This save belongs to another AURORA\n"
++    "package, or its binding is damaged.\p"
++    "Open its original ROM and save.\n"
++    "This copy has been left untouched.");
++
++static void Task_AuroraIncompatibleSave(u8 taskId)
++{
++    RunTextPrinters();
++    // Keep Continue and New Game unavailable for this incompatible loaded save.
++    // Reopen its retained matching ROM; never repair it by erasing its binding.
++    (void)taskId;
++}
++
+ static void Task_MainMenuCheckSaveFile(u8 taskId)
+ {
+     s16 *data = gTasks[taskId].data;
+@@ -658,6 +673,13 @@ static void Task_MainMenuCheckSaveFile(u8 taskId)
+ 
+         if (IsWirelessAdapterConnected())
+             tWirelessAdapterConnected = TRUE;
++        if ((gSaveFileStatus == SAVE_STATUS_OK || gSaveFileStatus == SAVE_STATUS_ERROR)
++            && (!AuroraAdventureCanContinue() || !HelixGenesisCanContinue()))
++        {
++            CreateMainMenuErrorWindow(sAuroraIncompatibleSave);
++            gTasks[taskId].func = Task_AuroraIncompatibleSave;
++            return;
++        }
+         switch (gSaveFileStatus)
+         {
+         case SAVE_STATUS_OK:
+diff --git a/src/new_game.c b/src/new_game.c
+index 89a2bf4cf8c6ec1dcbfdbaf3ee18d053f38aaa88..03ed3de818cbb7a0cf4a00a00a8b19fbda12c30b 100644
+--- a/src/new_game.c
++++ b/src/new_game.c
+@@ -1,4 +1,6 @@
+ #include "global.h"
++#include "helix_genesis.h"
++#include "helix_universal.h"
+ #include "clock.h"
+ #include "new_game.h"
+ #include "random.h"
+@@ -135,7 +137,9 @@ static void ClearFrontierRecord(void)
+ 
+ static void WarpToTruck(void)
+ {
+-    if (IS_FRLG)
++    if (HELIX_GENESIS_ENABLED)
++        SetWarpDestination(MAP_GROUP(MAP_HELIX_LABORATORY), MAP_NUM(MAP_HELIX_LABORATORY), WARP_ID_NONE, 6, 10);
++    else if (IS_FRLG)
+         SetWarpDestination(MAP_GROUP(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), MAP_NUM(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), WARP_ID_NONE, 6, 6);
+     else
+         SetWarpDestination(MAP_GROUP(MAP_INSIDE_OF_TRUCK), MAP_NUM(MAP_INSIDE_OF_TRUCK), WARP_ID_NONE, -1, -1);
+@@ -234,6 +238,8 @@ void NewGameInitData(void)
+     ResetItemFlags();
+     ResetDexNav();
+     ClearFollowerNPCData();
++    HelixGenesisNewGame();
++    HelixUniversalNewGame();
+ }
+ 
+ static void ResetMiniGamesRecords(void)
+diff --git a/src/option_menu.c b/src/option_menu.c
+index a10b727b0d8cf9367a36b2c509ba23ef88f9f4c0..5a321940ee63b2a394642579e68a158edef2fade 100644
+--- a/src/option_menu.c
++++ b/src/option_menu.c
+@@ -1,5 +1,6 @@
+ #include "global.h"
+ #include "option_menu.h"
++#include "helix_settings.h"
+ #include "bg.h"
+ #include "gpu_regs.h"
+ #include "international_string_util.h"
+@@ -15,6 +16,13 @@
+ #include "window.h"
+ #include "gba/m4a_internal.h"
+ #include "constants/rgb.h"
++#include "data/helix_timezones.h"
++
++STATIC_ASSERT(HELIX_TIMEZONE_COUNT == HELIX_SETTINGS_TIMEZONE_COUNT, HelixTimezoneCatalogueCount);
++
++enum { HELIX_MAIN, HELIX_ACCOUNT, HELIX_TIMEZONE, HELIX_ADVANCED, HELIX_KEY, HELIX_CONFIRM };
++static EWRAM_DATA u16 sHelixKeyProvider = 0;
++static EWRAM_DATA u16 sHelixKeyOperation = 0;
+ 
+ #define tMenuSelection data[0]
+ #define tTextSpeed data[1]
+@@ -69,6 +77,10 @@ static void ButtonMode_DrawChoices(u8 selection);
+ static void DrawHeaderText(void);
+ static void DrawOptionMenuTexts(void);
+ static void DrawBgWindowFrames(void);
++static void DrawClassicChoices(u8 taskId);
++static void DrawHelixSettings(void);
++static void SwitchOptionPage(u8 taskId);
++static void ProcessHelixInput(u8 taskId);
+ 
+ EWRAM_DATA static bool8 sArrowPressed = FALSE;
+ 
+@@ -87,6 +99,77 @@ static const u8 gText_FrameTypeNumber[]    = _("{COLOR GREEN}{SHADOW LIGHT_GREEN
+ static const u8 gText_ButtonTypeNormal[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}NORMAL");
+ static const u8 gText_ButtonTypeLR[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}LR");
+ static const u8 gText_ButtonTypeLEqualsA[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}L=A");
++// English is the default; Portuguese is a second setup/NPC language.
++#define HELIX_PAIR(en, pt) { COMPOUND_STRING(en), COMPOUND_STRING(pt) }
++#define HELIX_TEXT(pair) ((pair)[gHelixSettingsView.language])
++static const u8 *const sHelixTab[] = HELIX_PAIR("L/R: HELIX", "L/R: HELIX");
++static const u8 *const sClassicTab[] = HELIX_PAIR("L/R: PAGE  B: EXIT", "L/R: PAG  B: SAIR");
++static const u8 *const sHelixRows[][2] = {
++    HELIX_PAIR("INTERNET", "INTERNET"), HELIX_PAIR("ACCOUNT", "CONTA"),
++    HELIX_PAIR("MICROPHONE", "MICROFONE"), HELIX_PAIR("TIME", "HORARIO"), HELIX_PAIR("LANGUAGE", "IDIOMA"),
++};
++static const u8 *const sHelixInternet[][2] = {HELIX_PAIR("OFFLINE", "OFFLINE"), HELIX_PAIR("ON REQUEST", "SO PEDIDOS")};
++static const u8 *const sHelixAccount[][2] = {HELIX_PAIR("LOCAL", "LOCAL"), HELIX_PAIR("SIGNED IN", "AUTENTICADA")};
++static const u8 *const sHelixMicrophone[][2] = {
++    HELIX_PAIR("OFF", "DESLIGADO"), HELIX_PAIR("ASK DEVICE", "PEDIR ACESSO"), HELIX_PAIR("ALLOWED", "PERMITIDO"),
++    HELIX_PAIR("DENIED", "NEGADO"), HELIX_PAIR("UNAVAILABLE", "INDISPONIVEL"),
++};
++static const u8 *const sHelixTime[][2] = {HELIX_PAIR("DEVICE", "APARELHO"), HELIX_PAIR("CUSTOM", "AJUSTADO"), HELIX_PAIR("UTC", "UTC")};
++static const u8 *const sHelixLanguages[] = {COMPOUND_STRING("EN-US"), COMPOUND_STRING("PT-BR")};
++static const u8 *const sHelixHelp[][2][2] = {
++    {HELIX_PAIR("Offline play is always available.", "Offline sempre funciona."), HELIX_PAIR("Left/Right: allow explicit requests.", "Esq/Dir: permitir pedidos.")},
++    {HELIX_PAIR("Local account on this device.", "Conta local neste aparelho."), HELIX_PAIR("A: account availability.", "A: disponibilidade do cadastro.")},
++    {HELIX_PAIR("Left/Right: optional microphone.", "Esq/Dir: uso do microfone."), HELIX_PAIR("A: request access on your device.", "A: pedir acesso no aparelho.")},
++    {HELIX_PAIR("Left: automatic. A: choose a zone.", "Esq: automatico. A: ajustar."), HELIX_PAIR("Does not change the clock or game.", "Nao muda o relogio nem o jogo.")},
++    {HELIX_PAIR("Left/Right: setup and NPC language.", "Esq/Dir: idioma do setup e NPCs."), HELIX_PAIR("A: advanced. Story stays English.", "A: ajustes. Historia em ingles.")},
++};
++static const u8 *const sHelixWaiting[] = HELIX_PAIR("Checking the local device app...", "Consultando o app do aparelho...");
++static const u8 *const sHelixNoApp[] = HELIX_PAIR("The local device app did not reply.", "Sem resposta do app do aparelho.");
++static const u8 *const sHelixOffline[] = HELIX_PAIR("You can keep playing offline.", "Voce pode continuar offline.");
++static const u8 *const sHelixOpened[] = HELIX_PAIR("Access requested on this device.", "Acesso solicitado no aparelho.");
++static const u8 *const sHelixNoCapture[] = HELIX_PAIR("Opening it does not record audio.", "Abrir nao inicia uma gravacao.");
++static const u8 *const sHelixConflict[] = HELIX_PAIR("Settings changed in the device app.", "As preferencias mudaram no app.");
++static const u8 *const sHelixChooseAgain[] = HELIX_PAIR("Review them and choose again.", "Confira e escolha novamente.");
++static const u8 *const sHelixUnavailable[] = HELIX_PAIR("This feature is not available yet.", "Este recurso nao esta disponivel.");
++
++
++static const u8 *const sHelixBack[] = HELIX_PAIR("BACK", "VOLTAR");
++static const u8 *const sHelixBackHelp[] = HELIX_PAIR("B: back", "B: voltar");
++static const u8 *const sHelixSubtitles[][2] = {
++    HELIX_PAIR("HELIX SETUP", "AJUSTES HELIX"), HELIX_PAIR("ACCOUNT", "CONTA"),
++    HELIX_PAIR("TIME ZONE", "FUSO HORARIO"), HELIX_PAIR("ADVANCED", "AVANCADO"),
++    HELIX_PAIR("PROVIDER KEY", "CHAVE DO SERVICO"), HELIX_PAIR("CONFIRM", "CONFIRMAR"),
++};
++static const u8 *const sHelixAccountInfo[][2] = {
++    HELIX_PAIR("Your profile stays on this device.", "Seu perfil fica neste aparelho."),
++    HELIX_PAIR("Online signup is not available yet.", "Cadastro online indisponivel."),
++    HELIX_PAIR("You can keep playing offline.", "Voce pode continuar offline."),
++};
++static const u8 *const sHelixAdvancedRows[][2] = {
++    HELIX_PAIR("SPOKEN REPLIES", "RESPOSTAS FALADAS"),
++    HELIX_PAIR("OPENROUTER KEY", "CHAVE OPENROUTER"),
++    HELIX_PAIR("ELEVENLABS KEY", "CHAVE ELEVENLABS"), HELIX_PAIR("BACK", "VOLTAR"),
++};
++static const u8 *const sHelixOnOff[][2] = {HELIX_PAIR("OFF", "DESLIGADO"), HELIX_PAIR("ON", "LIGADO")};
++static const u8 *const sHelixProviders[] = {COMPOUND_STRING("OPENROUTER"), COMPOUND_STRING("ELEVENLABS")};
++static const u8 *const sHelixKeyState[][2] = {
++    HELIX_PAIR("UNKNOWN", "SEM DADOS"), HELIX_PAIR("MISSING", "AUSENTE"),
++    HELIX_PAIR("SAVED", "SALVA"), HELIX_PAIR("UNAVAILABLE", "INDISPONIVEL"),
++};
++static const u8 *const sHelixKeyRows[][2] = {
++    HELIX_PAIR("USE COPIED KEY", "USAR CHAVE COPIADA"),
++    HELIX_PAIR("REMOVE KEY", "REMOVER CHAVE"), HELIX_PAIR("BACK", "VOLTAR"),
++};
++static const u8 *const sHelixConfirmRows[][2] = {HELIX_PAIR("CANCEL", "CANCELAR"), HELIX_PAIR("CONFIRM", "CONFIRMAR")};
++static const u8 *const sHelixConfirmImport[] = HELIX_PAIR("Use the key you copied on this device?", "Usar a chave copiada no aparelho?");
++static const u8 *const sHelixConfirmRemove[] = HELIX_PAIR("Remove this key from the device vault?", "Remover esta chave do cofre local?");
++static const u8 *const sHelixKeyPrivate[] = HELIX_PAIR("The key never enters your game save.", "A chave nunca entra no seu save.");
++static const u8 *const sHelixKeyCopy[] = HELIX_PAIR("Copy your key, then choose it here.", "Copie sua chave e use esta opcao.");
++static const u8 *const sHelixVoiceHelp[] = HELIX_PAIR("Left/Right: spoken NPC replies.", "Esq/Dir: respostas faladas dos NPCs.");
++static const u8 *const sHelixVoiceOptional[] = HELIX_PAIR("You can always read the dialogue.", "Voce sempre pode ler as conversas.");
++static const u8 *const sHelixTimezoneHelp[] = HELIX_PAIR("A: use zone. L/R: move 5. B: back.", "A: usar. L/R: mover 5. B: voltar.");
++static const u8 *const sHelixAutomatic[] = HELIX_PAIR("AUTOMATIC", "AUTOMATICO");
++static const u8 *const sHelixCustom[] = HELIX_PAIR("Current custom zone is not listed.", "Fuso atual fora desta lista.");
+ 
+ static const u16 sOptionMenuText_Pal[] = INCGFX_U16("graphics/interface/option_menu_text.pal", ".gbapal");
+ // note: this is only used in the Japanese release
+@@ -172,6 +255,11 @@ void CB2_InitOptionMenu(void)
+     default:
+     case 0:
+         SetVBlankCallback(NULL);
++        HelixSettings_Close();
++        gHelixSettingsPage = 0;
++        gHelixSettingsSelection = 0;
++        gHelixSettingsSubmenu = HELIX_MAIN;
++        gHelixSettingsSubselection = 0;
+         gMain.state++;
+         break;
+     case 1:
+@@ -251,12 +339,7 @@ void CB2_InitOptionMenu(void)
+         gTasks[taskId].tButtonMode = gSaveBlock2Ptr->optionsButtonMode;
+         gTasks[taskId].tWindowFrameType = gSaveBlock2Ptr->optionsWindowFrameType;
+ 
+-        TextSpeed_DrawChoices(gTasks[taskId].tTextSpeed);
+-        BattleScene_DrawChoices(gTasks[taskId].tBattleSceneOff);
+-        BattleStyle_DrawChoices(gTasks[taskId].tBattleStyle);
+-        Sound_DrawChoices(gTasks[taskId].tSound);
+-        ButtonMode_DrawChoices(gTasks[taskId].tButtonMode);
+-        FrameType_DrawChoices(gTasks[taskId].tWindowFrameType);
++        DrawClassicChoices(taskId);
+         HighlightOptionMenuItem(gTasks[taskId].tMenuSelection);
+ 
+         CopyWindowToVram(WIN_OPTIONS, COPYWIN_FULL);
+@@ -279,6 +362,17 @@ static void Task_OptionMenuFadeIn(u8 taskId)
+ 
+ static void Task_OptionMenuProcessInput(u8 taskId)
+ {
++    // L=A leaves the physical L bit set; handle tabs before the synthetic A.
++    if (JOY_NEW(L_BUTTON | R_BUTTON) && (!gHelixSettingsPage || gHelixSettingsSubmenu == HELIX_MAIN))
++    {
++        SwitchOptionPage(taskId);
++        return;
++    }
++    if (gHelixSettingsPage)
++    {
++        ProcessHelixInput(taskId);
++        return;
++    }
+     if (JOY_NEW(A_BUTTON))
+     {
+         if (gTasks[taskId].tMenuSelection == MENUITEM_CANCEL)
+@@ -366,6 +460,8 @@ static void Task_OptionMenuProcessInput(u8 taskId)
+ 
+ static void Task_OptionMenuSave(u8 taskId)
+ {
++    HelixSettings_Close();
++    gHelixSettingsPage = 0;
+     gSaveBlock2Ptr->optionsTextSpeed = gTasks[taskId].tTextSpeed;
+     gSaveBlock2Ptr->optionsBattleSceneOff = gTasks[taskId].tBattleSceneOff;
+     gSaveBlock2Ptr->optionsBattleStyle = gTasks[taskId].tBattleStyle;
+@@ -634,7 +730,8 @@ static void ButtonMode_DrawChoices(u8 selection)
+ static void DrawHeaderText(void)
+ {
+     FillWindowPixelBuffer(WIN_HEADER, PIXEL_FILL(1));
+-    AddTextPrinterParameterized(WIN_HEADER, FONT_NORMAL, gText_Option, 8, 1, TEXT_SKIP_DRAW, NULL);
++    AddTextPrinterParameterized(WIN_HEADER, gHelixSettingsSubmenu ? FONT_SMALL : FONT_NORMAL, gHelixSettingsPage ? (gHelixSettingsSubmenu >= HELIX_KEY ? sHelixProviders[sHelixKeyProvider] : HELIX_TEXT(sHelixSubtitles[gHelixSettingsSubmenu])) : gText_Option, 8, 1, TEXT_SKIP_DRAW, NULL);
++    AddTextPrinterParameterized(WIN_HEADER, FONT_SMALL, gHelixSettingsPage ? (gHelixSettingsSubmenu ? HELIX_TEXT(sHelixBackHelp) : HELIX_TEXT(sClassicTab)) : HELIX_TEXT(sHelixTab), 112, 3, TEXT_SKIP_DRAW, NULL);
+     CopyWindowToVram(WIN_HEADER, COPYWIN_FULL);
+ }
+ 
+@@ -648,6 +745,303 @@ static void DrawOptionMenuTexts(void)
+     CopyWindowToVram(WIN_OPTIONS, COPYWIN_FULL);
+ }
+ 
++static void DrawClassicChoices(u8 taskId)
++{
++    TextSpeed_DrawChoices(gTasks[taskId].tTextSpeed);
++    BattleScene_DrawChoices(gTasks[taskId].tBattleSceneOff);
++    BattleStyle_DrawChoices(gTasks[taskId].tBattleStyle);
++    Sound_DrawChoices(gTasks[taskId].tSound);
++    ButtonMode_DrawChoices(gTasks[taskId].tButtonMode);
++    FrameType_DrawChoices(gTasks[taskId].tWindowFrameType);
++}
++
++static void DrawHelixTime(void)
++{
++    u8 text[13];
++    u32 minute = gHelixSettingsView.localMinute;
++    s32 offset = gHelixSettingsView.utcOffset;
++    if (minute == HELIX_SETTINGS_UNKNOWN_MINUTE)
++    {
++        AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, HELIX_TEXT(sHelixTime[gHelixSettingsView.timezoneMode]), 112, 50, TEXT_SKIP_DRAW, NULL);
++        return;
++    }
++    text[0] = CHAR_0 + minute / 60 / 10;
++    text[1] = CHAR_0 + minute / 60 % 10;
++    text[2] = CHAR_COLON;
++    text[3] = CHAR_0 + minute % 60 / 10;
++    text[4] = CHAR_0 + minute % 10;
++    text[5] = CHAR_SPACE;
++    text[6] = offset < 0 ? CHAR_HYPHEN : CHAR_PLUS;
++    if (offset < 0)
++        offset = -offset;
++    text[7] = CHAR_0 + offset / 60 / 10;
++    text[8] = CHAR_0 + offset / 60 % 10;
++    text[9] = CHAR_COLON;
++    text[10] = CHAR_0 + offset % 60 / 10;
++    text[11] = CHAR_0 + offset % 10;
++    text[12] = EOS;
++    AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, text, 112, 50, TEXT_SKIP_DRAW, NULL);
++}
++
++static void DrawHelixSettings(void)
++{
++    u32 i, firstZone;
++    u16 highlight = gHelixSettingsSubselection;
++    const u8 *first = HELIX_TEXT(sHelixHelp[gHelixSettingsSelection][0]);
++    const u8 *second = HELIX_TEXT(sHelixHelp[gHelixSettingsSelection][1]);
++    FillWindowPixelBuffer(WIN_OPTIONS, PIXEL_FILL(1));
++    switch (gHelixSettingsSubmenu)
++    {
++    case HELIX_ACCOUNT:
++        for (i = 0; i < ARRAY_COUNT(sHelixAccountInfo); i++)
++            AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, HELIX_TEXT(sHelixAccountInfo[i]), 8, i * 16 + 2, TEXT_SKIP_DRAW, NULL);
++        AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, HELIX_TEXT(sHelixBack), 8, 65, TEXT_SKIP_DRAW, NULL);
++        highlight = 4;
++        first = HELIX_TEXT(sHelixBackHelp);
++        second = HELIX_TEXT(sHelixOffline);
++        break;
++    case HELIX_TIMEZONE:
++        firstZone = gHelixSettingsSubselection / 5 * 5;
++        for (i = 0; i < 5 && firstZone + i < HELIX_TIMEZONE_COUNT; i++)
++            AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, firstZone + i ? sHelixTimezoneNames[firstZone + i] : HELIX_TEXT(sHelixAutomatic), 8, i * 16 + 2, TEXT_SKIP_DRAW, NULL);
++        highlight = gHelixSettingsSubselection % 5;
++        first = HELIX_TEXT(sHelixTimezoneHelp);
++        second = gHelixSettingsView.timezoneIndex == HELIX_SETTINGS_CUSTOM_TIMEZONE ? HELIX_TEXT(sHelixCustom) : HELIX_TEXT(sHelixHelp[3][1]);
++        break;
++    case HELIX_ADVANCED:
++        for (i = 0; i < ARRAY_COUNT(sHelixAdvancedRows); i++)
++            AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, HELIX_TEXT(sHelixAdvancedRows[i]), 8, i * 16 + 2, TEXT_SKIP_DRAW, NULL);
++        AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, HELIX_TEXT(sHelixOnOff[gHelixSettingsView.voiceEnabled]), 145, 2, TEXT_SKIP_DRAW, NULL);
++        AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, HELIX_TEXT(sHelixKeyState[gHelixSettingsView.openrouterKey]), 145, 18, TEXT_SKIP_DRAW, NULL);
++        AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, HELIX_TEXT(sHelixKeyState[gHelixSettingsView.elevenlabsKey]), 145, 34, TEXT_SKIP_DRAW, NULL);
++        first = gHelixSettingsSubselection == 0 ? HELIX_TEXT(sHelixVoiceHelp) : HELIX_TEXT(sHelixKeyCopy);
++        second = gHelixSettingsSubselection == 0 ? HELIX_TEXT(sHelixVoiceOptional) : HELIX_TEXT(sHelixKeyPrivate);
++        break;
++    case HELIX_KEY:
++        for (i = 0; i < ARRAY_COUNT(sHelixKeyRows); i++)
++            AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, HELIX_TEXT(sHelixKeyRows[i]), 8, i * 16 + 1, TEXT_SKIP_DRAW, NULL);
++        AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, HELIX_TEXT(sHelixKeyState[sHelixKeyProvider ? gHelixSettingsView.elevenlabsKey : gHelixSettingsView.openrouterKey]), 8, 66, TEXT_SKIP_DRAW, NULL);
++        first = HELIX_TEXT(sHelixKeyCopy);
++        second = HELIX_TEXT(sHelixKeyPrivate);
++        break;
++    case HELIX_CONFIRM:
++        for (i = 0; i < ARRAY_COUNT(sHelixConfirmRows); i++)
++            AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, HELIX_TEXT(sHelixConfirmRows[i]), 8, i * 16 + 1, TEXT_SKIP_DRAW, NULL);
++        first = sHelixKeyOperation == HELIX_SETTINGS_IMPORT_COPIED_KEY ? HELIX_TEXT(sHelixConfirmImport) : HELIX_TEXT(sHelixConfirmRemove);
++        second = HELIX_TEXT(sHelixKeyPrivate);
++        break;
++    default:
++        for (i = 0; i < ARRAY_COUNT(sHelixRows); i++)
++            AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, HELIX_TEXT(sHelixRows[i]), 8, i * 16 + 1, TEXT_SKIP_DRAW, NULL);
++        AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, HELIX_TEXT(sHelixInternet[gHelixSettingsView.connectivity]), 112, 2, TEXT_SKIP_DRAW, NULL);
++        AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, HELIX_TEXT(sHelixAccount[gHelixSettingsView.account]), 112, 18, TEXT_SKIP_DRAW, NULL);
++        AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, HELIX_TEXT(sHelixMicrophone[gHelixSettingsView.microphone]), 112, 34, TEXT_SKIP_DRAW, NULL);
++        DrawHelixTime();
++        AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, sHelixLanguages[gHelixSettingsView.language], 112, 66, TEXT_SKIP_DRAW, NULL);
++        highlight = gHelixSettingsSelection;
++        break;
++    }
++    DrawHeaderText();
++    if (!gHelixSettingsView.available)
++    {
++        first = gHelixSettingsView.pending ? HELIX_TEXT(sHelixWaiting) : HELIX_TEXT(sHelixNoApp);
++        second = HELIX_TEXT(sHelixOffline);
++    }
++    else if (gHelixSettingsView.result == HELIX_SETTINGS_PANEL_OPENED)
++    {
++        first = HELIX_TEXT(sHelixOpened);
++        second = HELIX_TEXT(sHelixNoCapture);
++    }
++    else if (gHelixSettingsView.result == HELIX_SETTINGS_CONFLICT)
++    {
++        first = HELIX_TEXT(sHelixConflict);
++        second = HELIX_TEXT(sHelixChooseAgain);
++    }
++    else if (gHelixSettingsView.result == HELIX_SETTINGS_UNAVAILABLE || gHelixSettingsView.result == HELIX_SETTINGS_INVALID)
++    {
++        first = HELIX_TEXT(sHelixUnavailable);
++        second = HELIX_TEXT(sHelixChooseAgain);
++    }
++    AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, first, 8, 83, TEXT_SKIP_DRAW, NULL);
++    AddTextPrinterParameterized(WIN_OPTIONS, FONT_SMALL, second, 8, 96, TEXT_SKIP_DRAW, NULL);
++    HighlightOptionMenuItem(highlight);
++    CopyWindowToVram(WIN_OPTIONS, COPYWIN_GFX);
++}
++
++static void SwitchOptionPage(u8 taskId)
++{
++    gHelixSettingsPage ^= 1;
++    gHelixSettingsSubmenu = HELIX_MAIN;
++    gHelixSettingsSubselection = 0;
++    if (gHelixSettingsPage)
++    {
++        HelixSettings_Open();
++        DrawHelixSettings();
++    }
++    else
++    {
++        HelixSettings_Close();
++        DrawOptionMenuTexts();
++        DrawClassicChoices(taskId);
++        HighlightOptionMenuItem(gTasks[taskId].tMenuSelection);
++        CopyWindowToVram(WIN_OPTIONS, COPYWIN_GFX);
++    }
++    DrawHeaderText();
++}
++
++static void HelixSubmenuBack(void)
++{
++    if (gHelixSettingsSubmenu == HELIX_CONFIRM)
++    {
++        gHelixSettingsSubmenu = HELIX_KEY;
++        gHelixSettingsSubselection = 0;
++    }
++    else if (gHelixSettingsSubmenu == HELIX_KEY)
++    {
++        gHelixSettingsSubmenu = HELIX_ADVANCED;
++        gHelixSettingsSubselection = sHelixKeyProvider + 1;
++    }
++    else
++    {
++        gHelixSettingsSubmenu = HELIX_MAIN;
++        gHelixSettingsSubselection = 0;
++    }
++}
++
++static void ProcessHelixInput(u8 taskId)
++{
++    bool32 changed = HelixSettings_Update();
++    u16 count = gHelixSettingsSubmenu == HELIX_TIMEZONE ? HELIX_TIMEZONE_COUNT
++        : gHelixSettingsSubmenu == HELIX_ADVANCED ? 4 : gHelixSettingsSubmenu == HELIX_KEY ? 3 : 2;
++    if (JOY_NEW(B_BUTTON))
++    {
++        if (gHelixSettingsSubmenu)
++        {
++            HelixSubmenuBack();
++            DrawHelixSettings();
++        }
++        else
++        {
++            // B preserves the original apply/exit behavior of classic Options.
++            HelixSettings_Close();
++            gTasks[taskId].func = Task_OptionMenuSave;
++        }
++        return;
++    }
++    if (gHelixSettingsSubmenu)
++    {
++        if (gHelixSettingsSubmenu == HELIX_ACCOUNT)
++        {
++            if (JOY_NEW(A_BUTTON)) { HelixSubmenuBack(); changed = TRUE; }
++        }
++        else if (gHelixSettingsSubmenu == HELIX_TIMEZONE && JOY_NEW(L_BUTTON | R_BUTTON))
++        {
++            // Physical shoulder input wins over the L=A remapping.
++            if (JOY_NEW(L_BUTTON))
++                gHelixSettingsSubselection = gHelixSettingsSubselection >= 5 ? gHelixSettingsSubselection - 5 : 0;
++            else
++                gHelixSettingsSubselection = gHelixSettingsSubselection + 5 < count ? gHelixSettingsSubselection + 5 : count - 1;
++            changed = TRUE;
++        }
++        else if (JOY_NEW(L_BUTTON | R_BUTTON))
++        {
++            // Shoulders never confirm a key import/remove under L=A.
++        }
++        else if (JOY_NEW(DPAD_UP | DPAD_DOWN))
++        {
++            if (JOY_NEW(DPAD_UP))
++                gHelixSettingsSubselection = gHelixSettingsSubselection ? gHelixSettingsSubselection - 1 : count - 1;
++            else
++                gHelixSettingsSubselection = gHelixSettingsSubselection + 1 < count ? gHelixSettingsSubselection + 1 : 0;
++            changed = TRUE;
++        }
++        else if (gHelixSettingsSubmenu == HELIX_ADVANCED && gHelixSettingsSubselection == 0 && JOY_NEW(DPAD_LEFT | DPAD_RIGHT | A_BUTTON))
++            changed |= HelixSettings_Request(HELIX_SETTINGS_SET_VOICE, JOY_NEW(DPAD_LEFT) ? 0 : JOY_NEW(DPAD_RIGHT) ? 1 : !gHelixSettingsView.voiceEnabled);
++        else if (JOY_NEW(A_BUTTON))
++        {
++            if (gHelixSettingsSubmenu == HELIX_TIMEZONE)
++                changed |= HelixSettings_Request(HELIX_SETTINGS_SET_TIMEZONE, gHelixSettingsSubselection);
++            else if (gHelixSettingsSubmenu == HELIX_ADVANCED)
++            {
++                if (gHelixSettingsSubselection == 3)
++                    HelixSubmenuBack();
++                else
++                {
++                    sHelixKeyProvider = gHelixSettingsSubselection - 1;
++                    gHelixSettingsSubmenu = HELIX_KEY;
++                    gHelixSettingsSubselection = 0;
++                    HelixSettings_Request(HELIX_SETTINGS_CHECK_KEYS, 0);
++                }
++                changed = TRUE;
++            }
++            else if (gHelixSettingsSubmenu == HELIX_KEY)
++            {
++                if (gHelixSettingsSubselection == 2)
++                    HelixSubmenuBack();
++                else
++                {
++                    sHelixKeyOperation = gHelixSettingsSubselection == 0 ? HELIX_SETTINGS_IMPORT_COPIED_KEY : HELIX_SETTINGS_REMOVE_KEY;
++                    gHelixSettingsSubmenu = HELIX_CONFIRM;
++                    gHelixSettingsSubselection = 0; // Cancel is always the default.
++                }
++                changed = TRUE;
++            }
++            else if (gHelixSettingsSubmenu == HELIX_CONFIRM)
++            {
++                if (gHelixSettingsSubselection == 0)
++                    HelixSubmenuBack();
++                else if (HelixSettings_Request(sHelixKeyOperation, sHelixKeyProvider))
++                    HelixSubmenuBack();
++                changed = TRUE;
++            }
++        }
++    }
++    else if (JOY_NEW(DPAD_UP))
++    {
++        gHelixSettingsSelection = gHelixSettingsSelection ? gHelixSettingsSelection - 1 : 4;
++        changed = TRUE;
++    }
++    else if (JOY_NEW(DPAD_DOWN))
++    {
++        gHelixSettingsSelection = gHelixSettingsSelection < 4 ? gHelixSettingsSelection + 1 : 0;
++        changed = TRUE;
++    }
++    else if (gHelixSettingsSelection == 1 && JOY_NEW(A_BUTTON))
++    {
++        gHelixSettingsSubmenu = HELIX_ACCOUNT;
++        gHelixSettingsSubselection = 0;
++        changed = TRUE;
++    }
++    else if (gHelixSettingsSelection == 3 && JOY_NEW(A_BUTTON))
++    {
++        gHelixSettingsSubmenu = HELIX_TIMEZONE;
++        gHelixSettingsSubselection = gHelixSettingsView.timezoneIndex < HELIX_TIMEZONE_COUNT ? gHelixSettingsView.timezoneIndex : 0;
++        changed = TRUE;
++    }
++    else if (gHelixSettingsSelection == 4 && JOY_NEW(A_BUTTON))
++    {
++        gHelixSettingsSubmenu = HELIX_ADVANCED;
++        gHelixSettingsSubselection = 0;
++        HelixSettings_Request(HELIX_SETTINGS_CHECK_KEYS, 0);
++        changed = TRUE;
++    }
++    else if (!gHelixSettingsView.pending && gHelixSettingsView.available)
++    {
++        if (gHelixSettingsSelection == 0 && JOY_NEW(DPAD_LEFT | DPAD_RIGHT | A_BUTTON))
++            changed |= HelixSettings_Request(HELIX_SETTINGS_SET_INTERNET, JOY_NEW(DPAD_LEFT) ? 0 : JOY_NEW(DPAD_RIGHT) ? 1 : !gHelixSettingsView.connectivity);
++        else if (gHelixSettingsSelection == 2 && JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
++            changed |= HelixSettings_Request(HELIX_SETTINGS_SET_MICROPHONE, JOY_NEW(DPAD_RIGHT) ? 1 : 0);
++        else if (gHelixSettingsSelection == 2 && JOY_NEW(A_BUTTON))
++            changed |= HelixSettings_Request(HELIX_SETTINGS_OPEN_MICROPHONE, 0);
++        else if (gHelixSettingsSelection == 3 && JOY_NEW(DPAD_LEFT))
++            changed |= HelixSettings_Request(HELIX_SETTINGS_TIME_AUTO, 0);
++        else if (gHelixSettingsSelection == 4 && JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
++            changed |= HelixSettings_Request(HELIX_SETTINGS_SET_LANGUAGE, JOY_NEW(DPAD_RIGHT) ? 1 : 0);
++    }
++    if (changed)
++        DrawHelixSettings();
++}
++
+ #define TILE_TOP_CORNER_L 0x1A2
+ #define TILE_TOP_EDGE     0x1A3
+ #define TILE_TOP_CORNER_R 0x1A4
+diff --git a/src/overworld.c b/src/overworld.c
+index 6546ad89b3ed5878b8aa58cfb4895992e37cbc38..05e06ecc2a809a5094d3dcc73ba3a3dd77678838 100644
+--- a/src/overworld.c
++++ b/src/overworld.c
+@@ -1,4 +1,5 @@
+ #include "global.h"
++#include "helix_universal.h"
+ #include "overworld.h"
+ #include "battle_pyramid.h"
+ #include "battle_setup.h"
+@@ -2116,6 +2117,8 @@ void CB2_ContinueSavedGame(void)
+ {
+     u8 trainerHillMapId;
+ 
++    HelixUniversalContinue();
++
+     FieldClearVBlankHBlankCallbacks();
+     StopMapMusic();
+     ResetSafariZoneFlag_();
+diff --git a/src/pokedex.c b/src/pokedex.c
+index d36708ff3635f26c248e3afdf64dbf508425f4c0..39bc6a93643074fe0006617dc3706d1d184869b4 100644
+--- a/src/pokedex.c
++++ b/src/pokedex.c
+@@ -1,4 +1,7 @@
+ #include "global.h"
++#include "helix_genesis.h"
++#include "helix_pokedex.h"
++#include "helix_settings.h"
+ #include "battle_main.h"
+ #include "battle_script_commands.h"
+ #include "bg.h"
+@@ -37,6 +40,7 @@
+ EWRAM_DATA struct PokedexView *sPokedexView = NULL;
+ static EWRAM_DATA u16 sLastSelectedPokemon = 0;
+ static EWRAM_DATA u8 sPokeBallRotation = 0;
++static EWRAM_DATA bool8 sOpenHelixCompanion = FALSE;
+ EWRAM_DATA struct PokedexListItem *sPokedexListItem = NULL;
+ 
+ COMMON_DATA void (*gPokedexVBlankCB)(void) = NULL;
+@@ -677,6 +681,13 @@ const struct WindowTemplate sPokemonList_WindowTemplate[] =
+     DUMMY_WIN_TEMPLATE
+ };
+ 
++// Static BG1, separate from the vertically scrolling BG2 species list. The
++// native menu graphics occupy tiles 0..255; maps begin at byte 0x6000.
++static const struct WindowTemplate sHelixCompanionHintWindow = {
++    .bg = 1, .tilemapLeft = 1, .tilemapTop = 15, .width = 7, .height = 2,
++    .paletteNum = 0, .baseBlock = 0x200,
++};
++
+ static const u8 sText_No0000[] = _("{NO}0000");
+ static const u8 sText_No000[] = _("{NO}000");
+ const u8 sCaughtBall_Gfx[] = INCGFX_U8("graphics/pokedex/caught_ball.png", ".4bpp");
+@@ -1446,6 +1457,7 @@ void CB2_OpenPokedex(void)
+     {
+     case 0:
+     default:
++        sOpenHelixCompanion = FALSE;
+         SetVBlankCallback(NULL);
+         ResetOtherVideoRegisters(0);
+         DmaClearLarge16(3, (void *)VRAM, VRAM_SIZE, 0x1000);
+@@ -1531,7 +1543,17 @@ void Task_HandlePokedexInput(u8 taskId)
+     }
+     else
+     {
+-        if (JOY_NEW(A_BUTTON) && sPokedexView->pokedexList[sPokedexView->selectedPokemon].seen)
++        if (JOY_NEW(R_BUTTON) && HelixGenesisStage() == 6)
++        {
++            HandleDestroyStatBars_HGSS();
++            sOpenHelixCompanion = TRUE;
++            sLastSelectedPokemon = sPokedexView->selectedPokemon;
++            sPokeBallRotation = sPokedexView->pokeBallRotation;
++            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
++            gTasks[taskId].func = Task_ClosePokedex;
++            PlaySE(SE_PIN);
++        }
++        else if (JOY_NEW(A_BUTTON) && sPokedexView->pokedexList[sPokedexView->selectedPokemon].seen)
+         {
+             HandleDestroyStatBars_HGSS();
+             UpdateSelectedMonSpriteId();
+@@ -1717,9 +1739,16 @@ static void Task_ClosePokedex(u8 taskId)
+             gSaveBlock2Ptr->pokedex.mode = DEX_MODE_HOENN;
+         gSaveBlock2Ptr->pokedex.order = sPokedexView->dexOrder;
+         ClearMonSprites();
++        if (sOpenHelixCompanion)
++        {
++            // CB2_Pokedex still calls AnimateSprites after RunTasks this frame.
++            // Retire interface callbacks before freeing their sPokedexView.
++            ResetSpriteData();
++            SetVBlankCallback(NULL);
++        }
+         FreeWindowAndBgBuffers();
+         DestroyTask(taskId);
+-        SetMainCallback2(CB2_ReturnToFieldWithOpenMenu);
++        SetMainCallback2(sOpenHelixCompanion ? CB2_OpenHelixPokedex : CB2_ReturnToFieldWithOpenMenu);
+         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100);
+         Free(sPokedexView);
+     }
+@@ -1983,6 +2012,23 @@ static bool8 LoadPokedexListPage(u8 page)
+         if (page == PAGE_MAIN)
+             CreatePokedexList(sPokedexView->dexMode, sPokedexView->dexOrder);
+         CreateMonSpritesAtPos(sPokedexView->selectedPokemon, 0xE);
++        if (page == PAGE_MAIN && HelixGenesisStage() == 6)
++        {
++            // Keep native SEARCH/START hints; expose the individual supplement
++            // in the spare left-panel line, using the native glyph palette.
++            const u8 colors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
++            u8 windowId = AddWindow(&sHelixCompanionHintWindow);
++            if (windowId != WINDOW_NONE)
++            {
++                FillWindowPixelBuffer(windowId, PIXEL_FILL(0));
++                // The glyph decoder is 12px high despite FontInfo's 8px claim.
++                // Visible pixels occupy y128..135 between START and SELECT.
++                AddTextPrinterParameterized3(windowId, FONT_SMALL_NARROW, 0, 4, colors, TEXT_SKIP_DRAW,
++                    gHelixSettingsView.language == 1 ? COMPOUND_STRING("R: FICHA") : COMPOUND_STRING("R: PARTNER"));
++                PutWindowTilemap(windowId);
++                CopyWindowToVram(windowId, COPYWIN_FULL);
++            }
++        }
+         sPokedexView->menuIsOpen = FALSE;
+         sPokedexView->menuY = 0;
+         CopyBgTilemapBufferToVram(0);
+diff --git a/src/pokemon.c b/src/pokemon.c
+index 820177770c38a73d17a1db5e37dcc6f9854190d9..cf7f39f8079502c27dfb04f5a77236bee2544e37 100644
+--- a/src/pokemon.c
++++ b/src/pokemon.c
+@@ -1,4 +1,8 @@
+ #include "global.h"
++#include "helix_universal.h"
++#include "pokemon_birth.h"
++#include "helix_genesis.h"
++#include "aurora_combat.h"
+ #include "malloc.h"
+ #include "apprentice.h"
+ #include "battle.h"
+@@ -1411,7 +1415,7 @@ void CalculateMonStatsCont(struct Pokemon *mon, bool32 updateSpeedStat)
+         if (i == STAT_HP)
+             continue;
+ 
+-        u8 baseStat = GetSpeciesBaseStat(species, i);
++        u8 baseStat = HelixGenesisBaseStat(mon, i, AuroraCombatBaseStat(mon, i, GetSpeciesBaseStat(species, i)));
+         s32 n = (((2 * baseStat + iv[i] + ev[i] / 4) * level) / 100) + 5;
+         n = ModifyStatByNature(nature, n, i);
+         if (B_FRIENDSHIP_BOOST == TRUE)
+@@ -1430,7 +1434,7 @@ void CalculateMonStatsCont(struct Pokemon *mon, bool32 updateSpeedStat)
+     }
+     else
+     {
+-        s32 n = 2 * GetSpeciesBaseHP(species) + iv[STAT_HP];
++        s32 n = 2 * HelixGenesisBaseStat(mon, STAT_HP, AuroraCombatBaseStat(mon, STAT_HP, GetSpeciesBaseHP(species))) + iv[STAT_HP];
+         newMaxHP = (((n + ev[STAT_HP] / 4) * level) / 100) + level + 10;
+     }
+ 
+@@ -2025,6 +2029,58 @@ static ALWAYS_INLINE bool32 IsEggOrBadEgg(struct BoxPokemon *boxMon)
+     return GetSubstruct3(boxMon)->isEgg || IsBadEgg(boxMon);
+ }
+ 
++// Birth dates have strict read-only rejection, including corrupt legacy mons.
++// The usual generic accessors may mark a bad checksum as an egg on the source.
++static bool32 ReadBirthDateMon(const struct BoxPokemon *source, struct BoxPokemon *copy)
++{
++    *copy = *source;
++    return CalculateBoxMonChecksumDecrypt(copy) == copy->checksum
++        && !copy->isBadEgg && !copy->isEgg && !GetSubstruct3(copy)->isEgg
++        && GetSubstruct0(copy)->species != SPECIES_NONE;
++}
++
++static u32 GetBoxMonBirthDate(const struct BoxPokemon *boxMon)
++{
++    struct BoxPokemon copy;
++    if (!ReadBirthDateMon(boxMon, &copy)) return 0;
++    return PokemonBirthDateUnpack(PokemonBirthDateRaw(GetSubstruct0(&copy), GetSubstruct1(&copy)));
++}
++
++static void SetBoxMonBirthDate(struct BoxPokemon *boxMon, const void *data)
++{
++    struct BoxPokemon copy;
++    u32 date;
++    memcpy(&date, data, sizeof(date));
++    if (!ReadBirthDateMon(boxMon, &copy)
++        || !PokemonBirthDateWrite(GetSubstruct0(&copy), GetSubstruct1(&copy), date)) return;
++    copy.checksum = CalculateBoxMonChecksumReencrypt(&copy);
++    *boxMon = copy;
++}
++
++bool32 HelixUniversalReadBox(const struct BoxPokemon *boxMon, u16 *species, u8 *tag)
++{
++    struct BoxPokemon copy;
++    if (!ReadBirthDateMon(boxMon, &copy)) return FALSE;
++    *species = GetSubstruct0(&copy)->species;
++    *tag = copy.unused_13 | (copy.unused_1E << 1) | (GetSubstruct3(&copy)->unused_0B << 2);
++    return *tag == 0 || *tag == 1 || *tag == 2 || *tag == 4 || *tag == 7;
++}
++
++bool32 HelixUniversalWriteTag(struct BoxPokemon *boxMon, u8 tag)
++{
++    struct BoxPokemon copy;
++    u8 existing;
++    if ((tag != 1 && tag != 2 && tag != 4 && tag != 7) || !ReadBirthDateMon(boxMon, &copy)) return FALSE;
++    existing = copy.unused_13 | (copy.unused_1E << 1) | (GetSubstruct3(&copy)->unused_0B << 2);
++    if (existing) return existing == tag;
++    copy.unused_13 = tag & 1;
++    copy.unused_1E = (tag >> 1) & 1;
++    GetSubstruct3(&copy)->unused_0B = (tag >> 2) & 1;
++    copy.checksum = CalculateBoxMonChecksumReencrypt(&copy);
++    *boxMon = copy;
++    return TRUE;
++}
++
+ /* GameFreak called GetBoxMonData with either 2 or 3 arguments, for type
+  * safety we have a GetBoxMonData macro (in include/pokemon.h) which
+  * dispatches to either GetBoxMonData2 or GetBoxMonData3 based on the
+@@ -2034,6 +2090,8 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
+     s32 i;
+     u32 retVal = 0;
+ 
++    if (field == MON_DATA_DATE_OF_BIRTH) return GetBoxMonBirthDate(boxMon);
++
+     // Any field greater than MON_DATA_ENCRYPT_SEPARATOR is encrypted and must be treated as such
+     if (field > MON_DATA_ENCRYPT_SEPARATOR)
+     {
+@@ -2587,6 +2645,12 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
+ {
+     const u8 *data = dataArg;
+ 
++    if (field == MON_DATA_DATE_OF_BIRTH)
++    {
++        SetBoxMonBirthDate(boxMon, dataArg);
++        return;
++    }
++
+     if (field > MON_DATA_ENCRYPT_SEPARATOR)
+     {
+         if (CalculateBoxMonChecksumDecrypt(boxMon) != boxMon->checksum)
+@@ -3399,6 +3463,8 @@ void PokemonToBattleMon(struct Pokemon *src, struct BattlePokemon *dst)
+     dst->otId = GetMonData(src, MON_DATA_OT_ID);
+     dst->types[0] = GetSpeciesType(dst->species, 0);
+     dst->types[1] = GetSpeciesType(dst->species, 1);
++    AuroraCombatApplyBattleTypes(src, dst);
++    HelixGenesisApplyBattleTypes(src, dst);
+     dst->types[2] = TYPE_MYSTERY;
+     dst->isShiny = IsMonShiny(src);
+     dst->affectionHearts = GetMonAffectionHearts(src);
+diff --git a/src/pokemon_summary_screen.c b/src/pokemon_summary_screen.c
+index 801dfe07ed7a08c08847554a11686baa004cb5be..1ecc5e141c87538062f3e0a7ce8ab97aa2a568b3 100644
+--- a/src/pokemon_summary_screen.c
++++ b/src/pokemon_summary_screen.c
+@@ -1,4 +1,6 @@
+ #include "global.h"
++#include "helix_genesis.h"
++#include "aurora_combat.h"
+ #include "main.h"
+ #include "battle.h"
+ #include "battle_anim.h"
+@@ -4344,10 +4346,15 @@ static void SetMonTypeIcons(void)
+     }
+     else
+     {
+-        SetTypeSpritePosAndPal(GetSpeciesType(summary->species, 0), 120, 48, SPRITE_ARR_ID_TYPE);
+-        if (GetSpeciesType(summary->species, 0) != GetSpeciesType(summary->species, 1))
++        struct BattlePokemon typedMon = {0};
++        typedMon.types[0] = GetSpeciesType(summary->species, 0);
++        typedMon.types[1] = GetSpeciesType(summary->species, 1);
++        AuroraCombatApplyBattleTypes(&sMonSummaryScreen->currentMon, &typedMon);
++        HelixGenesisApplyBattleTypes(&sMonSummaryScreen->currentMon, &typedMon);
++        SetTypeSpritePosAndPal(typedMon.types[0], 120, 48, SPRITE_ARR_ID_TYPE);
++        if (typedMon.types[0] != typedMon.types[1])
+         {
+-            SetTypeSpritePosAndPal(GetSpeciesType(summary->species, 1), 160, 48, SPRITE_ARR_ID_TYPE + 1);
++            SetTypeSpritePosAndPal(typedMon.types[1], 160, 48, SPRITE_ARR_ID_TYPE + 1);
+             SetSpriteInvisibility(SPRITE_ARR_ID_TYPE + 1, FALSE);
+         }
+         else
+diff --git a/src/start_menu.c b/src/start_menu.c
+index 648fa837c2aa629616223eb2fa7a3430f8d1be3d..4f880fdc1f9c934bec78eaf4a49cb92cfe572e6d 100644
+--- a/src/start_menu.c
++++ b/src/start_menu.c
+@@ -1,4 +1,8 @@
+ #include "global.h"
++#include "helix_genesis.h"
++#include "helix_pokedex.h"
++#include "constants/helix_genesis_content.h"
++#include "helix_settings.h"
+ #include "config/save.h"
+ #include "battle_pike.h"
+ #include "battle_pyramid.h"
+@@ -187,6 +191,11 @@ static const struct WindowTemplate sWindowTemplate_PyramidPeak = {
+     .baseBlock = 0x8
+ };
+ 
++#if HELIX_GENESIS_ENABLED
++static const u8 sText_HelixTrainer[] = _("TRAINER");
++static const u8 sText_HelixTrainerPt[] = _("TREINADOR");
++#endif
++
+ static const u8 sText_MenuDebug[] = _("DEBUG");
+ 
+ static const struct MenuAction sStartMenuItems[] =
+@@ -488,7 +497,15 @@ static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
+     {
+         if (sStartMenuItems[sCurrentStartMenuActions[index]].func.u8_void == StartMenuPlayerNameCallback)
+         {
++#if HELIX_GENESIS_ENABLED
++            // Name remains on the Trainer Card; this entry describes its action.
++            // The compact PT label fits the unchanged 7-tile vanilla window.
++            AddTextPrinterParameterized(GetStartMenuWindowId(), gHelixSettingsView.language == 1 ? FONT_SMALL : FONT_NORMAL,
++                gHelixSettingsView.language == 1 ? sText_HelixTrainerPt : sText_HelixTrainer,
++                8, (index << 4) + 9, TEXT_SKIP_DRAW, NULL);
++#else
+             PrintPlayerNameOnWindow(GetStartMenuWindowId(), sStartMenuItems[sCurrentStartMenuActions[index]].text, 8, (index << 4) + 9);
++#endif
+         }
+         else
+         {
+@@ -643,7 +660,7 @@ static bool8 HandleStartMenuInput(void)
+         PlaySE(SE_SELECT);
+         if (sStartMenuItems[sCurrentStartMenuActions[sStartMenuCursorPos]].func.u8_void == StartMenuPokedexCallback)
+         {
+-            if (GetNationalPokedexCount(FLAG_GET_SEEN) == 0)
++            if (GetNationalPokedexCount(FLAG_GET_SEEN) == 0 && HelixGenesisStage() != 6)
+                 return FALSE;
+         }
+         if (sCurrentStartMenuActions[sStartMenuCursorPos] == MENU_ACTION_DEXNAV
+@@ -682,7 +699,8 @@ bool8 StartMenuPokedexCallback(void)
+         PlayRainStoppingSoundEffect();
+         RemoveExtraStartMenuWindows();
+         CleanupOverworldWindowsAndTilemaps();
+-        SetMainCallback2(CB2_OpenPokedex);
++        SetMainCallback2(HelixGenesisStage() == 6 && GetNationalPokedexCount(FLAG_GET_SEEN) == 0
++            ? CB2_OpenHelixPokedex : CB2_OpenPokedex);
+ 
+         return TRUE;
+     }
+diff --git a/src/title_screen.c b/src/title_screen.c
+index cd85d7d6a4d5159a1838865ff4d1390698baf3d6..5d46f5b4c6914522d0f7af63e4b6f68ff04c0064 100644
+--- a/src/title_screen.c
++++ b/src/title_screen.c
+@@ -1,4 +1,5 @@
+ #include "global.h"
++#include "aurora_title.h"
+ #include "battle.h"
+ #include "config/quickstart.h"
+ #include "quickstart.h"
+@@ -563,6 +564,11 @@ static void VBlankCB(void)
+ 
+ void CB2_InitTitleScreen(void)
+ {
++    if (!IS_FRLG)
++    {
++        CB2_InitAuroraTitleScreen();
++        return;
++    }
+     if (IS_FRLG)
+     {
+         CB2_InitTitleScreenFrlg();
+diff --git a/src/wild_encounter.c b/src/wild_encounter.c
+index dd6a0c8893d468cb7fddc4160f121b91ac2baa05..9bafd19b3a8757d713392f1a4ac37db4cb2d0e25 100644
+--- a/src/wild_encounter.c
++++ b/src/wild_encounter.c
+@@ -1,4 +1,5 @@
+ #include "global.h"
++#include "helix_universal.h"
+ #include "battle_setup.h"
+ #include "battle_pike.h"
+ #include "battle_pyramid.h"
+@@ -516,6 +517,7 @@ void CreateWildMon(enum Species species, u8 level)
+     u32 personality = GetMonPersonality(species, GetSynchronizedGender(WILDMON_ORIGIN, species), PickWildMonNature(species), RANDOM_UNOWN_LETTER);
+     CreateMonWithIVs(&gParties[B_TRAINER_OPPONENT_A][0], species, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
+     GiveMonInitialMoveset(&gParties[B_TRAINER_OPPONENT_A][0]);
++    HelixUniversalRegisterEncounter(&gParties[B_TRAINER_OPPONENT_A][0].box);
+ }
+ 
+ #ifdef BUGFIX

@@ -1,0 +1,27 @@
+name: Reproducible bug
+description: Report a problem using synthetic data.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: "For vulnerabilities, use the private reporting link in SECURITY.md. Never attach ROMs, saves, credentials, genetic files, profiles or conversations."
+  - type: input
+    id: revision
+    attributes:
+      label: Commit and environment
+      description: Commit SHA, OS/architecture, Python and uv versions. No personal paths.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps and synthetic input
+      description: Give a small reproducible command or fixture.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true

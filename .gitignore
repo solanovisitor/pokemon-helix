@@ -1,0 +1,25 @@
+# Local runtime and native checkout
+.venv/
+__pycache__/
+*.py[cod]
+/game/
+/.local/
+/artifacts/
+/build/
+/dist/
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.log
+*.jsonl
+*.gba
+*.elf
+*.sav
+*.ss[0-9]
+*.state*
+*.o
+.DS_Store
