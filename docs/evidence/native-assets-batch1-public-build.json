@@ -1,0 +1,43 @@
+{
+  "schema": 2,
+  "status": "passed-public-source-build-and-roundtrip",
+  "git_public_base": "5d0e7d8b580bf164708aa7d4f324b33656a06086",
+  "upstream_revision": "36f5cf6271c382d4dc161ba040dd1dd3bc8b2a7f",
+  "rom_sha256": "be7b0ba75e925aa60cbf0fc431f836ebb7f929ba4ea8f73a12bb1cb997b829f3",
+  "elf_sha256": "37f350352234c60d7d3c28727edbb795c97e3455cc1fdda2e994a651cc9ebfd5",
+  "conversion_sha256": "762d63ed567765f20a69a4469d7cf5a6b40c785e12faa02ee40ebd36a9f032d9",
+  "source_manifest_sha256": "c4905ee5cb9a77e6d0f8919596dde7ba74adb985063f6ef223260f026eb9bee8",
+  "native_source_audit_sha256": "e17e0b4b475be019b809633356753cf584e10353a974abf628390b6cb352bc9e",
+  "compiled_array_proof_sha256": "ddeda90d284177ad85810031645fbd8962f98023844a80bd91310f2f7089a72a",
+  "build_log_sha256": "0ec904e9ca03f9cfba4ceb6466caae4c9f98528f71a6b3f9bf3f1a3efc9515f1",
+  "roundtrip_native_results": 223,
+  "bootstrap_fresh_clone_and_repeat": "passed",
+  "native_public_fixture_check": "passed",
+  "public_packages_enabled": false,
+  "runtime_acceptance": "none; public source ROM not run in mGBA; separate V19j evidence does not confer public acceptance",
+  "compiler": "arm-none-eabi-gcc14.3.1",
+  "make": "GNU Make4.4.1",
+  "native_scope": {
+    "result": "passed-independent-map-scope-and-opacity-guards",
+    "source_maps": 944,
+    "shared_original_tileset_files": 2804,
+    "receipt_sha256": "c73e6b86acc371f004e89b88bad8a65d3d9678b26bd486295f3f609009d8839d"
+  },
+  "final_tests": {
+    "base_environment": {
+      "discovered": 255,
+      "passed": 247,
+      "skipped_optional_pillow": 8,
+      "seconds": 17.12,
+      "log_sha256": "20704db7d36415e247790b75ed81c6bd153a525508d58988c28f83e548701929"
+    },
+    "pinned_pillow_11_3_0": {
+      "passed": 8,
+      "skipped": 0,
+      "seconds": 0.717,
+      "log_sha256": "e5f039704978a9d844c9154c9217b5c881a2dd6e952911a3a258048588a11288"
+    },
+    "ci_runs_both_explicitly": true,
+    "workflow_sha256": "6c051b0937f06d78d421529156b7971af3437ea1de35eba0635ae2dea36b6a85"
+  }
+}

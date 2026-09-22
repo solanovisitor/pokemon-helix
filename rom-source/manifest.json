@@ -4,12 +4,20 @@
   "bootstrap_sha256": "ea52898da4d81e7f8aaf86660897ea3853c769e46a6c8d80f1057d2fce4ddf2e",
   "bundle_files": {
     "README.md": {
-      "bytes": 3751,
-      "sha256": "9ed60e78b34c525a286f28695a85f4d1094634a4747920102db78d8c4b2721e4"
+      "bytes": 6242,
+      "sha256": "79c9d2866e4d95ee3087dc65b4f8decdb77d92613914043767d447ab92d2b3c3"
     },
     "helix.patch": {
-      "bytes": 193016,
-      "sha256": "fa1490a92eb1fc0f5cb1dfa0ef2d0064e33d1a70de95b6403f6f0de78021dc3a"
+      "bytes": 199529,
+      "sha256": "ad4a680b71d670313958128bab281bfb06bffeca57821e473f431fe3fc33348c"
+    },
+    "overlay/data/layouts/HelixAssetsLaboratory/border.bin": {
+      "bytes": 8,
+      "sha256": "9ff63640fa3b4682056532b7924b03250ccc7a832f64ccec3dea79ea8595a24d"
+    },
+    "overlay/data/layouts/HelixAssetsLaboratory/map.bin": {
+      "bytes": 338,
+      "sha256": "dfb4b37b84e99ae5b82f822bdeb16db665ba7048acd2513522efd7d0fd776f7a"
     },
     "overlay/data/layouts/HelixFieldVillage/border.bin": {
       "bytes": 8,
@@ -52,8 +60,8 @@
       "sha256": "d7a80729b4ad12d7702803eabe0019f8b562da4ea3560046ca6d7b6b4027957a"
     },
     "overlay/data/maps/HelixLaboratory/map.json": {
-      "bytes": 4282,
-      "sha256": "d474f986eaf32558ed49cba82deadc352bab6025d842f1adcb00e88f71701036"
+      "bytes": 4269,
+      "sha256": "58a7126bff52aff6ce196bcd19ebd0f4d39d9652984b00cab43742f2caf6a866"
     },
     "overlay/data/maps/HelixLaboratory/scripts.inc": {
       "bytes": 27467,
@@ -102,6 +110,158 @@
     "overlay/data/scripts/helix_universal.inc": {
       "bytes": 2905,
       "sha256": "82bfaead5804a136e7bf2e65fb66fc896d128d356c5983a3368ce88c021bf66e"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/metatile_attributes.bin": {
+      "bytes": 316,
+      "sha256": "f161a8b562196a6454d4b2842e8469f08330628fd0212188111d7e1172a39532"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/metatiles.bin": {
+      "bytes": 2528,
+      "sha256": "6010158ccf56e24521a79de7021fcf5789d253ab9530e542508bd4c7cee337b2"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/palettes/00.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/palettes/01.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/palettes/02.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/palettes/03.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/palettes/04.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/palettes/05.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/palettes/06.pal": {
+      "bytes": 216,
+      "sha256": "b19f4f5d5f70ea211950fb0ce7ba2dc841ce61ce8eb56d6cdd19decc6d40c460"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/palettes/07.pal": {
+      "bytes": 211,
+      "sha256": "b658a1e0131409890cec9458e90cf2d6ba09bec6b8048be616c1eea177df0ed4"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/palettes/08.pal": {
+      "bytes": 207,
+      "sha256": "2b315471a7d66d9ac4a1f509e7c4cc4766e2bdf5bb77f25b1a192234b1c81333"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/palettes/09.pal": {
+      "bytes": 189,
+      "sha256": "ef5990e58cedeaa42231d3e2dd062ec4938ea3c25772b99355f28e50a5a5c646"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/palettes/10.pal": {
+      "bytes": 185,
+      "sha256": "a1eff4bfed946a6e9bcbf046ee5870aaaee4ec0da359b83d06ad322f6f8a1f45"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/palettes/11.pal": {
+      "bytes": 133,
+      "sha256": "7e69efc0d05cba0606807dd93400ced06fe8c37cab116c4c4fc3b4a5beee8ed7"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/palettes/12.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/palettes/13.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/palettes/14.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/palettes/15.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_lab/tiles.png": {
+      "bytes": 3078,
+      "sha256": "cd77628bf29129b68e24c1eaa8c72b84b6c30033ce0e552e27d9c825a39f4fe2"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/metatile_attributes.bin": {
+      "bytes": 1024,
+      "sha256": "eb3e942c013770224ffc7d99c469cdaf9cd31243f71ce3fb05a70b278dc5a509"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/metatiles.bin": {
+      "bytes": 8192,
+      "sha256": "b04c667cf428f2691e9db4f872a14ccf9649148c92cc93e2091962aedac09637"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/palettes/00.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/palettes/01.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/palettes/02.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/palettes/03.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/palettes/04.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/palettes/05.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/palettes/06.pal": {
+      "bytes": 214,
+      "sha256": "baa86b1e51a10ae1d9dd06d23d3bb2ce9e9d433cdf2db2725ad7f8eaf5ec436b"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/palettes/07.pal": {
+      "bytes": 190,
+      "sha256": "0b9b9d2374040be89bd645cae201852aa4e6a13ce53724c29dc802b658dc81ea"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/palettes/08.pal": {
+      "bytes": 187,
+      "sha256": "4337d5d58699ccbd65c173f8e8ae43c9e130fd7cb852546a39a79d7f6f56291a"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/palettes/09.pal": {
+      "bytes": 210,
+      "sha256": "143d93d5434956f8d5662bbb06f169381961c54d55b988ad817ffb98149793e3"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/palettes/10.pal": {
+      "bytes": 209,
+      "sha256": "6d21da346690602935e38b8a94b2b1bdc84683ae640f4442d4175250ed523c1a"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/palettes/11.pal": {
+      "bytes": 184,
+      "sha256": "f45e646a92d3135223d9d86b8aace7eb1cfecbca8b06dd685e8eb18d87d82f67"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/palettes/12.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/palettes/13.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/palettes/14.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/palettes/15.pal": {
+      "bytes": 132,
+      "sha256": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04"
+    },
+    "overlay/data/tilesets/secondary/helix_assets_post/tiles.png": {
+      "bytes": 5349,
+      "sha256": "db0d479c50835c1fa7c136d5dcd47a97b9dcc1d3d323e3201ae515870af3ae6a"
     },
     "overlay/graphics/aurora_title/coast.bin": {
       "bytes": 2048,
@@ -540,8 +700,69 @@
   },
   "excluded": "ROM/save/ELF/builds/root assets/prompts/profiles/private canon/credentials/packages/evidence",
   "genesis_package": "disabled; accepted package not included",
-  "overlay_bytes": 550379,
+  "native_assets_batch1": {
+    "config": "gallery",
+    "conversion_sha256": "762d63ed567765f20a69a4469d7cf5a6b40c785e12faa02ee40ebd36a9f032d9",
+    "conversion_version": 2,
+    "converter_sha256": "2efb20bc8c4ebdb9678fc54ad90b9fd6455d6716b3c838c81c25fff0e4fd3511",
+    "dataset": "todeschini/helix-assets",
+    "designs": 4,
+    "native_changed_paths": [
+      "data/layouts/HelixAssetsLaboratory/border.bin",
+      "data/layouts/HelixAssetsLaboratory/map.bin",
+      "data/layouts/layouts.json",
+      "data/maps/HelixLaboratory/map.json",
+      "data/tilesets/secondary/helix_assets_lab/metatile_attributes.bin",
+      "data/tilesets/secondary/helix_assets_lab/metatiles.bin",
+      "data/tilesets/secondary/helix_assets_lab/palettes/00.pal",
+      "data/tilesets/secondary/helix_assets_lab/palettes/01.pal",
+      "data/tilesets/secondary/helix_assets_lab/palettes/02.pal",
+      "data/tilesets/secondary/helix_assets_lab/palettes/03.pal",
+      "data/tilesets/secondary/helix_assets_lab/palettes/04.pal",
+      "data/tilesets/secondary/helix_assets_lab/palettes/05.pal",
+      "data/tilesets/secondary/helix_assets_lab/palettes/06.pal",
+      "data/tilesets/secondary/helix_assets_lab/palettes/07.pal",
+      "data/tilesets/secondary/helix_assets_lab/palettes/08.pal",
+      "data/tilesets/secondary/helix_assets_lab/palettes/09.pal",
+      "data/tilesets/secondary/helix_assets_lab/palettes/10.pal",
+      "data/tilesets/secondary/helix_assets_lab/palettes/11.pal",
+      "data/tilesets/secondary/helix_assets_lab/palettes/12.pal",
+      "data/tilesets/secondary/helix_assets_lab/palettes/13.pal",
+      "data/tilesets/secondary/helix_assets_lab/palettes/14.pal",
+      "data/tilesets/secondary/helix_assets_lab/palettes/15.pal",
+      "data/tilesets/secondary/helix_assets_lab/tiles.png",
+      "data/tilesets/secondary/helix_assets_post/metatile_attributes.bin",
+      "data/tilesets/secondary/helix_assets_post/metatiles.bin",
+      "data/tilesets/secondary/helix_assets_post/palettes/00.pal",
+      "data/tilesets/secondary/helix_assets_post/palettes/01.pal",
+      "data/tilesets/secondary/helix_assets_post/palettes/02.pal",
+      "data/tilesets/secondary/helix_assets_post/palettes/03.pal",
+      "data/tilesets/secondary/helix_assets_post/palettes/04.pal",
+      "data/tilesets/secondary/helix_assets_post/palettes/05.pal",
+      "data/tilesets/secondary/helix_assets_post/palettes/06.pal",
+      "data/tilesets/secondary/helix_assets_post/palettes/07.pal",
+      "data/tilesets/secondary/helix_assets_post/palettes/08.pal",
+      "data/tilesets/secondary/helix_assets_post/palettes/09.pal",
+      "data/tilesets/secondary/helix_assets_post/palettes/10.pal",
+      "data/tilesets/secondary/helix_assets_post/palettes/11.pal",
+      "data/tilesets/secondary/helix_assets_post/palettes/12.pal",
+      "data/tilesets/secondary/helix_assets_post/palettes/13.pal",
+      "data/tilesets/secondary/helix_assets_post/palettes/14.pal",
+      "data/tilesets/secondary/helix_assets_post/palettes/15.pal",
+      "data/tilesets/secondary/helix_assets_post/tiles.png",
+      "include/tilesets.h",
+      "src/data/tilesets/graphics.h",
+      "src/data/tilesets/headers.h",
+      "src/data/tilesets/metatiles.h"
+    ],
+    "positions": 5,
+    "public_runtime_acceptance": "not claimed; package gates remain disabled",
+    "revision": "d7c825f2d15b0818d549b8367d1054cb53c23713"
+  },
+  "overlay_bytes": 576174,
   "overlay_paths": [
+    "data/layouts/HelixAssetsLaboratory/border.bin",
+    "data/layouts/HelixAssetsLaboratory/map.bin",
     "data/layouts/HelixFieldVillage/border.bin",
     "data/layouts/HelixFieldVillage/map.bin",
     "data/layouts/HelixQuietGarden/border.bin",
@@ -565,6 +786,44 @@
     "data/scripts/helix_quest.inc",
     "data/scripts/helix_region.inc",
     "data/scripts/helix_universal.inc",
+    "data/tilesets/secondary/helix_assets_lab/metatile_attributes.bin",
+    "data/tilesets/secondary/helix_assets_lab/metatiles.bin",
+    "data/tilesets/secondary/helix_assets_lab/palettes/00.pal",
+    "data/tilesets/secondary/helix_assets_lab/palettes/01.pal",
+    "data/tilesets/secondary/helix_assets_lab/palettes/02.pal",
+    "data/tilesets/secondary/helix_assets_lab/palettes/03.pal",
+    "data/tilesets/secondary/helix_assets_lab/palettes/04.pal",
+    "data/tilesets/secondary/helix_assets_lab/palettes/05.pal",
+    "data/tilesets/secondary/helix_assets_lab/palettes/06.pal",
+    "data/tilesets/secondary/helix_assets_lab/palettes/07.pal",
+    "data/tilesets/secondary/helix_assets_lab/palettes/08.pal",
+    "data/tilesets/secondary/helix_assets_lab/palettes/09.pal",
+    "data/tilesets/secondary/helix_assets_lab/palettes/10.pal",
+    "data/tilesets/secondary/helix_assets_lab/palettes/11.pal",
+    "data/tilesets/secondary/helix_assets_lab/palettes/12.pal",
+    "data/tilesets/secondary/helix_assets_lab/palettes/13.pal",
+    "data/tilesets/secondary/helix_assets_lab/palettes/14.pal",
+    "data/tilesets/secondary/helix_assets_lab/palettes/15.pal",
+    "data/tilesets/secondary/helix_assets_lab/tiles.png",
+    "data/tilesets/secondary/helix_assets_post/metatile_attributes.bin",
+    "data/tilesets/secondary/helix_assets_post/metatiles.bin",
+    "data/tilesets/secondary/helix_assets_post/palettes/00.pal",
+    "data/tilesets/secondary/helix_assets_post/palettes/01.pal",
+    "data/tilesets/secondary/helix_assets_post/palettes/02.pal",
+    "data/tilesets/secondary/helix_assets_post/palettes/03.pal",
+    "data/tilesets/secondary/helix_assets_post/palettes/04.pal",
+    "data/tilesets/secondary/helix_assets_post/palettes/05.pal",
+    "data/tilesets/secondary/helix_assets_post/palettes/06.pal",
+    "data/tilesets/secondary/helix_assets_post/palettes/07.pal",
+    "data/tilesets/secondary/helix_assets_post/palettes/08.pal",
+    "data/tilesets/secondary/helix_assets_post/palettes/09.pal",
+    "data/tilesets/secondary/helix_assets_post/palettes/10.pal",
+    "data/tilesets/secondary/helix_assets_post/palettes/11.pal",
+    "data/tilesets/secondary/helix_assets_post/palettes/12.pal",
+    "data/tilesets/secondary/helix_assets_post/palettes/13.pal",
+    "data/tilesets/secondary/helix_assets_post/palettes/14.pal",
+    "data/tilesets/secondary/helix_assets_post/palettes/15.pal",
+    "data/tilesets/secondary/helix_assets_post/tiles.png",
     "graphics/aurora_title/coast.bin",
     "graphics/helix_generated_title/night.8bpp",
     "graphics/helix_generated_title/night.bin",
@@ -676,6 +935,8 @@
   "result_files": {
     "Makefile": "c116674527d4cc44d76fceb7860d2eefc9f3a37b78be70dfb6e31492b082a456",
     "data/event_scripts.s": "7215edd2b42b180ab6e2bc9ef6eb53ec20752fbd3a5578ecd0527c1f5aeb8a76",
+    "data/layouts/HelixAssetsLaboratory/border.bin": "9ff63640fa3b4682056532b7924b03250ccc7a832f64ccec3dea79ea8595a24d",
+    "data/layouts/HelixAssetsLaboratory/map.bin": "dfb4b37b84e99ae5b82f822bdeb16db665ba7048acd2513522efd7d0fd776f7a",
     "data/layouts/HelixFieldVillage/border.bin": "1cedb5b187dc6e470095d034b616e33269998409ae53d50aeb9e3f51cb9cd513",
     "data/layouts/HelixFieldVillage/map.bin": "2c4b079b8b623195565ac218aeb9bc8ebb04efb8a5f31b17dc82b66e2b75a5cc",
     "data/layouts/HelixQuietGarden/border.bin": "1cedb5b187dc6e470095d034b616e33269998409ae53d50aeb9e3f51cb9cd513",
@@ -684,10 +945,10 @@
     "data/layouts/HelixResearchPost/map.bin": "936f5bd779cccf282b8227dfa973bf4ef6c2c86f2b971fff7e297ecad3eef70c",
     "data/layouts/HelixShelterTrail/border.bin": "1cedb5b187dc6e470095d034b616e33269998409ae53d50aeb9e3f51cb9cd513",
     "data/layouts/HelixShelterTrail/map.bin": "7fdb7377d2224225bb22b717ef9680f8664f43998dd4384f3bb74e39244c8fa3",
-    "data/layouts/layouts.json": "5dec6e7e974ceb94ec8225c76e82acf478704c92bde44c7dac4ea169b462c510",
+    "data/layouts/layouts.json": "5cfa5aca2a9ceba7ed3a3dbde5fa6dfab63d3777ecf01edb61f0da7a7d0d6def",
     "data/maps/HelixFieldVillage/map.json": "e034691abfdc318d6e492985e7751959b5a121fe15f3a653d5a2269cba6c4ba0",
     "data/maps/HelixFieldVillage/scripts.inc": "d7a80729b4ad12d7702803eabe0019f8b562da4ea3560046ca6d7b6b4027957a",
-    "data/maps/HelixLaboratory/map.json": "d474f986eaf32558ed49cba82deadc352bab6025d842f1adcb00e88f71701036",
+    "data/maps/HelixLaboratory/map.json": "58a7126bff52aff6ce196bcd19ebd0f4d39d9652984b00cab43742f2caf6a866",
     "data/maps/HelixLaboratory/scripts.inc": "7f1c21a6edd4dcd619ff2d65c45d18255c481f3f553aebe8cefa559d29a5565c",
     "data/maps/HelixQuietGarden/map.json": "56476f7f627462b3091fa26b3bacdb4c58630a9d38818f0f912609f58d069d8a",
     "data/maps/HelixQuietGarden/scripts.inc": "63c87b0af4bc97a9d1b7038ebfaa7cd8347f195fadf69e98374640f2ba6454d4",
@@ -714,6 +975,44 @@
     "data/scripts/helix_universal.inc": "82bfaead5804a136e7bf2e65fb66fc896d128d356c5983a3368ce88c021bf66e",
     "data/specials.inc": "da65ecafc5ccedfc3f5a51e7287db171ff5637bdef23c6897aae9e94a4e71b02",
     "data/text/birch_speech.inc": "fb83ae4fe23dcde6099747e647b8c753a7d5480d2f97f01e927dff4afa823e7a",
+    "data/tilesets/secondary/helix_assets_lab/metatile_attributes.bin": "f161a8b562196a6454d4b2842e8469f08330628fd0212188111d7e1172a39532",
+    "data/tilesets/secondary/helix_assets_lab/metatiles.bin": "6010158ccf56e24521a79de7021fcf5789d253ab9530e542508bd4c7cee337b2",
+    "data/tilesets/secondary/helix_assets_lab/palettes/00.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/01.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/02.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/03.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/04.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/05.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/06.pal": "b19f4f5d5f70ea211950fb0ce7ba2dc841ce61ce8eb56d6cdd19decc6d40c460",
+    "data/tilesets/secondary/helix_assets_lab/palettes/07.pal": "b658a1e0131409890cec9458e90cf2d6ba09bec6b8048be616c1eea177df0ed4",
+    "data/tilesets/secondary/helix_assets_lab/palettes/08.pal": "2b315471a7d66d9ac4a1f509e7c4cc4766e2bdf5bb77f25b1a192234b1c81333",
+    "data/tilesets/secondary/helix_assets_lab/palettes/09.pal": "ef5990e58cedeaa42231d3e2dd062ec4938ea3c25772b99355f28e50a5a5c646",
+    "data/tilesets/secondary/helix_assets_lab/palettes/10.pal": "a1eff4bfed946a6e9bcbf046ee5870aaaee4ec0da359b83d06ad322f6f8a1f45",
+    "data/tilesets/secondary/helix_assets_lab/palettes/11.pal": "7e69efc0d05cba0606807dd93400ced06fe8c37cab116c4c4fc3b4a5beee8ed7",
+    "data/tilesets/secondary/helix_assets_lab/palettes/12.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/13.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/14.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/15.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/tiles.png": "cd77628bf29129b68e24c1eaa8c72b84b6c30033ce0e552e27d9c825a39f4fe2",
+    "data/tilesets/secondary/helix_assets_post/metatile_attributes.bin": "eb3e942c013770224ffc7d99c469cdaf9cd31243f71ce3fb05a70b278dc5a509",
+    "data/tilesets/secondary/helix_assets_post/metatiles.bin": "b04c667cf428f2691e9db4f872a14ccf9649148c92cc93e2091962aedac09637",
+    "data/tilesets/secondary/helix_assets_post/palettes/00.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/01.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/02.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/03.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/04.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/05.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/06.pal": "baa86b1e51a10ae1d9dd06d23d3bb2ce9e9d433cdf2db2725ad7f8eaf5ec436b",
+    "data/tilesets/secondary/helix_assets_post/palettes/07.pal": "0b9b9d2374040be89bd645cae201852aa4e6a13ce53724c29dc802b658dc81ea",
+    "data/tilesets/secondary/helix_assets_post/palettes/08.pal": "4337d5d58699ccbd65c173f8e8ae43c9e130fd7cb852546a39a79d7f6f56291a",
+    "data/tilesets/secondary/helix_assets_post/palettes/09.pal": "143d93d5434956f8d5662bbb06f169381961c54d55b988ad817ffb98149793e3",
+    "data/tilesets/secondary/helix_assets_post/palettes/10.pal": "6d21da346690602935e38b8a94b2b1bdc84683ae640f4442d4175250ed523c1a",
+    "data/tilesets/secondary/helix_assets_post/palettes/11.pal": "f45e646a92d3135223d9d86b8aace7eb1cfecbca8b06dd685e8eb18d87d82f67",
+    "data/tilesets/secondary/helix_assets_post/palettes/12.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/13.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/14.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/15.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/tiles.png": "db0d479c50835c1fa7c136d5dcd47a97b9dcc1d3d323e3201ae515870af3ae6a",
     "graphics/aurora_title/coast.bin": "1ddb8034276e44ca05fce9f5fe298ab3bd6edb41c5da1d065b6ebeee2bc15c58",
     "graphics/helix_generated_title/night.8bpp": "5bddf3b501d7a55e95ff1b31efd248f501990f9f3032ed47acdfe728831ce5bf",
     "graphics/helix_generated_title/night.bin": "1ddb8034276e44ca05fce9f5fe298ab3bd6edb41c5da1d065b6ebeee2bc15c58",
@@ -798,6 +1097,7 @@
     "include/helix_universal_types.h": "da297215ecf29d895e173d5605cb0b7347072bd53538563173f69bd6d2642397",
     "include/pokemon.h": "c6b3dbd4d1d2a8323eca6dbf37f9e8c2aa2476bc9dd72140b5769a965dae5248",
     "include/pokemon_birth.h": "eb3c022cd5a67edfff872d3feb849f0adbb55366e6b271063d3f5636bb45f6ba",
+    "include/tilesets.h": "e883233b351d5fe88e44d3b66c2586f536ea105933fa4623a2e2d795dcf0e39b",
     "src/ai_bridge.c": "a8b99f9f26c115e68f58696c418a94456c067b7ca76616547ebdda620333b87b",
     "src/aurora_adventure.c": "fcf909c34fa2471fc886199add69d034bf24508a3cfea35757cf66fade7a453d",
     "src/aurora_combat.c": "66da3923e2427f04cac316344094baf5c8c97cb63bb13563e4346308224b7cbe",
@@ -822,6 +1122,9 @@
     "src/data/object_events/object_event_pic_tables.h": "3ac18d45bc921b6dfb173639a0214e5c428dfaf82d5535cd96d7a014e321e069",
     "src/data/pokemon/species_info.h": "1276b2e29854942e7db964d6d26687f35a0b321fe748d6e9c5f1b0091b7dfc34",
     "src/data/script_menu.h": "2f8e3277820ce3f72d8f90c47d3562076f0235ddfab6341afc80a1039566c669",
+    "src/data/tilesets/graphics.h": "829073df6c6970d76b9608c4406ef203c2a4eee5cdf669945c7b5aa4f639f4fc",
+    "src/data/tilesets/headers.h": "5d9a8673106ae57eaa8959b7f84afa3bc2d6fa16a7e7aaecd68ad704a58cfb98",
+    "src/data/tilesets/metatiles.h": "5b730de22178db433377a8aed3aa580be9a1dfe96f178d25da320ca23d01247d",
     "src/data/trainers.party": "2876b5999fe5fe37f21d7901c493f3d89e09c1e034e7be595f01c39602578df5",
     "src/egg_hatch.c": "3ec0466bf5009dab5617262fb9a592a2da46d4920cc4b9bb2bdbef346d528209",
     "src/event_object_movement.c": "dbeac89829bbc6be274e1d7c56a90afdb395dfa21c9d0c76bfa7176d0c624510",
@@ -881,6 +1184,7 @@
     "include/constants/vars.h",
     "include/global.h",
     "include/pokemon.h",
+    "include/tilesets.h",
     "src/battle_main.c",
     "src/battle_script_commands.c",
     "src/battle_setup.c",
@@ -893,6 +1197,9 @@
     "src/data/object_events/object_event_pic_tables.h",
     "src/data/pokemon/species_info.h",
     "src/data/script_menu.h",
+    "src/data/tilesets/graphics.h",
+    "src/data/tilesets/headers.h",
+    "src/data/tilesets/metatiles.h",
     "src/data/trainers.party",
     "src/egg_hatch.c",
     "src/event_object_movement.c",

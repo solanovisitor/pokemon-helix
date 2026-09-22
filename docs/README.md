@@ -9,6 +9,7 @@ the game shown in development captures is not yet a playable public release.
 - [Features](features.md) — companions, fieldwork and laboratory experiments.
 - [Roadmap](roadmap.md) — implemented work, candidate features and next contributions.
 - [Verification](verification.md) — what has been tested and the limits of that evidence.
+- [First native catalog batch](native-assets-batch1.md) — four static designs, scoped map bindings and exact build evidence.
 
 ## Run your first experiment
 

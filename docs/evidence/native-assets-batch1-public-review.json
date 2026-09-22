@@ -1,0 +1,424 @@
+{
+  "schema": 1,
+  "status": "passed-independent-public-native-prop-smoke-review",
+  "reviewed_at_utc": "2026-09-22T12:06:39.117084+00:00",
+  "scope": "Exact public disabled-package ROM; fresh deterministic empty fixtures, props only",
+  "rom_sha256": "be7b0ba75e925aa60cbf0fc431f836ebb7f929ba4ea8f73a12bb1cb997b829f3",
+  "elf_sha256": "37f350352234c60d7d3c28727edbb795c97e3455cc1fdda2e994a651cc9ebfd5",
+  "source_identity_sha256": "43b4660f1ab51b40c4ba345f89e09d5ce233ef730bb1891d8f2bee2f55444ebe",
+  "runner_sha256": "b98b4a2001882318315867da628b071d5a6fa3e88a3192c3f0de7e15d96a3755",
+  "observer_sha256": "27285affaf07c98e20915f111c49d01a567b7835823f65154fc70c6c86be7459",
+  "fixture_creator_sha256": "bb73dec9e1e5ebf860d7e0d59e3c4dc773437b8ec64b3c7fed1f423f084c5c62",
+  "fixture_provenance_sha256": "1c3c3f088c738e7e230ae09ebb82883f1c161f897a019667c4cc096ce6e45778",
+  "fixture_source_save": null,
+  "imports_private_or_personal_data": false,
+  "conversion_sha256": "762d63ed567765f20a69a4469d7cf5a6b40c785e12faa02ee40ebd36a9f032d9",
+  "runs": [
+    {
+      "run": "20260922T120143678117Z",
+      "room": "post",
+      "report_sha256": "3bf6025bf1536d6c7a08418a1bcbd8b721c8cb8d6909faa2377b80462d20119d",
+      "inputs_sha256": "7d7825341f4c5ca06d460c3ec25467831e856709e23c99c06df3b5d788dd732f",
+      "run_manifest_sha256": "74411d4f4127b27fa3accdefc39dda1fc0b625de2d5efeac632ed4b0203f9a38",
+      "observer_provenance_sha256": "c8cd04eb65fc3da6728a002559ac35515ad45b868679103fa18dd89281f35049",
+      "stopped_at_utc": "2026-09-22T12:04:25.385634+00:00",
+      "seed_sha256": "8b15ef1cdae346041073b183ed12d701ceb10a1f4fb45c802d748ebd3ae2897a",
+      "seed_preserved": true,
+      "commands": {
+        "press": 123,
+        "capture": 19,
+        "reset": 1,
+        "release": 1
+      },
+      "final_command": "release",
+      "state_invariant_checkpoints": 19,
+      "collision_checks": 11,
+      "interaction_checks": 3,
+      "ordinary_saves": [
+        {
+          "name": "public-post-ordinary-continue.sav",
+          "sha256": "c1011ad65f57b5f132dbf623d3aa018631518b84bf37228700675cf48ff4fa73",
+          "checksum_valid": true,
+          "empty_companion_records_unchanged": true,
+          "inventory_money_coins_pc_unchanged": true,
+          "disabled_genesis_record_zero": true,
+          "disabled_combat_reserved_variables_zero": true,
+          "universal_store_records": 0,
+          "location": [
+            75,
+            2,
+            9,
+            3
+          ]
+        }
+      ],
+      "screenshots": [
+        {
+          "name": "public-post-fixture-continued",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-01-public-post-fixture-continued.png",
+          "sha256": "60052b5e60b27412431d3b3d915fd5e43736e87429d2abbd9d27bc76661fc937",
+          "input_index": 4,
+          "visual_review": "passed"
+        },
+        {
+          "name": "post-table-native-context",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-02-post-table-native-context.png",
+          "sha256": "60052b5e60b27412431d3b3d915fd5e43736e87429d2abbd9d27bc76661fc937",
+          "input_index": 5,
+          "visual_review": "passed"
+        },
+        {
+          "name": "table-edge-2-5-right",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-03-table-edge-2-5-right.png",
+          "sha256": "d72b2d4d1f32ce46e901c1b3b2ce07577b3357e4ee45a0a5160f872a699d6060",
+          "input_index": 15,
+          "visual_review": "passed"
+        },
+        {
+          "name": "table-edge-2-5-down",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-04-table-edge-2-5-down.png",
+          "sha256": "079d947568948d3cfd308279014314b919d4cf48e691c276f80b0d3d8fa00891",
+          "input_index": 21,
+          "visual_review": "passed"
+        },
+        {
+          "name": "table-edge-2-6-up",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-05-table-edge-2-6-up.png",
+          "sha256": "d8ac586e0caa1929ed3ed81328a3de94e0cb3efdf611c73bf9bbae560b6c27eb",
+          "input_index": 31,
+          "visual_review": "passed"
+        },
+        {
+          "name": "table-edge-2-6-right",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-06-table-edge-2-6-right.png",
+          "sha256": "9851e27e87d8f5e67f15c0ad8823667c5acb96e51c48e8aa52ad19767af9bc7d",
+          "input_index": 37,
+          "visual_review": "passed"
+        },
+        {
+          "name": "table-edge-3-5-down",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-07-table-edge-3-5-down.png",
+          "sha256": "c32f96bac88af3f9242a6005036a114b79b20d7d35b0e51aa155f63dc5df9939",
+          "input_index": 45,
+          "visual_review": "passed"
+        },
+        {
+          "name": "table-edge-3-6-up",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-08-table-edge-3-6-up.png",
+          "sha256": "56053c49603acb65719bab24b716127bc6786aea6ec74b916500e66affa80ef1",
+          "input_index": 57,
+          "visual_review": "passed"
+        },
+        {
+          "name": "table-edge-3-6-left",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-09-table-edge-3-6-left.png",
+          "sha256": "1e79c7dc308df28d0fdfb662dfebe15d9ac99a10a7ad9aec0ca2c24d9fb8e479",
+          "input_index": 63,
+          "visual_review": "passed"
+        },
+        {
+          "name": "post-table-no-new-interaction",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-10-post-table-no-new-interaction.png",
+          "sha256": "d8ac586e0caa1929ed3ed81328a3de94e0cb3efdf611c73bf9bbae560b6c27eb",
+          "input_index": 71,
+          "visual_review": "passed"
+        },
+        {
+          "name": "post-plants-native-context",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-11-post-plants-native-context.png",
+          "sha256": "ade83df9e785f22ee4c61d6bba777d32ad427c15dbeb145482cda948cd01588e",
+          "input_index": 87,
+          "visual_review": "passed"
+        },
+        {
+          "name": "plant-west-edge-8-2-up",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-12-plant-west-edge-8-2-up.png",
+          "sha256": "7bbb11bf4558f0bac879abf7bb66bb890c817713ccee7d4c9f13551a9da4b577",
+          "input_index": 91,
+          "visual_review": "passed"
+        },
+        {
+          "name": "plant-west-edge-8-2-right",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-13-plant-west-edge-8-2-right.png",
+          "sha256": "733dbe0ebd717b2fc6cebae8a66f96be547bd7d97b2c02974c9e075ffb3d4238",
+          "input_index": 97,
+          "visual_review": "passed"
+        },
+        {
+          "name": "plant-west-no-new-interaction",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-14-plant-west-no-new-interaction.png",
+          "sha256": "7bbb11bf4558f0bac879abf7bb66bb890c817713ccee7d4c9f13551a9da4b577",
+          "input_index": 104,
+          "visual_review": "passed"
+        },
+        {
+          "name": "plant-east-edge-9-2-up",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-15-plant-east-edge-9-2-up.png",
+          "sha256": "95c42a72323607feb60b789598310fc9958074f56e1cc19aa6c2612338abd347",
+          "input_index": 108,
+          "visual_review": "passed"
+        },
+        {
+          "name": "plant-east-edge-9-2-left",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-16-plant-east-edge-9-2-left.png",
+          "sha256": "d0fa2137633e44f9b0a02652538f71f98ff2ff36fa0eaf1014a32600c2177881",
+          "input_index": 114,
+          "visual_review": "passed"
+        },
+        {
+          "name": "plant-east-no-new-interaction",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-17-plant-east-no-new-interaction.png",
+          "sha256": "95c42a72323607feb60b789598310fc9958074f56e1cc19aa6c2612338abd347",
+          "input_index": 121,
+          "visual_review": "passed"
+        },
+        {
+          "name": "public-post-ordinary-continue-saved",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-18-public-post-ordinary-continue-saved.png",
+          "sha256": "95c42a72323607feb60b789598310fc9958074f56e1cc19aa6c2612338abd347",
+          "input_index": 135,
+          "visual_review": "passed"
+        },
+        {
+          "name": "public-post-ordinary-continue-continued",
+          "screenshot": "artifacts/e2e/20260922T120143678117Z/screenshots/public-props-20260922T120256585357Z-19-public-post-ordinary-continue-continued.png",
+          "sha256": "95c42a72323607feb60b789598310fc9958074f56e1cc19aa6c2612338abd347",
+          "input_index": 142,
+          "visual_review": "passed"
+        }
+      ]
+    },
+    {
+      "run": "20260922T120149375852Z",
+      "room": "lab",
+      "report_sha256": "1992ad31d8221f1085998e781f4d93118f8f9862509cbd2d07d062e87a4d8a11",
+      "inputs_sha256": "d5be008e27c90c5cbf76fd3a1992ef122dd550261c1c14a3fd531291fce13ed0",
+      "run_manifest_sha256": "475087f914550683567ca9a28a9260c259d0964b940e6f2e09d1e63da5eda5ee",
+      "observer_provenance_sha256": "a9f565688aaa310197964c3ecafc4eb7feda168fc45bc86728920154098ee041",
+      "stopped_at_utc": "2026-09-22T12:05:01.507512+00:00",
+      "seed_sha256": "3543739d1a6fdcb7aee91bf03123223ee9db18dce16e76036a1202c01e54b2ee",
+      "seed_preserved": true,
+      "commands": {
+        "press": 121,
+        "capture": 23,
+        "reset": 1,
+        "release": 1
+      },
+      "final_command": "release",
+      "state_invariant_checkpoints": 23,
+      "collision_checks": 6,
+      "interaction_checks": 4,
+      "ordinary_saves": [
+        {
+          "name": "public-lab-ordinary-continue.sav",
+          "sha256": "e4583524741dee76717112ccd481cad0182f7204824ab6c04954957475e596ac",
+          "checksum_valid": true,
+          "empty_companion_records_unchanged": true,
+          "inventory_money_coins_pc_unchanged": true,
+          "disabled_genesis_record_zero": true,
+          "disabled_combat_reserved_variables_zero": true,
+          "universal_store_records": 0,
+          "location": [
+            2,
+            5,
+            6,
+            8
+          ]
+        }
+      ],
+      "screenshots": [
+        {
+          "name": "public-lab-fixture-continued",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-01-public-lab-fixture-continued.png",
+          "sha256": "55cd2e0fa17878bbd9c29589ec7108a9089c597b69523dac91fbfcbc7bb96591",
+          "input_index": 3,
+          "visual_review": "passed"
+        },
+        {
+          "name": "registration-public-native-context",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-02-registration-public-native-context.png",
+          "sha256": "e0c50c72987ec4660ccb6d34999a1504379b025a0380722405d103b91e854f9c",
+          "input_index": 12,
+          "visual_review": "passed"
+        },
+        {
+          "name": "registration-edge-3-1-up",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-03-registration-edge-3-1-up.png",
+          "sha256": "3e3170d94fc72256c78e31dc50dff67decf1a4523a67b8362b055aa02f11a422",
+          "input_index": 19,
+          "visual_review": "passed"
+        },
+        {
+          "name": "registration-edge-4-1-up",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-04-registration-edge-4-1-up.png",
+          "sha256": "ddad07337af46553140a9f902a50f6ccbd294ae25c4bf5667e5a2a7605e44123",
+          "input_index": 23,
+          "visual_review": "passed"
+        },
+        {
+          "name": "preparation-public-native-context",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-05-preparation-public-native-context.png",
+          "sha256": "cffa51597a068afbf829e44c2d97d1019d2b0f977dd0019e132f19e05d75764e",
+          "input_index": 31,
+          "visual_review": "passed"
+        },
+        {
+          "name": "preparation-edge-1-9-right",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-06-preparation-edge-1-9-right.png",
+          "sha256": "efe39b75abe18c51e7016bcf1029ec832af9d04c7d380af18aa1b81033ef2d40",
+          "input_index": 40,
+          "visual_review": "passed"
+        },
+        {
+          "name": "preparation-edge-1-9-down",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-07-preparation-edge-1-9-down.png",
+          "sha256": "97a97481898dd90711196efd123970765daa070b989c3da376f6a72a987fb6b1",
+          "input_index": 46,
+          "visual_review": "passed"
+        },
+        {
+          "name": "preparation-edge-1-9-left",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-08-preparation-edge-1-9-left.png",
+          "sha256": "0fe8c25651d9139b88ea75a720d996443e6064868c1d05b756ba0f89385b0c2f",
+          "input_index": 52,
+          "visual_review": "passed"
+        },
+        {
+          "name": "preparation-edge-1-10-left",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-09-preparation-edge-1-10-left.png",
+          "sha256": "93d4823ce396362ec0862cb72902a2d2e685e6a1d1ec84759002482ce16be7f2",
+          "input_index": 56,
+          "visual_review": "passed"
+        },
+        {
+          "name": "registration-3-text-1",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-10-registration-3-text-1.png",
+          "sha256": "aef20430d736ac4ed0901b3285903c430d0bde761b27074b96ee581813f111c8",
+          "input_index": 74,
+          "visual_review": "passed"
+        },
+        {
+          "name": "registration-3-text-2",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-11-registration-3-text-2.png",
+          "sha256": "ffaf2cd4b0743a22328cbf90cc90084a09f9c5b27a4e88547bd17e73f2a0f377",
+          "input_index": 76,
+          "visual_review": "passed"
+        },
+        {
+          "name": "registration-3-existing-choice",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-12-registration-3-existing-choice.png",
+          "sha256": "e59730fa541469b085d0e688cfb0dbded99238efe6a40cb90c6097f4085f0150",
+          "input_index": 78,
+          "visual_review": "passed"
+        },
+        {
+          "name": "registration-3-cancelled-unchanged",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-13-registration-3-cancelled-unchanged.png",
+          "sha256": "3e3170d94fc72256c78e31dc50dff67decf1a4523a67b8362b055aa02f11a422",
+          "input_index": 80,
+          "visual_review": "passed"
+        },
+        {
+          "name": "registration-4-text-1",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-14-registration-4-text-1.png",
+          "sha256": "ba4a30bcb4e0cba48b833d698f22f141ea834acf11ae7cc866d740f4fd444e34",
+          "input_index": 85,
+          "visual_review": "passed"
+        },
+        {
+          "name": "registration-4-text-2",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-15-registration-4-text-2.png",
+          "sha256": "7b030d7b64af84d9d139d2f58ae15a40b0c59b329101f4eddb559012d4388dbd",
+          "input_index": 87,
+          "visual_review": "passed"
+        },
+        {
+          "name": "registration-4-existing-choice",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-16-registration-4-existing-choice.png",
+          "sha256": "bcea299c70adfcf4994949a4bf362d849d4f89ba6bd465f787d7198b6ad77b2f",
+          "input_index": 89,
+          "visual_review": "passed"
+        },
+        {
+          "name": "registration-4-cancelled-unchanged",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-17-registration-4-cancelled-unchanged.png",
+          "sha256": "ddad07337af46553140a9f902a50f6ccbd294ae25c4bf5667e5a2a7605e44123",
+          "input_index": 91,
+          "visual_review": "passed"
+        },
+        {
+          "name": "preparation-9-public-needs-recipe-page-1",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-18-preparation-9-public-needs-recipe-page-1.png",
+          "sha256": "8a3684a4c486500579e0ddae1614b03f500d7515a4675f11bcbb6bef8c15403b",
+          "input_index": 106,
+          "visual_review": "passed"
+        },
+        {
+          "name": "preparation-9-public-needs-recipe-unchanged",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-19-preparation-9-public-needs-recipe-unchanged.png",
+          "sha256": "0fe8c25651d9139b88ea75a720d996443e6064868c1d05b756ba0f89385b0c2f",
+          "input_index": 108,
+          "visual_review": "passed"
+        },
+        {
+          "name": "preparation-10-public-needs-recipe-page-1",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-20-preparation-10-public-needs-recipe-page-1.png",
+          "sha256": "7b067caea43fd7d66fc8914964d31d9e5fcdc1db40812852e7a3353422ad6a89",
+          "input_index": 113,
+          "visual_review": "passed"
+        },
+        {
+          "name": "preparation-10-public-needs-recipe-unchanged",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-21-preparation-10-public-needs-recipe-unchanged.png",
+          "sha256": "93d4823ce396362ec0862cb72902a2d2e685e6a1d1ec84759002482ce16be7f2",
+          "input_index": 115,
+          "visual_review": "passed"
+        },
+        {
+          "name": "public-lab-ordinary-continue-saved",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-22-public-lab-ordinary-continue-saved.png",
+          "sha256": "15725138931d06184cfb11216bcf3b9e3f71113774ca890e8633508f3360ab07",
+          "input_index": 137,
+          "visual_review": "passed"
+        },
+        {
+          "name": "public-lab-ordinary-continue-continued",
+          "screenshot": "artifacts/e2e/20260922T120149375852Z/screenshots/public-props-20260922T120333986061Z-23-public-lab-ordinary-continue-continued.png",
+          "sha256": "15725138931d06184cfb11216bcf3b9e3f71113774ca890e8633508f3360ab07",
+          "input_index": 144,
+          "visual_review": "passed"
+        }
+      ]
+    }
+  ],
+  "capture_count": 42,
+  "unique_capture_images": 31,
+  "ordinary_save_continue_count": 2,
+  "collision_checks": 17,
+  "interaction_checks": 7,
+  "designs": 4,
+  "prop_positions": 5,
+  "new_npc_positions": 0,
+  "visual_findings": [],
+  "visual_observations": [
+    "All 42 real native 240x160 screenshots inspected; unchanged screenshot bytes bound to capture command/state.",
+    "Public Post floor is continuous and opaque; table and both plants have complete native silhouettes and no rectangle/holes.",
+    "Public laboratory registration and preparation terminals fit their original geometry with readable original choice/prerequisite feedback.",
+    "Original NPCs loaded by native ContinueWarp remain visible; no characters were added by this batch.",
+    "Both rooms retain the new art after ordinary Save/Continue."
+  ],
+  "unavailable_observers": [
+    "combat descriptor (compiled out; reserved save variables independently verified zero)",
+    "helixInterview (not present in public source)",
+    "helix.resolved battlers (compiled out; reported null)"
+  ],
+  "classic_options_offset_from_public_elf": 19,
+  "combat_saved_variables_source_sha256": "66da3923e2427f04cac316344094baf5c8c97cb63bb13563e4346308224b7cbe",
+  "limitations": [
+    "Fixtures are explicitly constructed from zeroed save blocks for each existing room; ordinary campaign access and migration of accepted/private saves are not tested by this public smoke.",
+    "Public genesis/adventure/combat package gates remain disabled. This proof does not authorize or unlock accepted packages.",
+    "English interface and static props only; no new NPCs or directional animation changes.",
+    "Source/compiled safeguards cover unrelated assets; runtime screenshots here cover the affected rooms, not every map or hardware.",
+    "The separately recorded local V19j full travel/legacy proof uses a different ROM and must not be attributed to this public binary."
+  ]
+}

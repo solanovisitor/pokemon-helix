@@ -1,0 +1,1229 @@
+{
+  "dataset": "todeschini/helix-assets",
+  "config": "gallery",
+  "revision": "d7c825f2d15b0818d549b8367d1054cb53c23713",
+  "rows": 152,
+  "character_designs": 96,
+  "character_designs_unplaced_in_previous_delivery": 76,
+  "previous_isolated_character_designs": 20,
+  "previous_isolated_character_positions": 21,
+  "npc_designs_added_by_this_batch": 0,
+  "candidates": [
+    {
+      "id": "npc-ada-2026-v1",
+      "asset_id": "ada",
+      "category": "character",
+      "source_sha256": "ff4526916e666d324050ffbd03de0c9de946b800ecfd29c0f2e3a0cb53a3549d",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-analysis_technician-2026-v8",
+      "asset_id": "analysis_technician",
+      "category": "character",
+      "source_sha256": "d1e485c63b893899339ac069f2212980ab2d14b6ea30b7f25b7c471cdbd50163",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-bia-2026-v1",
+      "asset_id": "bia",
+      "category": "character",
+      "source_sha256": "15affb9321a6c1d19e5a4cfc3839de9832eb76b7e601e1476b80dd594c192fc1",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-city_performer-2026-v8",
+      "asset_id": "city_performer",
+      "category": "character",
+      "source_sha256": "26d96fe73cdb9299c5e3b0a9793773411025a5a73900e9391d173e78e2bd692d",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-civic_guard-2026-v8",
+      "asset_id": "civic_guard",
+      "category": "character",
+      "source_sha256": "7f5366bfcb30e3b97fb13a5485314ee48adee051d73b62a685a185e10929e7b8",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-clinic_nurse-2026-v8",
+      "asset_id": "clinic_nurse",
+      "category": "character",
+      "source_sha256": "39c8ef3303daa45a2d55721b18e128448e4534a060cb07982be17125b8fc077f",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-coastal_boat_worker-2026-v8",
+      "asset_id": "coastal_boat_worker",
+      "category": "character",
+      "source_sha256": "5c5be04f8d28b9988b6ad1e57bb2f2aa46cd0747daa7ea739362e2c365f70cb8",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-coastal_diver-2026-v8",
+      "asset_id": "coastal_diver",
+      "category": "character",
+      "source_sha256": "b20e2d290000b62452ad5047f7680680443109008d26eb2487eccd8705e038d8",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-coastal_ecologist-2026-v8",
+      "asset_id": "coastal_ecologist",
+      "category": "character",
+      "source_sha256": "dfd89b14e45c6d63235beef885617032fbbff3953dde42442cd2660a517bfec4",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-culture_specialist-2026-v8",
+      "asset_id": "culture_specialist",
+      "category": "character",
+      "source_sha256": "fb7388d516904851edfe7540e7a58b6e104fd88988561ba340878a1ba7daa2ed",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-enzo-2026-v1",
+      "asset_id": "enzo",
+      "category": "character",
+      "source_sha256": "9fbbe1ee7eb1f732c73a3f15247ba1d014c2b70901c5b2df3a937a10b4097e28",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-exchange_host-2026-v8",
+      "asset_id": "exchange_host",
+      "category": "character",
+      "source_sha256": "93cb4148cec6008a2b10772aa9a71a80d17673a233afa957d16f15a32aaa659c",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-field_archivist-2026-v8",
+      "asset_id": "field_archivist",
+      "category": "character",
+      "source_sha256": "a4a6ce03bb75f667d4d191a237ca3205377370bc3d9a7d2b69fb47b90c2274f1",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-garden_botanist-2026-v8",
+      "asset_id": "garden_botanist",
+      "category": "character",
+      "source_sha256": "49833291238f4fe845d011d4b879725f1927a4a49836491258c1ca286c3a22a6",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-helix_fieldvillage_region_care-2026-v8",
+      "asset_id": "helix_fieldvillage_region_care",
+      "category": "character",
+      "source_sha256": "ae404991ab7b52f48169d4e7e2a0471bc0dd88ae53d395f37d4c8627f1df8e87",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-helix_fieldvillage_region_return-2026-v8",
+      "asset_id": "helix_fieldvillage_region_return",
+      "category": "character",
+      "source_sha256": "fbe9b581ed98500de6f60b649c3c2768fb9eea269bb3e83fa0d60f6e4011e63d",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-helix_fieldvillage_region_villager-2026-v8",
+      "asset_id": "helix_fieldvillage_region_villager",
+      "category": "character",
+      "source_sha256": "7449c27f52e1a3b96b813cec67e8de0038556eb6b83665a5a8ae3725b624be08",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-helix_quietgarden_expansion_lia-2026-v8",
+      "asset_id": "helix_quietgarden_expansion_lia",
+      "category": "character",
+      "source_sha256": "9f0b6fa91628871d44231db83d889de4107fe89d1c85d78762e8b678b79e6bdb",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-helix_quietgarden_expansion_return-2026-v8",
+      "asset_id": "helix_quietgarden_expansion_return",
+      "category": "character",
+      "source_sha256": "504c55c852e9432340345d945abe9a0b422eb79b88e5de4b5c85353f91746f6d",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-helix_quietgarden_expansion_tom-2026-v8",
+      "asset_id": "helix_quietgarden_expansion_tom",
+      "category": "character",
+      "source_sha256": "849f66cb9c452bc3233a94812946bfc3282ed8f2e462b6d8afca179a1f771ed0",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-helix_researchpost_region_researcher-2026-v8",
+      "asset_id": "helix_researchpost_region_researcher",
+      "category": "character",
+      "source_sha256": "e4f66a58c5b1809146b42813ba5d2c7616485c351fe16997f3f492bd8114564d",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-helix_researchpost_universal_inspect-2026-v8",
+      "asset_id": "helix_researchpost_universal_inspect",
+      "category": "character",
+      "source_sha256": "3c246ff87e5afa7b01cb24bb26d94254c661a13fcdbd88e834c3596c7215ce6a",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-helix_sheltertrail_expansion_travel-2026-v8",
+      "asset_id": "helix_sheltertrail_expansion_travel",
+      "category": "character",
+      "source_sha256": "c89b995ce219a8c3deedb913eb7df032e093c03a1744035a26a77b7df2246ec1",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-ina-2026-v1",
+      "asset_id": "ina",
+      "category": "character",
+      "source_sha256": "e2ca16fa6db0394b4400747364d5e7526da22501763c205a4c4c52335d8eff73",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-instrument_technician-2026-v8",
+      "asset_id": "instrument_technician",
+      "category": "character",
+      "source_sha256": "77098d5b8461b81bb1898ca4ce83a689f854d58ee6c60a2fd89b0b5e184c2d57",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-kanto_clinic_nurse-2026-v8",
+      "asset_id": "kanto_clinic_nurse",
+      "category": "character",
+      "source_sha256": "7fc1c0bff8f1454d63040c7e6cafc4276aa64dda81362324381b0065ca872ed5",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-kanto_port_worker-2026-v8",
+      "asset_id": "kanto_port_worker",
+      "category": "character",
+      "source_sha256": "b696904d073ca770afb4fc2828a07f134dd84299a13b72c7e2b89c54df6050a6",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-lia-2026-v1",
+      "asset_id": "lia",
+      "category": "character",
+      "source_sha256": "8c2f30a0aefb1da7f8b1ef5d910db88897f038ce99ebe948025e8a483b6c6fe8",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-methods_researcher-2026-v8",
+      "asset_id": "methods_researcher",
+      "category": "character",
+      "source_sha256": "4eb586cf9a2d449585a59810e7e4d50d02d8c2d286a3d0b27d4017bee9258e99",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-mira-2026-v1",
+      "asset_id": "mira",
+      "category": "character",
+      "source_sha256": "b8d7f66911dc0365bc5039e819b266abbc17b8dff8dbc9e8a59edfcd2ee6b74e",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-mobile_researcher-2026-v8",
+      "asset_id": "mobile_researcher",
+      "category": "character",
+      "source_sha256": "00ca89ffd75444a2edb7baab10fd1c1b7951af44ad64cae5c5cc173d4d82654c",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-mountain_explorer-2026-v8",
+      "asset_id": "mountain_explorer",
+      "category": "character",
+      "source_sha256": "d4f36b9cb542f4edd14b46745717ec93f831ae1e3f04ffc72fd33769a787d9a1",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-night_shift_technician-2026-v8",
+      "asset_id": "night_shift_technician",
+      "category": "character",
+      "source_sha256": "69f018a10d16114c4a74d76dcaf49886350d1d965aee014a8e58b65c6d5c78dd",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-noa-2026-v1",
+      "asset_id": "noa",
+      "category": "character",
+      "source_sha256": "60129e503be33b2a57669bf8a30308707aa13d53226cc5cf5355138233a3aac1",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-omar-2026-v1",
+      "asset_id": "omar",
+      "category": "character",
+      "source_sha256": "4a6d10d9e1816d2e238e18d663ca8979ad873170656c90429d25f4b20e0177b6",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-ceramic-glazer-2026-v11",
+      "asset_id": "original_ceramic_glazer",
+      "category": "character",
+      "source_sha256": "8ece33af7e479e54210cd2e128b8d7c9b86439a104d86a7138af6d494a96fa8a",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-clockwork-toy-maker-2026-v11",
+      "asset_id": "original_clockwork_toy_maker",
+      "category": "character",
+      "source_sha256": "68eaeed5fa36fc87652ddbe81bdf0ffd14aa42d121d49ca1ae1e8ba918b5198d",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-community-baker-2026-v11",
+      "asset_id": "original_community_baker",
+      "category": "character",
+      "source_sha256": "b58b95d4f7b450bca1a057bf34010c3062416161536b6606e02aee1e4b4e28b5",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-community-cook-2026-v11",
+      "asset_id": "original_community_cook",
+      "category": "character",
+      "source_sha256": "2270019a06e349a08f4ba020851402a57acd02db71592dfe2253df3c25d49af6",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-community-radio-host-2026-v11",
+      "asset_id": "original_community_radio_host",
+      "category": "character",
+      "source_sha256": "6fd5eb556f9bdf5e28ef2c22977485910c0f1034ee7896a30d31f6ae8b31325e",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-community-teacher-2026-v11",
+      "asset_id": "original_community_teacher",
+      "category": "character",
+      "source_sha256": "596ce74fb1254e37fc83eb9f61c00d6a503dd840f81ba390cb58a45e2f474ee1",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-community-wrestling-coach-2026-v11",
+      "asset_id": "original_community_wrestling_coach",
+      "category": "character",
+      "source_sha256": "12b0d41570f5e185f542b4f4a717c4a4fa60fe8d054ddfc5774401e92965d10f",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-companion-groomer-2026-v11",
+      "asset_id": "original_companion_groomer",
+      "category": "character",
+      "source_sha256": "a90576560277ff0db16b0328a803fa9e804b8107684c59b3097e8b91a59090c3",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-glass-recycler-2026-v11",
+      "asset_id": "original_glass_recycler",
+      "category": "character",
+      "source_sha256": "18282ba79d4017aa4124d2158ec75743a27d5f56bb4b7144d6e6134519f2c02f",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-insect-puppet-maker-2026-v11",
+      "asset_id": "original_insect_puppet_maker",
+      "category": "character",
+      "source_sha256": "9682611fe93cb493835a59719f27978aa3ebbce2816bfdbeec7605f78be75209",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-lantern-restorer-2026-v11",
+      "asset_id": "original_lantern_restorer",
+      "category": "character",
+      "source_sha256": "3aee6f487a1254308178669a5367f4ea1a3b7acbb2b3c4c1440652e0c7b8da82",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-mosaic-setter-2026-v11",
+      "asset_id": "original_mosaic_setter",
+      "category": "character",
+      "source_sha256": "5be3d8c9a80ae9f62b2e21b0bf3741d0484980a7663624ac04978016cbbbed04",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-puzzle-club-child-2026-v11",
+      "asset_id": "original_puzzle_club_child",
+      "category": "character",
+      "source_sha256": "5550584a25a7310ca512450918dc82bf6b4d4c8ddc2a0269eaf10cdeb443d4c5",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-rainwater-plumber-2026-v11",
+      "asset_id": "original_rainwater_plumber",
+      "category": "character",
+      "source_sha256": "367860d32b832d64c04574e82d8f78dbe4cbb1d9452ce420ea8f880ac1fac401",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-rooftop-kite-maker-2026-v11",
+      "asset_id": "original_rooftop_kite_maker",
+      "category": "character",
+      "source_sha256": "caf06ac45d7fe29c3e283e130a45dd5da0b131f88b81da20c7c08dd33be54233",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-saltworks-keeper-2026-v11",
+      "asset_id": "original_saltworks_keeper",
+      "category": "character",
+      "source_sha256": "6968a104a79d645cc0a05167fff71aaef39386986427652a8ee8654673527db3",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-seed-exchange-weaver-2026-v11",
+      "asset_id": "original_seed_exchange_weaver",
+      "category": "character",
+      "source_sha256": "a66d083c74fa7e428320e0086009f4ff43327f28aa25e4c77a136080a555af9b",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-solar-window-cleaner-2026-v11",
+      "asset_id": "original_solar_window_cleaner",
+      "category": "character",
+      "source_sha256": "ffca1ca9695a00ba765868a0390c9a5e3e6b583ab0e3c051e8a4c4bedcbeab49",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-soundscape-collector-2026-v11",
+      "asset_id": "original_soundscape_collector",
+      "category": "character",
+      "source_sha256": "5623d8156b6c86053a4e01fefe49098813d1e87fc82ce6d9c837d8b68db055b8",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-textile-mender-2026-v11",
+      "asset_id": "original_textile_mender",
+      "category": "character",
+      "source_sha256": "d95aba86e466948852dc8b77a31885a58c8ade8e2c00bea4157c9018b27a6968",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-thermos-repairer-2026-v11",
+      "asset_id": "original_thermos_repairer",
+      "category": "character",
+      "source_sha256": "7419162b7def4494c2bf2deb47bd750bdd3b6392ed2d3fe915cd2eed7e9ef854",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-tidepool-story-child-2026-v11",
+      "asset_id": "original_tidepool_story_child",
+      "category": "character",
+      "source_sha256": "3fbae129e5a70ff074f85b942baf82d02484560b51180e2fc6340d6c27f03467",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-trail-snack-maker-2026-v11",
+      "asset_id": "original_trail_snack_maker",
+      "category": "character",
+      "source_sha256": "02510880ad1b972adc3ddba3de9b304b91b7bde83c342c625b4c5cfc00413544",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-original-urban-rope-gardener-2026-v11",
+      "asset_id": "original_urban_rope_gardener",
+      "category": "character",
+      "source_sha256": "7a8a45464c8efcd103d657c8e32b0005403eff6cdb72d9feae9697bbed5e33f9",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-research_apprentice-2026-v8",
+      "asset_id": "research_apprentice",
+      "category": "character",
+      "source_sha256": "d51843f84775cf8e8bb9f401e5a0271db632c0cb820e0d039606e321af084721",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-route_camper-2026-v8",
+      "asset_id": "route_camper",
+      "category": "character",
+      "source_sha256": "ae61e8b78e438e8fc77d2c7d80904a6af42d8332630635cad279b687d6c8fdc8",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-route_student-2026-v8",
+      "asset_id": "route_student",
+      "category": "character",
+      "source_sha256": "3b1797a6bc0230c5f1196a7cab7c488524422293b99c4e8f86ae138df3b65ea9",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-rui-2026-v1",
+      "asset_id": "rui",
+      "category": "character",
+      "source_sha256": "00cbe0d41f6e91d3080961b9c3d4537331470d3fb03eba5a96d32931aa883cf8",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-sample_custodian-2026-v8",
+      "asset_id": "sample_custodian",
+      "category": "character",
+      "source_sha256": "00eae80e44435e69033111425124800358899230e83cd27b75e793153d164907",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-senior_researcher-2026-v8",
+      "asset_id": "senior_researcher",
+      "category": "character",
+      "source_sha256": "0772bb0f439cb1bdfd7c22938d286ac0643484a5fc5ce0fef5123343bd4c86cb",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-station_host-2026-v8",
+      "asset_id": "station_host",
+      "category": "character",
+      "source_sha256": "b0a93f8685309d46fbe5de654ec21a1255234e01d1f2faddf61227133bc92dab",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-supply_clerk-2026-v8",
+      "asset_id": "supply_clerk",
+      "category": "character",
+      "source_sha256": "db82f61689fdf7065bbb953a9421b851a66338ee4722ce0aa0c06a11557cfe94",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-teo-2026-v1",
+      "asset_id": "teo",
+      "category": "character",
+      "source_sha256": "943ff10f3b00ec6e86165223394c0aee326d1d298592bea5866f9b058c2d229e",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-village_elder-2026-v8",
+      "asset_id": "village_elder",
+      "category": "character",
+      "source_sha256": "35a6f0ee03eac34cb5c4581ffedd5b225743bb456b97e293c218e40bc4955670",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-village_elder_woman-2026-v8",
+      "asset_id": "village_elder_woman",
+      "category": "character",
+      "source_sha256": "09bd56705cd93168c1c1ce2b6088f9e4edfd0f506afac07ac92d91ed8d212bbf",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-yara-2026-v1",
+      "asset_id": "yara",
+      "category": "character",
+      "source_sha256": "5eb0ee4febe21a4b1f3f407c61e5dd21f665540af3dcc83b4c252b6c36460d44",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "npc-zoe-2026-v1",
+      "asset_id": "zoe",
+      "category": "character",
+      "source_sha256": "6392c2aff4e612ef4e0cd8d9dea1f3b213c47446955671e2efd59bcbec067b52",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "research-post-2026-v3",
+      "asset_id": "research-post",
+      "category": "building",
+      "source_sha256": "07813867e6f507bfc0d8bc7442c29b3b63765946b2f91b4f5018ca2c13d02cb0",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "trainer-bag-2026-v3",
+      "asset_id": "trainer-bag",
+      "category": "trainer_equipment",
+      "source_sha256": "6526a267d19d5b3a90fb45810a243e7b68c11efe4b3f32687ab92a07eb77ca76",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "vegetation-1-2026-v3",
+      "asset_id": "vegetation-1",
+      "category": "vegetation",
+      "source_sha256": "073386009f013732d7440995a0332d4f55bfa4a0514c0b63fd7d8f3f08e7bd29",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "vegetation-2-2026-v3",
+      "asset_id": "vegetation-2",
+      "category": "vegetation",
+      "source_sha256": "05b5d8096df5a9323a3b2c5a8c836df0e3db2407161a9a66dae41263ac3a166a",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "vegetation-3-2026-v3",
+      "asset_id": "vegetation-3",
+      "category": "vegetation",
+      "source_sha256": "d66ab90d632e65ba144cf96aac352ba4ec40203bcc25a1b48ede7f2c7443536e",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "vegetation-4-2026-v3",
+      "asset_id": "vegetation-4",
+      "category": "vegetation",
+      "source_sha256": "86187f94fcdd49dc00e36afefe577018fb43cd2877eb38e88ab4af5bb3a983ee",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "vegetation-5-2026-v3",
+      "asset_id": "vegetation-5",
+      "category": "vegetation",
+      "source_sha256": "5ef5c9ae2203bac234438a913f5aaac4f64972da8961b99c5745b035fe392d35",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "vegetation-6-2026-v3",
+      "asset_id": "vegetation-6",
+      "category": "vegetation",
+      "source_sha256": "6ea63113727617478de76e1c03d199832df2232970909c9953c44d2b3a03d932",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "wave12-bathhouse-attendant-2026-v12",
+      "asset_id": "wave12-bathhouse-attendant",
+      "category": "character",
+      "source_sha256": "8bee921dbf88062a94f831a7b6bf37ddca446e0f66d007acc2e489f4674920a9",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-block-printmaker-2026-v12",
+      "asset_id": "wave12-block-printmaker",
+      "category": "character",
+      "source_sha256": "6d7bda843d2148909d30e308a78ce3ab0d74855cad79e7c1e0c27ddbb5299f60",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-boardgame-referee-2026-v12",
+      "asset_id": "wave12-boardgame-referee",
+      "category": "character",
+      "source_sha256": "223d90bbe3d46f021dcd09e0e4be492bf79aef2805d85b6c6542a3b35d9da062",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-broadleaf-tree-2026-v12",
+      "asset_id": "wave12-broadleaf-tree",
+      "category": "vegetation",
+      "source_sha256": "e42b3d2aba02a46f92a702b112aac44a9d189800d62738def3da0bed7a589e72",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "wave12-cinema-projectionist-2026-v12",
+      "asset_id": "wave12-cinema-projectionist",
+      "category": "character",
+      "source_sha256": "de95f438d8cbb38a92e8809e870e64e80f25dc61cbf9ef08cb81f01986593cdc",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-civic-mediator-2026-v12",
+      "asset_id": "wave12-civic-mediator",
+      "category": "character",
+      "source_sha256": "979ca8b2ac2ba8ca47c5778467e802b1f044caa9cb2063803af3e2acdc8555ac",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-civic-railing-module-2026-v12",
+      "asset_id": "wave12-civic-railing-module",
+      "category": "architecture",
+      "source_sha256": "33f0673d870f0ec081c54e65223ea80848782d65c53bd503d981e3b1e1fb71ce",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "wave12-dance-notation-keeper-2026-v12",
+      "asset_id": "wave12-dance-notation-keeper",
+      "category": "character",
+      "source_sha256": "96384eb5d7c044d6b66d8290d91818ec7a1714e3bdad38bc81051b196da9c78f",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-domestic-refrigerator-2026-v12",
+      "asset_id": "wave12-domestic-refrigerator",
+      "category": "equipment",
+      "source_sha256": "2b6b27c3eec5be8cf24e906de080b8ceb9cdb86ef7df904c32544ff6b6c24c0e",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "wave12-greenhouse-beekeeper-2026-v12",
+      "asset_id": "wave12-greenhouse-beekeeper",
+      "category": "character",
+      "source_sha256": "8b9a847411d7b6631f1c294dbde7f5bc596ca148acac199c9aef520d6bc20525",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-harbor-locksmith-2026-v12",
+      "asset_id": "wave12-harbor-locksmith",
+      "category": "character",
+      "source_sha256": "57ed2b5891f3b350f2c27cf053daa10e1e71d5a3abd186003be5fdd8d5c602a3",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-home-game-console-2026-v12",
+      "asset_id": "wave12-home-game-console",
+      "category": "equipment",
+      "source_sha256": "75a32fa2e11bb1d2762e396e81114669c0f12b7e4e26dbb1457c3d18b6f75a94",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "wave12-indoor-potted-tree-2026-v12",
+      "asset_id": "wave12-indoor-potted-tree",
+      "category": "vegetation",
+      "source_sha256": "ba35dd2fb6f3ee8a0d1da82134fb5a42c9c0ff35f0832413c84c0aba47ff1449",
+      "status": "selected_batch1",
+      "reason": "Four-design scoped batch; acceptance is recorded separately after exact-ROM testing."
+    },
+    {
+      "id": "wave12-instrument-tuner-2026-v12",
+      "asset_id": "wave12-instrument-tuner",
+      "category": "character",
+      "source_sha256": "22b48a405cdd08942534ac9bd2991f7e939b4777719469d3501c4884b705bfac",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-market-entrance-canopy-2026-v12",
+      "asset_id": "wave12-market-entrance-canopy",
+      "category": "architecture",
+      "source_sha256": "40031144730a23ed7979a3edddb417afec22b203f9f7c39fb8ca924cc4adf87c",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "wave12-miniature-model-builder-2026-v12",
+      "asset_id": "wave12-miniature-model-builder",
+      "category": "character",
+      "source_sha256": "c56e906e67acdb7291abc3b6f611676489c04dfcad059f72dedab538fe6cea0a",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-mushroom-cultivator-2026-v12",
+      "asset_id": "wave12-mushroom-cultivator",
+      "category": "character",
+      "source_sha256": "0d2ef4525aae350e8e3f08b67c27c71262e87f4c522208b4345e3724643a615f",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-neighborhood-barber-2026-v12",
+      "asset_id": "wave12-neighborhood-barber",
+      "category": "character",
+      "source_sha256": "0e6192a781f884e21e365efa1dd32d3ba3e6bdc96b20db6e6e0c67f18d7cca1c",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-planetarium-guide-2026-v12",
+      "asset_id": "wave12-planetarium-guide",
+      "category": "character",
+      "source_sha256": "c58de4c137b056914b99fba5a693b8fcc27222986ea53f46c09e6faa1a77f0d9",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-rooftop-astronomy-teen-2026-v12",
+      "asset_id": "wave12-rooftop-astronomy-teen",
+      "category": "character",
+      "source_sha256": "032ea868679109118bc31ac963979c0e9c3bc572419072ebba90985a601bf695",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-round-ornamental-shrub-2026-v12",
+      "asset_id": "wave12-round-ornamental-shrub",
+      "category": "vegetation",
+      "source_sha256": "ada61f8ec48db475eebf2d37a9c57ce70e56e1425e09f7fc70f88b83e24abe5b",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "wave12-round-seat-chair-2026-v12",
+      "asset_id": "wave12-round-seat-chair",
+      "category": "furniture",
+      "source_sha256": "fc2bf80bc5b165dd33a04d66f2b0050b6a576c079dea93195b15052ed906cdbf",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "wave12-scent-blender-2026-v12",
+      "asset_id": "wave12-scent-blender",
+      "category": "character",
+      "source_sha256": "f3da5c9abaec9a276221b7676b923d69a44075cf11015cc8078ae5c824d41908",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-shoe-cobbler-2026-v12",
+      "asset_id": "wave12-shoe-cobbler",
+      "category": "character",
+      "source_sha256": "4b57a2fa90473bfeda3f13129f5ecec34d525d968ae77e2725c6b5ae9fa1a54e",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-shore-pier-2026-v12",
+      "asset_id": "wave12-shore-pier",
+      "category": "architecture",
+      "source_sha256": "ce5b08922b5fd77798a01ab0a73e95c49f2b5523b6a7713f5d0852f6b3041abb",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "wave12-single-bed-2026-v12",
+      "asset_id": "wave12-single-bed",
+      "category": "furniture",
+      "source_sha256": "8f6426ea8d8872f83602d4b23372834f24b0544393722f468bc0ac3dd17051e6",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "wave12-spice-blender-2026-v12",
+      "asset_id": "wave12-spice-blender",
+      "category": "character",
+      "source_sha256": "1a731ed0210c257e55e499c369389d444f5a8986ba41e1f1fbbfb92fd14e2ed8",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-stone-mason-2026-v12",
+      "asset_id": "wave12-stone-mason",
+      "category": "character",
+      "source_sha256": "766dc83c66dc8b2f664be4db0d6d55c60315870853b4f8377ff63da1b7cec9b3",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-street-photographer-2026-v12",
+      "asset_id": "wave12-street-photographer",
+      "category": "character",
+      "source_sha256": "8f1fffdbe17b9b791d374689f423b838b9a486501f995942a6ce4740b2eb9ece",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-swimming-instructor-2026-v12",
+      "asset_id": "wave12-swimming-instructor",
+      "category": "character",
+      "source_sha256": "980dcaebb6e80946f0b72af9211da34739ce9ac62bf8f83f7b434f06f35f2fae",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-transit-spotter-2026-v12",
+      "asset_id": "wave12-transit-spotter",
+      "category": "character",
+      "source_sha256": "4fc52a9b3f39ea68a43f6f79f6dc1831e042b60f7d8ce9f7a7de2fb030343d54",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-umbrella-repairer-2026-v12",
+      "asset_id": "wave12-umbrella-repairer",
+      "category": "character",
+      "source_sha256": "5650460a4a9d3b3c2cdeb72e252d145094e8dbd081a6102f0cf2a868af6491d8",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-upright-drawer-chest-2026-v12",
+      "asset_id": "wave12-upright-drawer-chest",
+      "category": "furniture",
+      "source_sha256": "3333e5973628bd68fc4071ec221dd8ab45cd37146ed745b483a432fe092f60ff",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "wave12-wall-clock-2026-v12",
+      "asset_id": "wave12-wall-clock",
+      "category": "equipment",
+      "source_sha256": "5349fe996022e94ff40dee475c4b423de326473ce29301e12ed302b8d81609a8",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "wave12-young-fossil-enthusiast-2026-v12",
+      "asset_id": "wave12-young-fossil-enthusiast",
+      "category": "character",
+      "source_sha256": "8078e346c07b4b34d21eb7667431aac6975b8c53a7aef7c4f0e4ece5da5f9c27",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "wave12-young-map-enthusiast-2026-v12",
+      "asset_id": "wave12-young-map-enthusiast",
+      "category": "character",
+      "source_sha256": "ec9c8871d3b43e44bdb97dba95ae850f5288041b07110f1868f08aa0f622bbb4",
+      "status": "deferred_character",
+      "reason": "Reuse existing characters first. No new event or story placement authorized; full directional/accessory, native palette, anchor and walking admission required. Earlier isolated V19e placements are not merged."
+    },
+    {
+      "id": "world-v2-culture_reader-chalk_sage",
+      "asset_id": "culture_reader",
+      "category": "item_icon",
+      "source_sha256": "0753e21b49435db0de8172663804197c59fec6fd796be503c2d990601c3f8471",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-culture_reader-mineral_silver",
+      "asset_id": "culture_reader",
+      "category": "item_icon",
+      "source_sha256": "96b235972e2f260ea6b9f5049666929388c178dfd94d62e6b808d6273db3ebc0",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-culture_reader-slate_cobalt",
+      "asset_id": "culture_reader",
+      "category": "item_icon",
+      "source_sha256": "d360ff459e73278786d02e70b6102047952c3a723b8f5399fe788c68b7e022cf",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-field_signal_beacon-chalk_sage",
+      "asset_id": "field_signal_beacon",
+      "category": "npc_support_prop",
+      "source_sha256": "144e0f5e5ef7b4509c0b38ef083b9b4d44eaba355d846721473f499fc810f9a5",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-field_signal_beacon-mineral_silver",
+      "asset_id": "field_signal_beacon",
+      "category": "npc_support_prop",
+      "source_sha256": "24c98a3d9d1e8effc850e0539e7b8cd8f661003414c7ece9e4b011f38214900d",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-field_signal_beacon-slate_cobalt",
+      "asset_id": "field_signal_beacon",
+      "category": "npc_support_prop",
+      "source_sha256": "63881ec656ae3f62bff1348bdaf3bfd1dc6de9a94420d5dc75e48560bfd00c77",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-foliage_exposed-deep_green_cream",
+      "asset_id": "foliage_exposed",
+      "category": "vegetation",
+      "source_sha256": "fc18d21fb9361d3e360f2aa34e2b9d596dacdb4a2e7a0b4874c79fce12a8618c",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-foliage_exposed-olive_ochre",
+      "asset_id": "foliage_exposed",
+      "category": "vegetation",
+      "source_sha256": "bc6616423932ddc7debba42e664008f1995c73a484276c8a03de1d77367bc6e2",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-foliage_exposed-sage_silver",
+      "asset_id": "foliage_exposed",
+      "category": "vegetation",
+      "source_sha256": "93f4747e7c4e77299cd1518cdd03dd165edb1b0902f3f96b5cc6db841522bf96",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-foliage_sheltered-deep_green_cream",
+      "asset_id": "foliage_sheltered",
+      "category": "vegetation",
+      "source_sha256": "6e06d29a70664edf171b9e168043e419593d8ae975b45b5080f7101e52bc34d2",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-foliage_sheltered-olive_ochre",
+      "asset_id": "foliage_sheltered",
+      "category": "vegetation",
+      "source_sha256": "f1d535ab6ad525e3d83e4123b8b9219081f9835952d406c36a1290df1ef4bc18",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-foliage_sheltered-sage_silver",
+      "asset_id": "foliage_sheltered",
+      "category": "vegetation",
+      "source_sha256": "8c64e3ffee529cda059dbe0c671dbc4708111ec2feaa11ca7f2d83d5c7cbb7d3",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-lab_analysis_console-chalk_sage",
+      "asset_id": "lab_analysis_console",
+      "category": "laboratory_equipment",
+      "source_sha256": "9e8f79833b894f75dd13b19b3782afa6ff0b0adaba3eaf91114d3468f1ec6784",
+      "status": "deferred_native_review",
+      "reason": "Source lower silhouette touches its edge; composition, function and full native bounds need a separate review."
+    },
+    {
+      "id": "world-v2-lab_analysis_console-mineral_silver",
+      "asset_id": "lab_analysis_console",
+      "category": "laboratory_equipment",
+      "source_sha256": "9f6709f7b6a636365bbec12dc7a2668fde84e292bd012b4bc743f9b22cd2dc1e",
+      "status": "deferred_native_review",
+      "reason": "Source lower silhouette touches its edge; composition, function and full native bounds need a separate review."
+    },
+    {
+      "id": "world-v2-lab_analysis_console-slate_cobalt",
+      "asset_id": "lab_analysis_console",
+      "category": "laboratory_equipment",
+      "source_sha256": "c4cd57e9d5cb3b098971f966f26276647b4e87c00abf7a0aefe8efbfcb272957",
+      "status": "deferred_native_review",
+      "reason": "Source lower silhouette touches its edge; composition, function and full native bounds need a separate review."
+    },
+    {
+      "id": "world-v2-lab_incubator-chalk_sage",
+      "asset_id": "lab_incubator",
+      "category": "laboratory_equipment",
+      "source_sha256": "f0d9c4f1b52ac5e08944a4b9cd633f4c2092f6c1543e167b388aa95f79e0aec7",
+      "status": "deferred_geometry",
+      "reason": "Existing upper-right native tile (12,6) is walkable; wide generated chamber risks occupying that path. Do not cut or deform the body or change collision to fit."
+    },
+    {
+      "id": "world-v2-lab_incubator-mineral_silver",
+      "asset_id": "lab_incubator",
+      "category": "laboratory_equipment",
+      "source_sha256": "022588a98f50fd3ea715f901a49cec2004aa4de09c17c95392b2462c184c1bb5",
+      "status": "deferred_geometry",
+      "reason": "Existing upper-right native tile (12,6) is walkable; wide generated chamber risks occupying that path. Do not cut or deform the body or change collision to fit."
+    },
+    {
+      "id": "world-v2-lab_incubator-slate_cobalt",
+      "asset_id": "lab_incubator",
+      "category": "laboratory_equipment",
+      "source_sha256": "8b2f2ee08fcebb45320aa7e89c8f9a05d45d2486c7b5262755274ccccd532a5a",
+      "status": "deferred_geometry",
+      "reason": "Existing upper-right native tile (12,6) is walkable; wide generated chamber risks occupying that path. Do not cut or deform the body or change collision to fit."
+    },
+    {
+      "id": "world-v2-lab_preparation_terminal-chalk_sage",
+      "asset_id": "lab_preparation_terminal",
+      "category": "laboratory_equipment",
+      "source_sha256": "db3227f040e6a5a7ef52b75438927a38379b0ba39250fd9e6f63cea8b0a3f30f",
+      "status": "alternative_variant",
+      "reason": "One variant admitted per existing object; other complete variants remain candidates, not additional placements."
+    },
+    {
+      "id": "world-v2-lab_preparation_terminal-mineral_silver",
+      "asset_id": "lab_preparation_terminal",
+      "category": "laboratory_equipment",
+      "source_sha256": "970bc44f1cb767d639c610b48c28012b08e2158e5903ac20e305898a3897be27",
+      "status": "selected_batch1",
+      "reason": "Four-design scoped batch; acceptance is recorded separately after exact-ROM testing."
+    },
+    {
+      "id": "world-v2-lab_preparation_terminal-slate_cobalt",
+      "asset_id": "lab_preparation_terminal",
+      "category": "laboratory_equipment",
+      "source_sha256": "2b68b8508a3503106c3a71879ba434932f45d0210c3744aff87cda625a790caf",
+      "status": "alternative_variant",
+      "reason": "One variant admitted per existing object; other complete variants remain candidates, not additional placements."
+    },
+    {
+      "id": "world-v2-lab_registration_terminal-chalk_sage",
+      "asset_id": "lab_registration_terminal",
+      "category": "laboratory_equipment",
+      "source_sha256": "4aa8b86bdb322d270a1d8456f7da441158f7fe22c57384f71950037f4d44c578",
+      "status": "alternative_variant",
+      "reason": "One variant admitted per existing object; other complete variants remain candidates, not additional placements."
+    },
+    {
+      "id": "world-v2-lab_registration_terminal-mineral_silver",
+      "asset_id": "lab_registration_terminal",
+      "category": "laboratory_equipment",
+      "source_sha256": "7b55a683086d993f1ed805605afcc7badc73a3c62ccef67764b93ee96371a53b",
+      "status": "selected_batch1",
+      "reason": "Four-design scoped batch; acceptance is recorded separately after exact-ROM testing."
+    },
+    {
+      "id": "world-v2-lab_registration_terminal-slate_cobalt",
+      "asset_id": "lab_registration_terminal",
+      "category": "laboratory_equipment",
+      "source_sha256": "44ee3e786b44fea68c341b49c1982258e06e7626f9a1bd7ad259481de5440948",
+      "status": "alternative_variant",
+      "reason": "One variant admitted per existing object; other complete variants remain candidates, not additional placements."
+    },
+    {
+      "id": "world-v2-nanomon_medium-chalk_sage",
+      "asset_id": "nanomon_medium",
+      "category": "item_icon",
+      "source_sha256": "c134b07ee90cec7ff5b15ce4541d2b94d904b09a13be033e16da2bb68c1c5e76",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-nanomon_medium-mineral_silver",
+      "asset_id": "nanomon_medium",
+      "category": "item_icon",
+      "source_sha256": "d4f0f0a52b1b2419cbdccf27f2687f4f57b9763795f3bfd1d22855c577f19b7e",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-nanomon_medium-slate_cobalt",
+      "asset_id": "nanomon_medium",
+      "category": "item_icon",
+      "source_sha256": "03c569d312f49f914c9c8e854a578fbb54b76f571674a2076d97ff179820651c",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-post_modular_furniture-chalk_sage",
+      "asset_id": "post_modular_furniture",
+      "category": "interior_furniture",
+      "source_sha256": "5799eb6b628bca9bb0be72cf238fb7045336d439b00a45a99c44d76d43b67da8",
+      "status": "alternative_variant",
+      "reason": "Alternative corrected source retained; Slate Cobalt selected for stronger native legibility in the restored room background."
+    },
+    {
+      "id": "world-v2-post_modular_furniture-mineral_silver",
+      "asset_id": "post_modular_furniture",
+      "category": "interior_furniture",
+      "source_sha256": "9640f23712baa3a30efbe75cd70e6a127c6103e1191e858ca9b6b263d3220fba",
+      "status": "alternative_variant",
+      "reason": "One variant admitted per existing object; other complete variants remain candidates, not additional placements."
+    },
+    {
+      "id": "world-v2-post_modular_furniture-slate_cobalt",
+      "asset_id": "post_modular_furniture",
+      "category": "interior_furniture",
+      "source_sha256": "ba827c5938b7180ca0f70f910e12ff2582da76bb8837b3fdcf61f90e44be2f2f",
+      "status": "selected_batch1",
+      "reason": "Selected for complete table silhouette, cup and legs at uniform 32x32 native fit; exact-ROM acceptance recorded separately."
+    },
+    {
+      "id": "world-v2-research_post_facade-chalk_sage",
+      "asset_id": "research_post_facade",
+      "category": "building",
+      "source_sha256": "5cf48d48530fd3d4cdc3e505a33f902f2b3f9262458f27b7051431747f660302",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-research_post_facade-mineral_silver",
+      "asset_id": "research_post_facade",
+      "category": "building",
+      "source_sha256": "aeaa31479c28377b7cefc5b5d59cd99c3919968ad99f76e2980f60601a0ad799",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-research_post_facade-slate_cobalt",
+      "asset_id": "research_post_facade",
+      "category": "building",
+      "source_sha256": "f519334d4b4c07d7767a1d17915f721d0dad821537e39d93e038c78d4872d6af",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-village_cottage_facade-chalk_sage",
+      "asset_id": "village_cottage_facade",
+      "category": "building",
+      "source_sha256": "be60451c9d0c7bc3fb4e15e45ab4f830458c799bd050fd31c5af5695cdc34ef2",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-village_cottage_facade-mineral_silver",
+      "asset_id": "village_cottage_facade",
+      "category": "building",
+      "source_sha256": "055d9c9e33046aaeb12e540e11b6afaa98473e9f56edabc2a7f06e405bcb070e",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    },
+    {
+      "id": "world-v2-village_cottage_facade-slate_cobalt",
+      "asset_id": "village_cottage_facade",
+      "category": "building",
+      "source_sha256": "c78cc995cb3bd91efa03d874e4c5333525964c486261f6812926584105a4e3e4",
+      "status": "deferred_scope",
+      "reason": "Source catalogue only for this batch; requires an existing binding, full supported-state set, native conversion, collision/interaction and exact-ROM visual admission."
+    }
+  ]
+}

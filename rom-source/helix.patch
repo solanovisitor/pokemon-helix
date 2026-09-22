@@ -48,10 +48,10 @@ index bc9688b6ac..2044003124 100644
  	.include "data/scripts/wild_encounter.inc"
 +	.include "data/scripts/helix_lab_items.inc"
 diff --git a/data/layouts/layouts.json b/data/layouts/layouts.json
-index 2b25587ac1..ac012d647c 100644
+index 2b25587ac1..2f6a6e1f85 100644
 --- a/data/layouts/layouts.json
 +++ b/data/layouts/layouts.json
-@@ -9323,6 +9323,58 @@
+@@ -9323,6 +9323,69 @@
        "border_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa_Frlg/border.bin",
        "blockdata_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa_Frlg/map.bin",
        "layout_version": "frlg"
@@ -87,7 +87,7 @@ index 2b25587ac1..ac012d647c 100644
 +      "width": 12,
 +      "height": 10,
 +      "primary_tileset": "gTileset_Building",
-+      "secondary_tileset": "gTileset_GenericBuilding",
++      "secondary_tileset": "gTileset_HelixAssetsPost",
 +      "border_width": 2,
 +      "border_height": 2,
 +      "name": "HelixResearchPost_Layout",
@@ -106,6 +106,17 @@ index 2b25587ac1..ac012d647c 100644
 +      "name": "HelixQuietGarden_Layout",
 +      "border_filepath": "data/layouts/HelixQuietGarden/border.bin",
 +      "blockdata_filepath": "data/layouts/HelixQuietGarden/map.bin",
++      "layout_version": "emerald"
++    },
++    {
++      "id": "LAYOUT_HELIX_ASSETS_LABORATORY",
++      "name": "HelixAssetsLaboratory_Layout",
++      "width": 13,
++      "height": 13,
++      "primary_tileset": "gTileset_Building",
++      "secondary_tileset": "gTileset_HelixAssetsLab",
++      "border_filepath": "data/layouts/HelixAssetsLaboratory/border.bin",
++      "blockdata_filepath": "data/layouts/HelixAssetsLaboratory/map.bin",
 +      "layout_version": "emerald"
      }
    ]
@@ -2546,6 +2557,18 @@ index 4a8de5689e..f1c6707d99 100644
  };
  
  #define BLOCK_AI_DYNAMAX 15 // Used as dynamax level value by the AI to indicate this mon shouldn't dynamax
+diff --git a/include/tilesets.h b/include/tilesets.h
+index a13a19cb72..f22d725c40 100644
+--- a/include/tilesets.h
++++ b/include/tilesets.h
+@@ -62,3 +62,7 @@ extern const struct Tileset gTileset_SeaCottage;
+ extern const struct Tileset gTileset_TrainerTower;
+ 
+ #endif //GUARD_tilesets_H
++
++extern const struct Tileset gTileset_HelixAssetsPost;
++
++extern const struct Tileset gTileset_HelixAssetsLab;
 diff --git a/src/battle_main.c b/src/battle_main.c
 index 4729c542d0..6d262e1403 100644
 --- a/src/battle_main.c
@@ -3596,6 +3619,102 @@ index 5fbd760329..db7d8fa541 100644
      [MULTI_BRINEY_ON_DEWFORD]          = MULTICHOICE(MultichoiceList_BrineyOnDewford),
      [MULTI_PC]                         = MULTICHOICE(MultichoiceList_Exit),
      [MULTI_ENTERINFO]                  = MULTICHOICE(MultichoiceList_EnterInfo),
+diff --git a/src/data/tilesets/graphics.h b/src/data/tilesets/graphics.h
+index e1a44dca26..a4d7e54737 100644
+--- a/src/data/tilesets/graphics.h
++++ b/src/data/tilesets/graphics.h
+@@ -3038,3 +3038,47 @@ const u16 ALIGNED(4) gTilesetPalettes_General_Frlg[][16] =
+ const u32 gTilesetTiles_General_Frlg[] = INCGFX_U32("data/tilesets/primary/general_frlg/tiles.png", ".4bpp.smol");
+ 
+ #endif // IS_FRLG
++
++// Isolated Helix catalog batch 1; all other maps retain upstream art.
++const u32 gTilesetTiles_HelixAssetsPost[] = INCGFX_U32("data/tilesets/secondary/helix_assets_post/tiles.png", ".4bpp.fastSmol", "-num_tiles 512 -Wnum_tiles");
++const u16 gTilesetPalettes_HelixAssetsPost[][16] =
++{
++    INCGFX_U16("data/tilesets/secondary/helix_assets_post/palettes/00.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_post/palettes/01.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_post/palettes/02.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_post/palettes/03.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_post/palettes/04.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_post/palettes/05.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_post/palettes/06.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_post/palettes/07.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_post/palettes/08.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_post/palettes/09.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_post/palettes/10.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_post/palettes/11.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_post/palettes/12.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_post/palettes/13.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_post/palettes/14.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_post/palettes/15.pal", ".gbapal"),
++};
++
++// Isolated Helix catalog batch 1; all other maps retain upstream art.
++const u32 gTilesetTiles_HelixAssetsLab[] = INCGFX_U32("data/tilesets/secondary/helix_assets_lab/tiles.png", ".4bpp.fastSmol", "-num_tiles 512 -Wnum_tiles");
++const u16 gTilesetPalettes_HelixAssetsLab[][16] =
++{
++    INCGFX_U16("data/tilesets/secondary/helix_assets_lab/palettes/00.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_lab/palettes/01.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_lab/palettes/02.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_lab/palettes/03.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_lab/palettes/04.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_lab/palettes/05.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_lab/palettes/06.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_lab/palettes/07.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_lab/palettes/08.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_lab/palettes/09.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_lab/palettes/10.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_lab/palettes/11.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_lab/palettes/12.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_lab/palettes/13.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_lab/palettes/14.pal", ".gbapal"),
++    INCGFX_U16("data/tilesets/secondary/helix_assets_lab/palettes/15.pal", ".gbapal"),
++};
+diff --git a/src/data/tilesets/headers.h b/src/data/tilesets/headers.h
+index c7702c2393..bd46133cdc 100644
+--- a/src/data/tilesets/headers.h
++++ b/src/data/tilesets/headers.h
+@@ -1541,3 +1541,25 @@ const struct Tileset gTileset_HallOfFame =
+ };
+ 
+ #endif // IS_FRLG
++
++const struct Tileset gTileset_HelixAssetsPost =
++{
++    .isCompressed = TRUE,
++    .isSecondary = TRUE,
++    .tiles = gTilesetTiles_HelixAssetsPost,
++    .palettes = gTilesetPalettes_HelixAssetsPost,
++    .metatiles = gMetatiles_HelixAssetsPost,
++    .metatileAttributes = gMetatileAttributes_HelixAssetsPost,
++    .callback = NULL,
++};
++
++const struct Tileset gTileset_HelixAssetsLab =
++{
++    .isCompressed = TRUE,
++    .isSecondary = TRUE,
++    .tiles = gTilesetTiles_HelixAssetsLab,
++    .palettes = gTilesetPalettes_HelixAssetsLab,
++    .metatiles = gMetatiles_HelixAssetsLab,
++    .metatileAttributes = gMetatileAttributes_HelixAssetsLab,
++    .callback = NULL,
++};
+diff --git a/src/data/tilesets/metatiles.h b/src/data/tilesets/metatiles.h
+index f82ea00f8f..ea1e6356d9 100644
+--- a/src/data/tilesets/metatiles.h
++++ b/src/data/tilesets/metatiles.h
+@@ -408,3 +408,9 @@ const u16 gMetatiles_HallOfFame[] = INCBIN_U16("data/tilesets/secondary/hall_of_
+ const u16 gMetatileAttributes_HallOfFame[] = INCBIN_U16("data/tilesets/secondary/hall_of_fame_frlg/metatile_attributes.bin");
+ 
+ #endif // IS_FRLG
++
++const u16 gMetatiles_HelixAssetsPost[] = INCBIN_U16("data/tilesets/secondary/helix_assets_post/metatiles.bin");
++const u16 gMetatileAttributes_HelixAssetsPost[] = INCBIN_U16("data/tilesets/secondary/helix_assets_post/metatile_attributes.bin");
++
++const u16 gMetatiles_HelixAssetsLab[] = INCBIN_U16("data/tilesets/secondary/helix_assets_lab/metatiles.bin");
++const u16 gMetatileAttributes_HelixAssetsLab[] = INCBIN_U16("data/tilesets/secondary/helix_assets_lab/metatile_attributes.bin");
 diff --git a/src/data/trainers.party b/src/data/trainers.party
 index fbe4a37f6d..53fb45960d 100644
 --- a/src/data/trainers.party

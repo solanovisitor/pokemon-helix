@@ -31,6 +31,8 @@ jobs:
           enable-cache: false
       - run: uv sync --locked --python 3.12 --extra generation
       - run: uv run --locked python -m unittest discover -s tests -v
+      - name: Protect unrelated maps, collisions and opaque scene backgrounds
+        run: uv run --locked --with pillow==11.3.0 python -m unittest discover -s tests -p test_native_asset_scope.py -v
       - run: uv run --locked python -m companion.demo
       - run: uv run --locked python platform/rg34xx/smoke.py
       - run: uv run --locked python scripts/check-public.py

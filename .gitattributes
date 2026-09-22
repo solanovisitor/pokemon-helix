@@ -1,3 +1,7 @@
 # Preserve downloaded reference bytes and their recorded source hashes.
 examples/genetics/source-record.gb -whitespace
 examples/genetics/danio_rerio_NC_002333.2_1-1536.fasta -whitespace
+# Preserve unified patch context and original CRLF palette bytes/hash identities.
+rom-source/helix.patch -whitespace
+rom-source/overlay/data/tilesets/secondary/helix_assets_lab/palettes/*.pal -whitespace
+rom-source/overlay/data/tilesets/secondary/helix_assets_post/palettes/*.pal -whitespace
