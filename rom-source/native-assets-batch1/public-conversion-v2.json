@@ -1,0 +1,929 @@
+{
+  "assets": [
+    {
+      "all_positions": [
+        [
+          2,
+          5
+        ]
+      ],
+      "conversion": {
+        "affine_output_to_input": [
+          13.65625,
+          0,
+          293.5,
+          0,
+          13.65625,
+          312.0
+        ],
+        "alpha_1_to_127_pixels_excluded_from_native_opacity": 5014,
+        "alpha_1_to_3_pixels_excluded_from_registration": 2690,
+        "alpha_threshold": 128,
+        "anchor": "bottom_center_of_original_foreground",
+        "native_alpha_bounds": [
+          0,
+          0,
+          32,
+          32
+        ],
+        "nonzero_alpha_bounds": [
+          119,
+          284,
+          816,
+          864
+        ],
+        "original_foreground_bounds": [
+          2,
+          0,
+          30,
+          32
+        ],
+        "palette_recipe": "deterministic occurrence-weighted RGB555 separation; 15 colors plus transparent zero",
+        "registration_alpha_threshold": 4,
+        "resampling": "nearest",
+        "source_alpha_bounds": [
+          298,
+          312,
+          726,
+          749
+        ],
+        "source_size": [
+          1024,
+          1024
+        ],
+        "target_foreground_bounds": [
+          0,
+          0,
+          32,
+          32
+        ],
+        "uniform_scale": 0.07322654462242563,
+        "visible_source_crop": false
+      },
+      "id": "world-v2-post_modular_furniture-slate_cobalt",
+      "lower_background_refs": "byte-identical",
+      "map": "HelixResearchPost",
+      "metatile_attributes": "byte-identical",
+      "metatiles": [
+        [
+          584,
+          585
+        ],
+        [
+          592,
+          593
+        ]
+      ],
+      "native_sha256": "dfa28fee22e804511233e00b139ea0a8aced1c138710e758f2755815bf0c515d",
+      "native_tile_indices": [
+        768,
+        769,
+        770,
+        773,
+        774,
+        775,
+        776,
+        777,
+        778,
+        779,
+        780,
+        781,
+        782,
+        783,
+        784,
+        785
+      ],
+      "palette_slot": 7,
+      "position": [
+        2,
+        5
+      ],
+      "source_sha256": "ba827c5938b7180ca0f70f910e12ff2582da76bb8837b3fdcf61f90e44be2f2f",
+      "source_url": "https://huggingface.co/datasets/todeschini/helix-assets/resolve/d7c825f2d15b0818d549b8367d1054cb53c23713/images/ba827c5938b7180ca0f70f910e12ff2582da76bb8837b3fdcf61f90e44be2f2f.png",
+      "states": [
+        "idle"
+      ]
+    },
+    {
+      "all_positions": [
+        [
+          3,
+          0
+        ]
+      ],
+      "conversion": {
+        "affine_output_to_input": [
+          10.136363636363637,
+          0,
+          19.318181818181806,
+          0,
+          10.136363636363637,
+          -9.363636363636374
+        ],
+        "alpha_1_to_127_pixels_excluded_from_native_opacity": 3204,
+        "alpha_1_to_3_pixels_excluded_from_registration": 2172,
+        "alpha_threshold": 128,
+        "anchor": "bottom_center_of_original_foreground",
+        "native_alpha_bounds": [
+          5,
+          10,
+          27,
+          32
+        ],
+        "nonzero_alpha_bounds": [
+          61,
+          32,
+          332,
+          322
+        ],
+        "original_foreground_bounds": [
+          0,
+          10,
+          32,
+          32
+        ],
+        "palette_recipe": "deterministic occurrence-weighted RGB555 separation; 15 colors plus transparent zero",
+        "registration_alpha_threshold": 4,
+        "resampling": "nearest",
+        "source_alpha_bounds": [
+          64,
+          92,
+          299,
+          315
+        ],
+        "source_size": [
+          341,
+          341
+        ],
+        "target_foreground_bounds": [
+          0,
+          10,
+          32,
+          32
+        ],
+        "uniform_scale": 0.09865470852017937,
+        "visible_source_crop": false
+      },
+      "id": "world-v2-lab_registration_terminal-mineral_silver",
+      "lower_background_refs": "byte-identical",
+      "map": "HelixLaboratory",
+      "metatile_attributes": "byte-identical",
+      "metatiles": [
+        [
+          530,
+          531
+        ],
+        [
+          538,
+          539
+        ]
+      ],
+      "native_sha256": "9dae371f03972bcea1481a87594030849f62618c7a3da5b686c8e28ff2056f4f",
+      "native_tile_indices": [
+        768,
+        769,
+        770,
+        771,
+        772,
+        773,
+        774,
+        775,
+        776,
+        777,
+        778,
+        779,
+        780,
+        781,
+        782,
+        783
+      ],
+      "palette_slot": 9,
+      "position": [
+        3,
+        0
+      ],
+      "source_sha256": "7b55a683086d993f1ed805605afcc7badc73a3c62ccef67764b93ee96371a53b",
+      "source_url": "https://huggingface.co/datasets/todeschini/helix-assets/resolve/d7c825f2d15b0818d549b8367d1054cb53c23713/images/7b55a683086d993f1ed805605afcc7badc73a3c62ccef67764b93ee96371a53b.png",
+      "states": [
+        "idle"
+      ]
+    },
+    {
+      "all_positions": [
+        [
+          1,
+          9
+        ]
+      ],
+      "conversion": {
+        "affine_output_to_input": [
+          13.225806451612904,
+          0,
+          61.69354838709677,
+          0,
+          13.225806451612904,
+          58.774193548387096
+        ],
+        "alpha_1_to_127_pixels_excluded_from_native_opacity": 5027,
+        "alpha_1_to_3_pixels_excluded_from_registration": 3409,
+        "alpha_threshold": 128,
+        "anchor": "bottom_center_of_original_foreground",
+        "native_alpha_bounds": [
+          2,
+          1,
+          14,
+          32
+        ],
+        "nonzero_alpha_bounds": [
+          77,
+          70,
+          274,
+          484
+        ],
+        "original_foreground_bounds": [
+          0,
+          1,
+          16,
+          32
+        ],
+        "palette_recipe": "deterministic occurrence-weighted RGB555 separation; 15 colors plus transparent zero",
+        "registration_alpha_threshold": 4,
+        "resampling": "nearest",
+        "source_alpha_bounds": [
+          81,
+          72,
+          254,
+          482
+        ],
+        "source_size": [
+          288,
+          512
+        ],
+        "target_foreground_bounds": [
+          0,
+          1,
+          16,
+          32
+        ],
+        "uniform_scale": 0.07560975609756097,
+        "visible_source_crop": false
+      },
+      "id": "world-v2-lab_preparation_terminal-mineral_silver",
+      "lower_background_refs": "byte-identical",
+      "map": "HelixLaboratory",
+      "metatile_attributes": "byte-identical",
+      "metatiles": [
+        [
+          560
+        ],
+        [
+          568
+        ]
+      ],
+      "native_sha256": "c224ddd0bb53650e4a2715656acd56fa19505796ea6ead107edb26139115f885",
+      "native_tile_indices": [
+        784,
+        785,
+        786,
+        787,
+        788,
+        789,
+        790,
+        791
+      ],
+      "palette_slot": 10,
+      "position": [
+        1,
+        9
+      ],
+      "source_sha256": "970bc44f1cb767d639c610b48c28012b08e2158e5903ac20e305898a3897be27",
+      "source_url": "https://huggingface.co/datasets/todeschini/helix-assets/resolve/d7c825f2d15b0818d549b8367d1054cb53c23713/images/970bc44f1cb767d639c610b48c28012b08e2158e5903ac20e305898a3897be27.png",
+      "states": [
+        "idle"
+      ]
+    },
+    {
+      "all_positions": [
+        [
+          8,
+          1
+        ],
+        [
+          9,
+          1
+        ]
+      ],
+      "conversion": {
+        "affine_output_to_input": [
+          30.125,
+          0,
+          271.0,
+          0,
+          30.125,
+          4.000000000000028
+        ],
+        "alpha_1_to_127_pixels_excluded_from_native_opacity": 8526,
+        "alpha_1_to_3_pixels_excluded_from_registration": 5218,
+        "alpha_threshold": 128,
+        "anchor": "bottom_center_of_original_foreground",
+        "native_alpha_bounds": [
+          0,
+          3,
+          16,
+          32
+        ],
+        "nonzero_alpha_bounds": [
+          113,
+          19,
+          928,
+          972
+        ],
+        "original_foreground_bounds": [
+          0,
+          1,
+          16,
+          32
+        ],
+        "palette_recipe": "deterministic occurrence-weighted RGB555 separation; 15 colors plus transparent zero",
+        "registration_alpha_threshold": 4,
+        "resampling": "nearest",
+        "source_alpha_bounds": [
+          271,
+          101,
+          753,
+          968
+        ],
+        "source_size": [
+          1024,
+          1024
+        ],
+        "target_foreground_bounds": [
+          0,
+          1,
+          16,
+          32
+        ],
+        "uniform_scale": 0.03319502074688797,
+        "visible_source_crop": false
+      },
+      "id": "wave12-indoor-potted-tree-2026-v12",
+      "lower_background_refs": "top unchanged; bottom metatile uses separately documented original native peach floor",
+      "map": "HelixResearchPost",
+      "metatile_attributes": "byte-identical",
+      "metatiles": [
+        [
+          656
+        ],
+        [
+          664
+        ]
+      ],
+      "native_sha256": "d7b4b78078db8e4044e2bfe072ac3d81562d90cc9df19acf0b93d8d04644ca6d",
+      "native_tile_indices": [
+        786,
+        789,
+        790,
+        791,
+        792,
+        793,
+        794,
+        795
+      ],
+      "palette_slot": 11,
+      "position": [
+        8,
+        1
+      ],
+      "source_sha256": "ba35dd2fb6f3ee8a0d1da82134fb5a42c9c0ff35f0832413c84c0aba47ff1449",
+      "source_url": "https://huggingface.co/datasets/todeschini/helix-assets/resolve/d7c825f2d15b0818d549b8367d1054cb53c23713/images/ba35dd2fb6f3ee8a0d1da82134fb5a42c9c0ff35f0832413c84c0aba47ff1449.png",
+      "states": [
+        "idle"
+      ]
+    }
+  ],
+  "config": "gallery",
+  "converter_sha256": "2efb20bc8c4ebdb9678fc54ad90b9fd6455d6716b3c838c81c25fff0e4fd3511",
+  "dataset": "todeschini/helix-assets",
+  "designs": 4,
+  "evidence_files": {
+    "HelixLaboratory-after.png": "bd54617202dc726e3fd9db8fc7bb192470b2f67aab420836a16b3bc882dc9f54",
+    "HelixLaboratory-before.png": "6e058aef8ee5387e2c7ca8155ee1232f77c8721ef42a1e20a6b4ecdee2b241d8",
+    "HelixResearchPost-after.png": "ad726825ca6bdc2cf5498f03216130695efbda67dd098cadb279e6b42d92c3aa",
+    "HelixResearchPost-before.png": "df198642eec6e9efa58ab17b51e19f67ea7e360b00a39c9b7c1a1a0dd071d9f2",
+    "comparison.png": "fcea05a3da41a9c5a03f5bf3ad698f6c9d5a38a3ce85ba64015a239cfed9b087",
+    "indoor_potted_tree/native.4bpp": "bf0f6bf328dd279a4386503a1edb7feaeb45b2b3b11060d490dd63d4e4f8d156",
+    "indoor_potted_tree/native.png": "d7b4b78078db8e4044e2bfe072ac3d81562d90cc9df19acf0b93d8d04644ca6d",
+    "indoor_potted_tree/palette.gbapal": "cde33076f2980482a59cd3733a19100917cac03c6edaa5f363f9422e72a82f76",
+    "indoor_potted_tree/palette.pal": "f45e646a92d3135223d9d86b8aace7eb1cfecbca8b06dd685e8eb18d87d82f67",
+    "indoor_potted_tree/reference-foreground.png": "28e1fe3d68f2793c7d9467bc1edb1f703fcc840776c932d6260865ae975cbed1",
+    "indoor_potted_tree/reference.png": "01dac9ad007d4ee48b827f8ae72652e36f21c56c9962a7baba406c98db5c8486",
+    "lab_preparation_terminal/native.4bpp": "f3e051bbb963a5363268d961a20b12785c1c1beade6f07a5b796fe25493a968d",
+    "lab_preparation_terminal/native.png": "c224ddd0bb53650e4a2715656acd56fa19505796ea6ead107edb26139115f885",
+    "lab_preparation_terminal/palette.gbapal": "2ef72b8fed47456750999f507a61444513130a9819276aa12d9334b3be1521b7",
+    "lab_preparation_terminal/palette.pal": "a1eff4bfed946a6e9bcbf046ee5870aaaee4ec0da359b83d06ad322f6f8a1f45",
+    "lab_preparation_terminal/reference-foreground.png": "d0e83aa234b1fb69bebae506de852e89726044501f5111b96b51bac327d71676",
+    "lab_preparation_terminal/reference.png": "3260adff8406be3c86984e8c1de384ea1acd98d77b278fb44605b7703c4474f1",
+    "lab_registration_terminal/native.4bpp": "5cc14fa3ffc1d1db1cab94801c0acf75f7f0cf932a0be36eb66be847fc77c29a",
+    "lab_registration_terminal/native.png": "9dae371f03972bcea1481a87594030849f62618c7a3da5b686c8e28ff2056f4f",
+    "lab_registration_terminal/palette.gbapal": "317242977deef8cde66ed255aa0ef4c26464a7a990202874713ea51c7e5d3752",
+    "lab_registration_terminal/palette.pal": "ef5990e58cedeaa42231d3e2dd062ec4938ea3c25772b99355f28e50a5a5c646",
+    "lab_registration_terminal/reference-foreground.png": "41bdc49930fa45c3f0515e2f2ef2bdada6a42262ad46a6df544c55d58d4e8a10",
+    "lab_registration_terminal/reference.png": "1eb68cf2b691a26f633ecb3d889fbf7a2e1796a1b9d61abdaf9f4a585363838b",
+    "post_modular_furniture/native.4bpp": "43bbece88e354448e9762236c228bb1cd44deea8e1977b9a9ef484eb8910308c",
+    "post_modular_furniture/native.png": "dfa28fee22e804511233e00b139ea0a8aced1c138710e758f2755815bf0c515d",
+    "post_modular_furniture/palette.gbapal": "7cdc0d57bca9cb8e22a32944dc85eba8913d296fa2f4626c4d241a50593165d9",
+    "post_modular_furniture/palette.pal": "0b9b9d2374040be89bd645cae201852aa4e6a13ce53724c29dc802b658dc81ea",
+    "post_modular_furniture/reference-foreground.png": "265965d6d79bef2521f7bf4e08b89c793eadc5e5c029dbbe489ae9d209e9adb1",
+    "post_modular_furniture/reference.png": "619fa05dcbc775e7f55e6c4bb4df49ac4da2067daafc5e41503bf4b88e0ced66"
+  },
+  "native_background_repair": {
+    "affected_map_cells": 66,
+    "affected_metatile_definitions": 4,
+    "fully_opaque": true,
+    "map": "HelixResearchPost",
+    "map_blocks_and_attributes_preserved": true,
+    "metatiles": [
+      {
+        "lower_refs_after": [
+          25112,
+          25112,
+          25112,
+          25112
+        ],
+        "lower_refs_before": [
+          25136,
+          25137,
+          25136,
+          25137
+        ],
+        "metatile": 547,
+        "positions": [
+          [
+            1,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            5,
+            2
+          ],
+          [
+            6,
+            2
+          ],
+          [
+            7,
+            2
+          ],
+          [
+            10,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            5,
+            3
+          ],
+          [
+            6,
+            3
+          ],
+          [
+            7,
+            3
+          ],
+          [
+            8,
+            3
+          ],
+          [
+            9,
+            3
+          ],
+          [
+            10,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            4
+          ],
+          [
+            6,
+            4
+          ],
+          [
+            7,
+            4
+          ],
+          [
+            8,
+            4
+          ],
+          [
+            9,
+            4
+          ],
+          [
+            10,
+            4
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            5
+          ],
+          [
+            7,
+            5
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            5
+          ],
+          [
+            10,
+            5
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            7,
+            6
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            9,
+            6
+          ],
+          [
+            10,
+            6
+          ],
+          [
+            1,
+            7
+          ],
+          [
+            2,
+            7
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            7,
+            7
+          ],
+          [
+            8,
+            7
+          ],
+          [
+            9,
+            7
+          ],
+          [
+            10,
+            7
+          ],
+          [
+            1,
+            8
+          ],
+          [
+            2,
+            8
+          ],
+          [
+            3,
+            8
+          ],
+          [
+            4,
+            8
+          ],
+          [
+            5,
+            8
+          ],
+          [
+            6,
+            8
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            9,
+            8
+          ],
+          [
+            10,
+            8
+          ]
+        ]
+      },
+      {
+        "lower_refs_after": [
+          25112,
+          25112,
+          25112,
+          25112
+        ],
+        "lower_refs_before": [
+          25152,
+          25152,
+          25152,
+          25152
+        ],
+        "metatile": 664,
+        "positions": [
+          [
+            8,
+            2
+          ],
+          [
+            9,
+            2
+          ]
+        ]
+      },
+      {
+        "lower_refs_after": [
+          25112,
+          25112,
+          25112,
+          25112
+        ],
+        "lower_refs_before": [
+          25152,
+          25152,
+          25152,
+          25152
+        ],
+        "metatile": 649,
+        "positions": [
+          [
+            2,
+            2
+          ]
+        ]
+      },
+      {
+        "lower_refs_after": [
+          25112,
+          25112,
+          25112,
+          25112
+        ],
+        "lower_refs_before": [
+          25152,
+          25152,
+          25152,
+          25152
+        ],
+        "metatile": 650,
+        "positions": [
+          [
+            3,
+            2
+          ]
+        ]
+      }
+    ],
+    "no_generated_pixels": true,
+    "palette_changes": false,
+    "source_layer": 0,
+    "source_metatile": 584,
+    "source_pixels_sha256": "4940849b3a72a49c07c8293a950a2e2185b4147d0db0e1288b45b30319b9f235",
+    "source_refs": [
+      25112,
+      25112,
+      25112,
+      25112
+    ],
+    "upper_furniture_layers_preserved": true
+  },
+  "npc_designs": 0,
+  "npc_positions": 0,
+  "object_positions": 5,
+  "overlay_files": {
+    "data/layouts/HelixAssetsLaboratory/border.bin": "9ff63640fa3b4682056532b7924b03250ccc7a832f64ccec3dea79ea8595a24d",
+    "data/layouts/HelixAssetsLaboratory/map.bin": "dfb4b37b84e99ae5b82f822bdeb16db665ba7048acd2513522efd7d0fd776f7a",
+    "data/layouts/layouts.json": "5cfa5aca2a9ceba7ed3a3dbde5fa6dfab63d3777ecf01edb61f0da7a7d0d6def",
+    "data/maps/HelixLaboratory/map.json": "58a7126bff52aff6ce196bcd19ebd0f4d39d9652984b00cab43742f2caf6a866",
+    "data/tilesets/secondary/helix_assets_lab/metatile_attributes.bin": "f161a8b562196a6454d4b2842e8469f08330628fd0212188111d7e1172a39532",
+    "data/tilesets/secondary/helix_assets_lab/metatiles.bin": "6010158ccf56e24521a79de7021fcf5789d253ab9530e542508bd4c7cee337b2",
+    "data/tilesets/secondary/helix_assets_lab/palettes/00.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/01.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/02.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/03.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/04.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/05.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/06.pal": "b19f4f5d5f70ea211950fb0ce7ba2dc841ce61ce8eb56d6cdd19decc6d40c460",
+    "data/tilesets/secondary/helix_assets_lab/palettes/07.pal": "b658a1e0131409890cec9458e90cf2d6ba09bec6b8048be616c1eea177df0ed4",
+    "data/tilesets/secondary/helix_assets_lab/palettes/08.pal": "2b315471a7d66d9ac4a1f509e7c4cc4766e2bdf5bb77f25b1a192234b1c81333",
+    "data/tilesets/secondary/helix_assets_lab/palettes/09.pal": "ef5990e58cedeaa42231d3e2dd062ec4938ea3c25772b99355f28e50a5a5c646",
+    "data/tilesets/secondary/helix_assets_lab/palettes/10.pal": "a1eff4bfed946a6e9bcbf046ee5870aaaee4ec0da359b83d06ad322f6f8a1f45",
+    "data/tilesets/secondary/helix_assets_lab/palettes/11.pal": "7e69efc0d05cba0606807dd93400ced06fe8c37cab116c4c4fc3b4a5beee8ed7",
+    "data/tilesets/secondary/helix_assets_lab/palettes/12.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/13.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/14.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/palettes/15.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_lab/tiles.png": "cd77628bf29129b68e24c1eaa8c72b84b6c30033ce0e552e27d9c825a39f4fe2",
+    "data/tilesets/secondary/helix_assets_post/metatile_attributes.bin": "eb3e942c013770224ffc7d99c469cdaf9cd31243f71ce3fb05a70b278dc5a509",
+    "data/tilesets/secondary/helix_assets_post/metatiles.bin": "b04c667cf428f2691e9db4f872a14ccf9649148c92cc93e2091962aedac09637",
+    "data/tilesets/secondary/helix_assets_post/palettes/00.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/01.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/02.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/03.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/04.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/05.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/06.pal": "baa86b1e51a10ae1d9dd06d23d3bb2ce9e9d433cdf2db2725ad7f8eaf5ec436b",
+    "data/tilesets/secondary/helix_assets_post/palettes/07.pal": "0b9b9d2374040be89bd645cae201852aa4e6a13ce53724c29dc802b658dc81ea",
+    "data/tilesets/secondary/helix_assets_post/palettes/08.pal": "4337d5d58699ccbd65c173f8e8ae43c9e130fd7cb852546a39a79d7f6f56291a",
+    "data/tilesets/secondary/helix_assets_post/palettes/09.pal": "143d93d5434956f8d5662bbb06f169381961c54d55b988ad817ffb98149793e3",
+    "data/tilesets/secondary/helix_assets_post/palettes/10.pal": "6d21da346690602935e38b8a94b2b1bdc84683ae640f4442d4175250ed523c1a",
+    "data/tilesets/secondary/helix_assets_post/palettes/11.pal": "f45e646a92d3135223d9d86b8aace7eb1cfecbca8b06dd685e8eb18d87d82f67",
+    "data/tilesets/secondary/helix_assets_post/palettes/12.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/13.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/14.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/palettes/15.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/helix_assets_post/tiles.png": "db0d479c50835c1fa7c136d5dcd47a97b9dcc1d3d323e3201ae515870af3ae6a",
+    "include/tilesets.h": "e883233b351d5fe88e44d3b66c2586f536ea105933fa4623a2e2d795dcf0e39b",
+    "src/data/tilesets/graphics.h": "829073df6c6970d76b9608c4406ef203c2a4eee5cdf669945c7b5aa4f639f4fc",
+    "src/data/tilesets/headers.h": "5d9a8673106ae57eaa8959b7f84afa3bc2d6fa16a7e7aaecd68ad704a58cfb98",
+    "src/data/tilesets/metatiles.h": "5b730de22178db433377a8aed3aa580be9a1dfe96f178d25da320ca23d01247d"
+  },
+  "paid_calls": 0,
+  "preserved": {
+    "lower_layer_refs_except_requested_post_backdrop": true,
+    "map_blockdata": true,
+    "metatile_attributes": true,
+    "npc_events": true,
+    "scripts": true,
+    "source_tilesets": true
+  },
+  "requested_revision": "Cohesive native post backdrop and full-footprint table; no generated-art changes",
+  "revision": "d7c825f2d15b0818d549b8367d1054cb53c23713",
+  "runtime_acceptance": "pending exact-ROM mGBA review",
+  "schema": 2,
+  "source_art_modified": false,
+  "source_inputs": {
+    "data/layouts/HelixResearchPost/border.bin": "efef8d5a9f8dbe5bb218e6b0cc452583eb9d1452b615b1c7ab66ad49c82e9d70",
+    "data/layouts/HelixResearchPost/map.bin": "936f5bd779cccf282b8227dfa973bf4ef6c2c86f2b971fff7e297ecad3eef70c",
+    "data/layouts/LittlerootTown_ProfessorBirchsLab/border.bin": "9ff63640fa3b4682056532b7924b03250ccc7a832f64ccec3dea79ea8595a24d",
+    "data/layouts/LittlerootTown_ProfessorBirchsLab/map.bin": "dfb4b37b84e99ae5b82f822bdeb16db665ba7048acd2513522efd7d0fd776f7a",
+    "data/layouts/layouts.json": "5dec6e7e974ceb94ec8225c76e82acf478704c92bde44c7dac4ea169b462c510",
+    "data/maps/HelixLaboratory/map.json": "d474f986eaf32558ed49cba82deadc352bab6025d842f1adcb00e88f71701036",
+    "data/maps/HelixResearchPost/map.json": "a420022541252233a4c109453ca59e6606a2505f436941ee2dfa6744a55a05f3",
+    "data/tilesets/primary/building/metatile_attributes.bin": "7a153a1748dc4bd03e621acad6c6b7e90c2d3acfc467a928ad23d21f34e73128",
+    "data/tilesets/primary/building/metatiles.bin": "65e40fece49f8ed09a82b33c3d590716d9740581f087acd1359665331e4683f1",
+    "data/tilesets/primary/building/palettes/00.pal": "6c3945e9fa87ed124341d4469e411893650fd0e283174a1d8a1c3c173560d9cb",
+    "data/tilesets/primary/building/palettes/01.pal": "4337d5d58699ccbd65c173f8e8ae43c9e130fd7cb852546a39a79d7f6f56291a",
+    "data/tilesets/primary/building/palettes/02.pal": "c1f392856603da865d7b6eccea4c3382c8921acc40739c8ed7cc6bd27a94a8d2",
+    "data/tilesets/primary/building/palettes/03.pal": "c1f392856603da865d7b6eccea4c3382c8921acc40739c8ed7cc6bd27a94a8d2",
+    "data/tilesets/primary/building/palettes/04.pal": "c1f392856603da865d7b6eccea4c3382c8921acc40739c8ed7cc6bd27a94a8d2",
+    "data/tilesets/primary/building/palettes/05.pal": "c99d0e3d59bee789d9faa3fe28efeb8f134261f635e7e6b1dc35fc4d8e525f67",
+    "data/tilesets/primary/building/palettes/06.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/primary/building/palettes/07.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/primary/building/palettes/08.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/primary/building/palettes/09.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/primary/building/palettes/10.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/primary/building/palettes/11.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/primary/building/palettes/12.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/primary/building/palettes/13.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/primary/building/palettes/14.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/primary/building/palettes/15.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/primary/building/tiles.png": "355d5dc8625e332ceb34cbe685092d96540ece0b7a39293e493d27c02b6db300",
+    "data/tilesets/secondary/generic_building/metatile_attributes.bin": "eb3e942c013770224ffc7d99c469cdaf9cd31243f71ce3fb05a70b278dc5a509",
+    "data/tilesets/secondary/generic_building/metatiles.bin": "c3401446239749a25f6abc1daab0c19cd43eb6333a7ec5335bb7e1580d002b1d",
+    "data/tilesets/secondary/generic_building/palettes/00.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/generic_building/palettes/01.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/generic_building/palettes/02.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/generic_building/palettes/03.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/generic_building/palettes/04.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/generic_building/palettes/05.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/generic_building/palettes/06.pal": "baa86b1e51a10ae1d9dd06d23d3bb2ce9e9d433cdf2db2725ad7f8eaf5ec436b",
+    "data/tilesets/secondary/generic_building/palettes/07.pal": "8ada8107496ed19c2d3058dacc1a646e0ce7f4ae4db32739d7ccafb1f633534a",
+    "data/tilesets/secondary/generic_building/palettes/08.pal": "4337d5d58699ccbd65c173f8e8ae43c9e130fd7cb852546a39a79d7f6f56291a",
+    "data/tilesets/secondary/generic_building/palettes/09.pal": "143d93d5434956f8d5662bbb06f169381961c54d55b988ad817ffb98149793e3",
+    "data/tilesets/secondary/generic_building/palettes/10.pal": "6d21da346690602935e38b8a94b2b1bdc84683ae640f4442d4175250ed523c1a",
+    "data/tilesets/secondary/generic_building/palettes/11.pal": "f44e1cbd4c70fa4b9a92248cbbe49c57efec51418598a5280c5894364f06cd24",
+    "data/tilesets/secondary/generic_building/palettes/12.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/generic_building/palettes/13.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/generic_building/palettes/14.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/generic_building/palettes/15.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/generic_building/tiles.png": "7783d199aaaaa51db286c745ddc6907a576f2930767a2f52862128c39cf15be8",
+    "data/tilesets/secondary/lab/metatile_attributes.bin": "f161a8b562196a6454d4b2842e8469f08330628fd0212188111d7e1172a39532",
+    "data/tilesets/secondary/lab/metatiles.bin": "7adcba2176ffaf39e9ac6b8bf2ee869772948b90d4a68f8146986ebc4342c5b6",
+    "data/tilesets/secondary/lab/palettes/00.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/lab/palettes/01.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/lab/palettes/02.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/lab/palettes/03.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/lab/palettes/04.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/lab/palettes/05.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/lab/palettes/06.pal": "b19f4f5d5f70ea211950fb0ce7ba2dc841ce61ce8eb56d6cdd19decc6d40c460",
+    "data/tilesets/secondary/lab/palettes/07.pal": "b658a1e0131409890cec9458e90cf2d6ba09bec6b8048be616c1eea177df0ed4",
+    "data/tilesets/secondary/lab/palettes/08.pal": "2b315471a7d66d9ac4a1f509e7c4cc4766e2bdf5bb77f25b1a192234b1c81333",
+    "data/tilesets/secondary/lab/palettes/09.pal": "dc55088d5ee110ce5d8d724a3f64722314fb20d2268224af52e9d2a140f003ed",
+    "data/tilesets/secondary/lab/palettes/10.pal": "75b016423307951e0d933b3adffe94d98326eb10b8fb8aae4ddd4a45adf56bb5",
+    "data/tilesets/secondary/lab/palettes/11.pal": "7e69efc0d05cba0606807dd93400ced06fe8c37cab116c4c4fc3b4a5beee8ed7",
+    "data/tilesets/secondary/lab/palettes/12.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/lab/palettes/13.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/lab/palettes/14.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/lab/palettes/15.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/lab/tiles.png": "8be864b48ca5a2f44db22edcd4ae020ee0c7576fcf05da0a595bef51db7975ec",
+    "include/tilesets.h": "35513d803140acc0295914ae282241e290941998258e8000d47d3b46e6744f23",
+    "src/data/tilesets/graphics.h": "65857c81ac8b6adcafd20a74e96799f8a4bf38f25e0e9f3011b15dacaedc1b4c",
+    "src/data/tilesets/headers.h": "eb405f69730ebf7db921318db427aee7a65ec976ecbf2c6d8c3c1e555a63c835",
+    "src/data/tilesets/metatiles.h": "ffc4f0f225241537a74aa6a970f0816cf65aa4aa9e973b5be53db15b0dee1dbe"
+  },
+  "substitutions": 4,
+  "successor_of": "integrate-native-assets.py; V1 retained as rejected visual diagnostic"
+}

@@ -1,0 +1,716 @@
+{
+  "schema_version": 1,
+  "suite": "helix-native-assets-public-independent-pixel-review-v1",
+  "created_at_utc": "2026-09-22T12:07:03.584828+00:00",
+  "status": "passed",
+  "immutable_receipt": true,
+  "rom_sha256": "be7b0ba75e925aa60cbf0fc431f836ebb7f929ba4ea8f73a12bb1cb997b829f3",
+  "elf_sha256": "37f350352234c60d7d3c28727edbb795c97e3455cc1fdda2e994a651cc9ebfd5",
+  "review_scope": "Independent visual review of all public Post and Laboratory screenshots plus exact opaque native-pixel matching for all five existing object positions. No emulator input or controller actions by this reviewer.",
+  "fixture_scope": "Fresh synthetic fixtures in the exact public ROM; campaign gates and accepted-save compatibility are outside this public smoke scope.",
+  "method": {
+    "source": "Committed indexed native PNGs and untouched mGBA screenshot files",
+    "mask": "Compare every native PNG pixel with decoded alpha > 0; transparent pixels excluded from object matching.",
+    "color_conversion": "For each native RGB channel c, expected raw mGBA screenshot channel is (c & 248) | (c >> 5), the exact 5-bit-to-8-bit GBA RGB555 expansion.",
+    "geometry": "No resizing, cropping, interpolation, tolerance, palette substitution or screenshot alteration; exhaustive search verifies recorded top-left anchors.",
+    "visual_review": "All 42 complete 240x160 captures reviewed in nearest-neighbor contact sheets; 31 distinct RGB pixel images. Compared with the approved original/source/native contact sheet and full-room renders.",
+    "visual_findings": "No visible clipping, tile seams, palette corruption, new interior floor holes or unintended surrounding-tile changes. Post peach backdrop remains continuous; table cup/legs, both plants and both laboratory terminals match approved derivatives; both Save/Continue views retain the assets."
+  },
+  "counts": {
+    "designs": 4,
+    "existing_object_positions": 5,
+    "opaque_pixels_compared_by_position": [
+      924,
+      290,
+      290,
+      445,
+      346
+    ],
+    "total_opaque_pixels_compared": 2295,
+    "different_pixels": 0,
+    "screenshots_visually_reviewed": 42,
+    "distinct_rgb_images_visually_reviewed": 31,
+    "reported_collision_checks": 17,
+    "reported_interaction_checks": 7,
+    "reported_ordinary_save_continue_checks": 2
+  },
+  "runs": [
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "state_report_sha256": "3bf6025bf1536d6c7a08418a1bcbd8b721c8cb8d6909faa2377b80462d20119d",
+      "state_assertions": "passed-state-assertions",
+      "screenshot_count": 19,
+      "collision_check_count": 11,
+      "interaction_check_count": 3,
+      "ordinary_save_continue_count": 1,
+      "finished_at_utc": "2026-09-22T12:03:55.544965+00:00"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "state_report_sha256": "1992ad31d8221f1085998e781f4d93118f8f9862509cbd2d07d062e87a4d8a11",
+      "state_assertions": "passed-state-assertions",
+      "screenshot_count": 23,
+      "collision_check_count": 6,
+      "interaction_check_count": 4,
+      "ordinary_save_continue_count": 1,
+      "finished_at_utc": "2026-09-22T12:04:42.191762+00:00"
+    }
+  ],
+  "native_pixel_checks": [
+    {
+      "asset_id": "world-v2-post_modular_furniture-slate_cobalt",
+      "native_png": "rom-source/native-assets-batch1/post_modular_furniture/native.png",
+      "native_png_sha256": "dfa28fee22e804511233e00b139ea0a8aced1c138710e758f2755815bf0c515d",
+      "native_canvas_size": [
+        32,
+        32
+      ],
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "post-table-native-context",
+      "capture_filename": "public-props-20260922T120256585357Z-02-post-table-native-context.png",
+      "capture_sha256": "60052b5e60b27412431d3b3d915fd5e43736e87429d2abbd9d27bc76661fc937",
+      "native_top_left_in_capture": [
+        64,
+        40
+      ],
+      "compared_opaque_pixel_count": 924,
+      "different_pixel_count": 0,
+      "result": "exact-match"
+    },
+    {
+      "asset_id": "wave12-indoor-potted-tree-2026-v12",
+      "native_png": "rom-source/native-assets-batch1/indoor_potted_tree/native.png",
+      "native_png_sha256": "d7b4b78078db8e4044e2bfe072ac3d81562d90cc9df19acf0b93d8d04644ca6d",
+      "native_canvas_size": [
+        16,
+        32
+      ],
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "post-plants-native-context",
+      "capture_filename": "public-props-20260922T120256585357Z-11-post-plants-native-context.png",
+      "capture_sha256": "ade83df9e785f22ee4c61d6bba777d32ad427c15dbeb145482cda948cd01588e",
+      "native_top_left_in_capture": [
+        128,
+        40
+      ],
+      "compared_opaque_pixel_count": 290,
+      "different_pixel_count": 0,
+      "result": "exact-match"
+    },
+    {
+      "asset_id": "wave12-indoor-potted-tree-2026-v12",
+      "native_png": "rom-source/native-assets-batch1/indoor_potted_tree/native.png",
+      "native_png_sha256": "d7b4b78078db8e4044e2bfe072ac3d81562d90cc9df19acf0b93d8d04644ca6d",
+      "native_canvas_size": [
+        16,
+        32
+      ],
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "post-plants-native-context",
+      "capture_filename": "public-props-20260922T120256585357Z-11-post-plants-native-context.png",
+      "capture_sha256": "ade83df9e785f22ee4c61d6bba777d32ad427c15dbeb145482cda948cd01588e",
+      "native_top_left_in_capture": [
+        144,
+        40
+      ],
+      "compared_opaque_pixel_count": 290,
+      "different_pixel_count": 0,
+      "result": "exact-match"
+    },
+    {
+      "asset_id": "world-v2-lab_registration_terminal-mineral_silver",
+      "native_png": "rom-source/native-assets-batch1/lab_registration_terminal/native.png",
+      "native_png_sha256": "9dae371f03972bcea1481a87594030849f62618c7a3da5b686c8e28ff2056f4f",
+      "native_canvas_size": [
+        32,
+        32
+      ],
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "registration-public-native-context",
+      "capture_filename": "public-props-20260922T120333986061Z-02-registration-public-native-context.png",
+      "capture_sha256": "e0c50c72987ec4660ccb6d34999a1504379b025a0380722405d103b91e854f9c",
+      "native_top_left_in_capture": [
+        80,
+        24
+      ],
+      "compared_opaque_pixel_count": 445,
+      "different_pixel_count": 0,
+      "result": "exact-match"
+    },
+    {
+      "asset_id": "world-v2-lab_preparation_terminal-mineral_silver",
+      "native_png": "rom-source/native-assets-batch1/lab_preparation_terminal/native.png",
+      "native_png_sha256": "c224ddd0bb53650e4a2715656acd56fa19505796ea6ead107edb26139115f885",
+      "native_canvas_size": [
+        16,
+        32
+      ],
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "preparation-public-native-context",
+      "capture_filename": "public-props-20260922T120333986061Z-05-preparation-public-native-context.png",
+      "capture_sha256": "cffa51597a068afbf829e44c2d97d1019d2b0f977dd0019e132f19e05d75764e",
+      "native_top_left_in_capture": [
+        64,
+        88
+      ],
+      "compared_opaque_pixel_count": 346,
+      "different_pixel_count": 0,
+      "result": "exact-match"
+    }
+  ],
+  "visually_reviewed_captures": [
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "public-post-fixture-continued",
+      "capture_filename": "public-props-20260922T120256585357Z-01-public-post-fixture-continued.png",
+      "capture_sha256": "60052b5e60b27412431d3b3d915fd5e43736e87429d2abbd9d27bc76661fc937",
+      "rgb_pixel_sha256": "394c2d591398f688264d4f0c76efbb128364e2181a6037b05a4cbf226cf782b5",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "post-table-native-context",
+      "capture_filename": "public-props-20260922T120256585357Z-02-post-table-native-context.png",
+      "capture_sha256": "60052b5e60b27412431d3b3d915fd5e43736e87429d2abbd9d27bc76661fc937",
+      "rgb_pixel_sha256": "394c2d591398f688264d4f0c76efbb128364e2181a6037b05a4cbf226cf782b5",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "table-edge-2-5-right",
+      "capture_filename": "public-props-20260922T120256585357Z-03-table-edge-2-5-right.png",
+      "capture_sha256": "d72b2d4d1f32ce46e901c1b3b2ce07577b3357e4ee45a0a5160f872a699d6060",
+      "rgb_pixel_sha256": "5258e96b1e939b64cd99743f6aecefc0f05840d35c57a0c853e12568e7d83fd1",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "table-edge-2-5-down",
+      "capture_filename": "public-props-20260922T120256585357Z-04-table-edge-2-5-down.png",
+      "capture_sha256": "079d947568948d3cfd308279014314b919d4cf48e691c276f80b0d3d8fa00891",
+      "rgb_pixel_sha256": "5ca66bac10f8407896629eac045f75c67f20f1137de5b89c1013686d8b929dfa",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "table-edge-2-6-up",
+      "capture_filename": "public-props-20260922T120256585357Z-05-table-edge-2-6-up.png",
+      "capture_sha256": "d8ac586e0caa1929ed3ed81328a3de94e0cb3efdf611c73bf9bbae560b6c27eb",
+      "rgb_pixel_sha256": "f93bd6333a7fb884aacbf05085c5f3bfe915b9d12f1183bb4dd87cfdf719c2ca",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "table-edge-2-6-right",
+      "capture_filename": "public-props-20260922T120256585357Z-06-table-edge-2-6-right.png",
+      "capture_sha256": "9851e27e87d8f5e67f15c0ad8823667c5acb96e51c48e8aa52ad19767af9bc7d",
+      "rgb_pixel_sha256": "cee76efe51813190adad73d84d24f2869170e47a706ff50ed0d4a72dc851fe3e",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "table-edge-3-5-down",
+      "capture_filename": "public-props-20260922T120256585357Z-07-table-edge-3-5-down.png",
+      "capture_sha256": "c32f96bac88af3f9242a6005036a114b79b20d7d35b0e51aa155f63dc5df9939",
+      "rgb_pixel_sha256": "bfafede178bd91834db195ebb9341ee417368371776a3f30efb6af504f1ba59d",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "table-edge-3-6-up",
+      "capture_filename": "public-props-20260922T120256585357Z-08-table-edge-3-6-up.png",
+      "capture_sha256": "56053c49603acb65719bab24b716127bc6786aea6ec74b916500e66affa80ef1",
+      "rgb_pixel_sha256": "10f065272fc766b699d518993f0bf67777fdc85b290183fbc315efe9d2359265",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "table-edge-3-6-left",
+      "capture_filename": "public-props-20260922T120256585357Z-09-table-edge-3-6-left.png",
+      "capture_sha256": "1e79c7dc308df28d0fdfb662dfebe15d9ac99a10a7ad9aec0ca2c24d9fb8e479",
+      "rgb_pixel_sha256": "f091783ff750f7d424ab4f2c49fb967a9eda43b4a5330bc4d72d0b9738799688",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "post-table-no-new-interaction",
+      "capture_filename": "public-props-20260922T120256585357Z-10-post-table-no-new-interaction.png",
+      "capture_sha256": "d8ac586e0caa1929ed3ed81328a3de94e0cb3efdf611c73bf9bbae560b6c27eb",
+      "rgb_pixel_sha256": "f93bd6333a7fb884aacbf05085c5f3bfe915b9d12f1183bb4dd87cfdf719c2ca",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "post-plants-native-context",
+      "capture_filename": "public-props-20260922T120256585357Z-11-post-plants-native-context.png",
+      "capture_sha256": "ade83df9e785f22ee4c61d6bba777d32ad427c15dbeb145482cda948cd01588e",
+      "rgb_pixel_sha256": "706d98395f99324c16a07503670fd0da36443a20b05245461bc407b4cd07442c",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "plant-west-edge-8-2-up",
+      "capture_filename": "public-props-20260922T120256585357Z-12-plant-west-edge-8-2-up.png",
+      "capture_sha256": "7bbb11bf4558f0bac879abf7bb66bb890c817713ccee7d4c9f13551a9da4b577",
+      "rgb_pixel_sha256": "5a186225df59e9119e5d7262e1bacdce6faffa999cb11dc63fec176866ff9967",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "plant-west-edge-8-2-right",
+      "capture_filename": "public-props-20260922T120256585357Z-13-plant-west-edge-8-2-right.png",
+      "capture_sha256": "733dbe0ebd717b2fc6cebae8a66f96be547bd7d97b2c02974c9e075ffb3d4238",
+      "rgb_pixel_sha256": "d113e1f7f5d1733a31915c6a72f729a970459e324d19b7acc9bc3cefa02b3cc2",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "plant-west-no-new-interaction",
+      "capture_filename": "public-props-20260922T120256585357Z-14-plant-west-no-new-interaction.png",
+      "capture_sha256": "7bbb11bf4558f0bac879abf7bb66bb890c817713ccee7d4c9f13551a9da4b577",
+      "rgb_pixel_sha256": "5a186225df59e9119e5d7262e1bacdce6faffa999cb11dc63fec176866ff9967",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "plant-east-edge-9-2-up",
+      "capture_filename": "public-props-20260922T120256585357Z-15-plant-east-edge-9-2-up.png",
+      "capture_sha256": "95c42a72323607feb60b789598310fc9958074f56e1cc19aa6c2612338abd347",
+      "rgb_pixel_sha256": "684c0cceb63731dd3841491b10bd7430496861519f1c7702ae4c5d26681d0fb3",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "plant-east-edge-9-2-left",
+      "capture_filename": "public-props-20260922T120256585357Z-16-plant-east-edge-9-2-left.png",
+      "capture_sha256": "d0fa2137633e44f9b0a02652538f71f98ff2ff36fa0eaf1014a32600c2177881",
+      "rgb_pixel_sha256": "f545532e5dee22c4b7df2233a77fbcbed63208384ffa0c6ccffb75aa351a7688",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "plant-east-no-new-interaction",
+      "capture_filename": "public-props-20260922T120256585357Z-17-plant-east-no-new-interaction.png",
+      "capture_sha256": "95c42a72323607feb60b789598310fc9958074f56e1cc19aa6c2612338abd347",
+      "rgb_pixel_sha256": "684c0cceb63731dd3841491b10bd7430496861519f1c7702ae4c5d26681d0fb3",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "public-post-ordinary-continue-saved",
+      "capture_filename": "public-props-20260922T120256585357Z-18-public-post-ordinary-continue-saved.png",
+      "capture_sha256": "95c42a72323607feb60b789598310fc9958074f56e1cc19aa6c2612338abd347",
+      "rgb_pixel_sha256": "684c0cceb63731dd3841491b10bd7430496861519f1c7702ae4c5d26681d0fb3",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "post",
+      "run_id": "20260922T120143678117Z",
+      "checkpoint": "public-post-ordinary-continue-continued",
+      "capture_filename": "public-props-20260922T120256585357Z-19-public-post-ordinary-continue-continued.png",
+      "capture_sha256": "95c42a72323607feb60b789598310fc9958074f56e1cc19aa6c2612338abd347",
+      "rgb_pixel_sha256": "684c0cceb63731dd3841491b10bd7430496861519f1c7702ae4c5d26681d0fb3",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "public-lab-fixture-continued",
+      "capture_filename": "public-props-20260922T120333986061Z-01-public-lab-fixture-continued.png",
+      "capture_sha256": "55cd2e0fa17878bbd9c29589ec7108a9089c597b69523dac91fbfcbc7bb96591",
+      "rgb_pixel_sha256": "6dfc57820cd6cec399d871069631298591c3d58c4d251de927d387cbaf2d9912",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "registration-public-native-context",
+      "capture_filename": "public-props-20260922T120333986061Z-02-registration-public-native-context.png",
+      "capture_sha256": "e0c50c72987ec4660ccb6d34999a1504379b025a0380722405d103b91e854f9c",
+      "rgb_pixel_sha256": "11990b5b3b5d990b0be64741f91039e3cac72122f01c3ebd48caf01df54aac26",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "registration-edge-3-1-up",
+      "capture_filename": "public-props-20260922T120333986061Z-03-registration-edge-3-1-up.png",
+      "capture_sha256": "3e3170d94fc72256c78e31dc50dff67decf1a4523a67b8362b055aa02f11a422",
+      "rgb_pixel_sha256": "00f28481afba4a3c14aecf1d831acbb15c9fa6bc9798464a134fed1422c784d1",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "registration-edge-4-1-up",
+      "capture_filename": "public-props-20260922T120333986061Z-04-registration-edge-4-1-up.png",
+      "capture_sha256": "ddad07337af46553140a9f902a50f6ccbd294ae25c4bf5667e5a2a7605e44123",
+      "rgb_pixel_sha256": "dbcd1ece3577b16ac3341114b260126a640c8aaa4bf732689291676f31002888",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "preparation-public-native-context",
+      "capture_filename": "public-props-20260922T120333986061Z-05-preparation-public-native-context.png",
+      "capture_sha256": "cffa51597a068afbf829e44c2d97d1019d2b0f977dd0019e132f19e05d75764e",
+      "rgb_pixel_sha256": "4e058f9b0d68bb6733bf1ad895e09df6c86e731551351d4b846cea732a537c96",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "preparation-edge-1-9-right",
+      "capture_filename": "public-props-20260922T120333986061Z-06-preparation-edge-1-9-right.png",
+      "capture_sha256": "efe39b75abe18c51e7016bcf1029ec832af9d04c7d380af18aa1b81033ef2d40",
+      "rgb_pixel_sha256": "f228c28fc3c1442c671f3fd86385afb73058ef9ade4cad33438a33a56d553762",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "preparation-edge-1-9-down",
+      "capture_filename": "public-props-20260922T120333986061Z-07-preparation-edge-1-9-down.png",
+      "capture_sha256": "97a97481898dd90711196efd123970765daa070b989c3da376f6a72a987fb6b1",
+      "rgb_pixel_sha256": "ecafa5e10677a05b382240cc1bf0813c28d790fdd1b5f197b04cdccbd796d857",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "preparation-edge-1-9-left",
+      "capture_filename": "public-props-20260922T120333986061Z-08-preparation-edge-1-9-left.png",
+      "capture_sha256": "0fe8c25651d9139b88ea75a720d996443e6064868c1d05b756ba0f89385b0c2f",
+      "rgb_pixel_sha256": "e0e47bc4266208a5d26558dddcd41901c5e7f4c93fdc78c2050a1fc4f9852b0e",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "preparation-edge-1-10-left",
+      "capture_filename": "public-props-20260922T120333986061Z-09-preparation-edge-1-10-left.png",
+      "capture_sha256": "93d4823ce396362ec0862cb72902a2d2e685e6a1d1ec84759002482ce16be7f2",
+      "rgb_pixel_sha256": "44e82c74b5cce2b3dec3c8d29d38c7454aaa66b59dccdf73669a6c4c656b8681",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "registration-3-text-1",
+      "capture_filename": "public-props-20260922T120333986061Z-10-registration-3-text-1.png",
+      "capture_sha256": "aef20430d736ac4ed0901b3285903c430d0bde761b27074b96ee581813f111c8",
+      "rgb_pixel_sha256": "6eb7f8cc1ecc9463be7e3eaf99ff3c14a383551790e68d5a96b19698f7220aaf",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "registration-3-text-2",
+      "capture_filename": "public-props-20260922T120333986061Z-11-registration-3-text-2.png",
+      "capture_sha256": "ffaf2cd4b0743a22328cbf90cc90084a09f9c5b27a4e88547bd17e73f2a0f377",
+      "rgb_pixel_sha256": "6dd7d4ed0d9fd31217e7e7ef8f18c1d68c67353138a68975e30a11c5440b7704",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "registration-3-existing-choice",
+      "capture_filename": "public-props-20260922T120333986061Z-12-registration-3-existing-choice.png",
+      "capture_sha256": "e59730fa541469b085d0e688cfb0dbded99238efe6a40cb90c6097f4085f0150",
+      "rgb_pixel_sha256": "7e1ff2373e03bc08d541ce9370079f01e487b1542205daae06176d1417404578",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "registration-3-cancelled-unchanged",
+      "capture_filename": "public-props-20260922T120333986061Z-13-registration-3-cancelled-unchanged.png",
+      "capture_sha256": "3e3170d94fc72256c78e31dc50dff67decf1a4523a67b8362b055aa02f11a422",
+      "rgb_pixel_sha256": "00f28481afba4a3c14aecf1d831acbb15c9fa6bc9798464a134fed1422c784d1",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "registration-4-text-1",
+      "capture_filename": "public-props-20260922T120333986061Z-14-registration-4-text-1.png",
+      "capture_sha256": "ba4a30bcb4e0cba48b833d698f22f141ea834acf11ae7cc866d740f4fd444e34",
+      "rgb_pixel_sha256": "486a187d104edd1ffa94b1cb49d53f850f8bb9bd63aa08e2c2360e9c1bc482d8",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "registration-4-text-2",
+      "capture_filename": "public-props-20260922T120333986061Z-15-registration-4-text-2.png",
+      "capture_sha256": "7b030d7b64af84d9d139d2f58ae15a40b0c59b329101f4eddb559012d4388dbd",
+      "rgb_pixel_sha256": "ea4f6ba3bb489c11be2801ab2a42076d8502da39bfad0b4d4e2e72876ba26101",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "registration-4-existing-choice",
+      "capture_filename": "public-props-20260922T120333986061Z-16-registration-4-existing-choice.png",
+      "capture_sha256": "bcea299c70adfcf4994949a4bf362d849d4f89ba6bd465f787d7198b6ad77b2f",
+      "rgb_pixel_sha256": "31d7a3257af5345a9f425150c94ea5478f77ae1136c52cc0d939bcb6dcab0938",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "registration-4-cancelled-unchanged",
+      "capture_filename": "public-props-20260922T120333986061Z-17-registration-4-cancelled-unchanged.png",
+      "capture_sha256": "ddad07337af46553140a9f902a50f6ccbd294ae25c4bf5667e5a2a7605e44123",
+      "rgb_pixel_sha256": "dbcd1ece3577b16ac3341114b260126a640c8aaa4bf732689291676f31002888",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "preparation-9-public-needs-recipe-page-1",
+      "capture_filename": "public-props-20260922T120333986061Z-18-preparation-9-public-needs-recipe-page-1.png",
+      "capture_sha256": "8a3684a4c486500579e0ddae1614b03f500d7515a4675f11bcbb6bef8c15403b",
+      "rgb_pixel_sha256": "609850a39d4f1e340f94d033ee8d2f07f902fb959466664d881873c0e64eeef0",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "preparation-9-public-needs-recipe-unchanged",
+      "capture_filename": "public-props-20260922T120333986061Z-19-preparation-9-public-needs-recipe-unchanged.png",
+      "capture_sha256": "0fe8c25651d9139b88ea75a720d996443e6064868c1d05b756ba0f89385b0c2f",
+      "rgb_pixel_sha256": "e0e47bc4266208a5d26558dddcd41901c5e7f4c93fdc78c2050a1fc4f9852b0e",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "preparation-10-public-needs-recipe-page-1",
+      "capture_filename": "public-props-20260922T120333986061Z-20-preparation-10-public-needs-recipe-page-1.png",
+      "capture_sha256": "7b067caea43fd7d66fc8914964d31d9e5fcdc1db40812852e7a3353422ad6a89",
+      "rgb_pixel_sha256": "a00f46ceafbbe050ee2c8c9dc6e6a1d77081475d78f44b32964deb8748fbeeb9",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "preparation-10-public-needs-recipe-unchanged",
+      "capture_filename": "public-props-20260922T120333986061Z-21-preparation-10-public-needs-recipe-unchanged.png",
+      "capture_sha256": "93d4823ce396362ec0862cb72902a2d2e685e6a1d1ec84759002482ce16be7f2",
+      "rgb_pixel_sha256": "44e82c74b5cce2b3dec3c8d29d38c7454aaa66b59dccdf73669a6c4c656b8681",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "public-lab-ordinary-continue-saved",
+      "capture_filename": "public-props-20260922T120333986061Z-22-public-lab-ordinary-continue-saved.png",
+      "capture_sha256": "15725138931d06184cfb11216bcf3b9e3f71113774ca890e8633508f3360ab07",
+      "rgb_pixel_sha256": "f97febcda85aaa42dcda2d27c792d863acad496fe9c51349f69441c1b0f0b636",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    },
+    {
+      "room": "lab",
+      "run_id": "20260922T120149375852Z",
+      "checkpoint": "public-lab-ordinary-continue-continued",
+      "capture_filename": "public-props-20260922T120333986061Z-23-public-lab-ordinary-continue-continued.png",
+      "capture_sha256": "15725138931d06184cfb11216bcf3b9e3f71113774ca890e8633508f3360ab07",
+      "rgb_pixel_sha256": "f97febcda85aaa42dcda2d27c792d863acad496fe9c51349f69441c1b0f0b636",
+      "size": [
+        240,
+        160
+      ],
+      "visual_review": "passed"
+    }
+  ],
+  "limitations": [
+    "Opaque matching proves the selected foregrounds in these captured scenes; independent source-scope and compiled-array guards cover allocation/binding isolation.",
+    "Collision, interaction and save counts are verified against the completed runner reports; this independent review did not inject inputs.",
+    "The source reference and published-art fidelity review preceded this receipt; no source images were modified."
+  ]
+}

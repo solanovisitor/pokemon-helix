@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "status": "passed-fresh-and-repeat-bootstrap-final-public-bundle",
+  "public_base": "5d0e7d8b580bf164708aa7d4f324b33656a06086",
+  "upstream_revision": "36f5cf6271c382d4dc161ba040dd1dd3bc8b2a7f",
+  "manifest_sha256": "02c28f1f119f41d8033da77e4bddd32b554ce6f74c6516f83033a765a94daab9",
+  "compiled_bundle_manifest_sha256": "c4905ee5cb9a77e6d0f8919596dde7ba74adb985063f6ef223260f026eb9bee8",
+  "change_since_compilation": {
+    "only_manifest_difference": "bundle_files.README.md bytes and SHA-256",
+    "reason": "Updated documentation to report exact public ROM smoke; native sources, patch, overlay and result hashes unchanged",
+    "previous_readme": {
+      "bytes": 6088,
+      "sha256": "47e1b9820c6b7c42c435c0a1e06088f8bd213a80e557e0f7a0c576d976d31462"
+    },
+    "final_readme": {
+      "bytes": 6242,
+      "sha256": "79c9d2866e4d95ee3087dc65b4f8decdb77d92613914043767d447ab92d2b3c3"
+    }
+  },
+  "native_result_files": 223,
+  "native_results_equal_compiled_source": true,
+  "all_tracked_plus_overlay_source_files_equal_compiled_source": 30266,
+  "fresh_bootstrap_exit_code": 0,
+  "repeat_verification_exit_code": 0,
+  "repeat_result": "Verified existing overlay; no files changed.",
+  "previous_clone_and_receipts_preserved": true,
+  "rom_sha256": "be7b0ba75e925aa60cbf0fc431f836ebb7f929ba4ea8f73a12bb1cb997b829f3",
+  "elf_sha256": "37f350352234c60d7d3c28727edbb795c97e3455cc1fdda2e994a651cc9ebfd5",
+  "no_rebuild_needed": "Every tracked and overlay source byte equals the previously compiled and mGBA-tested source.",
+  "reproduction": [
+    "uv run --locked python scripts/bootstrap-game.py --destination .local/native-assets-batch1-public-v2/final-roundtrip/game --repository .local/native-assets-batch1-public-v2/roundtrip/game",
+    "Repeat the identical command to verify the existing overlay without writes."
+  ]
+}

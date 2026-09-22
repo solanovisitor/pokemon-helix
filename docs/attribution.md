@@ -46,6 +46,13 @@ responses, personal profiles or accepted individual packages.
 - Tile-map layouts and authored event scripts are Helix integration work;
   their referenced Emerald tiles, fonts, sprites and other game content retain
   upstream ownership. Native artwork and screenshots are excluded from MIT.
+- The first native catalog batch derives four static designs from
+  [`todeschini/helix-assets`](https://huggingface.co/datasets/todeschini/helix-assets),
+  config `gallery`, revision `d7c825f2d15b0818d549b8367d1054cb53c23713`.
+  It makes no generation requests. The retained catalog references and generated
+  originals have separate hashes; the native PNGs are deterministic derivatives.
+  The cloned tilesets include unchanged upstream artwork with its original
+  ownership. All of `rom-source/native-assets-batch1/` remains excluded from MIT.
 
 ## Public host reference inputs
 
